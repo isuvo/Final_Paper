@@ -22,6 +22,12 @@
 \usepackage{listings}
 \usepackage{listingsutf8}
 
+%\svgsetup{
+%	inkscapeexe={C:/Program Files/Inkscape/bin/inkscape.exe}, 
+%	inkscapelatex=true,   % produce PDF + .pdf_tex for LaTeX text overlay
+%	inkscapearea=page
+%}
+
 
 \lstset{
   inputencoding=utf8,
@@ -315,9 +321,9 @@ Overall, while traditional knowledge graphs serve primarily as repositories of f
 \subsection{Constrained Decoding and Beam Search for Structured Reasoning}
 \label{sec:rw-constrained-beam}
 
-Beam search has long been recognized as a widely used heuristic for exploring structured search spaces where the goal is to efficiently identify the most promising candidate solutions. It maintains a finite set of the top-ranked partial hypotheses at each expansion step, thereby balancing exploration and computational tractability. Within structured reasoning and program analysis, however, traditional unconstrained beam search, or naïve search strategies such as best-first or depth-first traversal, frequently encounter difficulties when dealing with validity constraints inherent to logical or semantic domains. These basic strategies can drift into infeasible or inconsistent paths that may appear locally optimal but ultimately violate global program semantics.
+Beam search has long been recognized as a widely used heuristic for exploring structured search spaces where the goal is to efficiently identify the most promising candidate solutions. It maintains a finite set of the top-ranked partial hypotheses at each expansion step, thereby balancing exploration and computational tractability. Within structured reasoning and program analysis, however, traditional unconstrained beam search, or naive search strategies such as best-first or depth-first traversal, frequently encounter difficulties when dealing with validity constraints inherent to logical or semantic domains. These basic strategies can drift into infeasible or inconsistent paths that may appear locally optimal but ultimately violate global program semantics.
 
-To address this limitation, the notion of \emph{constrained decoding} also referred to as guided beam search has emerged as a powerful strategy for structured prediction tasks. Unlike standard decoding, constrained beam search dynamically filters or adjusts candidate expansions based on a combination of hard structural constraints and soft structural preferences. In the context of program graph reasoning, constraints may include control- and data-flow reachability conditions, inter-procedural legality rules that govern how function calls and returns are matched, cycle avoidance, recursion depth control, and alias consistency requirements. These constraints ensure that the generated paths reflect feasible execution behavior and retain logical coherence across procedural boundaries.
+To address this limitation, the notion of \emph{constrained decoding} also referred to as guided beam search has emerged as a powerful strategy for structured prediction tasks. Unlike standard decoding, constrained beam search dynamically filters or adjusts candidate expansions based on a combination of hard structural constraints and soft structural preferences. In the context of program graph reasoning, constraints may include control- and data-flow traceability conditions, inter-procedural legality rules that govern how function calls and returns are matched, cycle avoidance, recursion depth control, and alias consistency requirements. These constraints ensure that the generated paths reflect feasible execution behavior and retain logical coherence across procedural boundaries.
 
 Existing studies have applied constrained or guided beam search across various reasoning tasks such as syntactic parsing, symbolic execution, and knowledge graph inference. Many of these approaches rely on rule-based or manually designed heuristics to enforce validity, while some leverage scoring functions based on learned local evidence. However, pure heuristic control often fails to generalize well, and purely learned scoring can succumb to spurious correlations. Recognizing this gap, more recent work seeks to integrate statistical structure priors derived from domain relevant data into the decoding process, enabling the search to blend empirical regularities with deterministic legality checks.
 
@@ -1135,6 +1141,8 @@ Finally, the implementation integrated advanced engineering practices, such as m
 \label{chap:evaluation}
 
 This chapter specifies how the proposed method is assessed. The protocol is designed to evaluate both \emph{predictive accuracy} and \emph{mechanistic faithfulness} (does the model reconstruct an executable, interprocedural chain consistent with the underlying program semantics?). The chapter defines experimental settings, calibration and thresholding, standard and causality-aware metrics, the intervention procedure used for counterfactual tests, statistical analysis, reporting conventions, runtime profiling, and ablation methodology. Emphasis is placed on reproducibility, fairness across baselines, and sensitivity to the chain-centric nature of vulnerability detection.
+
+
 
 \section{Experimental Settings}
 \label{sec:eval-settings}
