@@ -1,15 +1,16 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.27)  27 OCT 2025 22:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.27)  28 OCT 2025 02:30
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
-**"c:/Users/USER/Desktop/Thesis Research/Final/Final paper/Thesis_Final v1.1/main.tex"
-(c:/Users/USER/Desktop/Thesis Research/Final/Final paper/Thesis_Final v1.1/main.tex
+**main.tex
+(./main.tex
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-10-24>
 (./buthesis.cls
-Document Class: buthesis 2025/09/14 v2.5 Bishop's University thesis document class
-`buthesis.cls' is free software; you are welcome to redistribute it under certain conditions, see http://www.gnu.org/licenses/lgpl.html.
+Document Class: buthesis 2025/09/14 v2.5 Bishop's University thesis document cl
+ass
+`buthesis.cls' is free software; you are welcome to redistribute it under certa
+in conditions, see http://www.gnu.org/licenses/lgpl.html.
 (c:/texlive/2025/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2025/01/22 v1.4n Standard LaTeX document class
 (c:/texlive/2025/texmf-dist/tex/latex/base/bk11.clo
@@ -27,25 +28,32 @@ File: bk11.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
 \bibindent=\dimen148
-) (c:/texlive/2025/texmf-dist/tex/latex/graphics/graphicx.sty
+)
+(c:/texlive/2025/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
- (c:/texlive/2025/texmf-dist/tex/latex/graphics/keyval.sty
+
+(c:/texlive/2025/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
-) (c:/texlive/2025/texmf-dist/tex/latex/graphics/graphics.sty
+)
+(c:/texlive/2025/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
- (c:/texlive/2025/texmf-dist/tex/latex/graphics/trig.sty
+
+(c:/texlive/2025/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
-) (c:/texlive/2025/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+)
+(c:/texlive/2025/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 106.
- (c:/texlive/2025/texmf-dist/tex/latex/graphics-def/pdftex.def
+
+(c:/texlive/2025/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen149
 \Gin@req@width=\dimen150
-) (c:/texlive/2025/texmf-dist/tex/latex/amscls/amsthm.sty
+)
+(c:/texlive/2025/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2020/05/29 v2.20.6
 \thm@style=\toks18
 \thm@bodyfont=\toks19
@@ -59,13 +67,16 @@ Package: amsthm 2020/05/29 v2.20.6
 )
 \c@definition=\count284
 \c@theorem=\count285
- (c:/texlive/2025/texmf-dist/tex/latex/xcolor/xcolor.sty
+
+(c:/texlive/2025/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
- (c:/texlive/2025/texmf-dist/tex/latex/graphics-cfg/color.cfg
+
+(c:/texlive/2025/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 274.
- (c:/texlive/2025/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+
+(c:/texlive/2025/texmf-dist/tex/latex/graphics/mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
 Package xcolor Info: Model `RGB' extended on input line 1365.
@@ -75,56 +86,76 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
-) (c:/texlive/2025/texmf-dist/tex/latex/hyperref/hyperref.sty
+)
+(c:/texlive/2025/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
- (c:/texlive/2025/texmf-dist/tex/generic/iftex/iftex.sty
+
+(c:/texlive/2025/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
-) (c:/texlive/2025/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+)
+(c:/texlive/2025/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-) (c:/texlive/2025/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+)
+(c:/texlive/2025/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-) (c:/texlive/2025/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+)
+(c:/texlive/2025/texmf-dist/tex/generic/pdfescape/pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
- (c:/texlive/2025/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+
+(c:/texlive/2025/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
-) (c:/texlive/2025/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
-Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
- (c:/texlive/2025/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+)
+(c:/texlive/2025/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(c:/texlive/2025/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-)) (c:/texlive/2025/texmf-dist/tex/latex/hycolor/hycolor.sty
+))
+(c:/texlive/2025/texmf-dist/tex/latex/hycolor/hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-) (c:/texlive/2025/texmf-dist/tex/latex/hyperref/nameref.sty
+)
+(c:/texlive/2025/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2025-06-21 v2.57 Cross-referencing by name of section
- (c:/texlive/2025/texmf-dist/tex/latex/refcount/refcount.sty
+
+(c:/texlive/2025/texmf-dist/tex/latex/refcount/refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-) (c:/texlive/2025/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+)
+(c:/texlive/2025/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
- (c:/texlive/2025/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+
+(c:/texlive/2025/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
 \c@section@level=\count286
-) (c:/texlive/2025/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+)
+(c:/texlive/2025/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count287
-) (c:/texlive/2025/texmf-dist/tex/generic/stringenc/stringenc.sty
-Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
+)
+(c:/texlive/2025/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
 )
 \@linkdim=\dimen151
 \Hy@linkcounter=\count288
 \Hy@pagecounter=\count289
- (c:/texlive/2025/texmf-dist/tex/latex/hyperref/pd1enc.def
+
+(c:/texlive/2025/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2025-07-12 v7.01o Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
-) (c:/texlive/2025/texmf-dist/tex/generic/intcalc/intcalc.sty
+)
+(c:/texlive/2025/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
 \Hy@SavedSpaceFactor=\count290
- (c:/texlive/2025/texmf-dist/tex/latex/hyperref/puenc.def
+
+(c:/texlive/2025/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2025-07-12 v7.01o Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
@@ -137,16 +168,20 @@ Package hyperref Info: Backreferencing OFF on input line 4215.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4462.
 \c@Hy@tempcnt=\count291
- (c:/texlive/2025/texmf-dist/tex/latex/url/url.sty
+
+(c:/texlive/2025/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4801.
 \XeTeXLinkMargin=\dimen152
- (c:/texlive/2025/texmf-dist/tex/generic/bitset/bitset.sty
+
+(c:/texlive/2025/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
- (c:/texlive/2025/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
-Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+
+(c:/texlive/2025/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
 ))
 \Fld@menulength=\count292
 \Field@Width=\dimen153
@@ -163,23 +198,29 @@ Package hyperref Info: PDF/A mode OFF on input line 6108.
 \c@Hfootnote=\count295
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
- (c:/texlive/2025/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+(c:/texlive/2025/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2025-07-12 v7.01o Hyperref driver for pdfTeX
 \Fld@listcount=\count296
 \c@bookmark@seq@number=\count297
- (c:/texlive/2025/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+
+(c:/texlive/2025/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
- (c:/texlive/2025/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+
+(c:/texlive/2025/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 284.
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+84.
 )
 \Hy@SectionHShift=\skip54
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 179.
- (c:/texlive/2025/texmf-dist/tex/latex/geometry/geometry.sty
+
+(c:/texlive/2025/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
- (c:/texlive/2025/texmf-dist/tex/generic/iftex/ifvtex.sty
+
+(c:/texlive/2025/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
 \Gm@cnth=\count298
@@ -194,45 +235,64 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layouthoffset=\dimen161
 \Gm@layoutvoffset=\dimen162
 \Gm@dimlist=\toks24
-) (c:/texlive/2025/texmf-dist/tex/latex/newpx/newpxtext.sty
-Package: newpxtext 2025/06/07 v1.542 LaTeX and unicode LaTeX support for TeXGyrePagellaX (Michael Sharpe)
- `newpxtext' v1.542, 2025/06/07 Text macros taking advantage of TeXGyre Pagella and its extensions (msharpe) (c:/texlive/2025/texmf-dist/tex/latex/base/fontenc.sty
+)
+(c:/texlive/2025/texmf-dist/tex/latex/newpx/newpxtext.sty
+Package: newpxtext 2025/06/07 v1.542 LaTeX and unicode LaTeX support for TeXGyr
+ePagellaX (Michael Sharpe)
+
+`newpxtext' v1.542, 2025/06/07 Text macros taking advantage of TeXGyre Pagella 
+and its extensions (msharpe)
+(c:/texlive/2025/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2024/12/21 v2.1c Standard LaTeX package
-) (c:/texlive/2025/texmf-dist/tex/latex/xpatch/xpatch.sty (c:/texlive/2025/texmf-dist/tex/latex/l3kernel/expl3.sty
+)
+(c:/texlive/2025/texmf-dist/tex/latex/xpatch/xpatch.sty
+(c:/texlive/2025/texmf-dist/tex/latex/l3kernel/expl3.sty
 Package: expl3 2025-10-24 L3 programming layer (loader) 
- (c:/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+
+(c:/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count301
 ))
 Package: xpatch 2020/03/25 v0.3a Extending etoolbox patching commands
- (c:/texlive/2025/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+
+(c:/texlive/2025/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 Package: xparse 2025-10-09 L3 Experimental document command parser
-)) (c:/texlive/2025/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+))
+(c:/texlive/2025/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
- (c:/texlive/2025/texmf-dist/tex/generic/xkeyval/xkeyval.tex (c:/texlive/2025/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+
+(c:/texlive/2025/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(c:/texlive/2025/texmf-dist/tex/generic/xkeyval/xkvutils.tex
 \XKV@toks=\toks25
 \XKV@tempa@toks=\toks26
 )
 \XKV@depth=\count302
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-)) (c:/texlive/2025/texmf-dist/tex/latex/base/textcomp.sty
+))
+(c:/texlive/2025/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
-) (c:/texlive/2025/texmf-dist/tex/generic/xstring/xstring.sty (c:/texlive/2025/texmf-dist/tex/generic/xstring/xstring.tex
+)
+(c:/texlive/2025/texmf-dist/tex/generic/xstring/xstring.sty
+(c:/texlive/2025/texmf-dist/tex/generic/xstring/xstring.tex
 \xs_counta=\count303
 \xs_countb=\count304
 )
 Package: xstring 2023/08/22 v1.86 String manipulations (CT)
-) (c:/texlive/2025/texmf-dist/tex/latex/base/ifthen.sty
+)
+(c:/texlive/2025/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
-) (c:/texlive/2025/texmf-dist/tex/latex/carlisle/scalefnt.sty)
+)
+(c:/texlive/2025/texmf-dist/tex/latex/carlisle/scalefnt.sty)
 LaTeX Font Info:    Setting zplLF sub-encoding to TS1/0 on input line 40.
 LaTeX Font Info:    Setting zplTLF sub-encoding to TS1/0 on input line 40.
 LaTeX Font Info:    Setting zplOsF sub-encoding to TS1/0 on input line 40.
 LaTeX Font Info:    Setting zplTOsF sub-encoding to TS1/0 on input line 40.
 \zpl@cnt=\count305
- (c:/texlive/2025/texmf-dist/tex/latex/fontaxes/fontaxes.sty
+
+(c:/texlive/2025/texmf-dist/tex/latex/fontaxes/fontaxes.sty
 Package: fontaxes 2025-05-24 v2.0.1 Font selection axes (deprecated)
- (c:/texlive/2025/texmf-dist/tex/latex/figureversions/figureversions.sty
+
+(c:/texlive/2025/texmf-dist/tex/latex/figureversions/figureversions.sty
 Package: figureversions 2025-04-29 v1.0.1 Figure versions
 ))
 \zpl@sixem=\dimen163
@@ -250,38 +310,53 @@ Package: figureversions 2025-04-29 v1.0.1 Figure versions
 \zpl@dimBB=\dimen175
 \zpl@dimC=\dimen176
 LaTeX Info: Redefining \oldstylenums on input line 807.
-LaTeX Font Info:    Trying to load font information for T1+zplLF on input line 815.
- (c:/texlive/2025/texmf-dist/tex/latex/newpx/t1zpllf.fd
+LaTeX Font Info:    Trying to load font information for T1+zplLF on input line 
+815.
+
+(c:/texlive/2025/texmf-dist/tex/latex/newpx/t1zpllf.fd
 File: t1zpllf.fd 2021/05/25 v1.0 font definition file for T1/zpl/lf
 )
-LaTeX Font Info:    Trying to load font information for T1+zplTLF on input line 816.
- (c:/texlive/2025/texmf-dist/tex/latex/newpx/t1zpltlf.fd
+LaTeX Font Info:    Trying to load font information for T1+zplTLF on input line
+ 816.
+
+(c:/texlive/2025/texmf-dist/tex/latex/newpx/t1zpltlf.fd
 File: t1zpltlf.fd 2021/05/25 v1.0 font definition file for T1/zpl/tlf
 )
-LaTeX Font Info:    Trying to load font information for T1+zplOsF on input line 817.
- (c:/texlive/2025/texmf-dist/tex/latex/newpx/t1zplosf.fd
+LaTeX Font Info:    Trying to load font information for T1+zplOsF on input line
+ 817.
+
+(c:/texlive/2025/texmf-dist/tex/latex/newpx/t1zplosf.fd
 File: t1zplosf.fd 2021/05/25 v1.0 font definition file for T1/zpl/osf
 )
-LaTeX Font Info:    Trying to load font information for T1+zplTOsF on input line 818.
- (c:/texlive/2025/texmf-dist/tex/latex/newpx/t1zpltosf.fd
+LaTeX Font Info:    Trying to load font information for T1+zplTOsF on input lin
+e 818.
+
+(c:/texlive/2025/texmf-dist/tex/latex/newpx/t1zpltosf.fd
 File: t1zpltosf.fd 2021/05/25 v1.0 font definition file for T1/zpl/tosf
-)) (c:/texlive/2025/texmf-dist/tex/latex/newpx/newpxmath.sty
-Package: newpxmath 2025/06/07 v1.542 LaTeX math support for newpx (Michael Sharpe)
- `newpxmath' v1.542, 2025/06/07 Math macros based on pxfonts (msharpe) (c:/texlive/2025/texmf-dist/tex/latex/amsmath/amsmath.sty
+))
+(c:/texlive/2025/texmf-dist/tex/latex/newpx/newpxmath.sty
+Package: newpxmath 2025/06/07 v1.542 LaTeX math support for newpx (Michael Shar
+pe)
+
+`newpxmath' v1.542, 2025/06/07 Math macros based on pxfonts (msharpe)
+(c:/texlive/2025/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2025/06/16 v2.17y AMS math features
 \@mathmargin=\skip55
 
 For additional information on amsmath, use the `?' option.
 (c:/texlive/2025/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2024/11/17 v2.01 AMS text
- (c:/texlive/2025/texmf-dist/tex/latex/amsmath/amsgen.sty
+
+(c:/texlive/2025/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks27
 \ex@=\dimen177
-)) (c:/texlive/2025/texmf-dist/tex/latex/amsmath/amsbsy.sty
+))
+(c:/texlive/2025/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen178
-) (c:/texlive/2025/texmf-dist/tex/latex/amsmath/amsopn.sty
+)
+(c:/texlive/2025/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
 \inf@bad=\count306
@@ -331,7 +406,9 @@ LaTeX Info: Redefining \Relbar on input line 970.
 \mathdisplay@stack=\toks31
 LaTeX Info: Redefining \[ on input line 2949.
 LaTeX Info: Redefining \] on input line 2950.
-) (c:/texlive/2025/texmf-dist/tex/generic/kastrup/binhex.tex) (c:/texlive/2025/texmf-dist/tex/latex/oberdiek/centernot.sty
+)
+(c:/texlive/2025/texmf-dist/tex/generic/kastrup/binhex.tex)
+(c:/texlive/2025/texmf-dist/tex/latex/oberdiek/centernot.sty
 Package: centernot 2016/05/16 v1.4 Centers the not symbol horizontally (HO)
 )
 \px@tA=\toks32
@@ -406,17 +483,20 @@ Now handling font encoding LMX ...
 ... no UTF-8 mapping file for font encoding LMX
 LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 337.
 LaTeX Font Info:    Encoding `OMX' has changed to `LMX' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 337.
+(Font)              `largesymbols' in the math version `normal' on input line 3
+37.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
 (Font)                  OMX/cmex/m/n --> LMX/npxexx/m/n on input line 337.
 LaTeX Font Info:    Encoding `OMX' has changed to `LMX' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 337.
+(Font)              `largesymbols' in the math version `bold' on input line 337
+.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/cmex/m/n --> LMX/npxexx/m/n on input line 337.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  LMX/npxexx/m/n --> LMX/npxexx/b/n on input line 338.
 \symlargesymbolsPXA=\mathgroup7
 LaTeX Font Info:    Overwriting symbol font `largesymbolsPXA' in version `bold'
+
 (Font)                  U/npxexa/m/n --> U/npxexa/b/n on input line 345.
 \px@cntz=\count319
 \px@IsAlNum=\count320
@@ -454,7 +534,8 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
 (Font)                  T1/npxtt/m/n --> OT1/cmtt/m/n on input line 204.
 ) (c:/texlive/2025/texmf-dist/tex/generic/hologo/hologo.sty
 Package: hologo 2021-11-16 v1.15 A logo collection with bookmark support (HO)
-) (c:/texlive/2025/texmf-dist/tex/latex/booktabs/booktabs.sty
+)
+(c:/texlive/2025/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen186
 \lightrulewidth=\dimen187
@@ -473,20 +554,24 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@thisruleclass=\count323
 \@lastruleclass=\count324
 \@thisrulewidth=\dimen198
-) (c:/texlive/2025/texmf-dist/tex/latex/float/float.sty
+)
+(c:/texlive/2025/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count325
 \float@exts=\toks35
 \float@box=\box55
 \@float@everytoks=\toks36
 \@floatcapt=\box56
-) (c:/texlive/2025/texmf-dist/tex/latex/hyphenat/hyphenat.sty
+)
+(c:/texlive/2025/texmf-dist/tex/latex/hyphenat/hyphenat.sty
 Package: hyphenat 2009/09/02 v2.3c hyphenation utilities
 \langwohyphens=\language90
 LaTeX Info: Redefining \_ on input line 43.
-) (c:/texlive/2025/texmf-dist/tex/latex/tools/tabularx.sty
+)
+(c:/texlive/2025/texmf-dist/tex/latex/tools/tabularx.sty
 Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
- (c:/texlive/2025/texmf-dist/tex/latex/tools/array.sty
+
+(c:/texlive/2025/texmf-dist/tex/latex/tools/array.sty
 Package: array 2025/06/08 v2.6j Tabular extension package (FMi)
 \col@sep=\dimen199
 \ar@mcellbox=\box57
@@ -503,48 +588,72 @@ Package: array 2025/06/08 v2.6j Tabular extension package (FMi)
 \TX@delta=\dimen261
 \TX@cols=\count326
 \TX@ftn=\toks38
-) (c:/texlive/2025/texmf-dist/tex/latex/svg/svg.sty
+)
+(c:/texlive/2025/texmf-dist/tex/latex/svg/svg.sty
 Package: svg 2020/11/26 v2.02k (include SVG pictures)
- (c:/texlive/2025/texmf-dist/tex/latex/koma-script/scrbase.sty
-Package: scrbase 2025/09/09 v3.48 KOMA-Script package (KOMA-Script-independent basics and keyval usage)
- (c:/texlive/2025/texmf-dist/tex/latex/koma-script/scrlfile.sty
+
+(c:/texlive/2025/texmf-dist/tex/latex/koma-script/scrbase.sty
+Package: scrbase 2025/09/09 v3.48 KOMA-Script package (KOMA-Script-independent 
+basics and keyval usage)
+
+(c:/texlive/2025/texmf-dist/tex/latex/koma-script/scrlfile.sty
 Package: scrlfile 2025/09/09 v3.48 KOMA-Script package (file load hooks)
- (c:/texlive/2025/texmf-dist/tex/latex/koma-script/scrlfile-hook.sty
+
+(c:/texlive/2025/texmf-dist/tex/latex/koma-script/scrlfile-hook.sty
 Package: scrlfile-hook 2025/09/09 v3.48 KOMA-Script package (using LaTeX hooks)
- (c:/texlive/2025/texmf-dist/tex/latex/koma-script/scrlogo.sty
+
+
+(c:/texlive/2025/texmf-dist/tex/latex/koma-script/scrlogo.sty
 Package: scrlogo 2025/09/09 v3.48 KOMA-Script package (logo)
 )))
 Applying: [2021/05/01] Usage of raw or classic option list on input line 254.
-Already applied: [0000/00/00] Usage of raw or classic option list on input line 370.
-) (c:/texlive/2025/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Already applied: [0000/00/00] Usage of raw or classic option list on input line
+ 370.
+)
+(c:/texlive/2025/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
-) (c:/texlive/2025/texmf-dist/tex/latex/tools/shellesc.sty
+)
+(c:/texlive/2025/texmf-dist/tex/latex/tools/shellesc.sty
 Package: shellesc 2023/07/08 v1.0d unified shell escape interface for LaTeX
 Package shellesc Info: Restricted shell escape enabled on input line 77.
 )
 \c@svg@param@lastpage=\count327
 \svg@box=\box59
 \c@svg@param@currpage=\count328
-) (c:/texlive/2025/texmf-dist/tex/latex/transparent/transparent.sty
+)
+(c:/texlive/2025/texmf-dist/tex/latex/transparent/transparent.sty
 Package: transparent 2025-06-23 v1.6 Transparency with color stacks
- (c:/texlive/2025/texmf-dist/tex/latex/transparent/transparent-nometadata.sty
-Package: transparent-nometadata 2025-06-23 v1.6 Transparency via pdfTeX's color stack (HO)
- (c:/texlive/2025/texmf-dist/tex/latex/auxhook/auxhook.sty
+
+(c:/texlive/2025/texmf-dist/tex/latex/transparent/transparent-nometadata.sty
+Package: transparent-nometadata 2025-06-23 v1.6 Transparency via pdfTeX's color
+ stack (HO)
+
+(c:/texlive/2025/texmf-dist/tex/latex/auxhook/auxhook.sty
 Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
-))) (c:/texlive/2025/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (c:/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+)))
+(c:/texlive/2025/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(c:/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
 \pgfutil@everybye=\toks39
 \pgfutil@tempdima=\dimen262
 \pgfutil@tempdimb=\dimen263
-) (c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+)
+(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 \pgfutil@abb=\box60
-) (c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (c:/texlive/2025/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+)
+(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(c:/texlive/2025/texmf-dist/tex/generic/pgf/pgf.revision.tex)
 Package: pgfrcs 2025-08-29 v3.1.11a (3.1.11a)
-)) (c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+))
+(c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
- (c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+
+(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 \pgfkeys@pathtoks=\toks40
 \pgfkeys@temptoks=\toks41
- (c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
+
+(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.co
+de.tex
 \pgfkeys@tmptoks=\toks42
 ))
 \pgf@x=\dimen264
@@ -571,15 +680,19 @@ Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
 File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
 )
 Driver file for pgf: pgfsys-pdftex.def
- (c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+
+(c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 File: pgfsys-pdftex.def 2025-08-29 v3.1.11a (3.1.11a)
- (c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+
+(c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
 File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
-))) (c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+)))
+(c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfsyssoftpath@smallbuffer@items=\count334
 \pgfsyssoftpath@bigbuffer@items=\count335
-) (c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+)
+(c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )) (c:/texlive/2025/texmf-dist/tex/latex/ragged2e/ragged2e.sty
 Package: ragged2e 2023/06/22 v3.6 ragged2e Package
@@ -597,21 +710,16 @@ Package: ragged2e 2023/06/22 v3.6 ragged2e Package
 \RaggedLeftParindent=\skip71
 \RaggedRightParindent=\skip72
 \JustifyingParindent=\skip73
-) (c:/texlive/2025/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2024/12/21 v2.1c Standard LaTeX package
-LaTeX Font Info:    Trying to load font information for T1+minzpl on input line 116.
- (c:/texlive/2025/texmf-dist/tex/latex/newpx/t1minzpl.fd
-File: t1minzpl.fd 2021/05/25 v1.0 font definition file for T1/minzpl/TLF
 )
-LaTeX Font Info:    Font shape `T1/minzpl/m/n' will be
-(Font)              scaled to size 10.95pt on input line 116.
-) (c:/texlive/2025/texmf-dist/tex/latex/base/inputenc.sty
+(c:/texlive/2025/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@prehook=\toks46
 \inpenc@posthook=\toks47
-) (c:/texlive/2025/texmf-dist/tex/latex/newunicodechar/newunicodechar.sty
+)
+(c:/texlive/2025/texmf-dist/tex/latex/newunicodechar/newunicodechar.sty
 Package: newunicodechar 2018/04/08 v1.2 Defining Unicode characters
-) (c:/texlive/2025/texmf-dist/tex/latex/tocbibind/tocbibind.sty
+)
+(c:/texlive/2025/texmf-dist/tex/latex/tocbibind/tocbibind.sty
 Package: tocbibind 2010/10/13 v1.5k extra ToC listings
 Package tocbibind Info: The document has chapter divisions on input line 50.
 
@@ -623,7 +731,8 @@ Package: appendix 2020/02/08 v1.2c extra appendix facilities
 \c@@pps=\count336
 \c@@ppsavesec=\count337
 \c@@ppsaveapp=\count338
-) (c:/texlive/2025/texmf-dist/tex/latex/listings/listings.sty
+)
+(c:/texlive/2025/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count339
 \lst@gtempboxa=\box61
 \lst@token=\toks48
@@ -636,64 +745,77 @@ Package: appendix 2020/02/08 v1.2c extra appendix facilities
 \lst@newlines=\count343
 \lst@lineno=\count344
 \lst@maxwidth=\dimen277
- (c:/texlive/2025/texmf-dist/tex/latex/listings/lstpatch.sty
+
+(c:/texlive/2025/texmf-dist/tex/latex/listings/lstpatch.sty
 File: lstpatch.sty 2024/09/23 1.10c (Carsten Heinz)
-) (c:/texlive/2025/texmf-dist/tex/latex/listings/lstmisc.sty
+)
+(c:/texlive/2025/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
 \c@lstnumber=\count345
 \lst@skipnumbers=\count346
 \lst@framebox=\box62
-) (c:/texlive/2025/texmf-dist/tex/latex/listings/listings.cfg
+)
+(c:/texlive/2025/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2024/09/23 1.10c listings configuration
 ))
 Package: listings 2024/09/23 1.10c (Carsten Heinz)
- (c:/texlive/2025/texmf-dist/tex/latex/listingsutf8/listingsutf8.sty
+
+(c:/texlive/2025/texmf-dist/tex/latex/listingsutf8/listingsutf8.sty
 Package: listingsutf8 2019-12-10 v1.5 Allow UTF-8 in listings input (HO)
 )
 LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 10.95pt on input line 72.
- (./main.aux)
+(Font)              scaled to size 10.95pt on input line 78.
+
+(./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/npxmi/m/it on input line 72.
-LaTeX Font Info:    Trying to load font information for OML+npxmi on input line 72.
+LaTeX Font Info:    Checking defaults for OML/npxmi/m/it on input line 78.
+LaTeX Font Info:    Trying to load font information for OML+npxmi on input line
+ 78.
  (c:/texlive/2025/texmf-dist/tex/latex/newpx/omlnpxmi.fd
 File: omlnpxmi.fd 2013/03/21 Fontinst v1.933 font definitions for OML/npxmi.
 )
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for U/npxexa/m/n on input line 72.
-LaTeX Font Info:    Trying to load font information for U+npxexa on input line 72.
- (c:/texlive/2025/texmf-dist/tex/latex/newpx/unpxexa.fd
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for U/npxexa/m/n on input line 78.
+LaTeX Font Info:    Trying to load font information for U+npxexa on input line 
+78.
+
+(c:/texlive/2025/texmf-dist/tex/latex/newpx/unpxexa.fd
 File: unpxexa.fd 2013/03/24 Fontinst v1.933 font definitions for U/npxexa.
 )
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 72.
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for LMS/npxsy/m/n on input line 72.
-LaTeX Font Info:    Trying to load font information for LMS+npxsy on input line 72.
- (c:/texlive/2025/texmf-dist/tex/latex/newpx/lmsnpxsy.fd
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for LMS/npxsy/m/n on input line 78.
+LaTeX Font Info:    Trying to load font information for LMS+npxsy on input line
+ 78.
+
+(c:/texlive/2025/texmf-dist/tex/latex/newpx/lmsnpxsy.fd
 File: lmsnpxsy.fd 2016/07/04 Fontinst v1.933 font definitions for LMS/npxsy.
 )
-LaTeX Font Info:    ... okay on input line 72.
-LaTeX Font Info:    Checking defaults for LMX/npxexx/m/n on input line 72.
-LaTeX Font Info:    Trying to load font information for LMX+npxexx on input line 72.
- (c:/texlive/2025/texmf-dist/tex/latex/newpx/lmxnpxexx.fd
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for LMX/npxexx/m/n on input line 78.
+LaTeX Font Info:    Trying to load font information for LMX+npxexx on input lin
+e 78.
+
+(c:/texlive/2025/texmf-dist/tex/latex/newpx/lmxnpxexx.fd
 File: lmxnpxexx.fd 2016/07/04 Fontinst v1.933 font definitions for LMX/npxexx.
 )
-LaTeX Font Info:    ... okay on input line 72.
- (c:/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+LaTeX Font Info:    ... okay on input line 78.
+
+(c:/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count347
 \scratchdimen=\dimen278
@@ -708,12 +830,16 @@ LaTeX Font Info:    ... okay on input line 72.
 \everyMPtoPDFconversion=\toks50
 ) (c:/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
- (c:/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(c:/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
 ))
-Package hyperref Info: Link coloring ON on input line 72.
- (./main.out) (./main.out)
+Package hyperref Info: Link coloring ON on input line 78.
+
+(./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
@@ -754,32 +880,36 @@ Package hyperref Info: Link coloring ON on input line 72.
 
 \c@mv@tabular=\count353
 \c@mv@boldtabular=\count354
-LaTeX Info: Command `\dddot' is already robust on input line 72.
-LaTeX Info: Command `\ddddot' is already robust on input line 72.
+LaTeX Info: Command `\dddot' is already robust on input line 78.
+LaTeX Info: Command `\ddddot' is already robust on input line 78.
 \c@lstlisting=\count355
 LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 14.4pt on input line 77.
+(Font)              scaled to size 14.4pt on input line 83.
 LaTeX Font Info:    Font shape `T1/zpltlf/m/sc' will be
-(Font)              scaled to size 14.4pt on input line 77.
+(Font)              scaled to size 14.4pt on input line 83.
 LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 12.0pt on input line 77.
+(Font)              scaled to size 12.0pt on input line 83.
 LaTeX Font Info:    Font shape `T1/zpltlf/m/sc' will be
-(Font)              scaled to size 12.0pt on input line 77.
-LaTeX Font Info:    Trying to load font information for TS1+zpltlf on input line 77.
+(Font)              scaled to size 12.0pt on input line 83.
+LaTeX Font Info:    Trying to load font information for TS1+zpltlf on input lin
+e 83.
 (c:/texlive/2025/texmf-dist/tex/latex/newpx/ts1zpltlf.fd
 File: ts1zpltlf.fd 2021/11/24 v1.0 fd file for TS1/zpltlf
 )
 LaTeX Font Info:    Font shape `TS1/zpltlf/m/n' will be
-(Font)              scaled to size 10.95pt on input line 77.
+(Font)              scaled to size 10.95pt on input line 83.
 
 
 [1
 
-{c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2025/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf-pc.enc}{c:/texlive/2025/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}{c:/texlive/2025/texmf-dist/fonts/enc/dvips/newpx/zpl_TOsF.enc}]
+{c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2025/
+texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf-pc.enc}{c:/texlive/2025/texmf-dist/
+fonts/enc/dvips/newtx/ntx-ec-tlf.enc}{c:/texlive/2025/texmf-dist/fonts/enc/dvip
+s/newpx/zpl_TOsF.enc}]
 LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 24.88pt on input line 78.
+(Font)              scaled to size 24.88pt on input line 84.
 LaTeX Font Info:    Font shape `T1/zpltlf/b/n' will be
-(Font)              scaled to size 24.88pt on input line 78.
+(Font)              scaled to size 24.88pt on input line 84.
 
 
 [1
@@ -792,7 +922,8 @@ LaTeX Font Info:    Font shape `T1/zpltlf/b/n' will be
 ] (./main.toc
 LaTeX Font Info:    Font shape `T1/zpltlf/b/n' will be
 (Font)              scaled to size 10.95pt on input line 1.
-LaTeX Font Info:    Trying to load font information for OT1+minzpl on input line 4.
+LaTeX Font Info:    Trying to load font information for OT1+minzpl on input lin
+e 4.
  (c:/texlive/2025/texmf-dist/tex/latex/newpx/ot1minzpl.fd
 File: ot1minzpl.fd 2021/05/25 v1.0 font definition file for OT1/minzpl/TLF
 )
@@ -802,16 +933,22 @@ LaTeX Font Info:    Font shape `OT1/minzpl/m/n' will be
 (Font)              scaled to size 8.0pt on input line 4.
 LaTeX Font Info:    Font shape `OT1/minzpl/m/n' will be
 (Font)              scaled to size 6.1pt on input line 4.
-LaTeX Font Info:    Trying to load font information for U+npxmia on input line 4.
- (c:/texlive/2025/texmf-dist/tex/latex/newpx/unpxmia.fd
+LaTeX Font Info:    Trying to load font information for U+npxmia on input line 
+4.
+
+(c:/texlive/2025/texmf-dist/tex/latex/newpx/unpxmia.fd
 File: unpxmia.fd 2013/03/24 Fontinst v1.933 font definitions for U/npxmia.
 )
-LaTeX Font Info:    Trying to load font information for U+npxsym on input line 4.
- (c:/texlive/2025/texmf-dist/tex/latex/newpx/unpxsym.fd
+LaTeX Font Info:    Trying to load font information for U+npxsym on input line 
+4.
+
+(c:/texlive/2025/texmf-dist/tex/latex/newpx/unpxsym.fd
 File: unpxsym.fd 2023/08/16 Fontinst v1.933 font definitions for U/npxsym.
 )
-LaTeX Font Info:    Trying to load font information for U+npxsyc on input line 4.
- (c:/texlive/2025/texmf-dist/tex/latex/newpx/unpxsyc.fd
+LaTeX Font Info:    Trying to load font information for U+npxsyc on input line 
+4.
+
+(c:/texlive/2025/texmf-dist/tex/latex/newpx/unpxsyc.fd
 File: unpxsyc.fd 2013/03/24 Fontinst v1.933 font definitions for U/npxsyc.
 )
 
@@ -822,12 +959,13 @@ File: unpxsyc.fd 2013/03/24 Fontinst v1.933 font definitions for U/npxsyc.
 
 [4]
 Overfull \hbox (3.5028pt too wide) in paragraph at lines 108--108
- [][] [][][]\T1/zpltlf/m/n/10.95 Comparison with Causal Con-trastive Edit-ing (Cao et al., ICSE'24)[][] [][]  
+ [][] [][][]\T1/zpltlf/m/n/10.95 Comparison with Causal Con-trastive Edit-ing (
+Cao et al., ICSE'24)[][] [][]  
  []
 
 
 
-[5{c:/texlive/2025/texmf-dist/fonts/enc/dvips/newpx/px-lms.enc}])
+[5])
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
@@ -851,9 +989,12 @@ LaTeX Font Info:    Font shape `T1/zpltlf/m/sc' will be
 
 
 
-[8] (./main.lof
+[8{c:/texlive/2025/texmf-dist/fonts/enc/dvips/newpx/px-lms.enc}] (./main.lof
 Overfull \hbox (83.13864pt too wide) in paragraph at lines 6--6
- \T1/zpltlf/m/n/10.95 starts at a source-like def-i-ni-tion, tra-verses wrap-per calls (\T1/cmtt/m/n/10.95 DFG\T1/zpltlf/m/n/10.95 /\T1/cmtt/m/n/10.95 CALL\T1/zpltlf/m/n/10.95 /\T1/cmtt/m/n/10.95 ARG2PARAM\T1/zpltlf/m/n/10.95 /\T1/cmtt/m/n/10.95 RET2*\T1/zpltlf/m/n/10.95 ), 
+ \T1/zpltlf/m/n/10.95 starts at a source-like def-i-ni-tion, tra-verses wrap-pe
+r calls (\T1/cmtt/m/n/10.95 DFG\T1/zpltlf/m/n/10.95 /\T1/cmtt/m/n/10.95 CALL\T1
+/zpltlf/m/n/10.95 /\T1/cmtt/m/n/10.95 ARG2PARAM\T1/zpltlf/m/n/10.95 /\T1/cmtt/m
+/n/10.95 RET2*\T1/zpltlf/m/n/10.95 ), 
  []
 
 )
@@ -868,46 +1009,51 @@ Overfull \hbox (83.13864pt too wide) in paragraph at lines 6--6
 {c:/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
 Chapter 1.
 LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 20.74pt on input line 99.
+(Font)              scaled to size 20.74pt on input line 105.
 LaTeX Font Info:    Font shape `T1/zpltlf/b/n' will be
-(Font)              scaled to size 20.74pt on input line 99.
+(Font)              scaled to size 20.74pt on input line 105.
 LaTeX Font Info:    Font shape `T1/zpltlf/b/n' will be
-(Font)              scaled to size 14.4pt on input line 102.
+(Font)              scaled to size 14.4pt on input line 108.
 LaTeX Font Info:    Font shape `T1/zpltlf/m/it' will be
-(Font)              scaled to size 10.95pt on input line 108.
+(Font)              scaled to size 10.95pt on input line 114.
 
-Overfull \hbox (6.8043pt too wide) in paragraph at lines 118--125
-[]\T1/zpltlf/m/n/10.95 To com-ple-ment these clas-si-cal ap-proaches, learning-based meth-ods have emerged
+Overfull \hbox (6.8043pt too wide) in paragraph at lines 124--131
+[]\T1/zpltlf/m/n/10.95 To com-ple-ment these clas-si-cal ap-proaches, learning-
+based meth-ods have emerged
  []
 
 
 
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.125 
+l.131 
        [1
 
 
 ]
-Overfull \hbox (13.65884pt too wide) in paragraph at lines 126--132
-[]\T1/zpltlf/m/n/10.95 Despite these ad-vances, cur-rent de-tec-tors of-ten re-main \T1/zpltlf/m/it/10.95 statement-centric \T1/zpltlf/m/n/10.95 or \T1/zpltlf/m/it/10.95 subgraph-
+Overfull \hbox (13.65884pt too wide) in paragraph at lines 132--138
+[]\T1/zpltlf/m/n/10.95 Despite these ad-vances, cur-rent de-tec-tors of-ten re-
+main \T1/zpltlf/m/it/10.95 statement-centric \T1/zpltlf/m/n/10.95 or \T1/zpltlf
+/m/it/10.95 subgraph-
  []
 
 LaTeX Info: Symbol \textrightarrow not provided by
             font family zpltlf in TS1 encoding.
-            Default family used instead on input line 144.
+            Default family used instead on input line 150.
 LaTeX Info: Symbol \textrightarrow not provided by
             font family zpltlf in TS1 encoding.
-            Default family used instead on input line 144.
+            Default family used instead on input line 150.
 
 
 LaTeX Font Info:    Font shape `T1/zpltlf/m/sl' will be
-(Font)              scaled to size 10.95pt on input line 145.
-[2{c:/texlive/2025/texmf-dist/fonts/enc/dvips/newtx/ntx-ecth-tlf.enc}{c:/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+(Font)              scaled to size 10.95pt on input line 151.
+[2{c:/texlive/2025/texmf-dist/fonts/enc/dvips/newtx/ntx-ecth-tlf.enc}{c:/texliv
+e/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 LaTeX Font Info:    Font shape `T1/zpltlf/b/n' will be
-(Font)              scaled to size 12.0pt on input line 147.
+(Font)              scaled to size 12.0pt on input line 153.
 
 
 [3]
@@ -915,7 +1061,7 @@ LaTeX Font Info:    Font shape `T1/zpltlf/b/n' will be
 [4]
 LaTeX Info: Symbol \textrightarrow not provided by
             font family zpltlf in TS1 encoding.
-            Default family used instead on input line 181.
+            Default family used instead on input line 187.
 
 
 [5]
@@ -925,10 +1071,10 @@ LaTeX Info: Symbol \textrightarrow not provided by
 [7]
 LaTeX Info: Symbol \textrightarrow not provided by
             font family zpltlf in TS1 encoding.
-            Default family used instead on input line 216.
+            Default family used instead on input line 222.
 LaTeX Info: Symbol \textrightarrow not provided by
             font family zpltlf in TS1 encoding.
-            Default family used instead on input line 216.
+            Default family used instead on input line 222.
 
 
 [8]
@@ -942,8 +1088,9 @@ Chapter 2.
 ]
 
 [11]
-Overfull \hbox (2.85292pt too wide) in paragraph at lines 288--289
-\T1/zpltlf/m/n/10.95 GNNs in-cor-po-rate struc-tural de-pen-den-cies to im-prove lo-cal-iza-tion [[], []]. Structure-
+Overfull \hbox (2.85292pt too wide) in paragraph at lines 292--293
+\T1/zpltlf/m/n/10.95 GNNs in-cor-po-rate struc-tural de-pen-den-cies to im-prov
+e lo-cal-iza-tion [[], []]. Structure-
  []
 
 
@@ -956,26 +1103,10 @@ Overfull \hbox (2.85292pt too wide) in paragraph at lines 288--289
 
 [15]
 
-LaTeX Warning: Citation `Jatit2019' on page 16 undefined on input line 335.
-
-
-LaTeX Warning: Citation `moonlight2025' on page 16 undefined on input line 335.
-
-
-LaTeX Warning: Citation `hu2023hybrid' on page 16 undefined on input line 337.
-
-
-
 [16]
-
-LaTeX Warning: Citation `xu2023mlforfuzzing' on page 17 undefined on input line 342.
-
-
-LaTeX Warning: Citation `tufano2022adaptive' on page 17 undefined on input line 344.
-
-
-Overfull \hbox (2.62666pt too wide) in paragraph at lines 344--345
-\T1/zpltlf/m/n/10.95 fuzzing or dy-namic anal-y-sis work-flows, com-bin-ing sym-bolic con-straints and learned
+Overfull \hbox (2.62666pt too wide) in paragraph at lines 347--348
+\T1/zpltlf/m/n/10.95 fuzzing or dy-namic anal-y-sis work-flows, com-bin-ing sym
+-bolic con-straints and learned
  []
 
 
@@ -1001,8 +1132,9 @@ Overfull \hbox (2.62666pt too wide) in paragraph at lines 344--345
 [26]
 
 [27]
-Overfull \hbox (3.28392pt too wide) in paragraph at lines 420--421
-\T1/zpltlf/m/n/10.95 ing, en-com-pass-ing coun-ter-fac-tual train-ing for-mu-la-tions, dual fac-tual^^Ucounterfactual
+Overfull \hbox (3.28392pt too wide) in paragraph at lines 423--424
+\T1/zpltlf/m/n/10.95 ing, en-com-pass-ing coun-ter-fac-tual train-ing for-mu-la
+-tions, dual fac-tual^^Ucounterfactual
  []
 
 
@@ -1014,73 +1146,79 @@ Chapter 3.
 [29
 
 ]
-Overfull \hbox (0.17166pt too wide) in paragraph at lines 457--458
-\T1/zpltlf/m/n/10.95 ReposVul in-te-grates and links vul-ner-a-bil-ity meta-data from CVE and CWE databases
+Overfull \hbox (0.17166pt too wide) in paragraph at lines 460--461
+\T1/zpltlf/m/n/10.95 ReposVul in-te-grates and links vul-ner-a-bil-ity meta-dat
+a from CVE and CWE databases
  []
 
 
 
 [30]
-Overfull \hbox (4.12453pt too wide) in paragraph at lines 463--472
+Overfull \hbox (4.12453pt too wide) in paragraph at lines 466--475
  [][] 
  []
 
 
 
 [31
-pdfTeX warning (ext4): destination with the same identifier (name{table.3.1}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.3.1}) h
+as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.482 
+l.485 
       ]
 
 [32]
-Overfull \hbox (4.12451pt too wide) in paragraph at lines 505--517
+Overfull \hbox (4.12451pt too wide) in paragraph at lines 508--520
  [][] 
  []
 
 
 
 [33
-pdfTeX warning (ext4): destination with the same identifier (name{table.3.2}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.3.2}) h
+as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.526 
+l.529 
       ]
 
 [34]
 
 [35]
-Overfull \hbox (11.63115pt too wide) in paragraph at lines 593--602
+Overfull \hbox (11.63115pt too wide) in paragraph at lines 596--605
  [][] 
  []
 
 
 
 [36
-pdfTeX warning (ext4): destination with the same identifier (name{table.3.3}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.3.3}) h
+as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.603 
+l.606 
       
-pdfTeX warning (ext4): destination with the same identifier (name{table.3.4}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.3.4}) h
+as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.603 
+l.606 
       ]
 
 [37
-pdfTeX warning (ext4): destination with the same identifier (name{table.3.5}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.3.5}) h
+as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.621 
+l.624 
       ]
 LaTeX Font Info:    Font shape `OT1/minzpl/b/n' will be
-(Font)              scaled to size 10.95pt on input line 626.
+(Font)              scaled to size 10.95pt on input line 629.
 LaTeX Font Info:    Font shape `OT1/minzpl/b/n' will be
-(Font)              scaled to size 8.0pt on input line 626.
+(Font)              scaled to size 8.0pt on input line 629.
 LaTeX Font Info:    Font shape `OT1/minzpl/b/n' will be
-(Font)              scaled to size 6.1pt on input line 626.
+(Font)              scaled to size 6.1pt on input line 629.
 
 
 [38]
@@ -1088,10 +1226,11 @@ LaTeX Font Info:    Font shape `OT1/minzpl/b/n' will be
 [39]
 
 [40
-pdfTeX warning (ext4): destination with the same identifier (name{table.3.6}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.3.6}) h
+as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.731 
+l.734 
       ]
 
 [41]
@@ -1099,55 +1238,52 @@ l.731
 [42]
 
 [43
-pdfTeX warning (ext4): destination with the same identifier (name{table.3.7}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.3.7}) h
+as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.848 
+l.851 
       
-pdfTeX warning (ext4): destination with the same identifier (name{table.3.8}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.3.8}) h
+as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.848 
+l.851 
       ]
-LaTeX Font Info:    Trying to load font information for T1+qhv on input line 897.
+LaTeX Font Info:    Trying to load font information for T1+qhv on input line 90
+0.
  (c:/texlive/2025/texmf-dist/tex/latex/tex-gyre/t1qhv.fd
 File: t1qhv.fd 2009/09/25 v1.2 font definition file for T1/qhv
 )
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 10.29301pt on input line 897.
+(Font)              scaled to size 10.29301pt on input line 900.
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 7.52002pt on input line 897.
+(Font)              scaled to size 7.52002pt on input line 900.
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 5.73401pt on input line 897.
+(Font)              scaled to size 5.73401pt on input line 900.
 
-Overfull \hbox (5.04816pt too wide) detected at line 897
+Overfull \hbox (5.04816pt too wide) detected at line 900
 []
  []
 
 
 
 [44
-pdfTeX warning (ext4): destination with the same identifier (name{table.3.9}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.3.9}) h
+as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.897 \end{align}
+l.900 \end{align}
                  ]
 
 [45{c:/texlive/2025/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc}]
 
 [46]
 
-LaTeX Warning: Reference `eq:acc-cfg' on page 47 undefined on input line 1001.
-
-
-
 [47]
-Overfull \hbox (8.8078pt too wide) detected at line 1020
+Overfull \hbox (8.8078pt too wide) detected at line 1023
 [] \OML/npxmi/m/it/10.95 :
  []
-
-
-LaTeX Warning: Reference `sec:eval-metrics' on page 48 undefined on input line 1029.
 
 
 
@@ -1155,20 +1291,17 @@ LaTeX Warning: Reference `sec:eval-metrics' on page 48 undefined on input line 1
 
 [49]
 LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 10.0pt on input line 1075.
-
-
-Package array Warning: Column Y is already defined on input line 1078.
-
+(Font)              scaled to size 10.0pt on input line 1078.
 
 
 [50]
 
 [51
-pdfTeX warning (ext4): destination with the same identifier (name{table.3.10}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.3.10}) 
+has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1116 
+l.1119 
        ]
 
 [52]
@@ -1178,8 +1311,10 @@ Chapter 4.
 [53
 
 ]
-Overfull \hbox (65.82944pt too wide) detected at line 1197
-[][][][] \U/npxmia/m/it/10.95 = []\OML/npxmi/m/it/10.95 ;  [] \U/npxmia/m/it/10.95 = [] [] \OML/npxmi/m/it/10.95 ;  [] \U/npxmia/m/it/10.95 = []\OML/npxmi/m/it/10.95 :
+Overfull \hbox (65.82944pt too wide) detected at line 1202
+[][][][] \U/npxmia/m/it/10.95 = []\OML/npxmi/m/it/10.95 ;  [] \U/npxmia/m/it/10
+.95 = [] [] \OML/npxmi/m/it/10.95 ;  [] \U/npxmia/m/it/10.95 = []\OML/npxmi/m/i
+t/10.95 :
  []
 
 
@@ -1192,13 +1327,10 @@ Overfull \hbox (65.82944pt too wide) detected at line 1197
 
 [57]
 
-LaTeX Warning: Reference `sec:eval-stats' on page 58 undefined on input line 1300.
-
-
-
 [58]
-Overfull \hbox (11.58278pt too wide) in paragraph at lines 1324--1325
- []\T1/zpltlf/b/n/10.95 Causal Fea-ture At-tri-bu-tion Mea-sure (CFAM):[] \T1/zpltlf/m/n/10.95 CFAM eval-u-ates whether the model's
+Overfull \hbox (11.58278pt too wide) in paragraph at lines 1329--1330
+ []\T1/zpltlf/b/n/10.95 Causal Fea-ture At-tri-bu-tion Mea-sure (CFAM):[] \T1/z
+pltlf/m/n/10.95 CFAM eval-u-ates whether the model's
  []
 
 
@@ -1212,302 +1344,300 @@ Chapter 5.
 [61
 
 ]
-Overfull \hbox (30.53484pt too wide) in paragraph at lines 1439--1449
+Overfull \hbox (30.53484pt too wide) in paragraph at lines 1444--1454
  [][] 
  []
 
 
 
 [62
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.1}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.1}) h
+as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1450 
+l.1455 
        
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.2}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.2}) h
+as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1450 
+l.1455 
        ]
 
 [63
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.3}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.3}) h
+as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1503 
+l.1508 
        
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.4}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.4}) h
+as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1503 
+l.1508 
        ]
 
 [64
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.5}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.5}) h
+as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1533 
+l.1538 
        ]
 LaTeX Font Info:    Font shape `T1/zpltlf/m/it' will be
-(Font)              scaled to size 10.0pt on input line 1572.
+(Font)              scaled to size 10.0pt on input line 1577.
 
 
 [65
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.6}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.6}) h
+as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1599 \end{table}
+l.1604 \end{table}
                   
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.7}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.7}) h
+as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1599 \end{table}
+l.1604 \end{table}
                   ]
 
 [66
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.8}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.8}) h
+as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1633 
+l.1638 
        
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.9}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.9}) h
+as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1633 
+l.1638 
        ]
 
 [67
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.10}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.10}) 
+has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1705 \end{table}
+l.1710 \end{table}
                   
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.11}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.11}) 
+has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1705 \end{table}
+l.1710 \end{table}
                   ]
-Overfull \hbox (34.17497pt too wide) in paragraph at lines 1744--1754
+Overfull \hbox (34.17497pt too wide) in paragraph at lines 1749--1759
  [][] 
  []
 
 
 
 [68
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.12}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.12}) 
+has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1758 
+l.1763 
        
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.13}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.13}) 
+has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1758 
+l.1763 
        
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.14}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.14}) 
+has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1758 
+l.1763 
        ]
-Overfull \hbox (25.80489pt too wide) in paragraph at lines 1783--1801
+Overfull \hbox (25.80489pt too wide) in paragraph at lines 1788--1806
  [][] 
  []
 
 
 
 [69
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.15}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.15}) 
+has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1804 
+l.1809 
        ]
 
 [70
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.16}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.16}) 
+has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1843 
+l.1848 
        ]
 
-LaTeX Warning: Reference `sec:eval-causal-final' on page 71 undefined on input line 1867.
-
-
-
 [71
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.17}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.17}) 
+has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1896 \end{table}
+l.1898 \end{table}
                   ]
 
 [72
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.18}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.18}) 
+has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1949 
+l.1951 
        
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.19}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.19}) 
+has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1949 
+l.1951 
        ]
 
 [73
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.20}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.20}) 
+has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1989 
+l.1991 
        
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.21}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.21}) 
+has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1989 
+l.1991 
        ]
-Overfull \hbox (2.72482pt too wide) in paragraph at lines 2002--2019
+Overfull \hbox (2.72482pt too wide) in paragraph at lines 2004--2021
  [][] 
  []
 
 LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 2020.
+(Font)              scaled to size 9.0pt on input line 2022.
 LaTeX Font Info:    Font shape `OT1/minzpl/m/n' will be
-(Font)              scaled to size 9.0pt on input line 2020.
+(Font)              scaled to size 9.0pt on input line 2022.
 LaTeX Font Info:    Font shape `OT1/minzpl/b/n' will be
-(Font)              scaled to size 9.0pt on input line 2020.
+(Font)              scaled to size 9.0pt on input line 2022.
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 8.46002pt on input line 2020.
+(Font)              scaled to size 8.46002pt on input line 2022.
 
 
 [74
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.22}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.22}) 
+has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.2047 
+l.2049 
        ]
-LaTeX Font Info:    Font shape `OT1/minzpl/m/n' will be
-(Font)              scaled to size 12.0pt on input line 2077.
-LaTeX Font Info:    Font shape `OT1/minzpl/m/n' will be
-(Font)              scaled to size 8.8pt on input line 2077.
-LaTeX Font Info:    Font shape `OT1/minzpl/m/n' will be
-(Font)              scaled to size 6.6pt on input line 2077.
-LaTeX Font Info:    Font shape `OT1/minzpl/b/n' will be
-(Font)              scaled to size 12.0pt on input line 2077.
-LaTeX Font Info:    Font shape `OT1/minzpl/b/n' will be
-(Font)              scaled to size 8.8pt on input line 2077.
-LaTeX Font Info:    Font shape `OT1/minzpl/b/n' will be
-(Font)              scaled to size 6.6pt on input line 2077.
-LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 11.28003pt on input line 2077.
-LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 8.27202pt on input line 2077.
-LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 6.20401pt on input line 2077.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2077.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2077.
-
-
 
 [75
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.23}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.23}) 
+has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.2101 
+l.2103 
        
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.24}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.24}) 
+has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.2101 
+l.2103 
        ]
-Overfull \hbox (26.98933pt too wide) in paragraph at lines 2102--2103
-\T1/zpltlf/m/n/10.95 beam $\LMS/npxsy/m/n/10.95 ¹\OT1/minzpl/m/n/10.95 4\OML/npxmi/m/it/10.95 ; \OT1/minzpl/m/n/10.95 12\OML/npxmi/m/it/10.95 ; \OT1/minzpl/m/n/10.95 3\LMS/npxsy/m/n/10.95 º$\T1/zpltlf/m/n/10.95 , Va-lid-ity $\LMS/npxsy/m/n/10.95 Ï\OT1/minzpl/m/n/10.95 4\OML/npxmi/m/it/10.95 :\OT1/minzpl/m/n/10.95 2$\T1/zpltlf/m/n/10.95 pts, IPA $\LMS/npxsy/m/n/10.95 Ï\OT1/minzpl/m/n/10.95 13\OML/npxmi/m/it/10.95 :\OT1/minzpl/m/n/10.95 1$\T1/zpltlf/m/n/10.95 pts, LCS $\LMS/npxsy/m/n/10.95 Ï\OT1/minzpl/m/n/10.95 6\OML/npxmi/m/it/10.95 :\OT1/minzpl/m/n/10.95 3$\T1/zpltlf/m/n/10.95 pts at the cost of $\LMS/npxsy/m/n/10.95 ^^X$\T1/zpltlf/m/n/10.95 +$\OT1/minzpl/m/n/10.95 6\OML/npxmi/m/it/10.95 :\OT1/minzpl/m/n/10.95 9$\T1/zpltlf/m/n/10.95 ms/graph.
+Overfull \hbox (26.98933pt too wide) in paragraph at lines 2104--2105
+\T1/zpltlf/m/n/10.95 beam $\LMS/npxsy/m/n/10.95 ¹\OT1/minzpl/m/n/10.95 4\OML/np
+xmi/m/it/10.95 ; \OT1/minzpl/m/n/10.95 12\OML/npxmi/m/it/10.95 ; \OT1/minzpl/m/
+n/10.95 3\LMS/npxsy/m/n/10.95 º$\T1/zpltlf/m/n/10.95 , Va-lid-ity $\LMS/npxsy/m
+/n/10.95 Ï\OT1/minzpl/m/n/10.95 4\OML/npxmi/m/it/10.95 :\OT1/minzpl/m/n/10.95 2
+$\T1/zpltlf/m/n/10.95 pts, IPA $\LMS/npxsy/m/n/10.95 Ï\OT1/minzpl/m/n/10.95 13\
+OML/npxmi/m/it/10.95 :\OT1/minzpl/m/n/10.95 1$\T1/zpltlf/m/n/10.95 pts, LCS $\L
+MS/npxsy/m/n/10.95 Ï\OT1/minzpl/m/n/10.95 6\OML/npxmi/m/it/10.95 :\OT1/minzpl/m
+/n/10.95 3$\T1/zpltlf/m/n/10.95 pts at the cost of $\LMS/npxsy/m/n/10.95 ^^X$\T
+1/zpltlf/m/n/10.95 +$\OT1/minzpl/m/n/10.95 6\OML/npxmi/m/it/10.95 :\OT1/minzpl/
+m/n/10.95 9$\T1/zpltlf/m/n/10.95 ms/graph.
  []
 
 
-Underfull \hbox (badness 1019) in paragraph at lines 2128--2129
+Underfull \hbox (badness 1019) in paragraph at lines 2130--2131
 []|\T1/zpltlf/m/n/10 Succinct chain length; span
  []
 
 
-Underfull \hbox (badness 2302) in paragraph at lines 2129--2129
+Underfull \hbox (badness 2302) in paragraph at lines 2131--2131
 []|\T1/zpltlf/m/n/10 Stability un-der coun-ter-fac-tual
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2129--2130
+Underfull \hbox (badness 10000) in paragraph at lines 2131--2132
 \T1/zpltlf/m/n/10 FG/alias/s-tack con-straints;
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2129--2130
+Underfull \hbox (badness 10000) in paragraph at lines 2131--2132
 \T1/zpltlf/m/n/10 CC-S/DCR and on-chain
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2130--2131
+Underfull \hbox (badness 10000) in paragraph at lines 2132--2133
 []|\T1/zpltlf/m/n/10 Explicit: pres-ence of
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2130--2131
-\T1/cmtt/m/n/10 CALL\T1/zpltlf/m/n/10 , \T1/cmtt/m/n/10 ARG$\LMS/npxsy/m/n/10 !$\T1/cmtt/m/n/10 PARAM\T1/zpltlf/m/n/10 ,
+Underfull \hbox (badness 10000) in paragraph at lines 2132--2133
+\T1/cmtt/m/n/10 CALL\T1/zpltlf/m/n/10 , \T1/cmtt/m/n/10 ARG$\LMS/npxsy/m/n/10 !
+$\T1/cmtt/m/n/10 PARAM\T1/zpltlf/m/n/10 ,
  []
 
 
-Overfull \hbox (2.09717pt too wide) in paragraph at lines 2123--2133
+Overfull \hbox (2.09717pt too wide) in paragraph at lines 2125--2135
  [][] 
  []
 
 
 
 [76
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.25}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.25}) 
+has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.2134 
+l.2136 
        ]
 
 [77
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.26}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.26}) 
+has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.2149 
+l.2151 
        ]
 
 [78]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2175.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\to' on input line 2175.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 2175.
-
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 2178.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 2180.
 
-Overfull \hbox (7.83693pt too wide) in paragraph at lines 2180--2181
-\T1/cmtt/m/n/10.95 ARG2PARAM \T1/zpltlf/m/n/10.95 to cross call bound-aries, tracks the re-turned value with \T1/cmtt/m/n/10.95 RET2CALL\T1/zpltlf/m/n/10.95 /\T1/cmtt/m/n/10.95 RET2LHS\T1/zpltlf/m/n/10.95 ,
+Overfull \hbox (7.83693pt too wide) in paragraph at lines 2182--2183
+\T1/cmtt/m/n/10.95 ARG2PARAM \T1/zpltlf/m/n/10.95 to cross call bound-aries, tr
+acks the re-turned value with \T1/cmtt/m/n/10.95 RET2CALL\T1/zpltlf/m/n/10.95 /
+\T1/cmtt/m/n/10.95 RET2LHS\T1/zpltlf/m/n/10.95 ,
  []
 
-Package svg Info: Last page of `./svg-inkscape/demo_chain_svg-tex.pdf' is 1 on input line 2185.
+Package svg Info: Last page of `./svg-inkscape/demo_chain_svg-tex.pdf' is 1 on 
+input line 2187.
 (./svg-inkscape/demo_chain_svg-tex.pdf_tex
-<./svg-inkscape/demo_chain_svg-tex.pdf, id=1475, page=1, 1402.03806pt x 317.98799pt>
+<./svg-inkscape/demo_chain_svg-tex.pdf, id=1484, page=1, 1402.03806pt x 317.987
+99pt>
 File: ./svg-inkscape/demo_chain_svg-tex.pdf Graphic file (type pdf)
 <use ./svg-inkscape/demo_chain_svg-tex.pdf, page 1>
-Package pdftex.def Info: ./svg-inkscape/demo_chain_svg-tex.pdf , page1 used on input line 56.
+Package pdftex.def Info: ./svg-inkscape/demo_chain_svg-tex.pdf , page1 used on 
+input line 56.
 (pdftex.def)             Requested size: 397.485pt x 90.14716pt.
 )
-Underfull \hbox (badness 5578) in paragraph at lines 2186--2186
-[]\T1/zpltlf/m/n/10.95 Figure 5.1: []Executable chain re-con-structed by ACC on a pro-gram
+Underfull \hbox (badness 5578) in paragraph at lines 2188--2188
+[]\T1/zpltlf/m/n/10.95 Figure 5.1: []Executable chain re-con-structed by ACC on
+ a pro-gram
  []
 
 
@@ -1515,18 +1645,21 @@ Underfull \hbox (badness 5578) in paragraph at lines 2186--2186
 [79]
 
 [80
-pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1}) 
+has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.2240 
+l.2242 
         <./svg-inkscape/demo_chain_svg-tex.pdf>]
 
 [81
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.27}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{table.5.27}) 
+has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.2250 B
-        eam traces help to justify the choice. Expansions violating CFG or s...]
+l.2252 B
+        eam traces help to justify the choice. Expansions violating CFG or s...
+]
 
 [82]
 
@@ -1552,116 +1685,132 @@ Chapter 6.
 
 [90]
 
-[91])
+[91]
 
-[92]
+[92])
+
+[93]
 Appendix A.
 
 
-[93
+[94
 
 
 ]
 
-[94]
-
 [95]
+
+[96]
 Appendix B.
 
-Overfull \hbox (2.26181pt too wide) in paragraph at lines 2409--2430
+Overfull \hbox (2.26181pt too wide) in paragraph at lines 2411--2432
 [][] 
  []
 
 
 
-[96
+[97
 
 ]
-Overfull \hbox (12.78828pt too wide) in paragraph at lines 2441--2445
-\T1/zpltlf/m/n/10.95 For each run: train-ing and val-i-da-tion curves, seed-wise met-rics (AU-ROC/AUPRC/F1),
+Overfull \hbox (12.78828pt too wide) in paragraph at lines 2443--2447
+\T1/zpltlf/m/n/10.95 For each run: train-ing and val-i-da-tion curves, seed-wis
+e met-rics (AU-ROC/AUPRC/F1),
  []
 
 
 
-[97]
+[98]
 Appendix C.
 
 
-[98
+[99
 
 ]
 
-[99]
+[100]
 Appendix D.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2511--2512
+Underfull \hbox (badness 10000) in paragraph at lines 2513--2514
 []|\T1/zpltlf/m/n/10.95 assignments, pointer deref-er-ence and address-of,
  []
 
 
-Overfull \hbox (4.12451pt too wide) in paragraph at lines 2505--2515
+Overfull \hbox (4.12451pt too wide) in paragraph at lines 2507--2517
 [] 
  []
 
 
-Overfull \hbox (35.12634pt too wide) in paragraph at lines 2520--2522
-[]\T1/zpltlf/m/n/10.95 Def^^Uuse chains that cross call bound-aries via ac-tual, for-mal bind-ings (ARG$\LMS/npxsy/m/n/10.95 !$\T1/zpltlf/m/n/10.95 PARAM;
+Overfull \hbox (35.12634pt too wide) in paragraph at lines 2522--2524
+[]\T1/zpltlf/m/n/10.95 Def^^Uuse chains that cross call bound-aries via ac-tual
+, for-mal bind-ings (ARG$\LMS/npxsy/m/n/10.95 !$\T1/zpltlf/m/n/10.95 PARAM;
  []
 
 
-Overfull \hbox (4.45554pt too wide) in paragraph at lines 2522--2524
-[]\T1/zpltlf/m/n/10.95 Alias-induced flows through point-ers, ref-er-ences, and con-tain-ers where points-
+Overfull \hbox (4.45554pt too wide) in paragraph at lines 2524--2526
+[]\T1/zpltlf/m/n/10.95 Alias-induced flows through point-ers, ref-er-ences, and
+ con-tain-ers where points-
  []
 
 
 
-[100
+[101
 
 ]
 
-[101]
+[102]
 Appendix E.
 
-Overfull \hbox (20.5632pt too wide) in paragraph at lines 2540--2544
-\T1/zpltlf/m/n/10.95 re-la-tion fam-i-lies (AST/CFG/DFG, CAL-L/RET/ARG2PARAM/RET2CALL/RET2LHS,
+Overfull \hbox (20.5632pt too wide) in paragraph at lines 2542--2546
+\T1/zpltlf/m/n/10.95 re-la-tion fam-i-lies (AST/CFG/DFG, CAL-L/RET/ARG2PARAM/RE
+T2CALL/RET2LHS,
  []
 
 
-Overfull \hbox (2.44035pt too wide) in paragraph at lines 2546--2549
-\T1/zpltlf/m/n/10.95 length ($\OT1/minzpl/m/n/10.95 512$\T1/zpltlf/m/n/10.95 ), stride ($\OT1/minzpl/m/n/10.95 384$\T1/zpltlf/m/n/10.95 ), and nor-mal-iza-tion flags are stored along-side FP16 memory-
+Overfull \hbox (2.44035pt too wide) in paragraph at lines 2548--2551
+\T1/zpltlf/m/n/10.95 length ($\OT1/minzpl/m/n/10.95 512$\T1/zpltlf/m/n/10.95 ),
+ stride ($\OT1/minzpl/m/n/10.95 384$\T1/zpltlf/m/n/10.95 ), and nor-mal-iza-tio
+n flags are stored along-side FP16 memory-
  []
 
 
 
-[102
+[103
 
 ]
 
-[103] (./main.aux)
+[104] (./main.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2020/03/25>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: A662F07E381AA915609F89675B9602F5;27343.
+(rerunfilecheck)             Checksum: CFF0893117B78578EA16CFE172BD8C9E;27216.
  ) 
 Here is how much of TeX's memory you used:
- 20140 strings out of 467747
- 315765 string characters out of 5431120
- 1070298 words of memory out of 5000000
- 47944 multiletter control sequences out of 15000+600000
- 787812 words of font info for 208 fonts, out of 8000000 for 9000
+ 20082 strings out of 467747
+ 314516 string characters out of 5431120
+ 1070274 words of memory out of 5000000
+ 47890 multiletter control sequences out of 15000+600000
+ 764481 words of font info for 175 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 94i,18n,93p,2690b,2134s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2025/texmf-dist/fonts/type1/public/newpx/NewPXMI.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/newpx/NewPXMI_gnu.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/newpx/pxmiaX.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/newpx/pxsys.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/tex-gyre/qhvr.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexas.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexs.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsym.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplb.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplr.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplri.pfb>
-Output written on main.pdf (113 pages, 734589 bytes).
+ 94i,18n,93p,2614b,2134s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2025/texmf-dist/fonts/type1/public/newpx/NewPXMI.pfb><c:/texlive/
+2025/texmf-dist/fonts/type1/public/newpx/NewPXMI_gnu.pfb><c:/texlive/2025/texmf
+-dist/fonts/type1/public/newpx/pxmiaX.pfb><c:/texlive/2025/texmf-dist/fonts/typ
+e1/public/newpx/pxsys.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/tex-gy
+re/qhvr.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pf
+b><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb><c:/texl
+ive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb><c:/texlive/2025/t
+exmf-dist/fonts/type1/public/cm-super/sftt1095.pfb><c:/texlive/2025/texmf-dist/
+fonts/type1/public/newtx/txexas.pfb><c:/texlive/2025/texmf-dist/fonts/type1/pub
+lic/newtx/txexs.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsym.
+pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplb.pfb><c:/texlive/2
+025/texmf-dist/fonts/type1/public/newpx/zplr.pfb><c:/texlive/2025/texmf-dist/fo
+nts/type1/public/newpx/zplri.pfb>
+Output written on main.pdf (114 pages, 735934 bytes).
 PDF statistics:
- 2106 PDF objects out of 2487 (max. 8388607)
- 1859 compressed objects within 19 object streams
- 471 named destinations out of 1000 (max. 500000)
+ 2119 PDF objects out of 2487 (max. 8388607)
+ 1871 compressed objects within 19 object streams
+ 476 named destinations out of 1000 (max. 500000)
  943 words of extra memory for PDF output out of 10000 (max. 10000000)
 
