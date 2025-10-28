@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.27)  27 OCT 2025 22:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.27)  27 OCT 2025 22:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1568,7 +1568,7 @@ Appendix A.
 [95]
 Appendix B.
 
-Overfull \hbox (2.26181pt too wide) in paragraph at lines 2408--2429
+Overfull \hbox (2.26181pt too wide) in paragraph at lines 2409--2430
 [][] 
  []
 
@@ -1577,7 +1577,7 @@ Overfull \hbox (2.26181pt too wide) in paragraph at lines 2408--2429
 [96
 
 ]
-Overfull \hbox (12.78828pt too wide) in paragraph at lines 2440--2444
+Overfull \hbox (12.78828pt too wide) in paragraph at lines 2441--2445
 \T1/zpltlf/m/n/10.95 For each run: train-ing and val-i-da-tion curves, seed-wise met-rics (AU-ROC/AUPRC/F1),
  []
 
@@ -1594,22 +1594,22 @@ Appendix C.
 [99]
 Appendix D.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2510--2511
+Underfull \hbox (badness 10000) in paragraph at lines 2511--2512
 []|\T1/zpltlf/m/n/10.95 assignments, pointer deref-er-ence and address-of,
  []
 
 
-Overfull \hbox (4.12451pt too wide) in paragraph at lines 2504--2514
+Overfull \hbox (4.12451pt too wide) in paragraph at lines 2505--2515
 [] 
  []
 
 
-Overfull \hbox (35.12634pt too wide) in paragraph at lines 2519--2521
+Overfull \hbox (35.12634pt too wide) in paragraph at lines 2520--2522
 []\T1/zpltlf/m/n/10.95 Def^^Uuse chains that cross call bound-aries via ac-tual, for-mal bind-ings (ARG$\LMS/npxsy/m/n/10.95 !$\T1/zpltlf/m/n/10.95 PARAM;
  []
 
 
-Overfull \hbox (4.45554pt too wide) in paragraph at lines 2521--2523
+Overfull \hbox (4.45554pt too wide) in paragraph at lines 2522--2524
 []\T1/zpltlf/m/n/10.95 Alias-induced flows through point-ers, ref-er-ences, and con-tain-ers where points-
  []
 
@@ -1622,12 +1622,12 @@ Overfull \hbox (4.45554pt too wide) in paragraph at lines 2521--2523
 [101]
 Appendix E.
 
-Overfull \hbox (20.5632pt too wide) in paragraph at lines 2539--2543
+Overfull \hbox (20.5632pt too wide) in paragraph at lines 2540--2544
 \T1/zpltlf/m/n/10.95 re-la-tion fam-i-lies (AST/CFG/DFG, CAL-L/RET/ARG2PARAM/RET2CALL/RET2LHS,
  []
 
 
-Overfull \hbox (2.44035pt too wide) in paragraph at lines 2545--2548
+Overfull \hbox (2.44035pt too wide) in paragraph at lines 2546--2549
 \T1/zpltlf/m/n/10.95 length ($\OT1/minzpl/m/n/10.95 512$\T1/zpltlf/m/n/10.95 ), stride ($\OT1/minzpl/m/n/10.95 384$\T1/zpltlf/m/n/10.95 ), and nor-mal-iza-tion flags are stored along-side FP16 memory-
  []
 
