@@ -10,7 +10,7 @@
 \usepackage{svg}
 \usepackage{tabularx, ragged2e}
 \newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
-\usepackage[T1]{fontenc}
+%\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{newunicodechar}
 \usepackage[nottoc]{tocbibind}
@@ -289,7 +289,6 @@ Executable vulnerability chains often cross function boundaries. To capture thes
 
 \subsection{Learning over Structure and Causality-Aware Analysis}
 
-
 Learning-based methods complement classical analysis by operating directly over structured code representations. Graph-based detectors leverage multi-view structure to classify or localize vulnerabilities; for example, statement- and line-level GNNs incorporate structural dependencies to improve localization \cite{hin2022linevd,Chakraborty2020}. Structure-aware pretraining, such as GraphCodeBERT, injects data-flow relations into transformers and has been shown to improve cross-project generalization by learning context-sensitive embeddings from large code corpora \cite{guo2021graphcodebert,fu2022linevul}. 
 
 Despite these advances, empirical studies report degradation under benign refactorings and cross-repository evaluation, indicating sensitivity to spurious correlations and project-specific artifacts \cite{Li2022Empirical,yang2022natural}. This motivates \emph{causality-aware} analysis that emphasizes genuine mechanisms over surface correlations. Recent approaches instantiate this principle in different ways. \emph{VulCausal} and \emph{CausalVul} introduce structural causal models and do-calculus to adjust for confounders and prioritize causal features \cite{Kuang2024KSEM,Rahman2024ICSE}. \emph{Snopy} bridges change-based denoising (guided by vulnerability-fixing commits) with causality-aware graph attention to suppress vulnerability-irrelevant features \cite{Cao2024ASE}. \emph{CFExplainer} adopts counterfactual reasoning for GNN-based vulnerability detection, identifying minimal graph edits that flip the model prediction and thereby elucidate decision-critical structures \cite{Chu2024ISSTA}. \emph{COCA} combines combinatorial contrastive learning with dual-view (factual/counterfactual) inference to produce concise, decisive statements and to improve robustness \cite{Cao2024ICSE}. Work on explainability and contributing-factor assessment further highlights the gap between correlation-based rationales and truly causal explanations, underscoring the need for evaluation that measures faithfulness and intervention stability \cite{Allix2024,li2023xai,Moschitti2024}.
@@ -298,7 +297,6 @@ Taken together, this background motivates a chain-centric, causally informed app
 
 
 
-% ------------------ Literature Review ------------------
 \subsection{Causal Knowledge Graphs (CKG)}
 \label{sec:theory-ckg}
 
@@ -337,7 +335,7 @@ Static analysis examines software artifacts without executing them, reasoning ex
 
 These analyses utilize canonical program representations: Abstract Syntax Trees (ASTs) encode syntactic structure; Control-Flow Graphs (CFGs) model executable order and branching; Data-Flow Graphs (DFGs) trace variable value definitions and uses; and Program Dependence Graphs (PDGs) unify data and control dependencies for program slicing. The Code Property Graph (CPG) integrates AST, CFG, and DFG into a heterogeneous multigraph that supports global queries essential for interprocedural taint tracking from sources to sinks \cite{yamaguchi2014cpg}.
 
-Despite early identification benefits, classical static analysis suffers from false positives due to over-approximation in modeling sanitizers, aliasing, and dynamic dispatch \cite{Ruiz2023, Jatit2019}. Automated static analyzers such as Flawfinder, RATS, CPPCheck, SpotBugs, and PMD show variability in detection accuracy and false positive rates across languages like C++ and Java \cite{moonlight2025}. These limitations motivate the development of DL-augmented static analysis tools. For example, IRIS incorporates large language models (LLMs) with static analysis to infer taint specifications and improve vulnerability detection coverage and false discovery rates, surpassing traditional tools like CodeQL \cite{Li2024IRIS}.
+Despite early identification benefits, classical static analysis suffers from false positives due to over-approximation in modeling sanitizers, aliasing, and dynamic dispatch \cite{Ruiz2023, Marchetto2024}. Automated static analyzers such as Flawfinder, RATS, CPPCheck, SpotBugs, and PMD show variability in detection accuracy and false positive rates across languages like C++ and Java \cite{Kaur2020comparative}. These limitations motivate the development of DL-augmented static analysis tools. For example, IRIS incorporates large language models (LLMs) with static analysis to infer taint specifications and improve vulnerability detection coverage and false discovery rates, surpassing traditional tools like CodeQL \cite{Li2024IRIS}.
 
 Further, hybrid approaches blend static analysis with ML classifiers to filter and prioritize warnings, addressing false positives and improving scalability \cite{hu2023hybrid}. Static analysis remains foundational, providing structured input to DL models, yet its limitations in handling complex, evolving, and domain-specific codebases remain a persistent challenge \cite{Xia2023, Chakraborty2020}.
 
@@ -1003,7 +1001,7 @@ Here, $p^{(\mathrm{sink})}_{v_T}$ is the sink-role probability on the terminal n
 Because many real vulnerabilities span function boundaries, an interprocedural sufficiency rule is applied: whenever the slice contains any interprocedural links (\texttt{CALL}, \texttt{ARG2PARAM}, \texttt{RET2CALL}, or \texttt{RET2LHS}), at least one such edge must appear in the selected chain. This prevents a purely local path from displacing a mechanistically correct cross-boundary explanation when interprocedural evidence is present.
 
 \textbf{Selecting the single chain:}
-Among all beam expansions that satisfy the ACC admissibility predicates (Eqs.~\eqref{eq:acc-cfg}--\eqref{eq:acc-admiss}) and the role-shaped signature (Eqs.~\eqref{eq:chain-start}--\eqref{eq:chain-end}) together with interprocedural sufficiency, one chain is chosen by maximizing the ACC path objective:
+Among all beam expansions that satisfy the ACC admissibility predicates and the role-shaped signature (Eqs.~\eqref{eq:chain-start}--\eqref{eq:chain-end}) together with interprocedural sufficiency, one chain is chosen by maximizing the ACC path objective:
 \begin{equation}
 \label{eq:select}
 \hat{\pi} \;=\; \arg\max_{\pi \in \mathcal{P}_{\mathrm{adm}}} \; S_{\mathrm{ACC}}(\pi).
@@ -1031,7 +1029,7 @@ The serialized JSON also includes node IDs, files and line spans, ACC decision f
 The maximizer $\hat{\pi}$ is then validated end-to-end for executable feasibility. The concatenation of control-flow segments along the chain is checked to be a realizable interprocedural path (including exceptional edges); every non-CFG transition is justified either by explicit taint transport on the data-flow graph or by preservation under an accumulated guard; the call stack pushed on \texttt{CALL} edges is popped by matching return edges without underflow or overflow; and every pointer-level hop is supported by a non-empty intersection of conservative points-to sets. These checks reuse the constant-time predicates already used during decoding, so the validation adds negligible overhead.
 
 \textbf{Counterfactual plausibility validation:}
-To guard against spurious correlations, minimal semantics edits are applied to the slice and the validation is re-run. Replacing the sink by a benign variant should eliminate all admissible chains; strengthening a sanitizer that dominates the sink should break or reroute the chain; and removing an argument$\rightarrow$parameter binding should prevent taint from crossing the call boundary. A chain that survives such edits is deemed non-causal and is excluded from downstream causal metrics (Sec.~\ref{sec:eval-metrics}). In short, the chain should fail for the right reasons when the underlying mechanism is neutralized.
+To guard against spurious correlations, minimal semantics edits are applied to the slice and the validation is re-run. Replacing the sink by a benign variant should eliminate all admissible chains; strengthening a sanitizer that dominates the sink should break or reroute the chain; and removing an argument$\rightarrow$parameter binding should prevent taint from crossing the call boundary. A chain that survives such edits is deemed non-causal and is excluded from downstream causal metrics. In short, the chain should fail for the right reasons when the underlying mechanism is neutralized.
 
 \textbf{Outcome:}
 By casting extraction as constrained decoding and by validating the result both structurally and counterfactually, the final chain encodes a faithful mechanism rather than a high-scoring accident. The start is likely to be a true source, the interior carries or constrains taint across the correct interprocedural boundaries, and the end lands on a sink that is governed by realistic control predicates. This produces an executable narrative that aligns with the goal of chain-centric, interprocedural vulnerability analysis and directly supports interpretable detection and actionable remediation guidance.
@@ -1080,7 +1078,7 @@ Random seeds are fixed; tokenizer and checkpoint IDs, edge-typing rules, and nor
 \small
 \setlength{\tabcolsep}{6pt}
 \renewcommand{\arraystretch}{1.12}
-\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+%\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \centering
 \caption{Hyperparameters and runtime settings.}
 \label{tab:hyperparams}
@@ -1304,7 +1302,7 @@ All diagnostic metrics are reported as mean values with 95\% confidence interval
 This subsection formalizes two complementary, counterfactual metrics used to test whether the model’s decisions truly depend on causal mechanisms rather than spurious correlations. The first, the \emph{Counterfactual Consistency Score (CCS)}, measures how predictions change when a minimal, well-defined intervention is applied to the code graph (e.g., strengthening a dominating guard, neutralizing a sink, or removing an argument$\!\to$parameter binding). The second, the \emph{Causal Feature Attribution Measure (CFAM)}, quantifies how much of the model’s attribution mass concentrates on features that lie on the reconstructed causal chain as opposed to off-chain context.
 
 \textbf{Setup and notation:}
-Consider the set $\mathcal{I}$ of positive test graphs for which a single, local intervention is applicable (intervention design is described in Section~\ref{sec:eval-stats}). For each $i\in\mathcal{I}$, let $X_i$ denote the original graph and $X'_i$ the \emph{intervened} (counterfactual) graph obtained by applying a do-operation to a targeted causal site (e.g., guard strengthening or sink neutralization). The model emits a calibrated vulnerability probability $p_i=\sigma(z_i)\in[0,1]$ on $X_i$ and $p_i^{\mathrm{do}}=\sigma(z_i^{\mathrm{do}})\in[0,1]$ on $X'_i$, where $\sigma(\cdot)$ is the logistic function and $z$ are graph-level logits.
+Consider the set $\mathcal{I}$ of positive test graphs for which a single, local intervention is applicable. For each $i\in\mathcal{I}$, let $X_i$ denote the original graph and $X'_i$ the \emph{intervened} (counterfactual) graph obtained by applying a do-operation to a targeted causal site (e.g., guard strengthening or sink neutralization). The model emits a calibrated vulnerability probability $p_i=\sigma(z_i)\in[0,1]$ on $X_i$ and $p_i^{\mathrm{do}}=\sigma(z_i^{\mathrm{do}})\in[0,1]$ on $X'_i$, where $\sigma(\cdot)$ is the logistic function and $z$ are graph-level logits.
 
 \paragraph{Counterfactual Consistency Score (CCS):}
 CCS captures how the prediction responds to an intervention that edits a \emph{causal} component of the mechanism. Following a mean–squared deviation view of counterfactual consistency, the per-instance score is:
@@ -1871,10 +1869,7 @@ Test  & $7.97\!\times\!10^{-9}$ & $0.0233$ & Same thresholding \\
 \end{tabular}
 \end{table}
 
-\noindent\textit{Interpretation.} CCS is the mean squared change in vulnerability probability under targeted edits (e.g., guard strengthening, sink neutralization, or ARG$\!\to$PARAM unbinding). Values near zero on small edits indicate numerically stable, causally consistent behavior, with larger values expected when the edited site is the true mechanism (see Sec.~\ref{sec:eval-causal-final}). CFAM reports the fraction of attribution mass that the model places on the ACC-selected slice (source/propagator/sanitizer/sink corridor); higher numbers indicate tighter reliance on the causal path rather than off-path statements. In these preliminary runs, CFAM rises from train ($\approx0.005$) to validation/test ($\approx0.023$), consistent with attribution concentrating along ACC paths as beams and relation gates stabilize across epochs.
-
-
-
+\noindent CCS is the mean squared change in vulnerability probability under targeted edits (e.g., guard strengthening, sink neutralization, or ARG$\!\to$PARAM unbinding). Values near zero on small edits indicate numerically stable, causally consistent behavior, with larger values expected when the edited site is the true mechanism. CFAM reports the fraction of attribution mass that the model places on the ACC-selected slice (source/propagator/sanitizer/sink corridor); higher numbers indicate tighter reliance on the causal path rather than off-path statements. In these preliminary runs, CFAM rises from train ($\approx0.005$) to validation/test ($\approx0.023$), consistent with attribution concentrating along ACC paths as beams and relation gates stabilize across epochs.
 
 
 
@@ -2081,7 +2076,7 @@ $\epsilon{=}10^{-3}$, $\lambda{=}0.2$ & \textbf{0.540} & \textbf{0.784} & \textb
 
 \noindent Gains are modest (order of $+$0.01--0.02 absolute on LCS/IPA and $+$0.01--0.02 on F1) and come with negligible latency cost ($\approx$+$0.5$\,ms per graph).
 
-\subsection{Beam sensitivity: $K/B/H$ and horizon limits}
+\subsection{Beam sensitivity: K/B/H and horizon limits}
 \label{subsec:ablate-beam}
 
 The constrained beam search launches from $K$ auto-selected seeds, keeps top-$B$ partial paths, and caps length at horizon $H$. Increasing $K$ helps discover roots; increasing $B$ improves coverage at a latency cost; $H{=}5$ is sufficient for most chains in the prepared slices, while $H{=}3$ truncates interprocedural paths.
@@ -2179,7 +2174,7 @@ Overall, the chain-centric design absorbs superficial edits: when augmentations 
 
 This section documents how the decoder reconstructs executable interprocedural narratives, why chains sometimes fail, and how the outputs support developer action. All examples were produced by the same trained model and decoded with ACC under the default beam settings ($K{=}8$, $B{=}24$, $H{=}5$, $\alpha{=}0.7$). Chain JSON and beam traces are archived with the artifact for reproducibility.
 
-\subsection{Successful interprocedural chains (source$\to$sink narratives)}
+\subsection{Successful inter-procedural chains}
 \label{subsec:qual-success}
 
 \textbf{Case A: Command construction to \texttt{system(\,)} across wrappers.}
