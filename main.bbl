@@ -1,0 +1,189 @@
+\begin{thebibliography}{10}
+
+\bibitem{Xia2023}
+{\sc M.~Allamanis, E.~T. Barr, P.~Devanbu, and C.~Sutton}, {\em A survey of machine learning for big code and naturalness}, ACM Computing Surveys (CSUR), 51 (2018), pp.~1--37.
+
+\bibitem{Wilkin2023}
+{\sc L.~Aouad}, {\em Causal factors analysis of vulnerability exploitation}, 2023.
+\newblock IriusRisk Blog.
+
+\bibitem{Cao2024ICSE}
+{\sc S.~Cao, X.~Sun, X.~Wu, D.~Lo, L.~Bo, B.~Li, and W.~Liu}, {\em Coca: improving and explaining graph neural network-based vulnerability detection systems}, in Proceedings of the IEEE/ACM 46th International Conference on Software Engineering, 2024, pp.~1--13.
+
+\bibitem{Cao2024ASE}
+{\sc S.~Cao, X.~Sun, X.~Wu, D.~Lo, L.~Bo, B.~Li, X.~Liu, X.~Lin, and W.~Liu}, {\em Snopy: Bridging sample denoising with causal graph learning for effective vulnerability detection}, in Proceedings of the 39th IEEE/ACM International Conference on Automated Software Engineering, 2024, pp.~606--618.
+
+\bibitem{chakraborty2021deep}
+{\sc Chakraborty, Saikat, R.~Krishna, Y.~Ding, and B.~Ray}, {\em Deep learning based vulnerability detection: Are we there yet?}, IEEE Transactions on Software Engineering, 48 (2021), pp.~3280--3296.
+
+\bibitem{Chakraborty2020}
+{\sc S.~Chakraborty, R.~Krishna, Y.~Ding, and B.~Ray}, {\em Deep learning based vulnerability detection: Are we there yet?}, IEEE Transactions on Software Engineering, 48 (2022), pp.~3280--3296.
+
+\bibitem{chen2022neural}
+{\sc Z.~Chen, S.~Kommrusch, and M.~Monperrus}, {\em Neural transfer learning for repairing security vulnerabilities in c code}, IEEE Transactions on Software Engineering, 49 (2022), pp.~147--165.
+
+\bibitem{cheng2022path}
+{\sc X.~Cheng, G.~Zhang, H.~Wang, and Y.~Sui}, {\em Path-sensitive code embedding via contrastive learning for software vulnerability detection}, in Proceedings of the 31st ACM SIGSOFT International Symposium on Software Testing and Analysis, 2022, pp.~519--531.
+
+\bibitem{Chu2024ISSTA}
+{\sc Z.~Chu, Y.~Wan, Q.~Li, Y.~Wu, H.~Zhang, Y.~Sui, G.~Xu, and H.~Jin}, {\em Graph neural networks for vulnerability detection: A counterfactual explanation}, in Proceedings of the 33rd ACM SIGSOFT International Symposium on Software Testing and Analysis, 2024, pp.~389--401.
+
+\bibitem{das2018minerva}
+{\sc R.~Das, S.~Dhuliawala, M.~Zaheer, L.~Vilnis, I.~Durugkar, A.~Krishnamurthy, A.~Smola, and A.~McCallum}, {\em Go for a walk and arrive at the answer: Reasoning over paths in knowledge bases using reinforcement learning}, in International Conference on Learning Representations (ICLR), 2018.
+
+\bibitem{Ruiz2023}
+{\sc K.~Filus and J.~Domańska}, {\em Software vulnerabilities in tensorflow-based deep learning applications}, Computers and Security, 124 (2023), p.~102948.
+
+\bibitem{fu2022linevul}
+{\sc M.~Fu and C.~Tantithamthavorn}, {\em Linevul: A transformer-based line-level vulnerability prediction}, in Proceedings of the 19th International Conference on Mining Software Repositories, 2022, pp.~608--620.
+
+\bibitem{fu2022vulrepair}
+{\sc M.~Fu, C.~Tantithamthavorn, T.~Le, V.~Nguyen, and D.~Phung}, {\em Vulrepair: a t5-based automated software vulnerability repair}, in Proceedings of the 30th ACM joint european software engineering conference and symposium on the foundations of software engineering, 2022, pp.~935--947.
+
+\bibitem{Ganz2024}
+{\sc F.~Ganz, L.~Fischer, M.~Keller, F.~Beck, Y.~Acar, and M.~Backes}, {\em Software defect localization using explainable deep learning}, in Proceedings of the 17th ACM Workshop on Artificial Intelligence and Security, ACM, 2024.
+
+\bibitem{guo2021graphcodebert}
+{\sc D.~Guo, S.~Ren, S.~Lu, Z.~Feng, D.~Tang, S.~Liu, L.~Zhou, N.~Duan, A.~Svyatkovskiy, S.~Fu, et~al.}, {\em Graphcodebert: Pre-training code representations with data flow. arxiv 2020}, arXiv preprint arXiv:2009.08366,  (2021).
+
+\bibitem{guo2018lemna}
+{\sc W.~Guo, D.~Mu, J.~Xu, P.~Su, G.~Wang, and X.~Xing}, {\em Lemna: Explaining deep learning based security applications}, in Proceedings of the 2018 ACM SIGSAC Conference on Computer and Communications Security, CCS '18, New York, NY, USA, 2018, Association for Computing Machinery, p.~364–379.
+
+\bibitem{hin2022linevd}
+{\sc D.~Hin, A.~Kan, H.~Chen, and M.~A. Babar}, {\em Linevd: Statement-level vulnerability detection using graph neural networks}, in Proceedings of the 19th international conference on mining software repositories, 2022, pp.~596--607.
+
+\bibitem{Islam2024}
+{\sc N.~T. Islam, G.~D. L.~T. Parra, D.~Manual, M.~Jadliwala, and P.~Najafirad}, {\em Causative insights into open source software security using large language code embeddings and semantic vulnerability graph}, arXiv preprint arXiv:2401.07035,  (2024).
+
+\bibitem{Joshi2023AAAI}
+{\sc H.~Joshi, J.~C. Sanchez, S.~Gulwani, V.~Le, G.~Verbruggen, and I.~Radi{\v{c}}ek}, {\em Repair is nearly generation: Multilingual program repair with llms}, in Proceedings of the AAAI Conference on Artificial Intelligence, vol.~37, 2023, pp.~5131--5140.
+
+\bibitem{khoury2023secure}
+{\sc R.~Khoury, A.~R. Avila, J.~Brunelle, and B.~M. Camara}, {\em How secure is code generated by chatgpt?}, in 2023 IEEE international conference on systems, man, and cybernetics (SMC), IEEE, 2023, pp.~2445--2451.
+
+\bibitem{Kuang2024KSEM}
+{\sc H.~Kuang, J.~Zhang, F.~Yang, L.~Zhang, Z.~Huang, and L.~Yang}, {\em Vulcausal: Robust vulnerability detection using neural network models from a causal perspective}, in International Conference on Knowledge Science, Engineering and Management, Springer, 2024, pp.~41--56.
+
+\bibitem{Hajipour2023}
+{\sc F.~Labr{\`e}che and S.-O. Paquette}, {\em Threat class predictor: An explainable framework for predicting vulnerability threat using topic and trend modeling.}, in CAMLIS, 2022, pp.~113--124.
+
+\bibitem{ladisa2023sok}
+{\sc P.~Ladisa, H.~Plate, M.~Martinez, and O.~Barais}, {\em Sok: Taxonomy of attacks on open-source software supply chains}, in 2023 IEEE Symposium on Security and Privacy (SP), IEEE, 2023, pp.~1509--1526.
+
+\bibitem{li2023xai}
+{\sc D.~Li}, {\em An XAI-based Framework for Software Vulnerability Contributing Factors Assessment}, PhD thesis, Concordia University, 2023.
+
+\bibitem{Moschitti2024}
+{\sc D.~Li, Y.~Liu, and J.~Huang}, {\em Assessment of software vulnerability contributing factors by model-agnostic explainable ai}, Machine Learning and Knowledge Extraction, 6 (2024), pp.~1087--1113.
+
+\bibitem{li2023vulanalyzer}
+{\sc L.~Li, S.~H. Ding, Y.~Tian, B.~C. Fung, P.~Charland, W.~Ou, L.~Song, and C.~Chen}, {\em Vulanalyzer: Explainable binary vulnerability detection with multi-task learning and attentional graph convolution}, ACM Transactions on Privacy and Security, 26 (2023), pp.~1--25.
+
+\bibitem{Li2024IRIS}
+{\sc Z.~Li, S.~Dutta, and M.~Naik}, {\em Iris: Llm-assisted static analysis for detecting security vulnerabilities}, arXiv preprint arXiv:2405.17238,  (2024).
+\newblock Proposes an LLM-augmented static analysis that infers taint specifications and outperforms CodeQL on CWE-Bench-Java.
+
+\bibitem{Zhou2019}
+{\sc Z.~Li, D.~Zou, J.~Tang, Z.~Zhang, M.~Sun, and H.~Jin}, {\em A comparative study of deep learning-based vulnerability detection system}, IEEE Access, 7 (2019), pp.~103184--103197.
+
+\bibitem{Liu2020}
+{\sc G.~Lin, S.~Wen, Q.-L. Han, J.~Zhang, and Y.~Xiang}, {\em Software vulnerability detection using deep neural networks: A survey}, Proceedings of the IEEE, 108 (2020), pp.~1825--1848.
+
+\bibitem{Zou2020}
+{\sc S.~Liu, G.~Lin, L.~Qu, J.~Zhang, O.~De~Vel, P.~Montague, and Y.~Xiang}, {\em Cd-vuld: Cross-domain vulnerability discovery based on deep domain adaptation}, IEEE Transactions on Dependable and Secure Computing, 19 (2022), pp.~438--451.
+
+\bibitem{lucic2022cf}
+{\sc A.~Lucic, M.~A. Ter~Hoeve, G.~Tolomei, M.~De~Rijke, and F.~Silvestri}, {\em Cf-gnnexplainer: Counterfactual explanations for graph neural networks}, in International Conference on Artificial Intelligence and Statistics, PMLR, 2022, pp.~4499--4511.
+
+\bibitem{Allix2024}
+{\sc Marchetto and Alessandro}, {\em Can explainability and deep-learning be used for localizing vulnerabilities in source code?}, in Proceedings of the 5th ACM/IEEE International Conference on Automation of Software Test (AST 2024), 2024, pp.~110--119.
+
+\bibitem{10.1145/3644032.3644448}
+{\sc A.~Marchetto}, {\em Can explainability and deep-learning be used for localizing vulnerabilities in source code?}, in Proceedings of the 5th ACM/IEEE International Conference on Automation of Software Test (AST 2024), AST '24, New York, NY, USA, 2024, Association for Computing Machinery, p.~110–119.
+
+\bibitem{mosolygo2021towards}
+{\sc B.~Mosolyg{\'o}, N.~V{\'a}ndor, G.~Antal, P.~Heged{\H{u}}s, and R.~Ferenc}, {\em Towards a prototype based explainable javascript vulnerability prediction model}, in 2021 International conference on code quality (ICCQ), IEEE, 2021, pp.~15--25.
+
+\bibitem{nguyen2023}
+{\sc H.~Q. Nguyen, T.~Hoang, H.~K. Dam, and A.~Ghose}, {\em Graph-based explainable vulnerability prediction}, Information and Software Technology, 177 (2025), p.~107566.
+
+\bibitem{Nong2023ICSE}
+{\sc Y.~Nong, Y.~Ou, M.~Pradel, F.~Chen, and H.~Cai}, {\em Vulgen: Realistic vulnerability generation via pattern mining and deep learning}, in 2023 IEEE/ACM 45th International Conference on Software Engineering (ICSE), IEEE, 2023, pp.~2527--2539.
+
+\bibitem{pearce2025asleep}
+{\sc H.~Pearce, B.~Ahmad, B.~Tan, B.~Dolan-Gavitt, and R.~Karri}, {\em Asleep at the keyboard? assessing the security of github copilot’s code contributions}, Communications of the ACM, 68 (2025), pp.~96--105.
+
+\bibitem{pearce2023examining}
+{\sc H.~Pearce, B.~Tan, B.~Ahmad, R.~Karri, and B.~Dolan-Gavitt}, {\em Examining zero-shot vulnerability repair with large language models}, in 2023 IEEE Symposium on Security and Privacy (SP), IEEE, 2023, pp.~2339--2356.
+
+\bibitem{Rahman2024ICSE}
+{\sc M.~M. Rahman, I.~Ceka, C.~Mao, S.~Chakraborty, B.~Ray, and W.~Le}, {\em Towards causal deep learning for vulnerability detection}, in Proceedings of the IEEE/ACM 46th international conference on software engineering, 2024, pp.~1--11.
+
+\bibitem{schlichtkrull2018rgcn}
+{\sc M.~Schlichtkrull, T.~N. Kipf, P.~Bloem, R.~van~den Berg, I.~Titov, and M.~Welling}, {\em Modeling relational data with graph convolutional networks}, in The Semantic Web -- ESWC 2018, vol.~10843 of Lecture Notes in Computer Science, Springer, 2018, pp.~593--607.
+
+\bibitem{Le2024MBU}
+{\sc A.~Sejfia, S.~Das, S.~Shafiq, and N.~Medvidovi{\'c}}, {\em Toward improved deep learning-based vulnerability detection}, in Proceedings of the 46th IEEE/ACM International Conference on Software Engineering, 2024, pp.~1--12.
+
+\bibitem{Li2022Empirical}
+{\sc B.~Steenhoek, M.~M. Rahman, R.~Jiles, and W.~Le}, {\em An empirical study of deep learning models for vulnerability detection}, in 2023 IEEE/ACM 45th International Conference on Software Engineering (ICSE), IEEE, 2023, pp.~2237--2248.
+
+\bibitem{suneja2021probing}
+{\sc S.~Suneja, Y.~Zheng, Y.~Zhuang, J.~A. Laredo, and A.~Morari}, {\em Probing model signal-awareness via prediction-preserving input minimization}, in Proceedings of the 29th ACM joint meeting on european software engineering conference and symposium on the foundations of software engineering, 2021, pp.~945--955.
+
+\bibitem{tan2021counterfactual}
+{\sc J.~Tan, S.~Xu, Y.~Ge, Y.~Li, X.~Chen, and Y.~Zhang}, {\em Counterfactual explainable recommendation}, in Proceedings of the 30th ACM International Conference on Information \& Knowledge Management, 2021, pp.~1784--1793.
+
+\bibitem{taviss2024asm2seq}
+{\sc S.~Taviss, S.~H. Ding, M.~Zulkernine, P.~Charland, and S.~Acharya}, {\em Asm2seq: Explainable assembly code functional summary generation for reverse engineering and vulnerability analysis}, Digital Threats: Research and Practice, 5 (2024), pp.~1--25.
+
+\bibitem{USGov2023}
+{\sc {US Government}}, {\em Federal register}, 2023.
+\newblock Executive Order on the Safe, Secure, and Trustworthy Development and Use of Artificial Intelligence.
+
+\bibitem{velickovic2018gat}
+{\sc P.~Veli\v{c}kovi\'{c}, G.~Cucurull, A.~Casanova, A.~Romero, P.~Li\`{o}, and Y.~Bengio}, {\em Graph attention networks}, in International Conference on Learning Representations (ICLR), 2018.
+
+\bibitem{wang2024reposvul}
+{\sc X.~Wang, R.~Hu, C.~Gao, X.-C. Wen, Y.~Chen, and Q.~Liao}, {\em Reposvul: A repository-level high-quality vulnerability dataset}, in Proceedings of the 2024 IEEE/ACM 46th International Conference on Software Engineering: Companion Proceedings, 2024, pp.~472--483.
+
+\bibitem{wang2019han}
+{\sc X.~Wang, H.~Ji, C.~Shi, B.~Wang, P.~Cui, P.~Yu, and Y.~Ye}, {\em Heterogeneous graph attention network}, arXiv preprint arXiv:1903.07293,  (2019).
+
+\bibitem{wohler2022committed}
+{\sc N.~W{\"o}hler, J.~H. Klemmer, M.~Fourn{\'e}, Y.~Acar, S.~Fahl, et~al.}, {\em Committed to trust: A qualitative study on security and trust in open source software projects}, CISPA Communication,  (2022).
+
+\bibitem{Woo2023USENIX}
+{\sc S.~Woo, E.~Choi, H.~Lee, and H.~Oh}, {\em $\{$V1SCAN$\}$: Discovering 1-day vulnerabilities in reused $\{$C/C++$\}$ open-source software components using code classification techniques}, in 32nd USENIX Security Symposium (USENIX Security 23), 2023, pp.~6541--6556.
+
+\bibitem{xiong2017deeppath}
+{\sc W.~Xiong, T.~Hoang, and W.~Y. Wang}, {\em Deeppath: A reinforcement learning method for knowledge graph reasoning}, in Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing (EMNLP), Copenhagen, Denmark, Sept. 2017, Association for Computational Linguistics, pp.~564--573.
+
+\bibitem{yagemann2021automated}
+{\sc C.~Yagemann, S.~P. Chung, B.~Saltaformaggio, and W.~Lee}, {\em Automated bug hunting with data-driven symbolic root cause analysis}, in Proceedings of the 2021 ACM SIGSAC Conference on Computer and Communications Security, 2021, pp.~320--336.
+
+\bibitem{yagemann2021arcus}
+{\sc C.~Yagemann, M.~Pruett, S.~P. Chung, K.~Bittick, B.~Saltaformaggio, and W.~Lee}, {\em $\{$ARCUS$\}$: symbolic root cause analysis of exploits in production systems}, in 30th USENIX Security Symposium (USENIX Security 21), 2021, pp.~1989--2006.
+
+\bibitem{yamaguchi2014cpg}
+{\sc F.~Yamaguchi, N.~Golde, D.~Arp, and K.~Rieck}, {\em Modeling and discovering vulnerabilities with code property graphs}, in 2014 IEEE Symposium on Security and Privacy, 2014, pp.~590--604.
+
+\bibitem{yang2022natural}
+{\sc Z.~Yang, J.~Shi, J.~He, and D.~Lo}, {\em Natural attack for pre-trained models of code}, in Proceedings of the 44th International Conference on Software Engineering, 2022, pp.~1482--1493.
+
+\bibitem{ying2019gnnexplainer}
+{\sc Z.~Ying, D.~Bourgeois, J.~You, M.~Zitnik, and J.~Leskovec}, {\em Gnnexplainer: Generating explanations for graph neural networks}, in Advances in Neural Information Processing Systems, H.~Wallach, H.~Larochelle, A.~Beygelzimer, F.~d\textquotesingle Alch\'{e}-Buc, E.~Fox, and R.~Garnett, eds., vol.~32, Curran Associates, Inc., 2019.
+
+\bibitem{yu2023counterfactual}
+{\sc D.~Yu, Q.~Li, X.~Wang, Q.~Li, and G.~Xu}, {\em Counterfactual explainable conversational recommendation}, IEEE Transactions on Knowledge and Data Engineering, 36 (2023), pp.~2388--2400.
+
+\bibitem{Zelikman2023}
+{\sc E.~Zelikman, E.~Lorch, L.~Mackey, and A.~T. Kalai}, {\em Self-taught optimizer (stop): Recursively self-improving code generation}, in First Conference on Language Modeling, 2024.
+
+\bibitem{Yaqin2020}
+{\sc P.~Zeng, G.~Lin, L.~Pan, Y.~Tai, and J.~Zhang}, {\em Software vulnerability analysis and discovery using deep learning techniques: A survey}, IEEE Access, 8 (2020), pp.~197158--197172.
+
+\bibitem{zhu2023adfl}
+{\sc C.~Zhu, J.~Zhang, X.~Sun, B.~Chen, and W.~Meng}, {\em Adfl: Defending backdoor attacks in federated learning via adversarial distillation}, Computers \& Security, 132 (2023), p.~103366.
+
+\end{thebibliography}

@@ -1,0 +1,144 @@
+\contentsline {chapter}{List of Tables}{vii}{chapter*.4}%
+\contentsline {chapter}{List of Figures}{ix}{chapter*.5}%
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Introduction}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Problem Statement}{2}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Research Questions}{3}{subsection.1.2.1}%
+\contentsline {section}{\numberline {1.3}Research Aims and Contributions}{4}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Aims}{4}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Contributions}{6}{subsection.1.3.2}%
+\contentsline {paragraph}{(C1) Chain-Centric Program Representation:}{6}{section*.6}%
+\contentsline {paragraph}{(C2) Causal Reasoning Pipeline for Chain Assembly:}{6}{section*.7}%
+\contentsline {paragraph}{(C3) Causal Evaluation Metrics:}{7}{section*.8}%
+\contentsline {paragraph}{(C4) Analysis:}{7}{section*.9}%
+\contentsline {section}{\numberline {1.4}Methodological Overview}{7}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Dataset and Evaluation Preview}{9}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Thesis Outline}{9}{section.1.6}%
+\contentsline {chapter}{\numberline {2}Literature Review}{10}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Theoretical Foundations and Background}{10}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Software Bugs and Vulnerabilities}{11}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Classical Program Analysis: Static and Dynamic}{11}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Code Representations for Security Analysis}{12}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Learning over Structure and Causality-Aware Analysis}{13}{subsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.1.5}Causal Knowledge Graphs (CKG)}{13}{subsection.2.1.5}%
+\contentsline {subsection}{\numberline {2.1.6}Constrained Decoding and Beam Search for Structured Reasoning}{15}{subsection.2.1.6}%
+\contentsline {section}{\numberline {2.2}Related Works}{16}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Static Analysis: Foundations and DL Integration}{16}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Dynamic Analysis: Execution Evidence and DL Integration}{17}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Deep Learning Based Techniques}{17}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Causal Reasoning and Causal Deep Learning Techniques}{19}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Explainability and Interpretability Techniques}{22}{subsection.2.2.5}%
+\contentsline {section}{\numberline {2.3}Research Gaps}{25}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}The Causal Deficiency and Generalization Gap}{25}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}The Interprocedural Reasoning Gap}{25}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}The Causal Evaluation Gap}{26}{subsection.2.3.3}%
+\contentsline {section}{\numberline {2.4}Research Challenges and Rationale}{26}{section.2.4}%
+\contentsline {chapter}{\numberline {3}Methodology}{29}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Chain-Centric Program Representation}{30}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Dataset Description, Ground Truth Formation, and Preprocessing Pipeline}{30}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}ReposVul: scope and characteristics}{31}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Extraction and graph construction pipeline}{32}{subsection.3.1.3}%
+\contentsline {paragraph}{Stage A: raw vulnerability and patch acquisition.}{32}{section*.10}%
+\contentsline {paragraph}{Stage B: vulnerability untangling.}{32}{section*.11}%
+\contentsline {paragraph}{Stage C: multi-granularity dependency extraction.}{32}{section*.12}%
+\contentsline {paragraph}{Stage D: code normalization and static graph building.}{32}{section*.13}%
+\contentsline {paragraph}{Stage E: patch-aware differencing and slice materialization.}{32}{section*.14}%
+\contentsline {paragraph}{Stage F: trace-based filtering for outdated patches.}{33}{section*.15}%
+\contentsline {subsection}{\numberline {3.1.4}Unified multigraph, typing, features, and storage}{33}{subsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.1.5}Ground-truth definition}{34}{subsection.3.1.5}%
+\contentsline {subsection}{\numberline {3.1.6}Interprocedural Semantics and Cross-Boundary Validity}{35}{subsection.3.1.6}%
+\contentsline {subsection}{\numberline {3.1.7}Data Splits, Controls, and Reproducibility}{35}{subsection.3.1.7}%
+\contentsline {subsection}{\numberline {3.1.8}Empirical Coverage and Dataset Statistics}{36}{subsection.3.1.8}%
+\contentsline {subsection}{\numberline {3.1.9}Summary}{37}{subsection.3.1.9}%
+\contentsline {section}{\numberline {3.2}Model Architecture}{37}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}GraphCodeBERT Feature Initialization}{37}{subsection.3.2.1}%
+\contentsline {paragraph}{}{40}{section*.16}%
+\contentsline {subsection}{\numberline {3.2.2}GAT with Causality-Oriented Attention}{40}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Causal Knowledge Graph (CKG): Mining, Findings, and Prior for Decoding}{42}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Adaptive Causal Contextualization (ACC) for Chain Assembly}{44}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Chain Extraction and Chain Validation}{47}{subsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.2.6}Training, Optimization, and Hyperparameters}{49}{subsection.3.2.6}%
+\contentsline {subsection}{\numberline {3.2.7}Implementation Details}{50}{subsection.3.2.7}%
+\contentsline {chapter}{\numberline {4}Evaluation Protocol and Metrics}{53}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Experimental Settings}{53}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Thresholding and Calibration}{54}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Standard Classification Metrics}{54}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Causal Metrics}{55}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Validity of Predicted Chains}{55}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Structural Agreement with Ground Truth}{55}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Interprocedurality}{56}{subsection.4.4.3}%
+\contentsline {subsection}{\numberline {4.4.4}Beam and Prior Diagnostics}{57}{subsection.4.4.4}%
+\contentsline {subsection}{\numberline {4.4.5}Counterfactual Metrics: CCS and CFAM}{58}{subsection.4.4.5}%
+\contentsline {paragraph}{Counterfactual Consistency Score (CCS):}{58}{section*.17}%
+\contentsline {paragraph}{Causal Feature Attribution Measure (CFAM):}{59}{section*.18}%
+\contentsline {paragraph}{Implementation details:}{59}{section*.19}%
+\contentsline {section}{\numberline {4.5}Reproducibility and Artifact}{60}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Experimental Results and Analysis}{61}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Setup Snapshot}{61}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Dataset and Splits}{62}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Model Variants}{62}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Decoding and the CKG Prior}{63}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}Training, Calibration, and Thresholding}{63}{subsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.1.5}Reporting Conventions and Statistical Measures}{64}{subsection.5.1.5}%
+\contentsline {subsection}{\numberline {5.1.6}Experiment Environment and Artifact}{64}{subsection.5.1.6}%
+\contentsline {section}{\numberline {5.2}Conventional Metrics}{64}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Accuracy/Precision/Recall/F1, AUROC, AUPRC}{65}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Thresholding and Calibration Curves (PR, ROC)}{65}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Error Analysis}{66}{subsection.5.2.3}%
+\contentsline {section}{\numberline {5.3}Chain Quality and Interprocedural Structure}{66}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Validity rate (CFG/DFG/alias/stack checks)}{67}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Interprocedurality (IPA rate; call/return use)}{67}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Role \& order agreement (Node/Edge coverage, RoleCov, LCS)}{67}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.4}Succinctness and span (length, files crossed)}{68}{subsection.5.3.4}%
+\contentsline {section}{\numberline {5.4}Decoding Profile and Runtime}{69}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Beam/ACC behavior (K, B, H; avg steps; branching)}{69}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Latency and memory at inference (per graph)}{70}{subsection.5.4.2}%
+\contentsline {section}{\numberline {5.5}Causal Metrics and Counterfactual Behavior}{71}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Overall Quantitative Metrics}{71}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}CCS by intervention type (minor vs.\ major)}{72}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}Directional consistency rate (DCR)}{72}{subsection.5.5.3}%
+\contentsline {subsection}{\numberline {5.5.4}CFAM (on-chain attribution share)}{72}{subsection.5.5.4}%
+\contentsline {subsection}{\numberline {5.5.5}Chain invalidation under edits}{73}{subsection.5.5.5}%
+\contentsline {section}{\numberline {5.6}Ablations and Variants}{73}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Feature enrichment: Structural vs.\ GCBERT}{74}{subsection.5.6.1}%
+\contentsline {subsection}{\numberline {5.6.2}ACC components: minus sanitizer bonus / alias checks / IPA constraints}{74}{subsection.5.6.2}%
+\contentsline {subsection}{\numberline {5.6.3}CKG prior: off vs.\ on (smoothing/mixture sensitivity)}{75}{subsection.5.6.3}%
+\contentsline {subsection}{\numberline {5.6.4}Beam sensitivity: $K/B/H$ and horizon limits}{75}{subsection.5.6.4}%
+\contentsline {section}{\numberline {5.7}Baseline Comparisons}{76}{section.5.7}%
+\contentsline {subsection}{\numberline {5.7.1}Comparison with Causal Contrastive Editing (Cao et al., ICSE’24)}{76}{subsection.5.7.1}%
+\contentsline {section}{\numberline {5.8}Robustness and Generalization}{77}{section.5.8}%
+\contentsline {subsection}{\numberline {5.8.1}Cross-Project Generalization}{78}{subsection.5.8.1}%
+\contentsline {subsection}{\numberline {5.8.2}Temporal Robustness (Commit Chronology)}{78}{subsection.5.8.2}%
+\contentsline {subsection}{\numberline {5.8.3}Refactoring Invariance (Augmentations)}{78}{subsection.5.8.3}%
+\contentsline {section}{\numberline {5.9}Qualitative Case Studies}{79}{section.5.9}%
+\contentsline {subsection}{\numberline {5.9.1}Successful interprocedural chains (source$\to $sink narratives)}{79}{subsection.5.9.1}%
+\contentsline {subsection}{\numberline {5.9.2}Failure modes and diagnostics (why chains break)}{80}{subsection.5.9.2}%
+\contentsline {subsection}{\numberline {5.9.3}Developer-centric interpretation (how chains inform fixes)}{81}{subsection.5.9.3}%
+\contentsline {section}{\numberline {5.10}Summary}{82}{section.5.10}%
+\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{84}{chapter.6}%
+\contentsline {chapter}{Bibliography}{87}{chapter*.20}%
+\contentsline {chapter}{Appendix \numberline {A}Algorithms and Pseudocode}{93}{appendix.1.A}%
+\contentsline {chapter}{Appendix \numberline {B}Extended Results and Hyperparameters}{96}{appendix.1.B}%
+\contentsline {section}{\numberline {B.1}Model and Optimization Settings}{97}{section.1.B.1}%
+\contentsline {section}{\numberline {B.2}Notes on Cached Features and Manifests}{97}{section.1.B.2}%
+\contentsline {section}{\numberline {B.3}Intermediates Logged During Training}{97}{section.1.B.3}%
+\contentsline {chapter}{Appendix \numberline {C}Dataset Card and Licensing}{98}{appendix.1.C}%
+\contentsline {paragraph}{Name and scope:}{98}{section*.22}%
+\contentsline {paragraph}{Composition:}{98}{section*.23}%
+\contentsline {paragraph}{Collection and preprocessing:}{98}{section*.24}%
+\contentsline {paragraph}{Labels and quality:}{98}{section*.25}%
+\contentsline {paragraph}{Splits and leakage safeguards:}{98}{section*.26}%
+\contentsline {paragraph}{Intended use:}{98}{section*.27}%
+\contentsline {paragraph}{Licensing and attribution:}{99}{section*.28}%
+\contentsline {paragraph}{Known limitations:}{99}{section*.29}%
+\contentsline {chapter}{Appendix \numberline {D}Role Lexicon and Pattern Rules}{100}{appendix.1.D}%
+\contentsline {section}{\numberline {D.1}API Families and Examples}{100}{section.1.D.1}%
+\contentsline {section}{\numberline {D.2}Structural Patterns}{100}{section.1.D.2}%
+\contentsline {chapter}{Appendix \numberline {E}Reproducibility Checklist and Artifact Details}{102}{appendix.1.E}%
+\contentsline {paragraph}{Data provenance:}{102}{section*.30}%
+\contentsline {paragraph}{Graph build configuration:}{102}{section*.31}%
+\contentsline {paragraph}{Embeddings cache:}{102}{section*.32}%
+\contentsline {paragraph}{Training configuration:}{102}{section*.33}%
+\contentsline {paragraph}{Environment and determinism:}{102}{section*.34}%
+\contentsline {paragraph}{Logged artifacts:}{103}{section*.35}%
+\contentsline {paragraph}{How to regenerate results (high level):}{103}{section*.36}%

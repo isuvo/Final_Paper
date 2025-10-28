@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d (TeX Live 2025)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: siam.bst
+Database file #1: references.bib
+Warning--I didn't find a database entry for "Jatit2019"
+Warning--I didn't find a database entry for "moonlight2025"
+Warning--I didn't find a database entry for "hu2023hybrid"
+Warning--I didn't find a database entry for "xu2023mlforfuzzing"
+Warning--I didn't find a database entry for "tufano2022adaptive"
+You've used 61 entries,
+            2030 wiz_defined-function locations,
+            861 strings with 18348 characters,
+and the built_in function-call counts, 28937 in all, are:
+= -- 2698
+> -- 1659
+< -- 0
++ -- 655
+- -- 590
+* -- 2308
+:= -- 4376
+add.period$ -- 64
+call.type$ -- 61
+change.case$ -- 472
+chr.to.int$ -- 0
+cite$ -- 61
+duplicate$ -- 1241
+empty$ -- 2024
+format.name$ -- 590
+if$ -- 6228
+int.to.chr$ -- 0
+int.to.str$ -- 61
+missing$ -- 58
+newline$ -- 189
+num.names$ -- 124
+pop$ -- 547
+preamble$ -- 1
+purify$ -- 412
+quote$ -- 0
+skip$ -- 1023
+stack$ -- 0
+substring$ -- 1818
+swap$ -- 552
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 244
+warning$ -- 0
+while$ -- 253
+width$ -- 63
+write$ -- 565
+(There were 5 warnings)
