@@ -408,7 +408,7 @@ Li et al. \cite{li2023vulanalyzer} presented that Vulanalyzer is another signifi
 
 Moschitti et al. \cite{Moschitti2024} presented an XAI-based system for assessing computer code in a graph environment. This system evaluates the significance of syntactic structures for Common Weakness Enumeration (CWE) classification \cite{li2023xai}, therefore connecting learnt code feature representations to subtle semantics recognized by security professionals. The system generates ranks of syntactic constructive contribution levels in Abstract Syntactic Trees (AST) among CWE types for Java and C++ datasets. A novel feature-masking method, varying the neighbourhood of code tokens and syntactic constructions, is applied for the graph environment. The change in the code token neighbourhood is transformed into the CWE-type similarity score by means of information retrieval approaches. The authors showed how nuanced semantics understood by security professionals might be connected to the learnt code feature representations by CWE similarity generated from XAI explanations. This approach did not, however, particularly target causal reasoning or causal deep learning (CDL). The authors admitted that present XAI systems have several limits, namely, their incapacity to generalize to undiscovered vulnerability patterns and transcend the scope of input data. The constraints covered are those of interpretability of acquired features and transferability of learned patterns to different datasets. Although graph-based representations and ASTs are widely used in vulnerability identification, their efficacy may vary depending on the programming language and the particular vulnerabilities under attack. The research of Allamanis et al. \cite{Xia2023} on machine learning for massive code and naturalness offers a larger background for appreciating the difficulties of expressing and evaluating code.
 
-Hajipour et al. \cite{Hajipour2023} developed a framework for vulnerability threat prediction. This method generated a semantic representation and computed an explainable threat score by prioritizing research activities using topic modeling of vulnerability descriptions (from sources like the National Vulnerability Database). Furthermore, included was a fresh trend score based on internet infosec conversations to pinpoint popular vulnerabilities. These results were aggregated on a visual dashboard to give investigative work top priority. The main contribution of the authors was the computation of a new trend score and an explainable threat score based on the topic model. This framework offers a semantic representation of vulnerabilities constructed using topic modeling of vulnerability descriptions. The framework offers a semantic representation of vulnerabilities constructed using topic modeling of vulnerability descriptions. Although helpful for prioritizing, it did not investigate the fundamental \emph{causal} elements affecting vulnerability exploitability, like particular code patterns or interactions increasing the probability of the exploitation of a vulnerability. Knowing which weaknesses are most likely to be utilized against you will help you to allocate resources on the most crucial risks. Online discussions and vulnerability descriptions from other sources provide some of the framework's material. It may thus be biased and have restrictions on its timeliness and completeness.
+Hajipour et al. \cite{Hajipour2023} developed a framework for vulnerability threat prediction. This method generated a semantic representation and computed an explainable threat score by prioritizing research activities using topic modeling of vulnerability descriptions (from sources like the National Vulnerability Database). Furthermore, included was a fresh trend score based on internet infosec conversations to pinpoint popular vulnerabilities. These results were aggregated on a visual dashboard to give investigative work top priority. The main contribution of the authors was the computation of a new trend score and an explainable threat score based on the topic model. This framework offers a semantic representation of vulnerabilities constructed using topic modeling of vulnerability descriptions. The framework offers a semantic representation of vulnerabilities constructed using topic modeling of vulnerability descriptions. Although helpful for prioritizing, it did not investigate the fundamental \emph{causal} elements affecting vulnerability exploitability, like particular code patterns or interactions increasing the probability of the exploitation of a vulnerability. Understanding which vulnerabilities are most likely to be exploited aids in prioritizing risk management efforts. Existing frameworks often rely on online discussions and external vulnerability descriptions, which may introduce biases and limit timeliness and completeness.
 
 Allix et al. \cite{Allix2024} investigated the use of deep learning and explainability methods (most especially SHAP) toward this aim. Their results showed that explainability techniques might occasionally present distracting information, therefore harming rather than supporting engineers; code characteristics employed by DL models were often only partially connected to the underlying causes of vulnerabilities. This emphasized the need for more accurate localization and the incorporation of causal reasoning to uncover the true underlying causes. This allows for a deeper understanding that goes beyond mere correlations. The main contribution of the authors was to assess how well explainability and deep learning (DL) approaches could localize source code assertions concerning vulnerabilities. Using two deep learning (DL) techniques, VulDeePecker and JavaBert, the authors localized source code phrases pertaining to vulnerabilities using SHAP, a model-agnostic explainability method. The paper emphasizes that current explainability methods do not provide developers with practical insights effectively. Important determinants of the results of the study are the choice of deep learning models (VulDeePecker and JavaBert) and the respective application of SHAP. Practical implementations depend critically on more programming language-oriented encoding approaches recommended by Allix et al. \cite{Allix2024} and the evolution of more advanced techniques for vulnerability localization.
 
@@ -732,7 +732,7 @@ Finally, training optimizes a composite objective: The graph-level BCE takes car
 \chapter{Evaluation Protocol and Metrics}
 \label{ch:eval}
 
-This chapter explains how the method is evaluated. Two aspects are considered: (i) conventional classification quality, and (ii) semantics-grounded behavior, that is, whether predicted evidence forms executable interprocedural chains consistent with program semantics. Only basic equations are kept here for readability. Extended definitions and hyperparameters are provided in Appendix~\ref{app:metrics} and Appendix~\ref{app:extended}.
+This chapter explains how the method is evaluated. Two aspects are considered: (i) conventional classification quality, and (ii) semantics-grounded behavior, that is, whether predicted evidence forms executable interprocedural chains consistent with program semantics.
 
 
 \section{Experimental Settings}
@@ -743,11 +743,11 @@ Below I summarize the datasets, inputs, variants, decoding, and reporting conven
 
 \noindent\textbf{Dataset and splits:} The official project-disjoint splits of \texttt{ReposVul}~\cite{wang2024reposvul} are used. Projects never cross splits, positive and negative pairs stay within a split, and, when reported, temporal order is preserved.
 
-\noindent\textbf{Inputs:} Models operate on chain-prepared interprocedural CPGs (AST, CFG, DFG) enriched with \texttt{CALL}, \texttt{ARG}$\!\to$\texttt{PARAM}, and \texttt{RET}$\!\to$\texttt{CALLER}/\texttt{RET}$\!\to$\texttt{LHS} relations and alias summaries (Section~\ref{sec:method-repr}).
+\noindent\textbf{Inputs:}  Models work with chain-prepared interprocedural CPGs (AST, CFG, DFG) that have the relations \texttt{CALL}, \texttt{ARG}$\!\to$\texttt{PARAM}, and \texttt{RET}$\!\to$\texttt{CALLER}/\texttt{RET}$\!\to$\texttt{LHS} and alias summaries.
 
 \noindent\textbf{Model variants:} Two configurations are compared under the same training/decoding regime: \emph{Struct-only} and \emph{GCBERT+Struct} (GraphCodeBERT fused with the same structural descriptors)~\cite{guo2021graphcodebert}.
 
-\noindent\textbf{Decoding:} Inference uses beam search constrained by ACC, with a decoding-only CKG prior mined from training data. The score combination is given in App.~\ref{app:eq-ckg}. Numeric settings and software versions appear in App.~\ref{app:extended-hparams}.
+\noindent\textbf{Decoding:} Inference uses beam search constrained by ACC, with a decoding-only CKG prior mined from training data. The score combination is given in Appendix.~\ref{app:eq-ckg}. Numeric settings and software versions appear in Appendix.~\ref{app:extended-hparams}.
 
 \noindent\textbf{Protocol:} Early stopping is applied on validation Macro-F1. Five random seeds are used per configuration. Reported values are means with 95\% confidence intervals. Reproduction scripts and configuration files are included in the artifact (Section~\ref{sec:eval-artifact}).
 
@@ -756,12 +756,12 @@ Below I summarize the datasets, inputs, variants, decoding, and reporting conven
 
 Two operating points are reported: (i) the validation F1-optimal threshold $\tau_{\text{F1}^\star}$, and (ii) a fixed $\tau{=}0.5$ for like-for-like comparison. If needed, temperature scaling is fitted on validation and kept fixed at test time.
 
-\textbf{Expected Calibration Error (ECE).}
+\noindent\textbf{Expected Calibration Error (ECE):}
 \begin{equation}
 	\label{eq:ece}
 	\mathrm{ECE}=\sum_{b=1}^{B}\frac{|S_b|}{N}\,\big|\mathrm{acc}(S_b)-\mathrm{conf}(S_b)\big|.
 \end{equation}
-$B$ is the number of confidence bins, $S_b$ is the set of examples in bin $b$, $|S_b|$ is its size, $N$ is the total number of examples, $\mathrm{acc}(S_b)$ is empirical accuracy in bin $b$, and $\mathrm{conf}(S_b)$ is the average predicted confidence in that bin. Lower ECE indicates better calibration. Binning choices and variants are in App.~\ref{app:eq-ece}.
+$B$ is the number of confidence bins, $S_b$ is the set of examples in bin $b$, $|S_b|$ is its size, $N$ is the total number of examples, $\mathrm{acc}(S_b)$ is empirical accuracy in bin $b$, and $\mathrm{conf}(S_b)$ is the average predicted confidence in that bin. Lower ECE indicates better calibration. Binning choices and variants are in Appendix.~\ref{app:eq-ece}.
 
 \section{Standard Classification Metrics}
 \label{sec:eval-std}
@@ -780,16 +780,16 @@ Precision measures correctness among predicted positives. Recall measures covera
 
 For each positive decision, at most one executable chain is returned (or none if feasibility is not met).
 
-\noindent\textbf{Validity:} The fraction of returned chains that satisfy ACC feasibility checks is reported. These checks include CFG reachability, def–use or guard consistency, interprocedural call–return discipline, and alias coherence. The formal definition is in App.~\ref{app:eq-validity}.
+\noindent\textbf{Validity:} The fraction of returned chains that satisfy ACC feasibility checks is reported. These checks include CFG reachability, def–use or guard consistency, interprocedural call–return discipline, and alias coherence. The formal definition is in Appendix.~\ref{app:eq-validity}.
 
-\noindent\textbf{Structural fidelity:} When a reference chain is available, the following are reported: node and edge coverage, the longest common subsequence ratio, and role-aware coverage for \{\textit{source, sanitizer, propagator, sink}\}. A scalar Chain Overlap (CO) aggregates node/edge recovery. Formulas are in App.~\ref{app:eq-struct}.
+\noindent\textbf{Structural fidelity:} When a reference chain is available, the following are reported: node and edge coverage, the longest common subsequence ratio, and role-aware coverage for \{\textit{source, sanitizer, propagator, sink}\}. A scalar Chain Overlap (CO) aggregates node/edge recovery. Formulas are in Appendix.~\ref{app:eq-struct}.
 
-\noindent\textbf{Interprocedurality:} The IPA Rate quantifies the share of predicted chains that traverse \texttt{CALL}/\texttt{ARG}$\!\to$\texttt{PARAM}/\texttt{RET} edges when such edges exist in the slice (App.~\ref{app:eq-ipa}).
+\noindent\textbf{Interprocedurality:} The IPA Rate quantifies the share of predicted chains that traverse \texttt{CALL}/\texttt{ARG}$\!\to$\texttt{PARAM}/\texttt{RET} edges when such edges exist in the slice (Appendix.~\ref{app:eq-ipa}).
 
 \section{Counterfactual Metrics}
 \label{sec:eval-cf}
 
-Three specific changes are made to the system to see how it reacts to targeted code changes: guard strengthening, call unbinding, and sink neutralization.  Results are presented individually for each intervention type, facilitating a comprehensive analysis of the system's response.  App. \ref{app:eq-ccs} and App. \ref{app:eq-cfam} give more information about confidence intervals and different methods.  The CKG prior stays on during all of these evaluations, except in the robustness analysis column, where it is turned off so that performance can be measured on the new graph.
+I evaluate causal robustness via three targeted edits - guard strengthening, call unbinding, and sink neutralization. Results are reported by intervention type with confidence intervals and methods detailed in Appendix.~\ref{app:eq-ccs} and Appendix.~\ref{app:eq-cfam}. The CKG prior is active except during robustness tests when it is disabled on the edited graph.
 
 \medskip
 \noindent\textbf{Counterfactual Consistency Score (CCS):}
@@ -797,24 +797,24 @@ Three specific changes are made to the system to see how it reacts to targeted c
 	\label{eq:ccs}
 	\mathrm{CCS}_i=(p_i-p_i^{\mathrm{do}})^2.
 \end{equation}
-For the graph  Before the edit, $p_i$ is the predicted probability, and after the edit, $p_i^{\mathrm{do}}$ is the new probability (both are between 0 and 1).  A small value means not much has changed, while a large value means a big change has happened.  In App. \ref{app:eq-ccs}, we define a directional consistency rate that checks to see if the change is going in the right direction for each type of edit.
+For the graph  Before the edit, $p_i$ is the predicted probability, and after the edit, $p_i^{\mathrm{do}}$ is the new probability (both are between 0 and 1). A small value means not much has changed, while a large value means a big change has happened. In Appendix.~\ref{app:eq-ccs}, a directional consistency rate that checks to see if the change is going in the right direction for each type of edit is defined.
 
 \noindent\textbf{Causal Feature Attribution Measure (CFAM):}
 \begin{equation}
 	\label{eq:cfam}
 	\mathrm{CFAM}_i=\frac{\sum_{f\in F_c}A_i(f)}{\sum_{f\in F_c\cup F_s}A_i(f)}\in[0,1].
 \end{equation}
-$F_c$ and $F_s$ are sets of features that are both on-chain and off-chain.  The attribution given to feature $f$ for graph $i$ is $A_i(f)\!\ge\!0$.  The numerator adds up the attribution for features that are on the chain that was returned.  The denominator adds up the attribution for all the features.  Values that are closer to $1$ mean that the features on the returned chain support the choices.  You can find normalization choices in App. \ref{app:eq-cfam}.  The post-edit chain invalidation rate is also shown as a quick check.
+$F_c$ and $F_s$ are sets of features that are both on-chain and off-chain. The attribution given to feature $f$ for graph $i$ is $A_i(f)\!\ge\!0$. The numerator adds up the attribution for features that are on the chain that was returned. The denominator adds up the attribution for all the features. Values that are closer to $1$ mean that the features on the returned chain support the choices. Normalization choices can be found in Appendix.~\ref{app:eq-cfam}. 
 
 \section{Decoding Diagnostics}
 \label{sec:eval-diag}
 
-There are four indicators that sum up decoding dynamics: the Chain Success Rate, the average chain length, the interprocedural hop ratio, and the ACC rejection mix.  App. \ref{app:metrics-diag} and the supplement show more diagnostics, such as the admissible expansion ratio, motif coverage, and prior influence rate.
+There are four indicators that sum up decoding dynamics: the Chain Success Rate, the average chain length, the interprocedural hop ratio, and the ACC rejection mix.  Appendix.~\ref{app:metrics-diag} and the supplement show more diagnostics, such as the admissible expansion ratio, motif coverage, and prior influence rate.
 
 \section{Reproducibility and Artifact}
 \label{sec:eval-artifact}
 
-The dataset has predictions for each graph, chains with beam traces, calibration parameters, intervention logs, configuration files, seeds, environment hashes, the CKG prior, and decoding diagnostics. Reproducibility scripts make it easier to regenerate graphs from raw repositories and recalculate all of the tables and figures. App gives you a full list of everything and step-by-step instructions. ~\ref{app:artifact}.
+The dataset has predictions for each graph, chains with beam traces, calibration parameters, intervention logs, configuration files, seeds, environment hashes, the CKG prior, and decoding diagnostics. Reproducibility scripts make it easier to regenerate graphs from raw repositories and recalculate all of the tables and figures. Here is a full list of everything and step-by-step instructions Appendix.~\ref{app:artifact}.
 
 
 
@@ -2141,6 +2141,30 @@ where $S_{\mathrm{CKG}}(\pi)$ is a small prior bonus computed from unigram/bigra
 \end{tabularx}
 \normalsize
 
+\section{CKG Prior Scoring}
+\label{app:eq-ckg}
+
+Let $\pi(i \xrightarrow{\,r\,} j)$ be the mined prior over relation motifs from the
+training split. With smoothing $\epsilon$ and temperature $\tau$,
+\[
+\tilde{\pi}(i \xrightarrow{\,r\,} j)
+= \frac{\pi(i \xrightarrow{\,r\,} j)+\epsilon}
+{\sum_{k\in N(i)} \big(\pi(i \xrightarrow{\,r_k\,} k)+\epsilon\big)},
+\qquad
+\pi_\tau(i \xrightarrow{\,r\,} j)
+= \frac{\tilde{\pi}(i \xrightarrow{\,r\,} j)^{1/\tau}}
+{\sum_{k\in N(i)} \tilde{\pi}(i \xrightarrow{\,r_k\,} k)^{1/\tau}}.
+\]
+During decoding, admissible edges are scored by mixing ACC/beam score
+$s(i \xrightarrow{\,r\,} j)$ with the prior:
+\[
+S_{t+1} \;=\; S_t \;+\; s(i \xrightarrow{\,r\,} j)
+\;+\; \lambda \,\log \pi_\tau(i \xrightarrow{\,r\,} j),
+\]
+where $\lambda$ is the prior weight, $\epsilon$ the add-one smoothing, and $\tau$ the
+temperature. Numeric settings are listed in App.~\ref{app:extended-hparams}.
+
+
 
 \section{Chain Extraction and Validation: Equations}
 \label{app:math-chain}
@@ -2297,7 +2321,7 @@ Attributions are normalized per graph.
 
 \section{Decoding Diagnostics}
 \label{app:metrics-diag}
-We report definitions for completeness.
+To report definitions for completeness.
 \begin{align}
 	\mathrm{CSR}&=\frac{\#\{\text{positives with a nonempty chain}\}}{\#\{\text{positives}\}},\\
 	\mathrm{AER}&=\frac{\#\{\text{candidate edges admitted by ACC}\}}{\#\{\text{candidate edges considered}\}},\\
@@ -2587,7 +2611,7 @@ This appendix lists the shipped artifacts and gives a concrete, step-by-step gui
 \end{verbatim}
 
 \subsection*{2. Prepare datasets and program graphs}
-If you start from raw sources (ReposVul file lists), run the preprocessing pipeline; if you already have prepared shards, you can skip to Step 3.
+From raw sources (ReposVul file lists), run the preprocessing pipeline; 
 \textbf{Linux}
 \begin{verbatim}
 	python src/preprocess/step1_prepare_diversevul.py
@@ -2631,7 +2655,6 @@ Then convert slices to PyTorch Geometric hetero graphs:
 \end{verbatim}
 
 \subsection*{5. Train the model}
-Choose the trainer you use for the paper (both call the same backbone).
 \textbf{Linux}
 \begin{verbatim}
 	python src/step4_train_gnn_attn.py
@@ -2682,7 +2705,7 @@ This produces summary files under \texttt{Report/} such as:
 
 \section{One-shot pipeline (shortcut)}
 \label{app:artifact-oneshot}
-If your environment and paths match the defaults, this condensed sequence runs the full pipeline.
+This condensed sequence runs the full pipeline.
 
 \textbf{Linux}
 \begin{verbatim}
