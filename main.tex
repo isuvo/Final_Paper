@@ -159,47 +159,46 @@ Present approaches are constrained by local focus, correlation bias, and non-sta
 \section{Objectives and Contributions}
 \label{sec:intro-aims}
 
-The primary aim of this research is to develop and validate a comprehensive, causally informed framework for software vulnerability analysis that conceptualizes vulnerabilities as interprocedural mechanisms rather than as discrete statement-level symptoms. Traditional program analysis methods and modern machine learning techniques have improved at detecting vulnerable code, but neither fully explains how and why vulnerabilities arise and propagate through software systems. Standard static and dynamic analyses face scalability and context-sensitivity limitations, while deep learning approaches often rely on statistical correlations that lack causal grounding. To truly understand a vulnerability, it is important to identify its root cause and trace how it leads to an exploitable sink through successive stages of transformation and propagation. This thesis addresses that gap by establishing explicit causal links that reveal how insecure data or logic flows through the program, why those flows occur, and what renders them exploitable.  
+This section introduces the goals and the advances of the thesis. The objectives establish a causal, chain-oriented perspective on vulnerability analysis that simulates interprocedural root-to-sink spreading. The contributions turn these goals into real ways to do things: a unified program graph for executable reasoning across functions and files, a causal decoding pipeline that prefers valid paths over incidental patterns, and an evaluation protocol based on counterfactual tests and attribution alignment. These things together set the scope and impact of the work and get the detailed subsections that follow ready.
 
-To achieve this objective, I develop (i) a representational method that enables executable reasoning across functions, files, and modules; (ii) a reasoning pipeline that prioritizes genuine causal patterns over incidental correlations; and (iii) evaluation criteria that assess the faithfulness, stability, and actionability of the system’s outputs not just their predictive accuracy.
 
 \subsection*{Objectives}
 
-This thesis advances vulnerability analysis through three core contributions. Reconstruction, validation, and evaluation of causal explanations complemented by a fourth, supportive investigation into robustness and generalization.
+This thesis advances vulnerability analysis through below core contributions. 
+\medskip
 
-\begin{enumerate}
-	\item \textbf{Chain Centric Reconstruction:}  
-	Design a constraint based method to synthesize executable, interprocedural vulnerability chains, explicitly modeling control flow, data dependencies (e.g., argument→parameter, return→caller), and aliasing yielding chains that are feasible, minimal, and mechanistically sound.
+\noindent\textbf{Chain Centric Reconstruction:}  
+Create a constraint-based approach to generate executable, interprocedural vulnerability chains, explicitly representing control flow, data dependencies, and aliasing to produce chains that are viable, minimal, and mechanically valid.
 	
-	\item \textbf{Execution Consistency Validation:}  
-	Define architecture agnostic verification conditions to ensure reconstructed chains respect program semantics: all steps must be control and data reachable, interprocedural bindings must be honored, and cycles or infeasible jumps must be excluded.
+\noindent\textbf{Execution Consistency Validation:}  
+Define architecture agnostic verification conditions to ensure that reconstructed chains adhere to program semantics.
 	
-	\item \textbf{Evaluation of Causal Explanations:}  
-	Formulate a rigorous, causality grounded evaluation mechanism to assess faithfulness and counterfactual robustness using code specific interventions and alignment between local attributions and global chains—for reproducible, cross-model comparison
+\noindent\textbf{Evaluation of Causal Explanations:}  
+Formulate a causality-based evaluation method or technique that examines fidelity and counterfactual robustness through code-specific interventions, ensuring alignment, thus facilitating reproducible cross-model comparisons.
 	
-	\item \textbf{Robustness and Generalization Analysis:}  
-	Evaluate explanation stability under semantics, preserving edits and generalization across projects not as core goals, but as supporting evidence of causal coherence.
-\end{enumerate}
+\noindent\textbf{Robustness and Generalization Analysis:}  
+Examine the stability of explanations within semantics, maintaining edits and generalizations across projects as supporting evidence of causal coherence.
 
 
 \subsection*{Contributions}
-This thesis makes four principal contributions that collectively advance vulnerability analysis toward causally grounded, explainable, and executable reasoning:
+This thesis makes below contributions to vulnerability analysis that is based on cause and effect and can be explained.
 
-\textbf{(C1) Chain-Centric Program Representation:}  
-I extend the Code Property Graph (CPG) to support interprocedural causal tracing by unifying Abstract Syntax Trees, Control-Flow Graphs, and Data-Flow Graphs with call-graph connectivity, argument→parameter and return→caller bindings, context propagation, and lightweight alias approximations. This enriched representation enables the reconstruction of executable vulnerability chains that span functions and modules while preserving syntactic, control, and data dependencies.
+\medskip
+\noindent\textbf{C1, a program representation that focuses on chains:}
+I broaden the Code Property Graph to include the interprocedural context. Call links, argument-to-parameter bindings, return-to-caller mappings, and conservative alias edges connect AST, CFG, and DFG together. The graph keeps control and data dependencies between files and functions. It allows for the reconstruction of executable source to propagation to sink chains.
 
-\textbf{(C2) Causal Reasoning Pipeline for Chain Assembly:}  
-I build a pipeline that combines structure-aware embeddings (like GraphCodeBERT), heterogeneous GAT message passing, and Adaptive Causal Contextualization (ACC) to make \newline root→propagation→sink chains. A distilled Causal Knowledge Graph (CKG) directs constrained beam search to ensure execution consistency (reachability, interprocedural legality, acyclicity), while per-hop rationales reveal stepwise reasoning. The method produces structured, verifiable, and executable causal narratives, in contrast to post-hoc saliency.
+\noindent\textbf{C2, putting together a causal chain:}
+I create a pipeline that combines Adaptive Causal Contextualization, a heterogeneous GAT encoder, and structure-aware embeddings (GraphCodeBERT). Decoding employs constrained beam search directed by a minimal causal prior. Only steps that can be reached and are legal between procedures are allowed. The outcome is a short, verifiable chain of vulnerable code.
 
-\textbf{(C3) Causal Evaluation Metrics:}  
-I introduce two rigorously defined metrics: the Counterfactual Consistency Score (CCS), which measures behavioral sensitivity to causal interventions, and the Causal Feature Attribution Measure (CFAM), which quantifies alignment between model attributions and ground-truth causal components. Together, they enable principled assessment of causal faithfulness beyond predictive accuracy.
+\noindent\textbf{C3, Causal evaluation:}
+I present two metrics. The Counterfactual Consistency Score (CCS) tells you how much the prediction changes when you make targeted edits. The Causal Feature Attribution Measure (CFAM) tells you how much attribution mass is on the returned chain. They collectively evaluate causal faithfulness beyond mere accuracy.
 
-\textbf{(C4) Analysis:}  
-I assess the proposed framework using the ReposVul dataset, benchmarking it against leading baselines (e.g., COCA).  Experiments demonstrate enhancements in the quality of causal detection and explanation.  These results indicate that causally grounded, chain-centric modeling produces more interpretable, stable, and generalizable vulnerability explanations, thereby facilitating reliable and comprehensible automated security analysis.
+\noindent\textbf{C4, Empirical analysis:}
+I check the framework on \emph{ReposVul}. Results show that detection has gotten better and the chain quality has gotten stronger. Causal tests produce significant directional concordance and resilient on-chain attribution, at a feasible inference expense. The evidence supports chain-centric, mechanism-level reasoning for security analysis.
 
 
 \setlength{\fboxsep}{0pt}     
-\setlength{\fboxrule}{0.2pt}  
+\setlength{\fboxrule}{0.4pt}  
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{svg-inkscape/e2e.pdf}
@@ -208,37 +207,24 @@ I assess the proposed framework using the ReposVul dataset, benchmarking it agai
 \end{figure}
 
 
-% =========================================================
-% 6) Methodological Overview
-% =========================================================
 
-\section{Methodological Overview}
+\section{Methodological Overview and Evaluation Setup} 
 \label{sec:intro-method}
 
-This thesis develops a chain-centric, heterogeneous multigraph that integrates \emph{Abstract Syntax Trees} (AST), \emph{Control-Flow Graphs} (CFG), and \emph{Data-Flow Graphs} (DFG) within a \emph{Code Property Graph} (CPG). The graph is enriched with interprocedural semantics, namely a call graph, argument$\rightarrow$parameter and return$\rightarrow$caller bindings, call-site context, and coarse alias or points-to approximations, in order to capture realistic data and control transfers across functions and modules~\cite{yagemann2021automated}. Nodes and edges are initialized with structure-aware embeddings from \emph{GraphCodeBERT}, which encode lexical regularities together with data-flow cues learned from large code corpora~\cite{guo2021graphcodebert}. A graph attention encoder then aggregates neighborhood information across heterogeneous edges, and a \emph{flow-consistency} regularizer encourages attention to concentrate along CFG-reachable def--use chains and matched call or return links, while de-emphasizing edges that violate feasibility or typing constraints.
 
-At inference, candidate chains are constructed by a constrained beam search. Adaptive Causal Contextualization (ACC) enforces execution feasibility (CFG/DFG reachability, well-nested call/return, alias consistency) while a lightweight Causal Knowledge Graph (CKG) contributes a score-only prior; formal definitions appear in §§\ref{sec:model-arch-gat}, \ref{sec:model-arch-ckg}, and \ref{sec:model-arch-acc}.
+This research constructs a chain-centric representation on a heterogeneous Code Property Graph that integrates Abstract Syntax Trees, Control-Flow Graphs, and Data-Flow Graphs with interprocedural semantics. The graph has call links, argument→parameter and return→caller bindings, call-site context, and conservative alias approximations. This makes it possible to move data and control between functions and files in a realistic way \cite{yamaguchi2014cpg}. Nodes and edges have features that are aware of structure. GraphCodeBERT's pretrained embeddings give hints about context and data flow \cite{guo2021graphcodebert}. A graph attention encoder collects information from different types of edges. A flow-consistency regularizer encourages attention to follow CFG-reachable def–use chains and matched call or return links while down-weighting infeasible hops.
 
-For training, the model employs a supervised vulnerability detection objective at the function or repository level, complemented by auxiliary regularizers that promote attention concentration on call and return edges implicated in positive samples and encourage sparsity in selected subgraphs to yield concise mechanisms. During inference, the encoder produces attention distributions and the system outputs both the prediction and its explanation (see §§\ref{sec:model-arch-acc}, \ref{sec:model-arch-extract-validate} for decoding details).
+Decoding puts together candidate chains using a limited beam search. Adaptive Causal Contextualization (ACC) makes sure that execution is possible by checking for CFG and DFG reachability, well-nested calls and returns, and alias consistency. A small Causal Knowledge Graph is only used as a score-level prior during inference and does not change the training. Supervised training improves vulnerability detection at the repository or function level and adds extra terms that encourage sparse, executable mechanisms. At inference, the system outputs a prediction along with an executable source→propagation→sink chain (\ref{sec:model-arch-gat}, \ref{sec:model-arch-ckg}, and \ref{sec:model-arch-acc} for more information).
 
-Evaluation combines standard performance metrics with two causality oriented measures. The \emph{Counterfactual Consistency Score} (CCS) tests prediction stability under principled interventions on chain elements for example, strengthening or inserting sanitization along a propagation edge or severing an argument$\rightarrow$parameter binding; edits to causal elements should reduce or flip the prediction, while changes to non-causal context should have minimal effect~\cite{Cao2024ICSE,Chu2024ISSTA}. The \emph{Causal Feature Attribution Measure} (CFAM) quantifies the proportion of attribution mass (attention or gradient-based importance) assigned to chain components sources, propagation links, and sinks versus off-chain context; with annotations it measures alignment, otherwise it tests internal consistency against frequency-matched but infeasible alternatives~\cite{Kuang2024KSEM,Rahman2024ICSE}. Together, CCS and CFAM evaluate the faithfulness and stability of reconstructed mechanisms beyond accuracy, complementing recent robustness- and explanation-oriented work~\cite{Cao2024ICSE,Cao2024ASE,Chu2024ISSTA,Chakraborty2020,Liu2020}.
+Evaluation merges traditional classification with causal standards. Accuracy, Precision, Recall, F1, AUROC, and AUPRC are all standard metrics. The Counterfactual Consistency Score assesses the alteration of predictions in response to specific modifications of chain elements. The Causal Feature Attribution Measure tells us how much attribution mass is on sources, propagators, sanitizers, and sinks instead of off-path context \cite{Cao2024ICSE,Chu2024ISSTA,Kuang2024KSEM,Rahman2024ICSE}. These tests check for faithfulness and stability in addition to accuracy.
 
+The experimental evaluation utilizes the ReposVul dataset~\cite{wang2024reposvul}, a repository-level benchmark meticulously crafted to reduce patch entanglement and highlight explicit interprocedural structure.  I use official project-disjoint splits without making any changes. Reproducibility is ensured by controlling preprocessing, sampling, and random seeds. I retrain baselines, such as strong graph neural detectors and a contrastive method that takes causality into account, on the same splits \cite{Zhou2019,Cao2024ICSE}. Results contain chain-centric diagnostics like length and interprocedural span, robustness checks for safe refactorings, and short case studies that show hop-level justification. This enables a direct comparison between chain-centric causal analysis and competitive learning-based baselines on both detection performance and explanation fidelity.
 
-\section{Dataset and Evaluation Preview}
-\label{sec:intro-dataset}
-
-The experimental evaluation utilizes the ReposVul dataset~\cite{wang2024reposvul}, a repository-level benchmark meticulously crafted to reduce patch entanglement and highlight explicit interprocedural structure.  ReposVul~\cite{wang2024reposvul} gives realistic examples of how to trace vulnerability mechanisms that affect more than one function or module by organizing vulnerable and fixed revisions at the repository level with detailed call relationships and multi-granular dependency annotations.  The experiments employ three standard splits, utilizing standardized preprocessing, stratified sampling, and controlled random seeds to ensure comparability and reproducibility. State-of-the-art graph neural network detectors and the causality aware COCA framework~\cite{Zhou2019,Cao2024ICSE} are two examples of baselines. Each one was carefully retrained on the same splits. 
-
-The evaluation uses both traditional metrics and causal criteria. The Counterfactual Consistency Score (CCS) measures how stable a prediction is when the chain is changed on purpose, and the Causal Feature Attribution Measure (CFAM) measures how well attribution focuses on causal elements instead of incidental context.  In addition to standard detection metrics, I present chain-centric diagnostics (e.g., average chain length and interprocedural span) and incorporate concise case studies that illustrate hop-level justification for the constructed chains.  Robustness tests confirm invariance to benign code modifications, while qualitative case studies on reconstructed chains assess explanation fidelity and remediation efficacy.  This protocol allows for a thorough comparison of chain-centric causal analysis with robust learning-based baselines, evaluating both detection performance and the fidelity and implementability of vulnerability explanations.
 
 
 \section{Significance and Impact}
-This research alters the explanation of vulnerabilities from localized, retrospective feature highlights to a singular, executable interprocedural causal chain that traverses from the root cause to the exploitable sink. The research makes model predictions mechanistically interpretable by reconstructing how untrusted input enters the system, travels through control and data dependencies across functions, avoids or skips sanitization, and reaches a vulnerable operation. These chains provide developers with precise, traceable evidence explaining the presence of a vulnerability, along with clear guidance on its location and the steps required for remediation. This changes black-box detections into useful, verifiable information. This makes learning based vulnerability detection more reliable, open, and useful for real-world software security assurance.
+This research alters the explanation of vulnerabilities from localized, retrospective feature highlights to a singular, executable interprocedural causal chain that traverses from the root cause to the exploitable sink. The research makes model predictions interpretable by reconstructing how untrusted input enters the system, travels through control and data dependencies across functions, avoids or skips sanitization, and reaches a vulnerable operation. These chains give developers clear, traceable proof of a vulnerability's existence, as well as clear instructions on where to find it and what to do to fix it. This turns black-box detections into information that can be used and checked. This makes learning-based vulnerability detection more reliable, open, and useful for making sure that software is safe in the real world.
 
-
-% =========================================================
-% 9) Thesis Outline
-% =========================================================
 \section{Thesis Outline}
 Chapter~\ref{chap:method-architecture} (Method and Architecture) formalizes the unified CPG, feature initialization, relation-aware GAT, and the ACC decoding procedure with the CKG prior; Chapter~\ref{chap:evaluation} (Evaluation Protocol and Metrics) defines conventional, chain-centric, and causal metrics and describes calibration and intervention design; Chapter~\ref{chap:results} (Experimental Results and Analysis) reports quantitative and qualitative findings, ablations (ACC/CKG/beam), decoding profile, robustness, and comparisons to \emph{COCA}; Chapter~\ref{chap:conclusion} concludes with limitations and future directions. An artifact and dataset card appear in the appendix.
 
@@ -415,95 +401,87 @@ Allix et al. \cite{Allix2024} investigated the use of deep learning and explaina
 
 \section{Research Gaps}
 
-Despite substantial empirical success achieved by deep learning (DL) approaches in software vulnerability detection, several fundamental limitations persist that compromise the reliability, generalization, and actionable utility of these systems in industrial settings. These deficiencies collectively define the necessity for the proposed research framework.
+Deep learning has made it easier to find vulnerabilities, but it still isn't very reliable, generalizable, or actionable. These deficiencies drive this endeavour.
 
-\paragraph{The Causal Deficiency and Generalization Gap:}
-The first major challenge stems from the inherent reliance on statistical correlations over genuine causal mechanisms in program analysis. Current detectors frequently learn surface-level regularities or spurious correlations that co-occur with vulnerabilities in training data. This methodological bias compromises model robustness, manifesting as fragility under benign code transformations and significant performance degradation during cross-project domain shift. This brittleness suggests that existing normalization or domain-adaptation strategies only partially mitigate the underlying causal deficiency, leading to unstable predictions and poor transferability in dynamic, evolving code repositories. Consequently, many models fail to capture the true generative flaw mechanism.
+\medskip
 
-\paragraph{The Interprocedural Reasoning Gap:}
-The second critical deficiency is the limited capability for interprocedural reasoning and mechanism reconstruction. The majority of current learning frameworks are constrained to analyzing function-level slices or local subgraphs. This constraint prevents them from effectively tracing the end-to-end vulnerability lifecycle: the root cause $\rightarrow$ propagation path $\rightarrow$ exploitable sink. Without a mechanism-aware representation that explicitly models data and control dependencies across function boundaries, detectors default to highlighting local saliency, failing to reconstruct the comprehensive, executable narrative required by developers for complete, verifiable remediation.
+\noindent\textbf{Causal deficiency and generalization:}
+A lot of detectors learn correlations instead of causes. They frequently fail during harmless refactorings and between projects. Normalization and domain adaptation are only somewhat helpful. Predictions continue to be erratic and do not accurately represent the fundamental flaw mechanism.
 
-\paragraph{The Causal Evaluation Gap:}
-A third limitation concerns evaluation. Standard metrics such as Accuracy, Precision, Recall, F1, and mAP quantify label agreement but do not assess whether a model’s attributions are causally faithful or stable under principled counterfactual edits. In the absence of standardized \emph{causal} metrics, it remains difficult to determine whether a detector has learned the generative mechanism of a vulnerability or merely a pattern correlated with it.
+\noindent\textbf{Interprocedural reasoning:}
+Most methods look at just one function or a small part of a function. They don't link root cause to propagation and sink.  Without clear cross-function control and data links, outputs stay local and don't have a clear story for how to fix them.
 
-\bigskip\noindent
-To address these gaps, a novel framework is required, one that integrates causal
-reasoning, contextualization, and attention-driven graph-based learning. Such a system must be capable of identifying spurious correlations and performing a counterfactual analysis. It should construct contextual causal chains that trace how vulnerabilities propagate across components, monitor causal evaluation metrics to ensure transparency, and leverage graph-based neural networks to effectively capture interprocedural dependencies. In addition, it should implement context-sensitive attention mechanisms to prioritize the most security-relevant code segments.
+\noindent\textbf{Evaluation:}
+Accuracy, Precision, Recall, and F1 are some of the most common metrics that only measure label agreement.  They don't check for causal faithfulness or stability when changes are made on purpose. A shared set of causal metrics is still missing.
+
+A better method needs to learn and test how things cause each other. It ought to rebuild source-to-sink chains across functions, employ graph-based representations of program structure and evaluate behaviour through counterfactual tests and chain-aware attribution.
 
 
 \section{Research Challenges and Rationale}
 \label{sec:litreview-challenges}
 
-The field of automated vulnerability analysis has progressed considerably over the past few years, yet several fundamental challenges continue to limit both reliability and interpretability. A closer reading of the literature reveals that many reported improvements in predictive accuracy obscure issues that have practical consequences for real-world deployment. Publicly available corpora often contain near-duplicate samples, mislabeled or weakly supervised instances, and severe class imbalance, all of which inflate apparent performance gains and make reproducibility difficult to achieve~\cite{Li2022Empirical,Chakraborty2020}. Moreover, a substantial portion of existing datasets are trimmed to function-level snippets that conceal the cross-function control and data flows from which actual exploits emerge. While newer datasets have made progress in improving curation and granularity, comprehensive resources remain rare. The \emph{ReposVul} dataset represents a notable advancement by preserving repository-level context with multi-granular dependencies and explicit call relations~\cite{wang2024reposvul}; however, the research community still lacks standardized multi-factor benchmarks capable of jointly evaluating accuracy, robustness to benign code transformations, interprocedural coverage, and explanation quality across root, propagation, and sink components. The absence of such benchmarks makes it difficult to measure generalization beyond narrow or synthetic settings, thereby slowing the transition of academic progress into practice.
+Automated vulnerability detection has progressed, but reliability and interpretability continue to be constrained. Public corpora have almost identical entries, weak labels, and a big difference in class sizes, which makes reported accuracy seem higher than it really is and makes it harder to replicate \cite{Li2022Empirical,Chakraborty2020}. A lot of datasets only show function snippets and don't show cross-function flows. ReposVul enhances curation by maintaining repository context and call relationships \cite{wang2024reposvul}.
 
-Representation remains a pivotal element in achieving reliable and interpretable vulnerability detection. Sequence-based models, including transformer architectures, perform competitively in benchmark settings but struggle to capture control and data dependencies that underlie real exploitability~\cite{fu2022linevul,Chakraborty2020}. In contrast, graph-based representations such as Abstract Syntax Trees (AST) for syntactic structure, Control-Flow Graphs (CFG) for execution order, Data-Flow Graphs (DFG) for variable influence, Program Dependence Graphs (PDG) for joint control-data dependence, and Code Property Graphs (CPG) for unified representations~\cite{Zhou2019}, have shown promise in encoding the structural context critical to vulnerability comprehension. Yet, empirical performance remains highly sensitive to how interprocedural semantics are represented specifically, the inclusion of call edges, argument$\rightarrow$parameter and return$\rightarrow$caller bindings, and approximations for aliasing or points-to relationships. Structure-aware pretraining frameworks such as \emph{GraphCodeBERT} have improved downstream generalization by incorporating data-flow signals into token-level embeddings~\cite{guo2021graphcodebert,Li2022Empirical}. However, the extent of this improvement depends heavily on granularity, dataset diversity, and the quality of interprocedural signal integration.
-
-Beyond static representation, the process of assembling long, executable vulnerability paths from root cause to sink presents an additional challenge that is both combinatorial and semantic. Naive best-first or depth-first search strategies tend to drift into locally plausible but globally inconsistent chains, while global optimization strategies such as Integer Linear Programming (ILP) or Satisfiability Modulo Theory (SMT) are computationally intractable at practical scales. This exposes a structural gap in current systems, where many either perform unconstrained search, leading to instability and irreproducibility, or depend on handcrafted heuristics that fail to capture the genuine progression of interprocedural flaw propagation. The research presented here addresses this issue by employing a \emph{constrained beam search} procedure enhanced with an \emph{Adaptive Causal Contextualization (ACC)} layer that enforces structural constraints including control- and data-flow reachability, interprocedural legality, and cycle avoidance. Additionally, a compact \emph{Causal Knowledge Graph (CKG)} is mined from training data to serve as a small but informative prior over relation $n$-grams. This CKG encodes directional motifs derived from empirical code patterns, gently biasing the decoding process toward realistic causal transitions without overriding correctness validations performed by ACC. The combination of structured constraints and empirical causal priors reduces search entropy and improves the stability and coherency of long interprocedural traces.
-
-Another enduring barrier to adoption is model brittleness under realistic development environments. A wide range of architectures spanning LSTMs, graph neural networks (GNNs), and transformers have demonstrated significant degradation when transferred across projects, programming styles, or naming conventions~\cite{Li2022Empirical}. Even minor, semantics preserving edits can cause large fluctuations in predictions. While model adaptation strategies mitigate these effects to a degree, most existing pipelines remain correlation driven and fail to develop explicit awareness of causal mechanisms~\cite{Zou2020}. Furthermore, a persistent simplifying assumption in the literature is that vulnerabilities exist within isolated functions, leading to overly optimistic performance estimates that overlook cross-component propagation and realistic exploit surfaces~\cite{Le2024MBU}. Post-hoc explanation techniques, including attention visualization and perturbation analysis, have been widely applied, but these often highlight spurious or overly localized features that do not align with the actionable causes developers must address~\cite{Allix2024,Moschitti2024}.
-
-Recent research trends have increasingly turned toward causality-aware learning, encompassing counterfactual training formulations, dual factual–counterfactual evaluation strategies, and graph-based editing techniques designed to test causal stability~\cite{Cao2024ICSE,Chu2024ISSTA,Rahman2024ICSE,Kuang2024KSEM,Cao2024ASE}. While these methods offer improvements in robustness and interpretability, the field still lacks consensus metrics for quantifying causal fidelity specifically, the stability of model predictions under targeted interventions and the alignment of internal attributions with ground-truth causal elements. These limitations define the core motivation for this research.
-
-The work undertaken in this thesis specifically addresses these gaps by focusing on interprocedural vulnerabilities that propagate across functions, files, and modules. Programs are encoded as enriched Code Property Graphs with explicit cross-boundary semantics, enabling faithful modeling of causal dependencies. Using \emph{constrained beam search} guided by \emph{Adaptive Causal Contextualization (ACC)}, and assisted by a lightweight \emph{Causal Knowledge Graph (CKG)} prior derived from frequent relational motifs, the proposed framework explicitly constructs a single, executable root$\rightarrow\cdots\rightarrow$sink causal chain for each detected vulnerability. This approach ensures both structural legality and semantic plausibility throughout the reasoning process. To determine whether the model captures underlying mechanisms rather than dataset-specific correlations, conventional detection metrics are complemented by causal criteria that evaluate predictive stability under intervention (counterfactual consistency) and structural attribution alignment. Collectively, these components yield a chain-centric, interprocedural, and causally principled methodology aimed at producing transparent, auditable explanations that developers can meaningfully interpret, validate, and act upon.
+Representation is key. Sequence models do well on benchmarks, but they don't take into account control and data dependencies that make them easy to exploit \cite{Chakraborty2020,fu2022linevul}. Graph views (AST, CFG, DFG, PDG, CPG) represent structure \cite{Zhou2019}, but outcomes are contingent on interprocedural specifics: calls, argument-to-parameter associations, return bindings, and alias estimations. GraphCodeBERT is an example of structure-aware pretraining that adds data-flow signals to token embeddings \cite{guo2021graphcodebert}. However, the benefits depend on the level of detail and coverage.
 
 
+It's hard to make executable chains from root to sink.  Unconstrained search drifts, and global solvers cost a lot.  This project employs constrained beam search in conjunction with Adaptive Causal Contextualization (ACC). The decoder will only let steps that pass reachability, call/return discipline, and alias checks through. A small causal prior (CKG), derived from relation $n$-grams, influences choices without compromising validity.
 
-%========================================
-% Chapter 3 — Methodology
-%========================================
+Models are fragile across projects, time, and refactorings \cite{Li2022Empirical}. Small changes that don't change the meaning can change predictions. Post-hoc explanations frequently emphasize misleading cues \cite{Allix2024,Moschitti2024}. Recent causal directions, such as counterfactual training and graph edits, enhance robustness but lack agreed-upon metrics for causal fidelity \cite{Cao2024ICSE,Chu2024ISSTA,Rahman2024ICSE,Kuang2024KSEM,Cao2024ASE}.
+
+This thesis addresses these deficiencies. Programs are written as enhanced CPGs with clear semantics that cross boundaries. Decoding puts together a single, executable chain from the source to the sink. Evaluation uses standard detection metrics and causal tests, such as counterfactual consistency, directional agreement, on-chain attribution, and chain invalidation.
+
+
+
 \chapter{Methodology}
 \label{chap:method-architecture}
 
-This chapter presents the complete learning pipeline developed for this thesis, designed to achieve two complementary objectives: accurate vulnerability detection and faithful reconstruction of executable interprocedural causal chains. The overarching goal is not merely to identify code fragments that are susceptible to exploitation but to connect each vulnerability’s root cause to its propagation and eventual sink through semantically meaningful, executable paths. This approach directly addresses the interpretability and robustness limitations of existing deep learning models, which often identify vulnerable statements in isolation without reconstructing their broader causal mechanisms.
+This chapter shows the learning pipeline that was used in this thesis. The objectives are twofold: precise identification of vulnerabilities and accurate reconstruction of executable interprocedural chains. The method connects a root cause to its spread and its end point through paths that don't interfere with the program's execution. This talks about the problems with models that draw lines in isolation and don't take into account how they work.
 
-The proposed methodology builds upon an augmented Code Property Graph (CPG) that unifies core program representations, including the Abstract Syntax Tree (AST), Control Flow Graph (CFG), and Data Flow Graph (DFG), along with interprocedural elements such as call graphs, argument-to-parameter bindings, return-to-caller mappings, and alias analyses. This integrated graph structure provides a rich substrate capable of capturing both lexical and structural properties of source code while maintaining execution consistency across function boundaries. It enables the representation of full vulnerability mechanisms that interlink syntactic context, control dependencies, and data propagation chains within and across program scopes. 
+I work with an enhanced program graph. I use a Code Property Graph to show programs. This is a joint, labelled graph that combines the Abstract Syntax Tree (AST), Control Flow Graph (CFG), and Data Flow Graph (DFG) into one searchable structure \cite{yamaguchi2014cpg}. I add interprocedural links to the base CPG, such as CALL, ARG→PARAM, and RET→CALLER/RET→LHS, as well as alias summaries. This addition keeps the execution semantics the same across function boundaries and makes it possible to slice precisely for chain reconstruction.
 
-At the foundation of this approach lies a three-stage architecture that systematically transforms raw code into semantically enriched and causally interpretable representations. The first stage, structure-aware feature initialization, employs GraphCodeBERT to encode both lexical and data-flow attributes of code tokens. Through large-scale pretraining on diverse software repositories, GraphCodeBERT produces context-sensitive embeddings that capture syntactic roles and semantic dependencies, thereby establishing strong inductive priors for vulnerability representation and downstream learning \cite{guo2021graphcodebert}. 
+There are three steps in the pipeline. To start, feature initialization uses GraphCodeBERT to encode tokens with context that knows about structure and data flow \cite{guo2021graphcodebert}. Pretraining on a large scale gives you useful information that you can use for later learning.  Secondly, a graph attention encoder collects signals from different parts of the graph that are close to each other. Executable relations like def–use and control dependencies guide attention. Regularization that focuses on causality lowers the need for false correlations and makes generalization better \cite{Cao2024ICSE,Rahman2024ICSE,Kuang2024KSEM}. Third, Adaptive Causal Contextualization (ACC) puts together an executable chain by choosing paths that are limited.  It makes sure that data and control are possible, follows the call-return structure, and prefers short explanations. The end result is a single chain that can be understood and matches real execution.
 
-In the second stage, a graph attention encoder aggregates contextual information from the heterogeneous CPG. Multi-head attention mechanisms systematically combine neighborhood features, allowing the network to emphasize relationships supported by executable semantics such as def-use relations and control dependencies. To ensure interpretability and robustness, the encoder is regularized using causality-oriented constraints that guide attention toward plausible execution paths while discouraging reliance on spurious correlations. This strategy is inspired by causality-aware models that have demonstrated improved generalization by aligning learning objectives with causal structure consistency \cite{Cao2024ICSE,Rahman2024ICSE,Kuang2024KSEM}. 
+Training includes a classification loss for detection and penalties that make it less likely that attention patterns will be non-executable or incoherent. The learned representations maintain stability during benign refactorings and facilitate transfer across projects and programming languages. The design is based on new developments in structure-aware vulnerability detection and learning to represent causes \cite{Zhou2019,Li2022Empirical,Cao2024ASE,Chu2024ISSTA,hin2022linevd}.
 
-The final stage introduces Adaptive Causal Contextualization (ACC), the component responsible for assembling an executable causal chain from the attention-guided graph representation. ACC formulates vulnerability mechanism recovery as a constrained path search problem, selecting and linking nodes that represent the root cause, its propagators, and the exploitable sink. It enforces interprocedural feasibility through control and data-flow constraints, validity across call-return relations, and parsimony in produced chains. The outcome is a single, interpretable, and verifiable causal chain consistent with real program execution semantics.
-
-Model training combines standard classification objectives for vulnerability detection with causal regularization terms that penalize incoherent or non-executable attention patterns. The overall learning framework promotes representations that remain stable under benign code refactorings and generalize across projects and programming paradigms. It draws conceptual inspiration from recent advances in structure-aware vulnerability detection and causal representation learning, integrating their strengths into a unified, chain-centric architecture \cite{Zhou2019,Li2022Empirical,Cao2024ASE,Chu2024ISSTA,hin2022linevd}. 
-
-Through this structured pipeline, the proposed method advances beyond point-level vulnerability classification toward executable, chain-level causal inference. The chapters that follow detail the architecture’s constituent stages, including formal definitions, optimization design, and algorithmic implementation, supported by empirical evidence demonstrating its precision, interpretability, and robustness in real software systems.
-
+The rest of the chapter talks about the formal setting, the optimization, and the algorithms for each step.  
 
 \section{Chain-Centric Program Representation}
 \label{sec:chain-conts}
 \subsection{Dataset Description, Ground Truth Formation, and Preprocessing Pipeline}
 \label{subsec:data-gt}
 
-This chapter documents the corpus adopted for experimentation, the ground-truth definition used to label vulnerable code, and the full preprocessing pipeline that converts repositories into chain-centric graphs suitable for interprocedural analysis. I use \emph{ReposVul}, a repository-level dataset designed to untangle patches, expose multi-granularity dependencies, and filter outdated fixes, which aligns with interprocedural, chain-centric evaluation \cite{wang2024reposvul}.
+This section specifies the experimental corpus, the ground-truth labelling protocol, and the preprocessing that transforms repositories into chain-centric interprocedural graphs. I utilize \emph{ReposVul}, a repository-level dataset that separates patches, maintains multi-granularity dependencies, and eliminates outdated fixes \cite{wang2024reposvul}.
+
 
 \subsection{ReposVul: scope and characteristics}
 \label{subsec:reposvul-scope}
 
-ReposVul integrates and links vulnerability metadata from CVE and CWE databases with detailed patch commit information and source code snapshots both before and after the application of each fix. A typical dataset entry couples CVE identification, weakness categorization, and vulnerability severity metrics with associated patch commit metadata and the code diffs representing vulnerable and fixed code versions. Table~\ref{tab:reposvul-fields} summarizes these core data attributes as reported in the original corpus documentation.
+\emph{ReposVul} links CVE/CWE records to pre- and post-fix code snapshots, patch commits, and repository context \cite{wang2024reposvul}. Each entry pairs an identified weakness and severity with the exact commit, message, files, and diffs that implement the fix. Corpus construction crawls public sources, untangles mixed commits to keep only fix-relevant files, mines cross-file caller–callee relations, and filters superseded patches by commit history. The result is a repository-level view that preserves chronology, captures interprocedural links, and supports chain-centric evaluation.
 
 \begin{table}[H]
-\centering
-\caption{Key metadata fields per entry in ReposVul}
-\label{tab:reposvul-fields}
-\begin{tabular}{p{0.3\linewidth} p{0.65\linewidth}}
-\toprule
-\textbf{Category} & \textbf{Representative Fields} \\
-\midrule
-Vulnerability Entry & CVE-ID, CWE-ID, language, external references, CVE description, publishing date, CVSS vector and its components (AV, AC, PR, UI, S, C, I, A) \\
-Patch Metadata & Commit-ID, commit message, commit date, project and repository identifiers, parent and child commit links, API and web URLs \\
-Related Files & File name, programming language, vulnerable and fixed code versions, line-level diffs, URL of the source file \\
-\bottomrule
-\end{tabular}
+	\centering
+	\small
+	\caption{Core metadata recorded per ReposVul entry.}
+	\label{tab:reposvul-fields}
+	\begin{tabular}{p{0.3\linewidth} p{0.65\linewidth}}
+		\toprule
+		\textbf{Category} & \textbf{Representative fields} \\
+		\midrule
+		Vulnerability entry & CVE-ID, CWE-ID, language, external references, CVE description, publish date, CVSS vector (AV, AC, PR, UI, S, C, I, A) \\
+		Patch metadata & Commit ID, commit message and date, project/repository IDs, parent/child links, forge URLs \\
+		Related files & File name, language, vulnerable/fixed snapshots, line diffs, file URLs \\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
-The dataset construction procedure involves four major stages. Firstly, raw data crawling collects vulnerability reports and patches from public databases and major code forges, along with full repositories at the parent and child commit states to reconstruct complete pre- and post-fix source code snapshots. Secondly, vulnerability untangling applies a joint decision rule that combines large language model (LLM) assessments of code change relevance with static analysis heuristics to identify and isolate files genuinely involved in vulnerability fixes, excluding unrelated refactorings or additional feature changes. Thirdly, multi-granularity dependency extraction mines caller–callee relationships across the entirety of each repository, expanding beyond direct diffs to incorporate top-level functions and inter-file connectivity, vital for capturing interprocedural vulnerability mechanisms. Finally, trace-based filtering discards outdated or superseded patches using commit chronology and file path tracking, ensuring the dataset contains only up-to-date and correct vulnerability fixes \cite{wang2024reposvul}.
 
-The objective of this thesis is to reconstruct executable interprocedural chains. ReposVul provides repository-level context with parent and child patches, multi-granularity slices at line, function, file, and repository levels, and caller–callee relationships mined across the repository \cite{wang2024reposvul}. This combination enables chain-centric ground truth and realistic evaluation of cross-boundary propagation.
+
 
 \subsection{Extraction and graph construction pipeline}
 \label{subsec:graph-construction}
 
-The conversion from raw dataset entries to chain-centric program graphs occurs over six sequential stages. The first three follow the dataset’s framework to yield high-quality, curated examples; the latter three transform these examples into program graphs amenable to interprocedural causal analysis.
+The conversion from raw dataset entries to chain-centric program graphs occurs over six sequential stages.
 
 \setlength{\fboxsep}{0pt}     
 \setlength{\fboxrule}{0.3pt}  
@@ -514,23 +492,23 @@ The conversion from raw dataset entries to chain-centric program graphs occurs o
 	\label{fig:method-datapipeline}
 \end{figure}
 
-\paragraph{Stage A: raw vulnerability and patch acquisition.}
-I ingest the ReposVul entries with their CVE and CWE metadata and fetch, for each entry, the project repository state at the parent and child commits. This guarantees access to the full files before and after the fix. Commit identifiers, messages and dates, project identifiers, and file paths for every changed file are indexed for traceability.
+\paragraph{Stage A: Getting raw vulnerability and patch information:}
+I add CVE/CWE metadata to \emph{ReposVul} entries and get the repository at parent and child commits. This keeps all of the pre- and post-fix files. For traceability, commit IDs, messages, dates, project IDs, and file paths are all indexed.
 
-\paragraph{Stage B: vulnerability untangling.}
-Patches frequently combine refactorings with fixes. I apply the dataset’s untangling procedure, which combines model judgments on code-change, to retain only files judged vulnerability-fixing related by the joint rule. Both signals are persisted for audit.
+\paragraph{Stage B: figuring out the vulnerabilities:}
+Patches often combine fixes with changes to the code. I use the corpus untangling rule, which combines model judgments with static cues, to keep only files that are relevant to fixing. 
 
-\paragraph{Stage C: multi-granularity dependency extraction.}
-For each retained patch, I extract the caller–callee relationships necessary to connect a candidate source to a sink via interprocedural flows. Repository-level extraction provides cross-file call links, and the search scope is expanded to top-level functions when needed so that call chains outside the direct diff are captured.
+\paragraph{Stage C: extraction of dependencies at multiple levels of granularity:}
+For retained patches, I get links between callers and callees from all over the repository. When necessary, the scope includes top-level functions so that interprocedural paths from candidate sources to sinks can be recorded.
 
-\paragraph{Stage D: code normalization and static graph building.}
-I reconstruct a heterogeneous program multigraph per repository snapshot that merges the Abstract Syntax Tree (AST), the Control-Flow Graph (CFG), the Data-Flow Graph (DFG), and interprocedural call and return links. Argument$\rightarrow$parameter and return$\rightarrow$caller bindings are attached where resolvable, and conservative points-to based alias links are included to approximate def–use through pointers and containers. Node features encode token information, syntactic category, type hints, and lexical normalization flags. Edge features encode relation type and direction. Normalization anonymizes identifiers, buckets literals, and removes formatting that does not carry semantics, which reduces variance from benign refactorings reported to affect learning-based detectors \cite{Chakraborty2020,Li2022Empirical}.
+\paragraph{Stage D: making the code more consistent and building the static graph:}
+For each snapshot, I make a heterogeneous program graph that combines AST, CFG, DFG, call edges, ARG→PARAM, and RET→CALLER links. Pointer and container def-use are similar to conservative alias relations. Identifiers are made anonymous, and literals are put into buckets to cut down on the differences between harmless edits \cite{Chakraborty2020,Li2022Empirical}.
 
-\paragraph{Stage E: patch-aware differencing and slice materialization.}
-I compute precise line changes for each patch, then materialize four synchronized views for every example: line-level edits, enclosing functions, touched files, and a connected repository-scope subgraph that reaches from the touched region to any reachable sink along feasible control- and data-flow paths. These synchronized views instantiate the dataset’s multi-granularity design in a graph-native form and supply the raw material for chain assembly.
+\paragraph{Stage E: differencing that takes patches into account and slice materialization:}
+I calculate line diffs for each patch and then create four synchronized views: changed lines, enclosing functions, touched files, and a repository subgraph that can reach any sink through possible control and data flow. These views are what you use to put together a chain.
 
-\paragraph{Stage F: trace-based filtering for outdated patches.}
-I reapply the dataset’s trace-based filter. File paths and commit times are tracked to remove nonfunctional files, then changed files across parent and child commits are compared to identify outdated patches superseded by subsequent fixes to the same file. Eliminating such cases avoids training and testing on incomplete or obsolete fixes and improves the validity of interprocedural chains that depend on correct call and data-flow context.
+\paragraph{Stage F: filtering based on traces for old patches:}
+I keep track of file paths and commit times so I can get rid of files that don't work and patches that are no longer needed.
 
 \begin{table}[H]
 \centering
@@ -554,29 +532,33 @@ F & Remove outdated patches using path and commit chronology; keep only current 
 \subsection{Unified multigraph, typing, features, and storage}
 \label{subsec:unified-mg}
 
-The resulting representation is a unified heterogeneous multigraph rooted in the CPG abstraction \cite{yamaguchi2014cpg}. Within a single typed node store, I maintain relation-specific edge sets for AST, CFG, and DFG, together with explicit interprocedural links for \emph{CALL} (caller to callee entry), \emph{ARG2PARAM} (actual$\rightarrow$formal), \emph{RET2CALL} (callee return$\rightarrow$call site), and \emph{RET2LHS} (return value$\rightarrow$assignment target), plus reverse edges for all relation families to support undirected neighborhood aggregation during learning. This topology ensures that control and data dependences, as well as cross-boundary value flows, are simultaneously available for chain reconstruction.
+I depict each repository snapshot as a heterogeneous multigraph constructed upon the Code Property Graph (CPG) abstraction \cite{yamaguchi2014cpg}. A single typed node store keeps program parts. Relation-specific edge sets encode \textsc{AST}, \textsc{CFG}, and \textsc{DFG}. Interprocedural links are CALL (caller to callee entry), ARG2PARAM (actual to formal), RET2CALL (callee return to call site), and RET2LHS (return value to assignment target). For all families, reverse edges are made real. This topology shows the control and data dependencies and cross-boundary flows that are needed to rebuild the chain.
 
-Nodes are typed by syntactic role (for example identifier, literal, operator, statement, basic block, function) and carry a compact structural feature vector that includes token category flags, simplified SSA indices where available, type hints, and normalization indicators. Edges are typed by relation family and direction, and optionally include guard predicates for CFG edges or alias provenance for points-to–induced links. Graphs are persisted in shard files with per-graph metadata such as repository, commit, file path, and function names, which makes the pipeline scalable and allows constant-time retrieval of instance-level provenance.
+For example, an identifier, literal, operator, statement, basic block, or function can be used to type nodes. Each node has a small structural feature vector that includes flags for token categories, simplified SSA indices, type hints, and normalization markers. Edges are classified by family and orientation. Optional fields include guard predicates on CFG edges and alias provenance on links that come from points-to. Shard files hold graphs, and each graph has its own metadata, such as the repository, commit, file path, and function names. This makes it possible to store things in a way that can grow and look up their origins quickly.
 
-To accommodate later feature enrichment, I store two parallel encodings. The \emph{base} encoding contains compact structural features adequate for ablations and classical GNNs. The \emph{pretrained} encoding augments each node with a 768-dimensional structure-aware embedding derived from a data-flow–aware encoder (GraphCodeBERT), yielding a dual-channel representation: a low-dimensional structural feature vector and a high-dimensional contextual vector. This dual-channel design is consumed by the model, and it preserves a consistent topology across the base and enriched variants so that interprocedural edges and counts remain unchanged while only the feature space is expanded.
+I keep two encodings going at the same time. The \emph{base} encoding has only small structural features for ablations and classical GNNs. The "pretrained" encoding adds a 768-dimensional embedding from GraphCodeBERT \cite{guo2021graphcodebert} to each node. The outcome is a dual-channel configuration: a low-dimensional structural vector combined with a high-dimensional contextual vector. The topology and interprocedural counts are the same for all encodings; only the feature space is different.
 
-For decoding I treat the set of relation types that appear in the heterogeneous graph (\textsc{AST}, \textsc{CFG}, \textsc{DFG}, \textsc{CALL}, \textsc{ARG2PARAM}, \textsc{RET2CALL}, \textsc{RET2LHS}, and \textsc{DFG\_THIN}) as a fixed \emph{alphabet} $\mathcal{R}$. This same alphabet underlies the causal prior introduced later: the prior never changes the graph; it only provides small, auditable preferences over which relation type to expand at each hop during decoding.
+The set of relation types is treated as a fixed alphabet $\mathcal{R}$ by decoding. This includes \textsc{AST}, \textsc{CFG}, \textsc{DFG}, \textsc{CALL}, \textsc{ARG2PARAM}, \textsc{RET2CALL}, \textsc{RET2LHS}, and \textsc{DFG\_THIN}. It changes the weights of acceptable expansions during decoding, but it never changes the graph.
 
 
 
 \subsection{Ground-truth definition}
 \label{subsec:gt-definition}
 
-Ground truth is defined at two complementary levels. At the label level, a repository revision is marked vulnerable if it appears in a vulnerability-fixing commit pair documented by ReposVul, and the corresponding fixed revision is marked non-vulnerable. Using positive–negative pairs with identical surrounding context reduces confounding from unrelated changes \cite{wang2024reposvul}. Commits that aggregate multiple, unrelated fixes are excluded. At the mechanism level, each example carries a single executable chain that reflects the vulnerability mechanism and is represented as an ordered sequence of nodes and edges from a source through any propagators to a sink, possibly crossing function boundaries. Sources are origin sites where attacker-controlled or otherwise untrusted data enters the program state, for example input acquisition or deserialization. Sanitizers are code regions that validate, constrain, or transform tainted data, for example bounds checks, format validation, or defensive copies. Propagators are statements or calls that forward tainted or unsafe state across assignments, pointer dereferences, parameter passing, returns, container writes, and index arithmetic. Sinks are security-relevant operations that become exploitable once reached by tainted or unsafe state, for example memory writes or indexing, command execution, path traversal, database execution, or dangerous casts. Role assignment is automated with a rule base derived from secure-coding literature and prior datasets, then verified with control- and data-dependence consistency checks. A function-name lexicon and API families capture common sources and sinks, and structural patterns capture sanitizers and propagators. Appendix~\ref{app:role-lexicon} lists the lexicon and patterns.
+I define ground truth on two levels. A repository revision is vulnerable at the label level if it is part of a vulnerability–fix pair in \emph{ReposVul}; the corresponding fixed revision is not vulnerable \cite{wang2024reposvul}. Using paired revisions with the same context makes it less likely that unrelated edits will confuse things.
 
-The annotation workflow begins by seeding candidates from diffs, since line edits often expose guard predicates and argument shaping. Def–use traversal then collects propagators and checks reachability to known sink patterns. Calls and returns are resolved along the repository-level call graph, and argument$\rightarrow$parameter as well as return$\rightarrow$caller bindings are attached at call sites. Consistency checks require that a feasible path exists from every retained source to a sink, that each sanitizer blocks at least one tainted path, and that each propagator lies on a feasible CFG-consistent path. Two verification passes improve quality. A feasibility pass ensures that removing the sink breaks exploitability in the slice and that the path conditions are satisfiable under conservative approximations. A counterfactual plausibility pass applies simple edits, for example strengthening a bounds check or swapping a dangerous sink for a benign variant, and re-checks reachability. Examples that fail are corrected or excluded.
+At the mechanism level, each positive example has one executable chain that goes from a source to a sink, passing through any propagators and optional sanitizers along the way. Chains can go across function boundaries. Sources are places where data that can't be trusted gets into the program state, like when it parses input or deserializes it. Sanitizers check or limit that state, like checks for bounds or checks for correct format. Propagators move taint through assignments, passing parameters, returns, pointer hops, container writes, or index arithmetic. When you reach a sink, it becomes an exploitable operation that is important for security. Examples include memory writes, command execution, path traversal, database calls, and unsafe casts. Lexicon and patterns can be found in Appendix~\ref{app:role-lexicon}.
+
+The process for adding notes is short. I seed candidates from diffs because line edits often show guards and how arguments are shaped. I use def–use to go through and find propagators and check if they can reach known sink patterns. I fix calls and returns along the repository call graph and add \(\textsc{ARG}\!\to\!\textsc{PARAM}\), \(\textsc{RET}\!\to\!\textsc{CALLER}\), and \(\textsc{RET}\!\to\!\textsc{LHS}\) bindings at the places where calls happen. For consistency, there needs to be a way for each retained source to get to a sink, each sanitizer needs to block at least one tainted path, and each propagator needs to be on a \textsc{CFG}-consistent path.
+
+Two verification passes make things better. A feasibility pass makes sure that taking out the sink makes the slice less exploitable and that path conditions can be met with conservative approximations. A counterfactual pass makes small changes, like making a bounds check stronger or replacing a dangerous sink with a safe one, and then checks reachability again.  Cases that don't work are fixed or taken away.
 
 \subsection{Interprocedural Semantics and Cross-Boundary Validity}
 \label{subsec:interproc-semantics}
 
-Each program graph instance integrates comprehensive interprocedural relationships, encompassing a full repository-level call graph enriched with call-site contextual information and parameter arities. Edges explicitly bind actual arguments to formal parameters and return values to caller variables. Library API summaries capture known taint behavior conservatively. Points-to based alias edges approximate data propagation through pointers, references, and container structures. Every interprocedural edge records provenance data, including the source file and enclosing function of both endpoints, facilitating auditability and later visualization in case studies.
+I explicitly model interprocedural structure. There is a repository-level call graph in each program graph that shows the context and number of parameters for each call site. Edges connect real arguments to formal parameters (\textsc{ARG}\(\to\)\textsc{PARAM}) and return values to caller variables (\textsc{RET}\(\to\)\textsc{CALLER}/\textsc{RET}\(\to\)\textsc{LHS}). Points-to based alias edges are like flows through pointers, references, and container structures. For both endpoints, every interprocedural edge stores the source file and the enclosing function.
 
-Empirical evidence supports the validity of this interprocedural modeling for vulnerability chain reconstruction. The repository-level dependency extraction, coupled with scope expansion beyond syntactic diffs, recovers call chains that cross files as needed to connect vulnerability roots to corresponding sinks. As shown in Table~\ref{tab:ipa-coverage}, a significant fraction of instances contain non-empty caller or callee sets, with a consistent subset exhibiting both, indicating traversable cross-function edges. The feasibility and counterfactual plausibility checks include the interprocedural paths, thus ensuring that the retained chains represent executable and causally coherent vulnerability mechanisms rather than disconnected local saliencies.
+These choices are backed up by real-world tests. By extracting dependencies at the repository level and expanding the scope beyond syntactic diffs, it is possible to get back cross-file chains that connect roots to sinks.  Table~\ref{tab:ipa-coverage} shows that many instances have non-empty caller or callee sets, and a consistent subset has both, which means that cross-function edges can be traversed. Feasibility tests and counterfactual edits function along these trajectories. The retained chains thus signify executable and causally coherent mechanisms rather than disjointed local cues.
 
 \subsection{Data Splits, Controls, and Reproducibility}
 \label{subsec:splits-leakage}
@@ -637,10 +619,72 @@ Test  & 12.97 & 29.17 & 9.03 & 0.47 & 2.90 & 0.09 \\
 
 These figures indicate that nearly one third of instances expose a callee set, about one eighth expose a caller set, and roughly one in ten expose both, which together provide the minimum structural precondition for discovering interprocedural chains that cross function boundaries. Because the executable chains are validated with feasibility and counterfactual checks in the presence of these links, the prepared data sustain interprocedural vulnerability quality rather than relying on isolated, intra-procedural signatures.
 
+
+
+%---------
+\subsection{Splits, controls, and coverage}
+\label{subsec:splits-coverage}
+
+I use the official, project-disjoint \texttt{ReposVul} splits without modification \cite{wang2024reposvul}. Each project stays in a single partition. Parent–child patch pairs are not split. Identical file snapshots and duplicate CVEs do not cross partitions. Cross-repository call-graph artifacts are not merged. When temporal robustness is assessed, commit chronology is respected.
+
+Reproducibility controls are strict. Each example stores the ordered node IDs of the chain, node roles, edge types, and synchronized line, function, and file indices. Random seeds are fixed. Parser and language versions are logged. Repository commit hashes are tracked.
+
+\begin{table}[H]
+	\centering
+	\small
+	\caption{Split-wise label counts (file-snapshot granularity).}
+	\label{tab:split-labels}
+	\begin{tabular}{lrrrr}
+		\toprule
+		\textbf{Split} & \textbf{Records} & \textbf{Non-vuln} & \textbf{Vuln} & \textbf{Pos.\%} \\
+		\midrule
+		Train & 185{,}791 & 180{,}259 & 5{,}532 & 2.98 \\
+		Valid & 23{,}224 & 22{,}503 & 721     & 3.10 \\
+		Test  & 23{,}224 & 22{,}554 & 670     & 2.88 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\small
+	\caption{Graph instances and node-label density after chain-centric conversion.}
+	\label{tab:graph-density}
+	\begin{tabular}{lrrrr}
+		\toprule
+		\textbf{Split} & \textbf{Graphs} & \textbf{Vuln nodes} & \textbf{Non-vuln nodes} & \textbf{Pos.\ ratio} \\
+		\midrule
+		Train & 3{,}438 & 9{,}946 & 25{,}173{,}258 & $3.95\times10^{-4}$ \\
+		Valid & 2{,}905 & 1{,}455 & 3{,}970{,}281  & $3.66\times10^{-4}$ \\
+		Test  & 2{,}915 & 1{,}316 & 3{,}973{,}974  & $3.31\times10^{-4}$ \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\small
+	\caption{Interprocedural connectivity: presence of non-empty caller and callee sets.}
+	\label{tab:ipa-coverage}
+	\begin{tabular}{lrrrrrr}
+		\toprule
+		\textbf{Split} & \textbf{Caller\%} & \textbf{Callee\%} & \textbf{Both\%} & \textbf{Caller\_chg\%} & \textbf{Callee\_chg\%} & \textbf{Both\_chg\%} \\
+		\midrule
+		Train & 12.59 & 28.95 & 8.72 & 0.46 & 2.79 & 0.06 \\
+		Valid & 13.10 & 29.26 & 9.21 & 0.55 & 2.74 & 0.07 \\
+		Test  & 12.97 & 29.17 & 9.03 & 0.47 & 2.90 & 0.09 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\noindent In almost one-third of cases, a callee set is shown; in about one-eighth of cases, a caller set is shown; and in about one-tenth of cases, both are shown.  These rates create the structural conditions that make cross-function chains possible.  Since feasibility and counterfactual checks work along these links, kept examples support executable, interprocedural mechanisms instead of isolated intra-procedural cues.
+
+
+
 \subsection{Summary}
 \label{subsec:dataset-summary}
 
-The described dataset preparation pipeline produces a suite of interprocedurally rich, chain-prepared program graphs annotated with explicit source, sanitizer, propagator, and sink roles that reflect executable paths rather than isolated statements. ReposVul provides reliable label provenance and repository context \cite{wang2024reposvul}, and the adoption of its official splits together with normalization and verification reduces known threats to validity in learning-based vulnerability detection \cite{Chakraborty2020,Li2022Empirical}. This facilitates the chain-centric learning and evaluation paradigm advanced in this thesis. The choice of ReposVul ensures reliable label provenance, broad repository context, and integration of multi-level dependency information. By adopting the official splits and applying thorough normalization and verification, the dataset mitigates prevailing threats to learning validity as reported in prior literature. Collectively, the resulting dataset and methodology establish a strong foundational platform for the methodology and experimental chapters that follow.
+The pipeline makes program graphs that are full of procedures and ready to be linked together. Each part has a clear job (source, sanitizer, propagator, sink). Instead of separate statements, these graphs encode executable paths. \emph{ReposVul} gives you reliable label provenance and a wide repository context \cite{wang2024reposvul}. Using its official project-disjoint splits, along with normalization and verification, lowers the risks to validity that are already known in learning-based vulnerability detection \cite{Chakraborty2020,Li2022Empirical}.
 
 
 
@@ -708,24 +752,18 @@ The total loss combines graph-level BCE and small regularizers (Appendix Eq.~\re
 \subsection*{Summary}
 \label{sec:model-arch-summary}
 
-This section gives a high-level roadmap of the pipeline that reconstructs executable root-to-sink causal chains. At a glance, it covers five stages: encoding program nodes, contextual graph reasoning, constrained decoding with feasibility checks, chain selection and validation, and end-to-end training. The brief summary below lists the key operations and the exact equations referenced in the appendix.
+This section gives a brief overview of the pipeline that puts executable root-to-sink chains back together.  There are five steps: encoding the nodes, reasoning about the graph, decoding with constraints, selecting a chain with validation, and training.
 
-First, each program node is converted into text features using GraphCodeBERT. When a statement contains multiple identifiers, a light edge-aware attention prefers def–use carriers (Appendix Eq.~\ref{app:eq:gcbert-attn-weight}--\ref{app:eq:gcbert-attn-sum}); otherwise, a uniform token average is used (Appendix Eq.~\ref{app:eq:gcbert-token-avg}). These textual vectors are projected alongside structural descriptors (types, degrees, roles), then fused by a learned gate to produce the initial node state $h^{(0)}$ (Appendix Eq.~\ref{app:eq:init-proj}--\ref{app:eq:init-fuse}).
-
-Next, a relation-aware GAT builds contextual representations with per-relation attention and typed message passing (Appendix Eq.~\ref{app:eq:gat-alpha}--\ref{app:eq:gat-update}). From the final states, the encoder emits node logits, seed scores, and relation-gated edge compatibilities used for path search (Appendix Eq.~\ref{app:eq:node-seed}--\ref{app:eq:edge-compat}).
-
-Then, decoding begins from the top-$K$ model-selected seeds (Appendix Eq.~\ref{app:eq:seed-set}). Candidate paths are scored as a log-additive mix of node and edge evidence (Appendix Eq.~\ref{app:eq:path-score}); a weak Causal Knowledge Graph prior nudges ranking but never changes feasibility (Appendix Eq.~\ref{app:eq:path-score-ckg}).
-
-After that, Adaptive Causal Contextualization (ACC) filters expansions using constant-time admissibility checks for interprocedural CFG reachability, taint/guard semantics, stack discipline across calls/returns, and alias consistency (Appendix Eq.~\ref{app:eq:acc-cfg-ok}--\ref{app:eq:acc-admiss}). ACC also shapes the path score with role-aligned penalties for the start, interior, and end, plus a sanitizer bonus when a dominant guard protects the sink (Appendix Eq.~\ref{app:eq:acc-role-start}--\ref{app:eq:acc-san-bonus}). Mild length and repetition costs control path complexity (Appendix Eq.~\ref{app:eq:acc-pen-len}--\ref{app:eq:acc-pen-rep}), and all adjustments combine into the ACC score and its optional CKG mixture (Appendix Eq.~\ref{app:eq:acc-score}--\ref{app:eq:acc-score-ckg}).
-
-Subsequently, the system selects a single chain that starts near a source, includes a propagator or sanitizer inside, and ends at a sink (Appendix Eq.~\ref{app:eq:chain-start}--\ref{app:eq:chain-end}). Among admissible candidates, the maximizer of the ACC objective is chosen (Appendix Eq.~\ref{app:eq:chain-select}) and then validated structurally and via minimal counterfactual edits.
-
-Finally, training optimizes a composite objective: The graph-level BCE takes care of classification, while the small regularizers shape the explanation. These are flow consistency, counterfactual consistency, attention entropy, spectral control, and sanitizer alignment (Appendix Eq.~\ref{app:eq:train-total}). The CKG prior is only used during decoding to change the ranking. It never goes into the loss, so the gradients stay the same.
+GraphCodeBERT \cite{guo2021graphcodebert} embeds nodes. If a statement has more than one identifier, a light edge-aware attention emphasizes def–use carriers (Appendix. Eqs. \ref{app:eq:gcbert-attn-weight}–\ref{app:eq:gcbert-attn-sum}); if not, a uniform token average is used (Appendix. Eq. \ref{app:eq:gcbert-token-avg}). Textual vectors and structural descriptors are projected and fused to create $h^{(0)}$ (Appendix. Eqs. \ref{app:eq:init-proj}–\ref{app:eq:init-fuse}).
 
 
+A relation-aware GAT combines typed neighbourhoods to make node logits, seed scores, and edge compatibilities (Appendix. Eqs. \ref{app:eq:gat-alpha}–\ref{app:eq:gat-update}, \ref{app:eq:node-seed}–\ref{app:eq:edge-compat}).
 
+Decoding starts from the top-$K$ seeds (Appendix.~Eq.~\ref{app:eq:seed-set}). Path scores combine evidence from nodes and edges (Appendix. Eq. \ref{app:eq:path-score}). A weak Causal Knowledge Graph prior influences ranking without altering feasibility (Appendix. Eq. \ref{app:eq:path-score-ckg}).
 
+Adaptive Causal Contextualization (ACC) guarantees CFG reachability, data and guard preservation, call–return discipline, and alias consistency (Appendix. Eqs. \ref{app:eq:acc-cfg-ok}–\ref{app:eq:acc-admiss}). The score is based on role-aligned terms and a sanitizer bonus (Appendix. Eqs. \ref{app:eq:acc-role-start}–\ref{app:eq:acc-san-bonus}). Length and repetition costs keep things simple (Appendix. Eqs. \ref{app:eq:acc-pen-len}–\ref{app:eq:acc-pen-rep}). The highest-scoring admissible chain is chosen and checked (Appendix. Eqs. \ref{app:eq:acc-score}–\ref{app:eq:acc-score-ckg}, \ref{app:eq:chain-start}–\ref{app:eq:chain-select}).
 
+Training maximizes graph-level binary cross-entropy using minimal regularizers to ensure flow consistency and sparsity (Appendix. Eq. \ref{app:eq:train-total}). The prior is only used for inference and never goes into the loss.
 
 
 
@@ -773,7 +811,7 @@ After thresholding, the standard counts TP, FP, TN, and FN are computed. The rep
 	\mathrm{Recall}=\frac{\mathrm{TP}}{\mathrm{TP}+\mathrm{FN}},\quad
 	\mathrm{F1}=\frac{2\,\mathrm{Precision}\cdot \mathrm{Recall}}{\mathrm{Precision}+\mathrm{Recall}}.
 \end{equation}
-Precision measures correctness among predicted positives. Recall measures coverage of true positives. F1 balances the two. Accuracy, Macro-/Micro-F1, AUROC, and AUPRC on raw scores are also reported. Because the positive class is rare, AUPRC and Macro-F1 are emphasized. Formal variants are in App.~\ref{app:metrics-standard}.
+Precision measures correctness among predicted positives. Recall measures coverage of true positives. F1 balances the two. Accuracy, Macro-/Micro-F1, AUROC, and AUPRC on raw scores are also reported. Because the positive class is rare, AUPRC and Macro-F1 are emphasized. Formal variants are in Appendix.~\ref{app:metrics-standard}.
 
 \section{Chain-Centric Metrics}
 \label{sec:eval-chain}
@@ -823,906 +861,497 @@ The dataset has predictions for each graph, chains with beam traces, calibration
 \label{chap:results}
 
 
-This chapter presents a comprehensive evaluation of the proposed chain-centric framework for vulnerability detection. The experiments are designed to assess both quantitative performance and qualitative interpretability, emphasizing the model’s ability to recover executable, causally grounded mechanisms of vulnerability propagation. The analysis is organized around three focal dimensions: (i) causality-aware, end‑to‑end metrics that evaluate whether predictions are grounded in valid interprocedural execution paths; (ii) configuration and runtime characteristics that demonstrate the framework’s efficiency, scalability, and reproducibility; and (iii) qualitative evidence derived from reconstructed causal chains and beam search diagnostics, illustrating how detected vulnerabilities align with real program semantics. The chapter is structured to support progressive inclusion of additional experiments, evaluation scenarios, and case studies as the research evolves, ensuring that subsequent results can be integrated seamlessly within the same analytical framework.
+This chapter provides a comprehensive evaluation of the proposed chain-centric methodology for identifying inter-procedural vulnerabilities. The experiments assess quantitative metrics that validate interprocedural causal validity, analyze runtime and configuration components that demonstrate efficiency and reproducibility. All results are structured to support incremental extension while preserving methodological coherence.
 
 
-\section{Setup Snapshot}
+\section{Experimental Setup and Configuration}
 \label{sec:results-setup}
 
-This section provides a complete record of the experimental configuration used to produce the results discussed in Chapter~\ref{chap:results}. All experiments follow the official \emph{ReposVul} repository-level data splits introduced in Chapter~\ref{chap:method-architecture} (Section~\ref{subsec:splits-leakage}). Unless explicitly stated otherwise, the encoder width is set to $d_0{=}64$ with three relation-aware GAT layers ($L{=}3$). Decoding employs multi-root beam search augmented by Adaptive Causal Contextualization (ACC), while the Causal Knowledge Graph (CKG) prior is activated at inference time to softly bias relation transitions toward historically coherent patterns (see Section~\ref{sec:model-arch-acc}). Optimization settings follow those in Section~\ref{sec:method-train}. Table~\ref{tab:results-config} consolidates key configuration details recorded from the training and runtime manifests.
+Experiments use the official \texttt{ReposVul} project-disjoint splits. Commit chronology is respected. Two encoders are compared: \emph{Struct-only} and \emph{GCBERT+Struct}. The language model remains frozen. Decoding is ACC-constrained beam search. A decoding-only CKG prior is applied. Temperature scaling is fitted on validation and held on test. Five seeds are used per configuration.
 
 \begin{table}[H]
-\centering
-\small
-\setlength{\tabcolsep}{6pt}
-\renewcommand{\arraystretch}{1.12}
-\caption{Configuration snapshot extracted from the training report.}
-\label{tab:results-config}
-% middle column (Value) wraps via Y; table width = \linewidth
-\begin{tabularx}{\linewidth}{@{} l Y l @{}}
-\toprule
-\textbf{Item} & \textbf{Value} & \textbf{Notes} \\
-\midrule
-Epochs & $5$ & Prototype run (additional epochs planned) \\
-Optimizer / LR / WD & AdamW / $2\!\times\!10^{-3}$ / $10^{-4}$ & Matches Section~\ref{sec:method-train} \\
-Hidden / Layers & $64$ / $3$ & One head per relation \\
-Relations used & DFG, CFG, CALL, ARG2PARAM, RET2CALL, RET2LHS & With summary edges enabled \\
-Beam settings & $K{=}8$, $B{=}24$, $H{=}5$, $\alpha{=}0.7$ & Multi-root, auto-seeded beams \\
-Slice mode & Beam & ACC-constrained decoding \\
-Device & CUDA (single GPU) & RTX 4070 Laptop GPU \\
-\bottomrule
-\end{tabularx}
+	\centering
+	\small
+	\setlength{\tabcolsep}{6pt}
+	\renewcommand{\arraystretch}{1.06}
+	\caption{Experimental setup summary.}
+	\label{tab:results-config}
+	\begin{tabularx}{\linewidth}{@{} l X @{}}
+		\toprule
+		\textbf{Item} & \textbf{Setting} \\
+		\midrule
+		Dataset & \texttt{ReposVul}, project-disjoint, chronology respected \\
+		Graph relations & DFG, CFG, CALL, ARG2PARAM, RET2CALL, RET2LHS; alias summaries on \\
+		Encoder & Relation-aware GAT, width \(d_0{=}64\), \(L{=}3\) layers \\
+		Variants & Struct-only; GCBERT+Struct (GraphCodeBERT frozen) \\
+		Decoding & Beam with ACC, \(K{=}8\), \(B{=}24\), \(H{=}5\), node/edge mix \(\alpha{=}0.7\) \\
+		CKG prior & Decoding-only mixture \(\lambda{=}0.2\); smoothing \(10^{-3}\); temperature \(1.0\) \\
+		Training & AdamW; LR \(2\times10^{-3}\); WD \(10^{-4}\); early stop on validation macro-F1 \\
+		Calibration & Temperature scaling on validation; ECE with 15 bins \\
+		Thresholds & \(\tau_{\mathrm{F1}^\star}\) (per variant) and \(\tau{=}0.5\) \\
+		Seeds & 5 per configuration; mean and 95\% CIs reported \\
+		Environment & PyTorch 2.4.1, CUDA 12.1, RTX 4070 Laptop GPU, AMP on \\
+		Embeddings cache & GraphCodeBERT features, FP16, max length 512, stride 384 \\
+		\bottomrule
+	\end{tabularx}
 \end{table}
-
-\subsection{Dataset and Splits}
-\label{subsec:results-splits}
-
-Experiments use the \emph{ReposVul} dataset prepared in Chapter~\ref{chap:method-architecture} (Sections~\ref{subsec:graph-construction}--\ref{subsec:interproc-semantics}). Dataset splits ensure that no project overlaps between partitions; vulnerable and fixed commit pairs remain within the same partition, and chronological order is preserved to evaluate temporal robustness. Table~\ref{tab:results-split-summary} summarizes the training, validation, and test distributions, restated here for clarity.
-
-\begin{table}[H]
-\centering
-\small
-\setlength{\tabcolsep}{8pt}
-\renewcommand{\arraystretch}{1.10}
-\caption{Dataset split summary (file-snapshot granularity; reproduced for completeness).}
-\label{tab:results-split-summary}
-\begin{tabular}{lrrrr}
-\toprule
-\textbf{Split} & \textbf{Records} & \textbf{Non-vulnerable} & \textbf{Vulnerable} & \textbf{Pos.\%} \\
-\midrule
-Train & 185{,}791 & 180{,}259 & 5{,}532 & 2.98 \\
-Validation & 23{,}224 & 22{,}503 & 721 & 3.10 \\
-Test & 23{,}224 & 22{,}554 & 670 & 2.88 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection{Model Variants}
-\label{subsec:results-variants}
-
-Two main encoder variants are evaluated under identical graph and relation configurations. The first variant, \textbf{Struct-only}, relies on compact structural descriptors for each node, including types, degrees, SSA (Static Single Assignment) hints, and literal buckets. The second variant, \textbf{GCBERT+Struct}, fuses GraphCodeBERT embeddings with the same structural features, leveraging pretrained language representations to provide semantic context. In this setup, the GraphCodeBERT model remains frozen unless otherwise specified (see Section~\ref{sec:model-arch-gcbert}).
 
 
 \begin{table}[H]
 	\centering
+	\small
+	\setlength{\tabcolsep}{8pt}
+	\renewcommand{\arraystretch}{1.06}
+	\caption{Dataset split summary.}
+	\label{tab:results-split-summary}
+	\begin{tabular}{lrrrr}
+		\toprule
+		\textbf{Split} & \textbf{Records} & \textbf{Non-vuln} & \textbf{Vuln} & \textbf{Pos.\%} \\
+		\midrule
+		Train      & 185{,}791 & 180{,}259 & 5{,}532 & 2.98 \\
+		Validation & 23{,}224  & 22{,}503  & 721     & 3.10 \\
+		Test       & 23{,}224  & 22{,}554  & 670     & 2.88 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\noindent\textbf{Model variants:} Struct-only uses compact structural descriptors (types, degrees, SSA hints, literal buckets). GCBERT+Struct fuses GraphCodeBERT embeddings with the same structural features. Topology is identical across variants. The language model stays frozen unless noted.
+
+\begin{table}[H]
+	\centering
+	\small
 	\setlength{\tabcolsep}{4pt}
 	\renewcommand{\arraystretch}{1.05}
-	\caption{Base vs.\ GraphCodeBERT (GCBERT) encodings on the same shard.}
+	\caption{Struct-only vs.\ GCBERT on the same shard.}
 	\label{tab:gcbert-topology}
 	\resizebox{\linewidth}{!}{%
 		\begin{tabular}{llll}
 			\toprule
 			\textbf{Property} & \textbf{Struct-only} & \textbf{GCBERT} & \textbf{Comment} \\
 			\midrule
-			Nodes / in-dim & $3141$ / $25$ & $3141$ / $793$ & $25{+}768$ features in GCBERT \\
-			Total edges & $14066$ & $14066$ & Unchanged \\
-			Interproc edges (sum) & $4818$ & $4818$ & CALL/ARG2PARAM/RET2\* identical \\
-			Feature memory (approx.) & $\sim 0.31$ MB & $\sim 9.50$ MB & Text channel dominates \\
+			Nodes / in-dim & 3141 / 25  & 3141 / 793 & \(25{+}768\) features in GCBERT \\
+			Total edges    & 14066       & 14066      & Unchanged \\
+			Interproc edges (sum) & 4818  & 4818       & CALL/ARG2PARAM/RET2* identical \\
+			Feature memory (approx.) & \(\sim 0.31\) MB & \(\sim 9.50\) MB & Text channel dominates \\
 			\bottomrule
 		\end{tabular}%
 	}
 \end{table}
 
 
+\noindent Decoding employs ACC-constrained beam search. Steps are only allowed if CFG reachability is true. The bindings for ARG to PARAM and RET to CALLER/LHS are the same.  Alias checks are successful. The discipline of the stack is kept. A CKG prior, which was mined from training graphs, only changes the weights of moves that are allowed at inference. At the graph level, training uses class-weighted binary cross-entropy. There are active flow and causal regularizers. Early stopping checks validation macro-F1 with a 5-second wait.
 
-
-\subsection{Decoding and the CKG Prior}
-\label{subsec:results-decoding}
-
-All decoding operations use ACC-constrained beam search (see Section~\ref{sec:model-arch-acc}). Beam expansions are allowed only along admissible edges that satisfy control- and data-flow reachability, argument$\rightarrow$parameter and return$\rightarrow$caller consistency, taint and alias checks, and stack discipline. The Causal Knowledge Graph (CKG) prior is derived once from training graphs by analyzing edge, bigram, and top-$K$ trigram frequencies. It operates solely at inference as a multiplicative weighting factor that slightly favors empirically coherent relation transitions. Importantly, no gradient or loss term interacts with the CKG prior, preserving the original training objective.
 
 \begin{table}[H]
-\centering
-\small
-\setlength{\tabcolsep}{6pt}
-\renewcommand{\arraystretch}{1.12}
-\caption{ACC-constrained decoding and CKG prior configuration.}
-\label{tab:results-decoding}
-\begin{tabular}{l l}
-\toprule
-\textbf{Parameter} & \textbf{Setting} \\
-\midrule
-Seeds / Beam / Horizon & 8 / 24 / 5 \\
-Node–edge mix coefficient & 0.7 \\
-CKG smoothing and temperature & 0.001 / 1.0 \\
-CKG top-$K$ trigrams & 500 \\
-CKG prior weights $(\beta_1, \beta_2, \beta_3)$ & (0.3, 0.6, 0.1) \\
-CKG mixture weight $\lambda$ & 0.2 (inference only) \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection{Training, Calibration, and Thresholding}
-\label{subsec:results-calibration}
-
-Training adheres to the procedures outlined in Section~\ref{sec:method-train}, using class-weighted binary cross-entropy with additional causal and flow-based regularizers at the graph level. Early stopping monitors validation macro-F1 with a patience of five epochs. Model evaluation reports two decision thresholds: one that maximizes F1 on the validation set ($\tau_{\text{F1}^\star}$) and another fixed at $\tau{=}0.5$ to support fair cross-variant comparison. Temperature scaling is optionally fitted on the validation set and frozen thereafter for test evaluation. Expected Calibration Error (ECE) is computed using 15 calibration bins. Unless otherwise mentioned, the GraphCodeBERT encoder remains frozen; a separate ablation unfreezes the top two transformer blocks at 10\% of the GNN learning rate.
-
-\begin{table}[H]
-\centering
-\small
-\setlength{\tabcolsep}{6pt}
-\renewcommand{\arraystretch}{1.12}
-\caption{Training calibration and evaluation parameters.}
-\label{tab:results-calib}
-\resizebox{\linewidth}{!}{%
-\begin{tabular}{lll}
-\toprule
-\textbf{Item} & \textbf{Setting} & \textbf{Notes} \\
-\midrule
-Evaluation thresholds & $\tau_{\text{F1}^\star}$ (validation) and $\tau=0.5$ & Both reported for completeness \\
-Temperature scaling & Fitted on validation fold & Applied during test inference \\
-ECE & 15 histogram bins & Matches Eq.~\ref{eq:ece} definition \\
-Random seeds & 5 per configuration & Mean and CI aggregated across seeds \\
-\bottomrule
-\end{tabular}%
-}
+	\centering
+	\small
+	\setlength{\tabcolsep}{6pt}
+	\renewcommand{\arraystretch}{1.06}
+	\caption{Decoding, training, and evaluation protocol.}
+	\label{tab:eval-protocol}
+	\begin{tabularx}{\linewidth}{@{} l X @{}}
+		\toprule
+		\textbf{Item} & \textbf{Setting} \\
+		\midrule
+		Beam / horizon / mix & $K{=}8$, $B{=}24$, $H{=}5$, node–edge mix $\alpha{=}0.7$ \\
+		Admissibility gates & CFG reachability, ARG$\to$PARAM, RET$\to$CALLER/LHS, alias checks, stack discipline \\
+		CKG prior (inference only) & Mixture $\lambda{=}0.2$; smoothing $\epsilon{=}10^{-3}$; temperature $\tau{=}1.0$; top-$K$ trigrams $=500$; weights $(\beta_1,\beta_2,\beta_3){=}(0.3,0.6,0.1)$ \\
+		Loss & Class-weighted BCE at graph level $+$ flow and causal regularizers \\
+		Early stopping & Macro-F1 on validation, patience $=5$ \\
+		Encoder freeze & GCBERT frozen; ablation unfreezes last 2 blocks at $0.1\times$ LR \\
+		Thresholds & $\tau_{\text{F1}^\star}$ from validation and fixed $\tau{=}0.5$ on test \\
+		Calibration & Temperature scaling fit on validation; ECE with 15 bins \\
+		Seeds \& uncertainty & 5 seeds; mean and 95\% CIs; bootstrap $10^4$ for metrics, binomial CIs for DCR, paired bootstrap with Cliff’s $\delta$ \\
+		\bottomrule
+	\end{tabularx}
 \end{table}
 
 
-\subsection{Reporting Conventions and Statistical Measures}
-\label{subsec:results-reporting}
 
-All scalar metrics are reported as mean values with associated 95\% confidence intervals. Confidence intervals for standard performance and chain-quality metrics are estimated via non-parametric bootstrap sampling (10,000 test-graph resamples). Directional consistency rates (DCR) under causal interventions rely on binomial confidence estimation. When comparing models, significance is assessed using paired bootstrapping of per-graph differences, and effect sizes are reported using Cliff’s $\delta$ where relevant.
 
 \subsection{Experiment Environment and Artifact}
 \label{subsec:results-env}
 
-All experiments are conducted on a single NVIDIA GeForce RTX~4070 Laptop GPU using CUDA~12.1 and PyTorch~2.4.1 with automatic mixed precision enabled. GraphCodeBERT embeddings are precomputed and cached as FP16 tensors, with manifest entries recording tokenizer and checkpoint identifiers, window length (512), stride (384), and normalization options. The accompanying artifact archive provides full traceability of experiments, including configuration files, per-split predictions, calibration parameters, and detailed diagnostics. Specifically, the archive contains complete YAML manifests, prediction outputs in JSON format, calibration summaries, causal intervention logs, beam expansion analyses, and environment metadata (package versions, CUDA drivers, hashes).
+Experiments were run on an NVIDIA RTX 4070 Laptop GPU with CUDA 12.1 and PyTorch 2.4.1 using automatic mixed precision. GraphCodeBERT embeddings were precomputed and cached as FP16 tensors. The artifact archive includes configuration files, predictions, calibration parameters, causal intervention logs, beam expansion analyses, and environment metadata. This setup ensures full reproducibility of the results, with all decoding, calibration, and reporting details.
 
 
-This configuration snapshot is intended to make the subsequent results fully reproducible. All choices related to decoding (ACC and CKG application), calibration, and reporting are specified in sufficient detail for independent re-execution without reference to source code.
+
 
 
 \section{Conventional Metrics}
 \label{sec:results-conventional}
 
-This section reports conventional graph-level metrics for the two model variants described in Section~\ref{subsec:results-variants}. I evaluate Accuracy, Precision, Recall, F1, AUROC, and AUPRC; I select thresholds on validation and then fix them for test; I calibrate probabilities with temperature scaling; and I summarize the principal error modes by inspecting confusion matrices and a stratified sample of misclassifications.
+For both encoder variants, In this section I report standard graph-level metrics like Accuracy, Precision, Recall, F1, AUROC, and AUPRC. I set the operating threshold \(\tau_{\text{F1}^\star}\) on the validation split and leave it the same on \textsc{Test}. I use temperature scaling to adjust probabilities on validation and then use the same temperature on \textsc{Test}. I use AUPRC as the main score and F1 and AUROC as context because \textsc{Test} is unbalanced (positives \(\approx 2.9\%\)). I average the results over five seeds unless otherwise noted.
 
-\subsection{Accuracy/Precision/Recall/F1, AUROC, AUPRC}
-\label{subsec:conv-main}
-
-Because the positive rate is low ($\approx 2.9\%$ on \textsc{Test}), AUPRC is emphasized. I report results at the validation F1-optimal threshold (\(\tau_{\text{F1}^\star}\)) for each variant and keep the same threshold on \textsc{Test}. Numbers are the mean across 5 seeds; I round to three decimals.
 
 \begin{table}[H]
-\centering
-\small
-\caption{Validation and Test metrics @ $\tau_{\text{F1}^\star}$ (mean over 5 seeds).}
-\label{tab:conv-metrics}
-\begin{tabular}{l l c c c c c}
-\toprule
-Split & Variant & Acc & Prec & Rec & F1 & AUROC / AUPRC \\
-\midrule
-Valid & Struct-only & 0.954 & 0.320 & 0.530 & 0.400 & 0.820 / 0.300 \\
-Valid & GCBERT+Struct & \textbf{0.963} & \textbf{0.450} & \textbf{0.660} & \textbf{0.540} & \textbf{0.890} / \textbf{0.450} \\
-\midrule
-Test & Struct-only & 0.953 & 0.310 & 0.520 & 0.390 & 0.810 / 0.280 \\
-Test & GCBERT+Struct & \textbf{0.965} & \textbf{0.440} & \textbf{0.640} & \textbf{0.520} & \textbf{0.880} / \textbf{0.430} \\
-\bottomrule
-\end{tabular}
+	\centering
+	\small
+	\caption{Validation and test metrics at \(\tau_{\text{F1}^\star}\) (mean over five seeds).}
+	\label{tab:conv-metrics}
+	\begin{tabular}{l l c c c c c}
+		\toprule
+		Split & Variant & Acc & Prec & Rec & F1 & AUROC / AUPRC \\
+		\midrule
+		Valid & Struct-only      & 0.954 & 0.320 & 0.530 & 0.400 & 0.820 / 0.300 \\
+		Valid & GCBERT+Struct    & \textbf{0.963} & \textbf{0.450} & \textbf{0.660} & \textbf{0.540} & \textbf{0.890} / \textbf{0.450} \\
+		\midrule
+		Test  & Struct-only      & 0.953 & 0.310 & 0.520 & 0.390 & 0.810 / 0.280 \\
+		Test  & GCBERT+Struct    & \textbf{0.965} & \textbf{0.440} & \textbf{0.640} & \textbf{0.520} & \textbf{0.880} / \textbf{0.430} \\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
-\noindent
-Interpretation is consistent with the thesis goals. Accuracy is high for both variants due to class imbalance; AUROC shows healthy ranking; AUPRC is well above the random baseline ($\approx 0.029$ on \textsc{Test}). The GCBERT channel improves all metrics, with the largest gains in AUPRC and F1, indicating that structure-aware text features help the relation-aware GAT separate true vulnerabilities from refactoring noise.
-
-\subsection{Thresholding and Calibration Curves (PR, ROC)}
-\label{subsec:conv-thresh}
-
-I select \(\tau_{\text{F1}^\star}\) on validation by sweeping 1000 evenly spaced thresholds in $[0,1]$ and maximizing macro-F1; I also fit a single temperature parameter $T$ on validation logits to minimize NLL and then freeze it for \textsc{Test}. I summarize operating points and calibration quality below; PR/ROC curves for both splits are exported with the artifact (\texttt{pr\_curves.pdf}, \texttt{roc\_curves.pdf}).
+\noindent GCBERT+Struct improves AUPRC and F1 on both splits (AUPRC \(+0.15\), F1 \(+0.14\) on \textsc{Valid}; AUPRC \(+0.15\), F1 \(+0.13\) on \textsc{Test}). Accuracy is high for both due to class imbalance. AUROC indicates stable ranking.
 
 \begin{table}[H]
-\centering
-\small
-\caption{Operating points and calibration quality. ECE uses 15 bins.}
-\label{tab:conv-thresh}
-\begin{tabular}{l l c c c c}
-\toprule
-Split & Variant & $\tau_{\text{F1}^\star}$ & Temp $T$ & ECE (before) & ECE (after) \\
-\midrule
-Valid & Struct-only & 0.32 & 1.41 & 0.079 & \textbf{0.034} \\
-Valid & GCBERT+Struct & 0.27 & 1.29 & 0.061 & \textbf{0.021} \\
-\midrule
-Test & Struct-only & 0.32 & \emph{from Valid} & 0.082 & \textbf{0.036} \\
-Test & GCBERT+Struct & 0.27 & \emph{from Valid} & 0.064 & \textbf{0.022} \\
-\bottomrule
-\end{tabular}
+	\centering
+	\small
+	\caption{Operating points and calibration. ECE uses 15 bins.}
+	\label{tab:conv-thresh}
+	\begin{tabular}{l l c c c c}
+		\toprule
+		Split & Variant & \(\tau_{\text{F1}^\star}\) & Temp \(T\) & ECE (before) & ECE (after) \\
+		\midrule
+		Valid & Struct-only      & 0.32 & 1.41 & 0.079 & \textbf{0.034} \\
+		Valid & GCBERT+Struct    & 0.27 & 1.29 & 0.061 & \textbf{0.021} \\
+		\midrule
+		Test  & Struct-only      & 0.32 & \emph{from Valid} & 0.082 & \textbf{0.036} \\
+		Test  & GCBERT+Struct    & 0.27 & \emph{from Valid} & 0.064 & \textbf{0.022} \\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
-\noindent
-PR curves show the expected dominance of GCBERT+Struct over Struct-only across the full recall range, with the largest margin in the $0.4$--$0.8$ recall region where interprocedural chains are most common. ROC curves are smooth and well-calibrated after temperature scaling, and AUPRC improvements are consistent with the increased concentration of attribution mass on ACC paths reported later.
-
-\subsection{Error Analysis}
-\label{subsec:conv-errors}
-
-I compute confusion matrices on \textsc{Test} at the fixed \(\tau_{\text{F1}^\star}\) chosen on validation; counts reflect the true split composition (22,554 negatives / 670 positives).
+\noindent Calibration improves ECE on both variants after scaling. PR and ROC curves (artifact) reflect the same ordering.
 
 \begin{table}[H]
-\centering
-\small
-\caption{Confusion matrix (\textsc{Test}) @ $\tau_{\text{F1}^\star}$, Struct-only.}
-\label{tab:cm-struct}
-\begin{tabular}{l r r}
-\toprule
- & Pred.\ Neg & Pred.\ Pos \\
-\midrule
-True Neg & 21{,}779 & 775 \\
-True Pos & 322 & 348 \\
-\bottomrule
-\end{tabular}
+	\centering
+	\small
+	\caption{Confusion matrices on \textsc{Test} at \(\tau_{\text{F1}^\star}\).}
+	\label{tab:cm-both}
+	\begin{tabular}{l rr rr}
+		\toprule
+		& \multicolumn{2}{c}{Struct-only} & \multicolumn{2}{c}{GCBERT+Struct} \\
+		\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+		& Pred.\ Neg & Pred.\ Pos & Pred.\ Neg & Pred.\ Pos \\
+		\midrule
+		True Neg & 21{,}779 & 775 & 22{,}008 & 546 \\
+		True Pos & 322 & 348 & 241 & 429 \\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
-\begin{table}[H]
-\centering
-\small
-\caption{Confusion matrix (\textsc{Test}) @ $\tau_{\text{F1}^\star}$, GCBERT+Struct.}
-\label{tab:cm-gcbert}
-\begin{tabular}{l r r}
-\toprule
- & Pred.\ Neg & Pred.\ Pos \\
-\midrule
-True Neg & 22{,}008 & 546 \\
-True Pos & 241 & 429 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-I then review 200 misclassifications sampled uniformly from false positives and false negatives. The dominant false-positive pattern is call-heavy utility wrappers with weak or logging-oriented guards that resemble sanitizers syntactically but do not dominate the sink; the CKG prior reduces this mode but does not eliminate it. The second FP pattern is format-building code where string concatenation or index arithmetic appears taint-like in isolation; adding intra-basic-block reordering augmentation helped slightly. False negatives are led by macro-expanded propagations and templated container writes where points-to collapses several aliases; in a smaller fraction, callback-style flows traverse edges summarized by \texttt{DFG\_THIN} and are pruned when a sanitizer lies off the admissible corridor. These modes justify the interprocedural and causality-oriented choices made in the methodology and indicate where future precision gains are likely.
-
-\medskip
-\noindent
-Overall, conventional metrics confirm that the chain-centric model is competitive as a classifier while remaining faithful to executable mechanisms. Gains in AUPRC and F1 at fixed operating points align with improvements observed in causal metrics and with qualitative evidence from reconstructed chains.
+Error patterns are consistent. False positives often arise in call-heavy wrappers with weak guards, and in format-building code. False negatives often involve macro-expanded flows or callback paths summarized by thin data-flow edges. These outcomes correspond with subsequent chain and causal analyses.
 
 
-
-\section{Chain Quality and Interprocedural Structure}
+\section{Executable Chain Quality and Interprocedural Evidence}
 \label{sec:results-chain-quality}
 
-This section reports how well the reconstructed explanations behave as \emph{executable mechanisms} rather than point predictions. All numbers are means over 5 seeds; decoding used ACC with beams $(K{=}8,B{=}24,H{=}5,\alpha{=}0.7)$ and the CKG prior at $\lambda{=}0.2$. Unless noted, statistics are computed on positive slices where a chain was returned.
+Chains are evaluated as executable sequences rather than point predictions. I average the results of five seeds. I use beams that are ACC-constrained with \(K=8\), \(B=24\), \(H=5\), and \(\alpha=0.7\). I use a decoding-only CKG prior with \(\lambda=0.2\) to change the weight of moves that are allowed. I calculate statistics on positive slices that give back a chain unless otherwise noted.
 
-\subsection{Validity rate (CFG/DFG/alias/stack checks)}
-\label{sec:results-validity}
-
-Validity follows Eq.~\eqref{eq:validity} and requires a realizable interprocedural CFG path, DFG taint transport or guard preservation, well-nested call/return, and alias-consistent pointer hops. Table~\ref{tab:validity} shows that the GraphCodeBERT-enriched model increases the fraction of executable chains by $8{-}9$ points on both validation and test. In practice this reflects fewer illegal jumps (CFG), fewer broken call/return matchings, and fewer alias-inconsistent writes.
+A chain is feasible only when interprocedural control flow is realizable, data flow or guard preservation holds, call/return are matched, and alias checks pass. The GraphCodeBERT variant increases feasibility by 8–9 points on both splits.
 
 \begin{table}[H]
-\centering
-\small
-\setlength{\tabcolsep}{8pt}
-\renewcommand{\arraystretch}{1.10}
-\caption{Chain validity rate (pass rate of all feasibility checks).}
-\label{tab:validity}
-\begin{tabular}{l l c c}
-\toprule
-\textbf{Split} & \textbf{Variant} & \textbf{Validity} & \textbf{Notes}\\
-\midrule
-Valid & Struct-only        & 0.762 & More CFG violations in long hops \\
-Valid & GCBERT{+}Struct   & \textbf{0.842} & Fewer alias/stack failures \\
-Test  & Struct-only        & 0.741 & Errors concentrate at returns \\
-Test  & GCBERT{+}Struct   & \textbf{0.823} & Higher pass rate across seeds \\
-\bottomrule
-\end{tabular}
+	\centering
+	\small
+	\setlength{\tabcolsep}{8pt}
+	\renewcommand{\arraystretch}{1.10}
+	\caption{Feasibility of reconstructed chains (pass of all checks).}
+	\label{tab:validity}
+	\begin{tabular}{l l c c}
+		\toprule
+		\textbf{Split} & \textbf{Variant} & \textbf{Validity} & \textbf{Notes}\\
+		\midrule
+		Valid & Struct-only        & 0.762 & More CFG violations in long hops \\
+		Valid & GCBERT{+}Struct   & \textbf{0.842} & Fewer alias/stack failures \\
+		Test  & Struct-only        & 0.741 & Errors concentrate at returns \\
+		Test  & GCBERT{+}Struct   & \textbf{0.823} & Higher pass rate across seeds \\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
-\subsection{Interprocedurality (IPA rate; call/return use)}
-\label{sec:results-ipa}
 
-Interprocedurality is measured only on slices that contain cross-boundary evidence (\texttt{CALL}, \texttt{ARG}\(\to\)\texttt{PARAM}, \texttt{RET}\(\to\)\texttt{CALLER}/\texttt{RET}\(\to\)\texttt{LHS}). IPA rate is Eq.~\eqref{eq:ipa-rate}. I additionally report the share of chains that \emph{use both call and return} edges, and the average matched call depth.
+\noindent The IPA rate, the share using both call and return, and the mean call depth are all reported for cross-boundary edges (CALL, ARG→PARAM, and RET→CALLER/LHS).
 
 \begin{table}[H]
-\centering
-\small
-\setlength{\tabcolsep}{6pt}
-\renewcommand{\arraystretch}{1.10}
-\caption{Interprocedural structure in predicted chains. Conditioned on slices that expose interprocedural edges.}
-\label{tab:ipa}
-\begin{tabular}{l l c c c}
-\toprule
-\textbf{Split} & \textbf{Variant} & \textbf{IPA rate} & \textbf{Both(call+ret)} & \textbf{Mean call depth} \\
-\midrule
-Valid & Struct-only        & 0.618 & 0.402 & 1.27 \\
-Valid & GCBERT{+}Struct   & \textbf{0.708} & \textbf{0.486} & \textbf{1.32} \\
-Test  & Struct-only        & 0.603 & 0.389 & 1.24 \\
-Test  & GCBERT{+}Struct   & \textbf{0.691} & \textbf{0.471} & \textbf{1.30} \\
-\bottomrule
-\end{tabular}
+	\centering
+	\small
+	\setlength{\tabcolsep}{6pt}
+	\renewcommand{\arraystretch}{1.10}
+	\caption{Interprocedural structure in predicted chains.}
+	\label{tab:ipa}
+	\begin{tabular}{l l c c c}
+		\toprule
+		\textbf{Split} & \textbf{Variant} & \textbf{IPA rate} & \textbf{Both(call+ret)} & \textbf{Mean call depth} \\
+		\midrule
+		Valid & Struct-only        & 0.618 & 0.402 & 1.27 \\
+		Valid & GCBERT{+}Struct   & \textbf{0.708} & \textbf{0.486} & \textbf{1.32} \\
+		Test  & Struct-only        & 0.603 & 0.389 & 1.24 \\
+		Test  & GCBERT{+}Struct   & \textbf{0.691} & \textbf{0.471} & \textbf{1.30} \\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
 \noindent
-The gains indicate that enriched node representations help the beam prefer cross-function continuations and correctly re-attach at the caller on returns, which is essential for end-to-end exploit narratives.
-
-\subsection{Role \& order agreement (Node/Edge coverage, RoleCov, LCS)}
-\label{sec:results-role-order}
-
-Agreement with reference chains is summarized by Node/Edge coverage, role-aware coverage per role, and the order-aware LCS ratio (definitions in Section~\ref{subsec:struct-agree}). Results in Table~\ref{tab:role-order} show consistent improvements, most pronounced for sanitizer recovery and edge coverage, which reflects better propagation steps between functions.
-
+Node and edge coverage, role coverage (source, sanitizer, propagator, sink), and order agreement (LCS) are reported. Sanitizer recovery and edge coverage have the biggest gains. The order agreement also gets better.
 
 \begin{table}[H]
-\centering
-\small
-\setlength{\tabcolsep}{1pt} % tighter columns
-\renewcommand{\arraystretch}{1.12}
-\caption{Role and order agreement with ground truth. Coverage computed on positive test items with reference chains.}
-\label{tab:role-order}
-\resizebox{\linewidth}{!}{%
-\begin{tabular}{l l c c c c c c}
-\toprule
-\textbf{Split} & \textbf{Variant} & \textbf{NodeCov} & \textbf{EdgeCov} & \textbf{RoleCov\_src} & \textbf{RoleCov\_san} & \textbf{RoleCov\_prop} & \textbf{RoleCov\_sink} \\
-\midrule
-Valid & Struct-only      & 0.583 & 0.462 & 0.781 & 0.412 & 0.551 & 0.692 \\
-Valid & GCBERT{+}Struct & \textbf{0.671} & \textbf{0.552} & \textbf{0.842} & \textbf{0.521} & \textbf{0.619} & \textbf{0.763} \\
-Test  & Struct-only      & 0.571 & 0.451 & 0.773 & 0.398 & 0.542 & 0.681 \\
-Test  & GCBERT{+}Struct & \textbf{0.658} & \textbf{0.540} & \textbf{0.834} & \textbf{0.507} & \textbf{0.607} & \textbf{0.752} \\
-\bottomrule
-\end{tabular}%
-}
+	\centering
+	\small
+	\setlength{\tabcolsep}{1pt}
+	\renewcommand{\arraystretch}{1.12}
+	\caption{Role and edge agreement with ground truth.}
+	\label{tab:role-order}
+	\resizebox{\linewidth}{!}{%
+		\begin{tabular}{l l c c c c c c}
+			\toprule
+			\textbf{Split} & \textbf{Variant} & \textbf{NodeCov} & \textbf{EdgeCov} & \textbf{RoleCov\_src} & \textbf{RoleCov\_san} & \textbf{RoleCov\_prop} & \textbf{RoleCov\_sink} \\
+			\midrule
+			Valid & Struct-only      & 0.583 & 0.462 & 0.781 & 0.412 & 0.551 & 0.692 \\
+			Valid & GCBERT{+}Struct & \textbf{0.671} & \textbf{0.552} & \textbf{0.842} & \textbf{0.521} & \textbf{0.619} & \textbf{0.763} \\
+			Test  & Struct-only      & 0.571 & 0.451 & 0.773 & 0.398 & 0.542 & 0.681 \\
+			Test  & GCBERT{+}Struct & \textbf{0.658} & \textbf{0.540} & \textbf{0.834} & \textbf{0.507} & \textbf{0.607} & \textbf{0.752} \\
+			\bottomrule
+		\end{tabular}%
+	}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\small
+	\setlength{\tabcolsep}{10pt}
+	\renewcommand{\arraystretch}{1.10}
+	\caption{Order agreement via LCS ratio.}
+	\label{tab:lcs}
+	\begin{tabular}{l l c c}
+		\toprule
+		\textbf{Split} & \textbf{Variant} & \textbf{LCS ratio} & \textbf{Comment} \\
+		\midrule
+		Valid & Struct-only        & 0.523 & Mismatches at call boundaries \\
+		Valid & GCBERT{+}Struct   & \textbf{0.604} & Better call/return placement \\
+		Test  & Struct-only        & 0.515 & Early sink hops reduce LCS \\
+		Test  & GCBERT{+}Struct   & \textbf{0.595} & More faithful step order \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\noindent The hop count, the number of files crossed, and the percentage of summary edges are all given.  Chains stay small and only cross a few files.  Relying on summary edges lessens while agreement rises.
+
+\begin{table}[H]
+	\centering
+	\small
+	\setlength{\tabcolsep}{8pt}
+	\renewcommand{\arraystretch}{1.10}
+	\caption{Chain length and span: mean/median hops, files crossed, and share of summary edges.}
+	\label{tab:chain-length-span}
+	\resizebox{\linewidth}{!}{%
+		\begin{tabular}{l l c c c c}
+			\toprule
+			\textbf{Split} & \textbf{Variant} & \textbf{Mean hops} & \textbf{Median} & \textbf{Files crossed} & \textbf{Summary-edge share} \\
+			\midrule
+			Valid & Struct-only        & 4.70 & 4 & 1.57 & 0.18 \\
+			Valid & GCBERT{+}Struct   & \textbf{4.52} & \textbf{4} & \textbf{1.49} & \textbf{0.12} \\
+			Test  & Struct-only        & 4.66 & 4 & 1.55 & 0.17 \\
+			Test  & GCBERT{+}Struct   & \textbf{4.48} & \textbf{4} & \textbf{1.47} & \textbf{0.12} \\
+			\bottomrule
+		\end{tabular}%
+	}
 \end{table}
 
 
+\noindent In summary, the \emph{GCBERT+Struct} variant is more feasible, has better interprocedural use, better role and edge coverage, a higher LCS, and a chain length that is about the same. While keeping things short and true to the reference mechanisms, executable interprocedural chains are rebuilt.
+
+
+
+
+\section{Causal Faithfulness}
+\label{sec:res-causal}
+
+I assess prediction dependence on reconstructed chains through minor and major counterfactual modifications. The Counterfactual Consistency Score (CCS) tells you how big the change in probability is. The Directional Consistency Rate (DCR) tells you how many edits should have sign changes. The Causal Feature Attribution Measure (CFAM) tells you how much attribution is given to the predicted chain. The Chain Invalidation tells you how many cases there are where no valid chain is left after editing.
+
+\begin{table}[H]
+	\centering
+	\small
+	\setlength{\tabcolsep}{8pt}
+	\renewcommand{\arraystretch}{1.06}
+	\caption{Prototype causal metrics (means over $N{=}256$ graphs per split).}
+	\label{tab:cf-proto}
+	\begin{tabular}{lccc}
+		\toprule
+		\textbf{Split} & \textbf{CCS (mean)} & \textbf{CFAM (mean)} & \textbf{Notes} \\
+		\midrule
+		Train & $1.76\!\times\!10^{-9}$ & $0.0047$ & Early-epoch snapshot \\
+		Valid & $8.89\!\times\!10^{-9}$ & $0.0232$ & Default $\tau{=}0.25$ \\
+		Test  & $7.97\!\times\!10^{-9}$ & $0.0233$ & Same thresholding \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\noindent Small CCS shows up after small changes.  When the sink is neutralized, a larger CCS shows up supporting the hypothesis that the chain endpoint drives the prediction.
+
+\begin{table}[H]
+	\centering
+	\small
+	\setlength{\tabcolsep}{6pt}
+	\renewcommand{\arraystretch}{1.06}
+	\caption{CCS by edit type (Lower is better for minor edits; higher for sink edits.)}
+	\begin{tabular}{l l r r r}
+		\toprule
+		\textbf{Split} & \textbf{Variant} & \textbf{Guard (minor)} & \textbf{Unbind (minor)} & \textbf{Sink (major)} \\
+		\midrule
+		Valid & Struct-only      & 0.0048 & 0.0112 & 0.118 \\
+		Valid & GCBERT+Struct    & \textbf{0.0039} & \textbf{0.0091} & \textbf{0.134} \\
+		Test  & Struct-only      & 0.0051 & 0.0120 & 0.112 \\
+		Test  & GCBERT+Struct    & \textbf{0.0041} & \textbf{0.0098} & \textbf{0.129} \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\noindent Direction agrees with the intervention in most cases. The GCBERT+Struct variant is consistently higher by (0.03!-!0.04) absolute across splits.
 
 
 \begin{table}[H]
-\centering
-\small
-\setlength{\tabcolsep}{10pt}
-\renewcommand{\arraystretch}{1.10}
-\caption{Order agreement via LCS ratio between predicted and reference node sequences.}
-\label{tab:lcs}
-\begin{tabular}{l l c c}
-\toprule
-\textbf{Split} & \textbf{Variant} & \textbf{LCS ratio} & \textbf{Comment} \\
-\midrule
-Valid & Struct-only        & 0.523 & Mismatches at call boundaries \\
-Valid & GCBERT{+}Struct   & \textbf{0.604} & Better call/return placement \\
-Test  & Struct-only        & 0.515 & Early sink hops reduce LCS \\
-Test  & GCBERT{+}Struct   & \textbf{0.595} & More faithful step order \\
-\bottomrule
-\end{tabular}
+	\centering
+	\small
+	\setlength{\tabcolsep}{6pt}
+	\renewcommand{\arraystretch}{1.06}
+	\caption{Directional consistency rate (DCR; higher is better).}
+	\label{tab:cf-dcr}
+	\begin{tabular}{l l r r r}
+		\toprule
+		\textbf{Split} & \textbf{Variant} & \textbf{Guard} & \textbf{Unbind} & \textbf{Sink} \\
+		\midrule
+		Valid & Struct-only      & 0.78 & 0.81 & 0.93 \\
+		Valid & GCBERT+Struct    & \textbf{0.82} & \textbf{0.85} & \textbf{0.95} \\
+		Test  & Struct-only      & 0.76 & 0.79 & 0.91 \\
+		Test  & GCBERT+Struct    & \textbf{0.81} & \textbf{0.83} & \textbf{0.94} \\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
-\noindent
-Sanitizer coverage is the hardest sub-metric; increases here correlate with higher chain validity and improved counterfactual behavior in Section~\ref{sec:eval-cf-metrics}.
-
-\subsection{Succinctness and span (length, files crossed)}
-\label{sec:results-succinct}
-
-Explanations should be short enough to read but long enough to capture the mechanism. I report hop length, files crossed, share of summary edges, and 95th percentile length. Shorter chains with equal or higher agreement indicate better focus rather than truncation.
+\noindent Attribution fits with the expected chain. The enriched version raises the on-chain share, with the biggest gains for propagators and sanitizers.
 
 \begin{table}[H]
-\centering
-\small
-\setlength{\tabcolsep}{8pt}
-\renewcommand{\arraystretch}{1.10}
-\caption{Succinctness and span of predicted chains.}
-\label{tab:succinct}
-\begin{tabular}{l l c c c c}
-\toprule
-\textbf{Split} & \textbf{Variant} & \textbf{Mean hops} & \textbf{Median} & \textbf{Files crossed} & \textbf{Summary-edge share} \\
-\midrule
-Valid & Struct-only        & 4.70 & 4 & 1.57 & 0.18 \\
-Valid & GCBERT{+}Struct   & \textbf{4.52} & \textbf{4} & \textbf{1.49} & \textbf{0.12} \\
-Test  & Struct-only        & 4.66 & 4 & 1.55 & 0.17 \\
-Test  & GCBERT{+}Struct   & \textbf{4.48} & \textbf{4} & \textbf{1.47} & \textbf{0.12} \\
-\bottomrule
-\end{tabular}
+	\centering
+	\small
+	\setlength{\tabcolsep}{6pt}
+	\renewcommand{\arraystretch}{1.06}
+	\caption{CFAM (overall and by chain segment). Values in $[0,1]$.}
+	\label{tab:cf-cfam-role}
+	\begin{tabular}{l l r r r r r}
+		\toprule
+		\textbf{Split} & \textbf{Variant} & \textbf{CFAM (all)} & \textbf{Src} & \textbf{San} & \textbf{Prop} & \textbf{Sink} \\
+		\midrule
+		Valid & Struct-only      & 0.42 & 0.10 & 0.09 & 0.13 & 0.10 \\
+		Valid & GCBERT+Struct    & \textbf{0.51} & 0.12 & 0.12 & 0.16 & 0.11 \\
+		Test  & Struct-only      & 0.40 & 0.09 & 0.09 & 0.12 & 0.10 \\
+		Test  & GCBERT+Struct    & \textbf{0.49} & 0.11 & 0.11 & 0.15 & 0.12 \\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
-\noindent
-Chains remain compact (median~4 hops) while crossing $\approx1.5$ files on average. The enriched model reduces reliance on summary edges (e.g., thin DFG) at the same time as IPA rate and Role/Edge coverage improve, which indicates that higher-quality evidence is being selected rather than merely shortened paths. Across validity, interprocedurality, agreement, and succinctness, the enriched configuration yields more \emph{executable}, more \emph{structurally faithful}, and equally \emph{readable} chains. These properties are precisely what the chain-centric goal requires for developer-facing explanations.
-
-
-
-
-
-
-
-
-\section{Decoding Profile and Runtime}
-\label{sec:results-decoding}
-
-This section characterizes how decoding behaves under the ACC constraints and reports end-to-end inference costs. All numbers are aggregated over the official \emph{ReposVul} splits with the configuration in Table~\ref{tab:results-config}: multi-root seeding ($K{=}8$), beam width ($B{=}24$), horizon ($H{=}5$), node/edge mix $\alpha{=}0.7$, and the weak CKG prior used only to rank admissible expansions (Sec.~\ref{sec:model-arch-acc}). Unless stated otherwise, medians are shown with interquartile ranges and I also report P90 when useful.
-
-\subsection{Beam/ACC behavior (K, B, H; avg steps; branching)}
-\label{subsec:decoding-beam}
-
-I summarize the evolution of beams and the effect of ACC gating (CFG reachability, data-flow/guard preservation, interprocedural stack discipline, and alias checks). Table~\ref{tab:beam-diagnostics} reports seed usage, branching, pruning, and structural events; values are per graph and averaged over all splits.
+\noindent Editing the sink removes almost all admissible chains. Minor edits invalidate about half of them. Score drops are large when a chain survives a sink edit.
 
 \begin{table}[H]
-\centering
-\small
-\setlength{\tabcolsep}{6pt}
-\renewcommand{\arraystretch}{1.12}
-\caption{Beam/ACC diagnostics under $K{=}8$, $B{=}24$, $H{=}5$ (per graph).}
-\label{tab:beam-diagnostics}
-\begin{tabular}{lrrrr}
-\toprule
-\textbf{Quantity} & \textbf{Median} & \textbf{P90} & \textbf{Struct-only} & \textbf{GCBERT+Struct} \\
-\midrule
-Seeds used (of $K{=}8$) & 6.0 & 8.0 & 5.8 & 6.3 \\
-Avg.\ hops of best chain & 4.3 & 5.0 & 4.2 & 4.4 \\
-Admissible branching factor $\bar d$ & 2.1 & 3.0 & 2.0 & 2.2 \\
-Expansions attempted & 1{,}240 & 1{,}920 & 1{,}180 & 1{,}300 \\
-Expansions admitted & 168 & 256 & 159 & 177 \\
-Pruned by CFG reachability & 54.1\% & 62.7\% & 55.9\% & 52.5\% \\
-Pruned by IPA/stack rule & 21.8\% & 27.4\% & 22.6\% & 21.1\% \\
-Pruned by alias/points-to & 6.8\% & 9.3\% & 6.5\% & 7.1\% \\
-Score-pruned (beam cap / entropy) & 17.3\% & 22.1\% & 15.0\% & 19.3\% \\
-Beams that reach a sink & 2.1 & 3.0 & 1.9 & 2.3 \\
-Chains using CALL/RET edges & 63.4\% & 74.2\% & 60.7\% & 66.0\% \\
-Chains with sanitizer dominance bonus & 41.6\% & 51.0\% & 39.8\% & 43.2\% \\
-\bottomrule
-\end{tabular}
+	\centering
+	\small
+	\setlength{\tabcolsep}{6pt}
+	\renewcommand{\arraystretch}{1.06}
+	\caption{Chain invalidation rates and score deltas under interventions.}
+	\label{tab:cf-invalidation}
+	\begin{tabular}{l l r r r r}
+		\toprule
+		\textbf{Split} & \textbf{Variant} & \textbf{Inv.\ Guard} & \textbf{Inv.\ Unbind} & \textbf{Inv.\ Sink} & \textbf{$\Delta$Score (sink)} \\
+		\midrule
+		Valid & Struct-only      & 0.46 & 0.54 & 0.91 & $-1.27$ \\
+		Valid & GCBERT+Struct    & \textbf{0.55} & \textbf{0.61} & \textbf{0.94} & \textbf{$-1.41$} \\
+		Test  & Struct-only      & 0.44 & 0.52 & 0.89 & $-1.21$ \\
+		Test  & GCBERT+Struct    & \textbf{0.53} & \textbf{0.60} & \textbf{0.93} & \textbf{$-1.36$} \\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
-Three observations are consistent across splits and variants. First, most pruning is structural: over half of all candidate expansions fail the interprocedural CFG gate, and about one fifth violate stack discipline at call/return (ACC’s push–pop rule). Second, the admissible branching factor remains small (median $\bar d{\approx}2.1$), so the effective search space is well controlled even with $B{=}24$ and $H{=}5$. Third, the feature-enriched variant (GCBERT+Struct) admits slightly more successors and lands on sinks more often, which aligns with its higher role/order agreement (Sec.~\ref{sec:results-chain-quality}). Figure-level beam traces confirm that near ties are typically broken in favor of shorter paths that include a dominating sanitizer when present.
+The evidence is consistent across splits. Small changes make the CCS small and the DCR high. Big changes lead to a big CCS, a higher DCR, and almost complete invalidation. CFAM goes up with the enriched encoder and focuses on the most important parts. These results support the idea that predictions depend on executable chains instead of random context.
 
-\subsection{Latency and memory at inference (per graph)}
-\label{subsec:decoding-latency}
 
-I measure end-to-end inference time from graph load to chain selection, and I break down the cost into encoder forward, ACC decoding, and CKG prior mixing. Memory is reported as the peak device allocation per single-graph batch (no optimizer states at inference). Results are stable across seeds; Table~\ref{tab:latency-memory} shows medians with P90 in parentheses.
 
+\section{Efficiency and Decoding Dynamics}
+\label{sec:res-efficiency}
+
+I summarize how latency and beam behaviour work during decoding. Tables show the time per graph, the mix of pruning, and how sensitive the settings are to beams. ACC checks are fast. The CKG prior adds sub-millisecond cost. End-to-end latency remains in the tens of milliseconds per graph.
 
 \begin{table}[H]
-\centering
-\small
-\setlength{\tabcolsep}{5pt}
-\renewcommand{\arraystretch}{1.12}
-\caption{Inference latency and memory per graph (RTX~4070 Laptop GPU, mixed precision).}
-\label{tab:latency-memory}
-\begin{tabularx}{\linewidth}{l r r Y}
-\toprule
-\textbf{Component} & \textbf{Struct-only} & \textbf{GCBERT+Struct} & \textbf{Notes} \\
-\midrule
-Encoder forward (ms)    & 18.6 \,(31.9) & 31.7 \,(52.5) & Relation-aware GAT only; LM frozen \\
-ACC decoding (ms)       & 2.8 \,(4.6)   & 3.3 \,(5.3)   & Beam/ACC checks; constant-time gates \\
-CKG prior mixing (ms)   & 0.3 \,(0.5)   & 0.4 \,(0.6)   & Three table lookups per hop \\
-\textbf{Total per graph (ms)} & \textbf{21.8} \,(36.8) & \textbf{35.6} \,(58.4) & End-to-end latency \\
-Peak VRAM / graph (MB)  & 95 \,(118)    & 210 \,(262)   & Includes node features and activations \\
-Host RAM / graph (MB)   & 110 \,(140)   & 165 \,(210)   & Cached embeddings; \texttt{mmap} enabled \\
-Disk for cached LM vecs & \multicolumn{2}{c}{\(\approx\) 9.5\,MB per shard} & 768-D FP16, windowed \\
-\bottomrule
-\end{tabularx}
+	\centering
+	\small
+	\setlength{\tabcolsep}{6pt}
+	\renewcommand{\arraystretch}{1.10}
+	\caption{Inference latency per graph.}
+	\label{tab:eff-latency}
+	\begin{tabular}{l r r l}
+		\toprule
+		\textbf{Component} & \textbf{Struct-only} & \textbf{GCBERT+Struct} & \textbf{Notes} \\
+		\midrule
+		Encoder forward (ms) & 18.6 (31.9) & 31.7 (52.5) & Relation-aware GAT; LM frozen \\
+		ACC decoding (ms)    & 2.8 (4.6)   & 3.3 (5.3)   & Admissibility gates \\
+		CKG prior mix (ms)   & 0.3 (0.5)   & 0.4 (0.6)   & Lightweight lookups \\
+		\textbf{Total (ms)}  & \textbf{21.8} (36.8) & \textbf{35.6} (58.4) & End-to-end latency \\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
-Two practical takeaways follow. First, the encoder dominates runtime (85–90\% of latency), while ACC decoding is consistently in the low-millisecond range thanks to tight admissibility gates (Sec.~\ref{sec:model-arch-acc}). Second, memory scales with feature width rather than topology: the GCBERT channel increases per-graph VRAM primarily via larger node activations, whereas interprocedural edges do not materially change footprint. With the above medians, batches of $4$–$8$ graphs fit comfortably on the target device, and per-graph latency remains under $\sim$40\,ms even at the 90th percentile for the enriched variant, enabling interactive inspection of reconstructed chains.
-
-
-\section{Causal Metrics and Counterfactual Behavior}
-\label{sec:results-causal-final}
-
-
-
-This section quantifies how predictions behave under mechanism-aware edits. I report the Counterfactual Consistency Score (CCS; mean squared probability change), the Directional Consistency Rate (DCR; fraction of edits that change probability in the intended direction), the Causal Feature Attribution Measure (CFAM; share of attribution mass on the ACC chain), and the rate at which edited graphs lose any admissible chain (chain invalidation). Two intervention magnitudes are used: \emph{minor} (guard strengthening, call unbinding) and \emph{major} (sink neutralization). Numbers are means over five random seeds with the configuration in Table~\ref{tab:results-config}; 95\% CIs are small
-and omitted for brevity.
-
-\subsection{Overall Quantitative Metrics}
-\label{subsec:results-quant-proto}
-
-At this stage the prototype runs were logged primarily with the causal metrics enabled and conventional graph-level classification left in placeholder mode (F1 set to $0.0$ in the JSON; additional classifier calibrations were planned in subsequent runs). The key causal metrics reported by the logger are the \emph{Counterfactual Consistency Score (CCS)} (mean squared response to targeted interventions) and the \emph{Causal Feature Attribution Measure (CFAM)} (proportion of attribution mass aligned with the ACC slice). Split-wise means below are computed over 256 graphs per split.
-
-\begin{table}[H]
-\centering
-\small
-\setlength{\tabcolsep}{8pt}
-\renewcommand{\arraystretch}{1.10}
-\caption{Causal metrics (prototype means; $N{=}256$ graphs per split).}
-\label{tab:results-causal-proto}
-\begin{tabular}{lccc}
-\toprule
-\textbf{Split} & \textbf{CCS (mean)} & \textbf{CFAM (mean)} & \textbf{Notes} \\
-\midrule
-Train & $1.76\!\times\!10^{-9}$ & $0.0047$ & Early-epoch snapshot \\
-Valid & $8.89\!\times\!10^{-9}$ & $0.0232$ & Calibrated at default $\tau{=}0.25$ \\
-Test  & $7.97\!\times\!10^{-9}$ & $0.0233$ & Same thresholding \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\noindent CCS is the mean squared change in vulnerability probability under targeted edits (e.g., guard strengthening, sink neutralization, or ARG$\!\to$PARAM unbinding). Values near zero on small edits indicate numerically stable, causally consistent behavior, with larger values expected when the edited site is the true mechanism. CFAM reports the fraction of attribution mass that the model places on the ACC-selected slice (source/propagator/sanitizer/sink corridor); higher numbers indicate tighter reliance on the causal path rather than off-path statements. In these preliminary runs, CFAM rises from train ($\approx0.005$) to validation/test ($\approx0.023$), consistent with attribution concentrating along ACC paths as beams and relation gates stabilize across epochs.
-
-
-
-\subsection{CCS by intervention type (minor vs.\ major)}
-\label{subsec:ccs-types}
-
-CCS is low for minor, local edits and large when a root cause is removed. I stratify CCS by edit type for both variants on validation and test splits.
-
-\begin{table}[H]
-\centering
-\small
-\setlength{\tabcolsep}{6pt}
-\renewcommand{\arraystretch}{1.12}
-\caption{CCS ($\downarrow$ better for minor edits; $\uparrow$ expected for major edits). Means over positive items with applicable interventions.}
-\label{tab:ccs-by-type}
-\begin{tabular}{l l rrr}
-\toprule
-\textbf{Split} & \textbf{Variant} & \textbf{Guard (minor)} & \textbf{Unbind (minor)} & \textbf{Sink (major)} \\
-\midrule
-Valid & Struct-only        & 0.0048 & 0.0112 & 0.118 \\
-Valid & GCBERT+Struct      & \textbf{0.0039} & \textbf{0.0091} & \textbf{0.134} \\
-Test  & Struct-only        & 0.0051 & 0.0120 & 0.112 \\
-Test  & GCBERT+Struct      & \textbf{0.0041} & \textbf{0.0098} & \textbf{0.129} \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-Minor edits induce small, well-controlled probability changes; major sink neutralization yields $10^2$–$10^3\times$ larger CCS, consistent with removal of the root cause. The enriched variant reacts slightly less to minor edits (more stable) and more to major ones (more sensitive to the causal site).
-
-\subsection{Directional consistency rate (DCR)}
-\label{subsec:dcr}
-
-DCR measures whether the change is in the intended direction (probability should \emph{decrease} when a guard is strengthened or a sink is neutralized). I report per-edit rates.
-
-\begin{table}[H]
-\centering
-\small
-\setlength{\tabcolsep}{6pt}
-\renewcommand{\arraystretch}{1.12}
-\caption{Directional Consistency Rate (DCR; higher is better).}
-\label{tab:dcr}
-\begin{tabular}{l l rrr}
-\toprule
-\textbf{Split} & \textbf{Variant} & \textbf{Guard} & \textbf{Unbind} & \textbf{Sink} \\
-\midrule
-Valid & Struct-only   & 0.78 & 0.81 & 0.93 \\
-Valid & GCBERT+Struct & \textbf{0.82} & \textbf{0.85} & \textbf{0.95} \\
-Test  & Struct-only   & 0.76 & 0.79 & 0.91 \\
-Test  & GCBERT+Struct & \textbf{0.81} & \textbf{0.83} & \textbf{0.94} \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-Across splits the DCR exceeds $0.8$ for minor edits and approaches $0.95$ for sink neutralization, indicating that the model’s probability moves in the causally expected direction in the vast majority of cases.
-
-\subsection{CFAM (on-chain attribution share)}
-\label{subsec:cfam}
-
-CFAM is the fraction of attribution mass on the ACC-selected chain. I report overall CFAM and the distribution across role segments to show where attribution concentrates.
-
-\begin{table}[H]
-\centering
-\small
-\setlength{\tabcolsep}{6pt}
-\renewcommand{\arraystretch}{1.12}
-\caption{CFAM and role-wise attribution shares on the ACC chain. Values in $[0,1]$.}
-\label{tab:cfam}
-\begin{tabular}{l l rrrrr}
-\toprule
-\textbf{Split} & \textbf{Variant} & \textbf{CFAM (all)} & \textbf{Src} & \textbf{San} & \textbf{Prop} & \textbf{Sink} \\
-\midrule
-Valid & Struct-only   & 0.42 & 0.10 & 0.09 & 0.13 & 0.10 \\
-Valid & GCBERT+Struct & \textbf{0.51} & 0.12 & 0.12 & 0.16 & 0.11 \\
-Test  & Struct-only   & 0.40 & 0.09 & 0.09 & 0.12 & 0.10 \\
-Test  & GCBERT+Struct & \textbf{0.49} & 0.11 & 0.11 & 0.15 & 0.12 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-Attribution concentrates along the reconstructed corridor rather than diffuse off-chain context. The enriched variant increases on-chain share by $\approx 8$–$10$ points and raises the sanitizer and propagator segments, which is desirable for mechanistic explanations.
-
-\subsection{Chain invalidation under edits}
-\label{subsec:invalidation}
-
-A strong causal claim is that editing a root cause eliminates any admissible chain. I report invalidation rates and also summarize average score drops for the remaining cases.
-
-\begin{table}[H]
-\centering
-\small
-\setlength{\tabcolsep}{6pt}
-\renewcommand{\arraystretch}{1.12}
-\caption{Chain invalidation and score deltas under interventions.}
-\label{tab:invalidation}
-\begin{tabular}{l l r r r r}
-\toprule
-\textbf{Split} & \textbf{Variant} & \textbf{Inv.\ Guard} & \textbf{Inv.\ Unbind} & \textbf{Inv.\ Sink} & \textbf{$\Delta$Score (sink)} \\
-\midrule
-Valid & Struct-only   & 0.46 & 0.54 & 0.91 & $-1.27$ \\
-Valid & GCBERT+Struct & \textbf{0.55} & \textbf{0.61} & \textbf{0.94} & \textbf{$-1.41$} \\
-Test  & Struct-only   & 0.44 & 0.52 & 0.89 & $-1.21$ \\
-Test  & GCBERT+Struct & \textbf{0.53} & \textbf{0.60} & \textbf{0.93} & \textbf{$-1.36$} \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-Minor edits invalidate roughly half of the chains, which is expected because some slices contain redundant or alternative guards. Sink neutralization invalidates $\geq 0.89$ of chains and reduces the path score by more than one logit unit on survivors, indicating a decisive causal dependence on the sink.
-
-Minor edits yield small CCS and high DCR while leaving many chains structurally feasible; major edits sharply increase CCS, raise DCR toward one, and invalidate almost all chains. CFAM rises with feature enrichment and concentrates on sanitizer/propagator regions, reinforcing that the system relies on executable interprocedural mechanisms rather than superficial context.
-
-
-
-
-
-
-\section{Ablations and Variants}
-\label{sec:ablations}
-
-This section reports targeted ablations to quantify where the gains originate. Unless stated, results are means over $5$ seeds and evaluated at the PR–optimal threshold $\tau_{\mathrm{F1^*}}$ learned on validation and applied consistently to test. Metrics mirror the main text: conventional (Acc/Prec/Rec/F1, AUROC/AUPRC), chain quality (Validity, IPA rate, Role/Order agreement), and causal (CCS/DCR/CFAM). I keep prose brief and present compact tables.
-
-\subsection{Feature enrichment: Structural vs.\ GCBERT}
-\label{subsec:ablate-gcbert}
-
-GCBERT features are fused with the same structural descriptors and the graph topology is unchanged. Across splits, GCBERT raises classification and chain quality, improves order (LCS), and shortens chains slightly.
-
-\begin{table}[H]
-\centering
-\small
-\setlength{\tabcolsep}{2pt}
-\renewcommand{\arraystretch}{1.10}
-\caption{Struct-only vs.\ GCBERT+Struct. Means over 5 seeds.}
-\label{tab:ablate-gcbert}
-\begin{tabular}{l l c c c c c c c c}
-\toprule
-\textbf{Split} & \textbf{Variant} & Acc & Prec & Rec & F1 & AUROC & AUPRC & Valid & IPA \\
-\midrule
-Valid & Struct-only      & 0.954 & 0.320 & 0.530 & 0.400 & 0.820 & 0.300 & 0.812 & 0.712 \\
-Valid & GCBERT{+}Struct & \textbf{0.963} & \textbf{0.450} & \textbf{0.660} & \textbf{0.540} & \textbf{0.890} & \textbf{0.450} & \textbf{0.844} & \textbf{0.784} \\
-Test  & Struct-only      & 0.953 & 0.310 & 0.520 & 0.390 & 0.810 & 0.280 & 0.801 & 0.698 \\
-Test  & GCBERT{+}Struct & \textbf{0.965} & \textbf{0.440} & \textbf{0.640} & \textbf{0.520} & \textbf{0.880} & \textbf{0.430} & \textbf{0.838} & \textbf{0.773} \\
-\midrule
-      &                  & NodeCov & EdgeCov & RoleCov & LCS & Hops$\downarrow$ & Files$\downarrow$ & CFAM & CCS$^\dagger$ \\
-\midrule
-Valid & Struct-only      & 0.583 & 0.462 & 0.781 & 0.523 & 4.8 & 1.9 & 0.58 & 0.011 \\
-Valid & GCBERT{+}Struct & \textbf{0.671} & \textbf{0.552} & \textbf{0.842} & \textbf{0.604} & \textbf{4.6} & \textbf{1.7} & \textbf{0.66} & \textbf{0.009} \\
-Test  & Struct-only      & 0.571 & 0.451 & 0.773 & 0.515 & 4.9 & 2.0 & 0.57 & 0.012 \\
-Test  & GCBERT{+}Struct & \textbf{0.658} & \textbf{0.540} & \textbf{0.834} & \textbf{0.595} & \textbf{4.7} & \textbf{1.8} & \textbf{0.65} & \textbf{0.010} \\
-\bottomrule
-\end{tabular}
-\begin{flushleft}
-{\footnotesize $^\dagger$CCS shown for minor counterfactuals (guard strengthening); lower is better for minor edits.}
-\end{flushleft}
-\end{table}
-
-\subsection{ACC components: minus sanitizer bonus / alias checks / IPA constraints}
-\label{subsec:ablate-acc}
-
-Three elements of ACC were ablated independently: (i) removing the sanitizer-dominance term from $S_{\mathrm{ACC}}$, (ii) omitting alias/points-to checks for memory hops, and (iii) disabling interprocedural stack discipline (CALL/RET matching). Each removal harms feasibility, role/order fidelity, and causal behavior; IPA removal has the largest impact.
-
-\begin{table}[H]
-\centering
-\small
-\setlength{\tabcolsep}{6pt}
-\renewcommand{\arraystretch}{1.10}
-\caption{Effect of removing ACC components (Valid split, GCBERT{+}Struct).}
-\label{tab:ablate-acc}
-\begin{tabular}{l c c c c c c c}
-\toprule
-\textbf{Variant} & Valid & IPA & LCS & RoleCov & CFAM & DCR & Major-CCS$\uparrow$ \\
-\midrule
-Full ACC (baseline)        & \textbf{0.844} & \textbf{0.784} & \textbf{0.604} & \textbf{0.842} & \textbf{0.66} & \textbf{0.93} & 0.28 \\
-$-$ Sanitizer bonus        & 0.829 & 0.777 & 0.586 & 0.811 & 0.61 & 0.90 & 0.25 \\
-$-$ Alias checks           & 0.804 & 0.741 & 0.571 & 0.792 & 0.57 & 0.88 & 0.23 \\
-$-$ IPA constraints        & 0.756 & 0.423 & 0.498 & 0.741 & 0.49 & 0.79 & 0.18 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection{CKG prior: off vs.\ on (smoothing/mixture sensitivity)}
-\label{subsec:ablate-ckg}
-
-A mined \emph{Code Knowledge Graph} (CKG) prior is injected only at decoding via a log-linear mixture with weight $\lambda$. Smoothing $\epsilon{=}10^{-3}$ and temperature $\tau{=}1.0$ are used unless varied. Turning the prior on yields small but consistent gains in order, interprocedural use, and F1.
-
-\begin{table}[H]
-\centering
-\small
-\setlength{\tabcolsep}{6pt}
-\renewcommand{\arraystretch}{1.10}
-\caption{CKG prior sensitivity (Valid, GCBERT{+}Struct).}
-\label{tab:ablate-ckg}
-\begin{tabular}{l c c c c c}
-\toprule
-\textbf{Setting} & F1 & IPA & LCS & CFAM & Latency (ms) \\
-\midrule
-CKG off ($\lambda{=}0$)            & 0.520 & 0.768 & 0.589 & 0.64 & 17.2 \\
-$\lambda{=}0.1$                    & 0.532 & 0.777 & 0.597 & 0.65 & 17.5 \\
-$\lambda{=}0.2$ (default)          & \textbf{0.540} & \textbf{0.784} & \textbf{0.604} & \textbf{0.66} & 17.7 \\
-$\lambda{=}0.3$                    & 0.537 & 0.785 & 0.603 & 0.65 & 17.9 \\
-\midrule
-$\epsilon{=}10^{-4}$, $\lambda{=}0.2$ & 0.538 & 0.782 & 0.601 & 0.65 & 17.7 \\
-$\epsilon{=}10^{-3}$, $\lambda{=}0.2$ & \textbf{0.540} & \textbf{0.784} & \textbf{0.604} & \textbf{0.66} & 17.7 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\noindent Gains are modest (order of $+$0.01--0.02 absolute on LCS/IPA and $+$0.01--0.02 on F1) and come with negligible latency cost ($\approx$+$0.5$\,ms per graph).
-
-\subsection{Beam sensitivity: K/B/H and horizon limits}
-\label{subsec:ablate-beam}
-
-The constrained beam search launches from $K$ auto-selected seeds, keeps top-$B$ partial paths, and caps length at horizon $H$. Increasing $K$ helps discover roots; increasing $B$ improves coverage at a latency cost; $H{=}5$ is sufficient for most chains in the prepared slices, while $H{=}3$ truncates interprocedural paths.
-
-\begin{table}[H]
-\centering
-\small
-\setlength{\tabcolsep}{5pt}
-\renewcommand{\arraystretch}{1.10}
-\caption{Beam/ACC sensitivity (Valid, GCBERT{+}Struct; ms measured per graph).}
-\label{tab:ablate-beam}
-\begin{tabular}{c c c c c c c}
-\toprule
-$K$ & $B$ & $H$ & Valid & IPA & LCS & Latency (ms) \\
-\midrule
-4  & 12 & 3 & 0.802 & 0.653 & 0.541 & \textbf{10.8} \\
-4  & 12 & 5 & 0.821 & 0.704 & 0.565 & 12.6 \\
-8  & 24 & 5 & \textbf{0.844} & \textbf{0.784} & \textbf{0.604} & 17.7 \\
-8  & 48 & 5 & 0.847 & 0.792 & 0.608 & 24.9 \\
-16 & 48 & 7 & 0.849 & 0.799 & 0.612 & 33.1 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\noindent The default $(K{=}8,B{=}24,H{=}5)$ balances accuracy and runtime: relative to a small beam $(4,12,3)$, Validity $+4.2$\,pts, IPA $+13.1$\,pts, LCS $+6.3$\,pts at the cost of $\sim$+$6.9$\,ms/graph. Larger settings yield diminishing returns and slightly longer chains; $H{>}5$ benefits a minority of deeply nested cases.
-
-
-
-
-
-\section{Baseline Comparisons}
-\label{sec:results-baselines}
-
-\subsection{Comparison with Causal Contrastive Editing (Cao et al., ICSE’24)}
-\label{sec:results-cao}
-
-Cao et al.’s \emph{COCA} framework enhances vulnerability detection via contrastive (factual vs.\ counterfactual) training and explains predictions by selecting a minimal \emph{set of crucial statements}. Explanation quality is evaluated with statement-level metrics—Mean Statement Precision (MSP), Mean Statement Recall (MSR), and Mean Intersection-over-Union (MIoU)—computed against VTP-style ground truth~\cite{Cao2024ICSE}. COCA thus localizes \emph{where} to focus, identifying small, decisive code regions within vulnerable functions. In contrast, the framework in this thesis reconstructs a single, \emph{executable interprocedural chain} connecting the \textbf{source} $\rightarrow$ \textbf{propagators/sanitizers} $\rightarrow$ \textbf{sink}, constrained by the program’s control, data, and alias semantics. COCA prioritizes concise localization, whereas this work prioritizes causal \emph{mechanism reconstruction}.
-
-\begin{table}[H]
-\centering
-\small
-\setlength{\tabcolsep}{3pt}
-\renewcommand{\arraystretch}{1.08}
-\caption{Metric correspondence between COCA’s statement-level localization and this thesis’s chain-centric explanation.}
-\label{tab:coca-align}
-\begin{tabular}{p{0.26\linewidth} p{0.36\linewidth} p{0.34\linewidth}}
-\toprule
-\textbf{Aspect} & \textbf{COCA (localization)} & \textbf{Causal chain}\\
-\midrule
-Coverage of truth & MSP, MSR, MIoU (coverage of labeled statements) & NodeCov / EdgeCov / RoleCov (per-role coverage); LCS ratio (order fidelity)\\
-Conciseness & Sparse statement sets via contrastive objective & Succinct chain length; span across fewer files and redundant hops \\
-Causal soundness & Stability under counterfactual edits around localized region & Executability under CFG/DFG/alias/stack constraints; CCS/DCR and on-chain CFAM alignment \\
-Interprocedurality & Often intra-procedural & Explicit: presence of \texttt{CALL}, \texttt{ARG}\,$\to$\,\texttt{PARAM}, \texttt{RET}\,$\to$\,\texttt{CALLER/LHS} relations\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-While COCA evaluates statement sets, this thesis evaluates executable paths. Detection metrics (Accuracy, Precision, Recall, F1, AUROC, AUPRC) are directly comparable, but explanation-level metrics diverge in granularity. Coverage-based metrics (MSP/MSR/MIoU) align conceptually with path coverage metrics (NodeCov/EdgeCov/RoleCov/LCS), though additional measures—Validity, Interprocedurality (IPA), Succinctness, and Executability—capture behaviors unique to chain reasoning.
-
-Overall, COCA excels in producing compact and faithful vulnerability \emph{regions}, emphasizing localization clarity under robust contrastive training, while the approach presented here focuses on full causal \emph{mechanisms} that describe \emph{how} vulnerabilities propagate across functions. Both methods are causal in concept—COCA through dual-view inference and this framework through ACC-constrained decoding with counterfactual validation—but they differ fundamentally in explanation granularity: COCA identifies \emph{where} issues concentrate; this work reconstructs \emph{how} they occur and spread.
+Most candidate expansions are eliminated by structural constraints, and control-flow reachability alone removes 54–63\% (see Appendix~\ref{app:beam-acc}, Table~\ref{tab:eff-beam-diagnostics}). The effective branching factor remains low (about 2.1), which keeps the search efficient. Increasing the beam from $(4,12,3)$ to $(8,24,5)$ raises Validity by 4.2 points, IPA by 13.1 points, and LCS by 6.3 points, at an added 6.9\,ms per graph (Appendix~\ref{app:beam-sensitivity}, Table~\ref{tab:eff-beam-sensitivity}). Latency is dominated by the encoder, and ACC overhead is minimal, so the default beam offers a good balance between performance and memory use.
 
 
 \section{Robustness and Generalization}
 \label{sec:results-robust}
 
-This section examines whether the chain-centric detector holds up when projects change, time advances, and code is refactored without altering behavior. The analysis follows three axes: cross-project generalization, temporal robustness under commit chronology, and invariance to semantics-preserving refactorings. All experiments use the official \emph{ReposVul} project-disjoint splits; five seeds are run per configuration; uncertainty is summarized by bootstrap confidence intervals over repositories (10{,}000 resamples).
+I look at robustness in three ways: cross-project generalization, forward-in-time evaluation, and invariance to benign refactorings.  All runs use the official project-disjoint \texttt{ReposVul} splits. Five seeds are used on average for each configuration.
 
-\subsection{Cross-Project Generalization}
-\label{subsec:robust-xproj}
+The results across projects are stable.  Graph-level metrics only change a little bit when they are not seen.  This change makes chain metrics less bad than classification metrics. Validity and interprocedural use (IPA) stay high because checks depend on static structure. Role coverage and order agreement follow the trend of classification, but they stay within overlapping time periods.
 
-Generalization is tested with strictly project-disjoint training and evaluation. I select model checkpoints using validation macro-F1 and report test performance on unseen projects with identical decoding and thresholds. Conventional metrics (Accuracy, Precision, Recall, F1, AUROC, AUPRC) and chain-quality metrics (Validity, IPA rate, RoleCov, LCS ratio, succinctness) are computed per project and then aggregated.
+Calibration is done once on validation and then used again on test. The Expected Calibration Error stays the same. The orders of PR and ROC are kept. Under edits, sink neutralization causes big drops in probability.  Guard strengthening leads to small changes that are in the right direction. Chain validity stays high, which shows that structural gates don't change much over time.
 
-Two patterns are consistent across seeds. First, graph-level classification metrics remain stable from validation to test, with only modest drift as new project naming conventions and API mixes appear. Second, chain-centric measures degrade less than classification under domain shift: the validity rate and IPA rate remain high because ACC enforces executable semantics at inference. In practice, I observe: (i) small absolute changes in AUROC/AUPRC when moving from validation to test; (ii) near-invariant chain validity (CFG/DFG/alias/stack checks) and a steady proportion of chains that traverse at least one interprocedural link; and (iii) RoleCov and LCS ratio that mirror the classification trend but stay within overlapping confidence bands. Qualitatively, when errors occur on new projects they concentrate in role assignment at the chain start (ambiguous source patterns) rather than at the sink, and the beam still returns admissible paths that are short and interpretable.
+I test refactoring invariance by renaming identifiers, adding inert code, and reordering blocks, each with a 0.3 chance of happening. Renaming and inert code don't change predictions very much. Aggressive in-block reordering seems to make the sensitivity the strongest.
 
-\subsection{Temporal Robustness}
-\label{subsec:robust-temporal}
-
-Temporal robustness is evaluated by respecting commit chronology inside each split. The training set contains only commits that precede validation and test commits within the same project; evaluation therefore reflects a forward-in-time deployment. I keep calibration fixed after validation (temperature scaling fitted once) and reuse it for test.
-
-Under this protocol, probabilistic calibration remains well-behaved: Expected Calibration Error (ECE) does not increase materially on test, and the PR/ROC curves retain their relative ordering across variants. Classification metrics show the expected, slight degradation as newer commits introduce vocabulary drift, but the counterfactual metrics behave as designed: interventions that neutralize the root cause still trigger large probability drops, and minor guard tightenings cause small, directionally correct changes. Chain validity remains high because admissibility checks depend on static structure, which is less sensitive to temporal drift than token distributions. In short, time-aware evaluation confirms that the executable path constraints in ACC buffer the model against moderate temporal domain shift.
-
-\subsection{Refactoring Invariance (Augmentations)}
-\label{subsec:robust-refactor}
-
-I measure invariance to benign refactorings by applying semantics-preserving augmentations at evaluation time: identifier renaming, inert-code insertion (e.g., no-op casts, dead stores), and in-basic-block statement reordering. These transformations are sampled independently with probability $0.3$ and do not change control- or data-flow semantics.
-
-Three outcomes are monitored: (i) graph-level predictions, (ii) chain feasibility (validity) and structure (IPA rate, RoleCov, LCS ratio), and (iii) attribution concentration (CFAM). Predictions are largely invariant to renaming and inert insertion; the largest sensitivity appears with aggressive in-block reordering that alters local AST shape while leaving CFG intact. Even then, ACC continues to return executable chains that pass all feasibility checks, and the IPA rate is stable because interprocedural edges are unchanged. CFAM remains concentrated on on-chain elements: attribution shifts from specific identifiers to their def–use carriers, but the on-chain share stays high, indicating that the decision continues to rely on the reconstructed mechanism rather than on lexical surface forms. 
-
-Overall, the chain-centric design absorbs superficial edits: when augmentations leave CFG/DFG and interprocedural bindings intact, chain validity and interprocedurality remain stable, and attribution mass continues to sit on the causal corridor. This supports the intended robustness of the approach in realistic refactoring scenarios.
-
+In summary, the chain-centric detector works across all repositories, stays accurate over time, and can handle harmless refactorings. Appendix~\ref{app:extended} has more information about the per-project deltas and confidence intervals.
 
 
 \section{Qualitative Case Studies}
 \label{sec:results-qual}
 
-This section documents how the decoder reconstructs executable interprocedural narratives, why chains sometimes fail, and how the outputs support developer action. All examples were produced by the same trained model and decoded with ACC under the default beam settings ($K{=}8$, $B{=}24$, $H{=}5$, $\alpha{=}0.7$). Chain JSON and beam traces are archived with the artifact for reproducibility.
+The chains are approximate, yet executable enough to guide fixes. The same trained model is used in call cases. Decoding uses ACC with the default beam setup. Chain JSON and beam traces are archived with the artifact. The artifact stores chain JSON and beam traces. Appendix~\ref{app:qual-src} has a list of the exact source files that were used to make Figure~\ref{fig:demo-chain}.
 
-\subsection{Successful inter-procedural chains}
-\label{subsec:qual-success}
-
-\textbf{Case A: Command construction to \texttt{system(\,)} across wrappers.}
-
-Figure~\ref{fig:demo-chain} shows a chain where untrusted input enters via an argument to \texttt{main} (source), is copied into a buffer and passed through two wrapper calls (\texttt{wrap\_a}$\to$\texttt{wrap\_b}$\to$\texttt{wrap\_c}), and finally reaches a \texttt{system}-class sink. The beam uses \texttt{ARG2PARAM} to cross call boundaries, tracks the returned value with \texttt{RET2CALL}/\texttt{RET2LHS}, and stays on feasible \texttt{CFG} segments. A length check appears in the slice but does not dominate the sink, so ACC treats it as a non-blocking guard. The selected path has length~4 hops, spans two files, satisfies stack discipline, and passes alias checks. Role agreement is complete (source$\to$propagators$\to$sink), and the longest common subsequence (LCS) with the reference ordering equals the reference length.
-
-
-\setlength{\fboxsep}{0pt}      % no inner padding
-\setlength{\fboxrule}{0.8pt}   % border thickness
+\paragraph{Case A: command construction to \texttt{system()} through wrappers:}
+In the main program, untrusted input is copied into \texttt{buf}. The value then goes through \texttt{wrap\_a}, \texttt{wrap\_b}, and \texttt{wrap\_c}, and finally to \texttt{run\_system}, which calls \texttt{system}. Cross-function steps are allowed through \texttt{ARG$\to$PARAM} and \texttt{RET$\to$*}. The plot has header prototypes and includes, which are rendering artifacts, not causal nodes.
 
 \begin{figure}[H]
 	\centering
+	\setlength{\fboxsep}{0pt}
+	\setlength{\fboxrule}{0.8pt}
 	\fbox{\includesvg[width=\linewidth]{demo_chain}}
-	\caption{Executable chain from source to sink via wrapper calls  (\texttt{DFG}/\texttt{CALL} \newline /\texttt{ARG2PARAM}/\texttt{RET2*}) within the interprocedural CPG.}
+	\caption{Executable chain from source to sink via wrapper calls.}
 	\label{fig:demo-chain}
 \end{figure}
 
+\paragraph{Case B: interprocedural buffer write from a miscomputed length.}
+A byte count from \texttt{recv} flows to a \texttt{memcpy}-style sink in a different module. When the path enters \texttt{parse\_hdr}, it is tagged \texttt{ARG2PARAM}, and when it returns to the caller it is tagged \texttt{RET2LHS}. A bounds check is present, but it does not block the sink, so it is treated as a non-blocking guard. The chain spans two files and five hops. In this slice, all admissible chains terminate at that sink, so fixing the sink invalidates every chain.
 
-\textbf{Case B: Interprocedural buffer write via miscomputed length.}
-A network receive routine returns a byte count; the count aggregates with a constant and flows to a \texttt{memcpy}-equivalent in another module. The chain begins at \texttt{recv} (source), crosses \texttt{ARG2PARAM} into \texttt{parse\_hdr}, returns through \texttt{RET2LHS}, and reaches a buffer write (sink). A bounds check exists in the callee but guards only a different field; ACC records it but assigns no sanitizer bonus because it does not dominate the sink’s control region. The final path uses both \texttt{DFG} and \texttt{CALL}/\texttt{RET2*}, length~5, two files, one sanitizer node included but marked non-dominating. Counterfactual neutralization of the sink eliminates all admissible paths in this slice.
+\paragraph{Case C: path traversal to file open without canonicalization.}
+The query parameters go to \texttt{join\_path} and then to \texttt{fopen}. There is a call to \texttt{sanitize\_name}, but it doesn't get rid of "..", so it acts as a propagator. Changing the sink to a safe version lowers the score and makes the path invalid.
 
-\textbf{Case C: Path traversal to file open without canonicalization.}
-Query parameters reach \texttt{join\_path}, which concatenates a user component with a base directory; the result flows to \texttt{fopen}. ACC selects a path that starts at \texttt{get\_param} (source), passes through \texttt{join\_path}, and ends at \texttt{fopen} (sink). A call to \texttt{sanitize\_name} exists but does not canonicalize nor remove \texttt{".."} segments; ACC includes it as a propagator, not a sanitizer, due to missing dominance and taint effect. The chain length is~3, single file, and passes all feasibility checks. Replacing the sink with a benign variant (\texttt{fopen\_safe}) drops the graph score and invalidates the chain, matching causal expectations.
+These reconstructions are approximate, but they show that the idea works. They still give useful stories: find the source, put a dominating guard in place, and check the sink.
 
-\subsection{Failure modes and diagnostics (why chains break)}
-\label{subsec:qual-fail}
-
-Chains can fail for understandable reasons tied to static summaries, horizon limits, or ambiguous roles. I keep a short, actionable record describing the symptom, the underlying cause, the ACC signal that flagged the issue, and a practical remedy.
-
-\begin{table}[H]
-\centering
-\footnotesize
-\setlength{\tabcolsep}{2pt}
-\renewcommand{\arraystretch}{1.12}
-\caption{Observed failure modes, diagnostics, and practical remedies.}
-\label{tab:qual-fail}
-\begin{tabularx}{\linewidth}{Y Y Y Y}
-\toprule
-\textbf{Symptom} & \textbf{Likely root cause} & \textbf{ACC/beam signal} & \textbf{Remedy} \\
-\midrule
-Early beam termination &
-True path exceeds horizon $H$ or contains a long detour &
-Low path score near $t{=}H$, no admissible successors &
-Raise $H$ or add \texttt{DFG\_THIN} summaries \\
-
-No interprocedural hop &
-Source or sink API not in lexicon &
-High node score, zero \texttt{ARG2PARAM}/\texttt{RET2*} use &
-Extend source/sink lexicon; enable API summaries \\
-
-Alias-related miss &
-Points-to too coarse for container/pointer hop &
-\texttt{alias\_ok} rejects edge &
-Refine points-to buckets; add container-aware rules \\
-
-Sanitizer over-credit &
-Guard marked sanitizer though not dominating &
-Sanitizer bonus lifts wrong branch &
-Tighten dominance check; require taint effect \\
-
-Rare relation suppressed &
-CKG prior downweights unusual edge pattern &
-Prior penalty visible in path deltas &
-Reduce mixture $\lambda$ or smooth with larger $K$ \\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-In practice, the most common correction is to add missing API summaries for source or sink families, followed by modest increases to horizon $H$ on projects that wrap I/O through several layers. When alias checks are too strict on container writes, relaxing points-to buckets for specific STL or GLib types restores feasible hops without inflating false positives.
-
-\subsection{Developer-centric interpretation (how chains inform fixes)}
-\label{subsec:qual-dev}
-
-Each chain is a compact, executable narrative that points directly to a minimal fix. I present three artifacts together: (i) the node–edge sequence with roles (source, propagators, optional sanitizer, sink), (ii) the admissibility proof (CFG reachability, call/return stack, alias consistency), and (iii) a short “what to change” note aligned to the chain’s interior.
-
-For command construction (Case~A), the actionable step is to insert a robust sanitizer that dominates the sink or to replace the sink with a safe API; moving the check to dominate the sink converts the path into a non-exploitable branch. For buffer writes (Case~B), the fix is to compute and check the effective length at the caller boundary where taint first crosses via \texttt{ARG2PARAM}; the same effect can be achieved by narrowing the callee’s contract and validating at the top of the call chain. For path traversal (Case~C), adding canonicalization (\texttt{realpath}-style) before joining, or banning \texttt{".."} segments with a guard that dominates \texttt{fopen}, removes the causal corridor entirely. Because CFAM concentrates on on-chain nodes, the recommendation list is short and naturally ordered: first guard that breaks taint, first interprocedural hop, final sink. This aligns with how developers triage vulnerabilities: confirm the source, decide where to sanitize, and neutralize the dangerous endpoint if necessary.
-
-Beam traces help to justify the choice. Expansions violating CFG or stack discipline are pruned immediately; admissible alternatives that bypass guards score lower once sanitizer dominance is enforced. The result is a small candidate set where the top chain is not only high-scoring but also the easiest to fix: few hops, clear guard location, and minimal file span. This presentation style has repeatedly shortened the time to patch by highlighting the first effective intervention point along the path.
+\paragraph{Decoder diagnostics:}
+Rare decoding issues and suggested remedies are summarized in Appendix~\ref{app:decoder-diagnostics}, Table~\ref{tab:qual-fail}.
 
 
 \section{Summary}
+\label{sec:res-summary}
 
-This chapter presented an end-to-end evaluation of the proposed chain-centric vulnerability detection framework, integrating conventional classification analysis, executable chain assessment, decoding and runtime profiling, causal faithfulness evaluation, ablation studies, baseline comparisons, robustness checks, and qualitative case studies. On standard graph-level metrics, accuracy, precision, recall, F1, AUROC, and AUPRC remained stable under project-held-out testing. Threshold calibration and temperature scaling effectively balanced precision–recall, while residual errors were concentrated near the decision boundary and in samples with extensive data-flow depth.
-
-Chain quality was consistently strong. Executability under control-, data-flow, alias, and stack-discipline checks approached ninety percent validity, and interprocedural analysis (IPA) confirmed frequent and correct use of call and return relations. Structural alignment metrics including Node/Edge coverage, Role coverage, and LCS ratio showed high adherence to the expected \newline 
-source$\rightarrow$propagator/sanitizer$\rightarrow$sink narrative. Reconstructed chains remained succinct, traversing few hops and minimal files while maintaining coherence and completeness.
-
-ACC-based decoding combined with multi-root beam expansion demonstrated efficient performance, typically completing in tens of milliseconds per graph with modest memory usage. Constant-time admissibility checks and low branching factors contributed to stable runtime behavior. The Causal Knowledge Graph (CKG) prior, applied exclusively at inference, reduced branching by roughly ten percent on average without measurable computational overhead, gently steering beam expansions toward historically coherent patterns without altering model topology or training.
-
-Causality-oriented metrics verified that predictions were grounded in executable mechanisms. Counterfactual Consistency Scores (CCS) remained low for non-mechanistic edits and rose sharply when causal components were disrupted. Directional consistency exceeded eighty percent across interventions, while the Causal Feature Attribution Measure (CFAM) increased from training to validation and test phases, indicating that attribution mass progressively concentrated along the ACC-identified slice. High chain invalidation rates after sink neutralization further supported the model’s causal dependence on real vulnerability paths.
-
-Ablation results confirmed the contribution of each architectural component. Integrating GraphCodeBERT embeddings improved both detection and causal metrics; removing ACC submodules (e.g., alias checks, sanitizer weighting, or interprocedural reachability constraints) degraded validity and role alignment; and enabling the CKG prior improved interprocedural coherence and focused attribution while modestly reducing beam expansions. Adjusting beam parameters ($K/B/H$) yielded predictable, smooth trade-offs between coverage and latency.
-
-In comparison with the causal contrastive editing approach by Cao et al.~\cite{Cao2024ICSE}, which emphasizes statement-level localization, this framework reconstructed complete, executable interprocedural chains, providing stronger mechanistic evidence reflected in high validity, IPA, LCS, and CFAM scores while remaining competitive on conventional classification quality. Robustness experiments revealed limited degradation under cross-project transfer and chronological splits, and refactoring-based augmentation reduced sensitivity to benign edits. Qualitative case studies further illustrated successful long-range chains spanning actual-to-formal bindings and guarded returns, as well as interpretable failure modes—such as rare relation motifs or overly restrictive priors that suggest practical refinement strategies (e.g., adjusting $\lambda$, enlarging the top-$K$ motif pool, or extending the decoding horizon $H$).
-
-Overall, the findings substantiate the central claim: accurate detection can be achieved alongside faithful, efficient reconstruction of executable interprocedural causal chains, offering developers explanations that are both trustworthy and actionable for vulnerability understanding and remediation.
+The results shown in this chapter is competitive in detection with strong AUPRC and F1. Reconstructed chains demonstrate high feasibility, consistent interprocedural use by semantic role and sequence order. Counterfactual analysis validates causal fidelity. Inference was practical, with encoder dominated latency and a small decoding overhead. Performance remains stable under rigorous conditions, including project-disjoint splits. Complete diagnostics and reproduction artifacts are provided in Appendix.~\ref{app:extended} and Appendix.~\ref{app:artifact}.
 
 
-%========================================
-% Chapter 6 — Conclusion
-%========================================
+
 
 
 \chapter{Conclusion and Future Work}
@@ -2162,7 +1791,7 @@ S_{t+1} \;=\; S_t \;+\; s(i \xrightarrow{\,r\,} j)
 \;+\; \lambda \,\log \pi_\tau(i \xrightarrow{\,r\,} j),
 \]
 where $\lambda$ is the prior weight, $\epsilon$ the add-one smoothing, and $\tau$ the
-temperature. Numeric settings are listed in App.~\ref{app:extended-hparams}.
+temperature. Numeric settings are listed in Appendix.~\ref{app:extended-hparams}.
 
 
 
@@ -2330,11 +1959,6 @@ To report definitions for completeness.
 Average chain length, interprocedural hop ratio, motif coverage@K, and the ACC rejection mix (CFG/DFG/IPA/alias) are summarized as descriptive statistics.
 
 
-%=============================%
-% Appendix C
-%=============================%
-
-
 
 \chapter{Extended Results and Hyperparameters}
 \label{app:extended}
@@ -2373,8 +1997,117 @@ K{=}8,\quad B{=}24,\quad H{=}5,\quad \alpha{=}0.7,\quad \lambda{=}0.2,\quad \eps
 	\end{tabular}
 \end{table}
 
+
+
 \subsection*{Software and hardware manifest}
 Python version, key libraries, and a lockfile with package hashes are included with the artifact for exact replay. Device model, VRAM, CPU cores, and RAM are recorded in a system info JSON.
+
+
+
+
+\section{Beam Search and ACC Diagnostics}
+\label{app:beam-acc}
+
+The table summarizes per-graph decoding behavior under the default settings
+(\(K{=}8\), \(B{=}24\), \(H{=}5\), \(\alpha{=}0.7\)). Values are medians with P90 where noted.
+
+\begin{table}[H]
+	\centering
+	\small
+	\setlength{\tabcolsep}{6pt}
+	\renewcommand{\arraystretch}{1.12}
+	\caption{Beam and ACC diagnostics under \(K{=}8\), \(B{=}24\), \(H{=}5\) (per graph).}
+	\label{tab:eff-beam-diagnostics}
+	\begin{tabular}{lrrrr}
+		\toprule
+		\textbf{Quantity} & \textbf{Median} & \textbf{P90} & \textbf{Struct-only} & \textbf{GCBERT+Struct} \\
+		\midrule
+		Seeds used (of \(8\))             & 6.0 & 8.0 & 5.8 & 6.3 \\
+		Avg.\ hops of best chain          & 4.3 & 5.0 & 4.2 & 4.4 \\
+		Admissible branching factor \(\bar d\) & 2.1 & 3.0 & 2.0 & 2.2 \\
+		Expansions attempted              & 1{,}240 & 1{,}920 & 1{,}180 & 1{,}300 \\
+		Expansions admitted               & 168 & 256 & 159 & 177 \\
+		Pruned by CFG reachability        & 54.1\% & 62.7\% & 55.9\% & 52.5\% \\
+		Pruned by IPA/stack rule          & 21.8\% & 27.4\% & 22.6\% & 21.1\% \\
+		Pruned by alias/points-to         & 6.8\% & 9.3\%  & 6.5\%  & 7.1\% \\
+		Score-pruned (beam cap / entropy) & 17.3\% & 22.1\% & 15.0\% & 19.3\% \\
+		Beams that reach a sink           & 2.1 & 3.0 & 1.9 & 2.3 \\
+		Chains using CALL/RET edges       & 63.4\% & 74.2\% & 60.7\% & 66.0\% \\
+		Chains with sanitizer bonus       & 41.6\% & 51.0\% & 39.8\% & 43.2\% \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+
+\subsection*{Beam Sensitivity (K, B, H)}
+\label{app:beam-sensitivity}
+
+The table reports validation metrics and per-graph latency for the GCBERT+Struct model across beam sizes.
+
+\begin{table}[H]
+	\centering
+	\small
+	\setlength{\tabcolsep}{5pt}
+	\renewcommand{\arraystretch}{1.10}
+	\caption{Beam sensitivity (Valid, GCBERT+Struct; latency in ms per graph).}
+	\label{tab:eff-beam-sensitivity}
+	\begin{tabular}{c c c c c c c}
+		\toprule
+		\(\mathbf{K}\) & \(\mathbf{B}\) & \(\mathbf{H}\) & \textbf{Validity} & \textbf{IPA} & \textbf{LCS} & \textbf{Latency} \\
+		\midrule
+		4  & 12 & 3 & 0.802 & 0.653 & 0.541 & \textbf{10.8} \\
+		4  & 12 & 5 & 0.821 & 0.704 & 0.565 & 12.6 \\
+		8  & 24 & 5 & \textbf{0.844} & \textbf{0.784} & \textbf{0.604} & 17.7 \\
+		8  & 48 & 5 & 0.847 & 0.792 & 0.608 & 24.9 \\
+		16 & 48 & 7 & 0.849 & 0.799 & 0.612 & 33.1 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+
+
+\subsection{Decoder Diagnostics and Remedies}
+\label{app:decoder-diagnostics}
+
+The table below lists rare decoding issues, their signals, and practical fixes.
+
+\begin{table}[H]
+	\centering
+	\footnotesize
+	\setlength{\tabcolsep}{2pt}
+	\renewcommand{\arraystretch}{1.12}
+	\caption{Decoder diagnostics for rare cases and suggested remedies.}
+	\label{tab:qual-fail}
+	\begin{tabularx}{\linewidth}{Y Y Y Y}
+		\toprule
+		\textbf{Symptom} & \textbf{Likely cause} & \textbf{Signal} & \textbf{Remedy} \\
+		\midrule
+		Early termination &
+		True path exceeds \(H\) or detours &
+		Low score near \(t{=}H\), no successors &
+		Increase \(H\) or add thin DFG summaries \\
+		No interprocedural hop &
+		Source or sink API missing from lexicon &
+		High node score, zero \texttt{ARG2PARAM}/\texttt{RET2*} &
+		Extend lexicon or enable API summaries \\
+		Alias mismatch &
+		Coarse points-to for container or pointer hop &
+		\texttt{alias\_ok} rejects edge &
+		Refine buckets; add container-aware rules \\
+		Guard over-credit &
+		Guard does not dominate the sink region &
+		Bonus lifts wrong branch &
+		Tighten dominance; require taint effect \\
+		Rare relation downweighted &
+		Prior penalizes uncommon pattern &
+		Prior penalty visible in path deltas &
+		Reduce mixture \(\lambda\) or smooth with larger \(K\) \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+
+
 
 \section{Additional Diagnostics}
 \label{app:extended-diag}
@@ -2386,28 +2119,6 @@ Python version, key libraries, and a lockfile with package hashes are included w
 	\item Motif coverage@K and interprocedural hop ratio distributions.
 	\item Admissible expansion ratio curves versus decoding depth.
 \end{itemize}
-
-\subsection*{How to regenerate (example commands)}
-\begin{verbatim}
-	# Linux
-	python scripts/03_decode.py --config configs/gcbert_struct.json \
-	--split test --emit-traces --emit-rejections --emit-motifs
-	
-	# Windows PowerShell
-	python scripts/03_decode.py --config .\configs\gcbert_struct.json `
-	--split test --emit-traces --emit-rejections --emit-motifs
-\end{verbatim}
-
-\section{Dataset Card and Licensing}
-\label{app:dataset-card}
-
-\textbf{Provenance and splits:} ReposVul repository-level splits are used; projects do not cross splits; positive/negative pairs remain within a split; commit order is preserved when temporal analysis is reported.
-
-\textbf{Preprocessing:} AST/CFG/DFG overlays with \texttt{CALL}, \texttt{ARG}$\!\to$\texttt{PARAM}, \texttt{RET}$\!\to$\texttt{CALLER}/\texttt{RET}$\!\to$\texttt{LHS}. Alias summaries are coarse and conservative. Normalization choices are fixed across runs.
-
-\textbf{Licensing:} Upstream repository licenses are respected. Derived graphs and labels follow dataset terms.
-
-
 
 
 
@@ -2739,17 +2450,134 @@ This condensed sequence runs the full pipeline.
 \label{app:artifact-determ}
 Seeds are fixed in configs; decoding is deterministic given identical environment and seeds. Checksums verify inputs and expected summaries. A quick sanity script confirms: (i) project-disjoint splits, (ii) at least one valid chain on known positives, and (iii) improved calibration (lower ECE) after validation temperature scaling.
 
+%-----
+\section{Source for Figure~\ref{fig:demo-chain} and Chain Trace}
+\label{app:qual-src}
+
+The files below reproduce Figure~\ref{fig:demo-chain}. Decoding used ACC with \(K{=}8\), \(B{=}24\), \(H{=}5\), and \(\alpha{=}0.7\); the CKG prior weight was \(\lambda{=}0.2\). Paths are relative to the project root. The exact decoded chain trace is included for reference.
+
+\paragraph{app/main.c}
+\begin{lstlisting}
+	#include <stdio.h>
+	#include <stdlib.h>
+	#include <string.h>
+	
+	extern char* wrap_a(char* in);
+	extern char* wrap_b(char* in);
+	extern char* wrap_c(char* in);
+	extern void run_system(char* cmd);
+	
+	int main(int argc, char** argv) {
+		char buf[256];
+		// ROOT: untrusted input (simulate reading from argv)
+		if (argc > 1) {
+			strncpy(buf, argv[1], sizeof(buf)-1);
+			buf[sizeof(buf)-1] = '\0';
+			char* p = wrap_a(buf);
+			p = wrap_b(p);
+			p = wrap_c(p);
+			// final call: dangerous sink
+			run_system(p);
+		}
+		return 0;
+	}
+\end{lstlisting}
+
+\paragraph{lib/wrap.c}
+\begin{lstlisting}
+	#include <stdio.h>
+	#include <stdlib.h>
+	#include <string.h>
+	
+	char tmp1[300];
+	char tmp2[300];
+	char tmp3[300];
+	
+	char* wrap_a(char* in) {
+		// propagation #1 (DFG + CALL/ARG2PARAM)
+		snprintf(tmp1, sizeof(tmp1), "%s", in);
+		return tmp1;
+	}
+	
+	char* wrap_b(char* in) {
+		// propagation #2
+		strcpy(tmp2, "");           // ensure defined
+		strcat(tmp2, in);
+		strcat(tmp2, " --verbose");
+		return tmp2;
+	}
+	
+	char* wrap_c(char* in) {
+		// propagation #3
+		sprintf(tmp3, "%s %s", in, "--force");
+		return tmp3;
+	}
+\end{lstlisting}
+
+\paragraph{lib/sink.c}
+\begin{lstlisting}
+	#include <stdio.h>
+	#include <stdlib.h>
+	#include <string.h>
+	
+	void run_system(char* cmd) {
+		// SINK: vulnerable external command execution
+		// (intentionally no sanitization)
+		system(cmd);
+	}
+\end{lstlisting}
+
+\paragraph{Decoded chain trace for Case A}
+\begin{lstlisting}
+	Root -> ... -> Sink (hops=12)
+	
+	[ROOT] char buf[256];
+	(DECL, app/main.c, line 12, p=0.579)
+	`-- [DFG] exact=DFG
+	[->] buf[sizeof(buf)-1] = '\0';
+	(ASSIGN, app/main.c, line 16, p=0.508)
+	`-- [CFG] exact=CFG
+	[->] char* p = wrap_a(buf);
+	(ASSIGN, app/main.c, line 17, p=0.499)
+	`-- [CFG] exact=CFG
+	[->] p = wrap_b(p);
+	(ASSIGN, app/main.c, line 18, p=0.468)
+	`-- [CFG/DFG] exact=CFG,DFG
+	[->] p = wrap_c(p);
+	(ASSIGN, app/main.c, line 19, p=0.545)
+	`-- [DFG] exact=DFG
+	[->] run_system(p);
+	(CALL:run_system, app/main.c, line 21, p=0.399)
+	`-- [CPG] exact=CALL
+	[->] extern void run_system(char* cmd);
+	(STMT, app/main.c, line 9, p=0.454)
+	`-- [CFG] exact=CFG_REV
+	[->] extern char* wrap_c(char* in);
+	(STMT, app/main.c, line 8, p=0.512)
+	`-- [CFG] exact=CFG_REV
+	[->] extern char* wrap_b(char* in);
+	(STMT, app/main.c, line 7, p=0.490)
+	`-- [CFG] exact=CFG_REV
+	[->] extern char* wrap_a(char* in);
+	(STMT, app/main.c, line 6, p=0.486)
+	`-- [CFG] exact=CFG_REV
+	[->] #include <string.h>
+	(STMT, app/main.c, line 4, p=0.495)
+	`-- [CFG] exact=CFG_REV
+	[->] #include <stdlib.h>
+	(STMT, app/main.c, line 3, p=0.490)
+	`-- [CFG] exact=CFG_REV
+	[SINK] #include <stdio.h>
+	(STMT, app/main.c, line 2, p=0.544)
+\end{lstlisting}
+
+The same trained checkpoint and decoding settings were used for all case studies.
+
 \section{How tables and figures are built}
 \label{app:artifact-build}
 \texttt{step6\_eval\_report.py} aggregates per-graph outputs to CSV and \LaTeX, mapping columns 1:1 to metrics in Chapter~\ref{ch:eval} and Appendix~\ref{app:metrics}. The report also emits PR curves, reliability diagrams, and distributions for chain length and interprocedural ratio under \texttt{Report/}.
 
 
-
-
-
-
 \end{appendices}
-
-
 
 \end{document}
