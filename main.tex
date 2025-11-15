@@ -86,11 +86,17 @@
 \beforepreface
 \prefacesection{Abstract}
 
-This work introduces a context-aware causal inference framework designed to enhance both interpretability and robustness in automated vulnerability detection. The proposed method explicitly reconstructs root-to-sink causal chains that trace the propagation of vulnerabilities across functions, thereby revealing inter-procedural spreading behaviors that conventional models overlook. Programs are encoded as heterogeneous graphs enriched with GraphCodeBERT representations, enabling a nuanced capture of syntactic and semantic dependencies. During inference, beam search with Adaptive Causal Contextualization (ACC) assembles executable causal chains that respect control- and data-flow reachability while maintaining cross-functional coherence and avoiding cycles. To further improve the interpretability of long, multi-function traces, a Causal Knowledge Graph (CKG) of frequently observed relation motifs is mined and employed as a weak structural prior, gently guiding beam expansion without compromising ACC’s admissibility.
 
-To rigorously evaluate the causal soundness of the proposed framework, two novel metrics are introduced. The Counterfactual Consistency Score (CCS) quantifies the stability of predictions under targeted causal perturbations, while the Causal Feature Attribution Measure (CFAM) assesses the alignment between the model’s attention and the code elements that genuinely drive vulnerability outcomes. Together with traditional performance metrics, these measures establish a comprehensive evaluation protocol that validates both predictive effectiveness and causal grounding.
 
-By transitioning from correlation-based analysis to mechanism-aware causal reasoning, this research advances the transparency, reliability, and practical utility of DL-based vulnerability analysis. The proposed framework not only enhances developers’ ability to interpret model outputs but also provides a principled foundation for trustworthy, traceable, and targeted remediation in real-world software systems.
+Software vulnerabilities in large systems rarely stem from a single line of code. Instead, they emerge from chains of decisions and data flows that cross multiple functions, files, and modules. Existing tools, including both traditional static and dynamic analysis and modern learning-based detectors, are good at flagging suspicious locations but rarely explain how a vulnerability actually arises and propagates through a program. As a result, their predictions are often brittle, difficult to trust, and only weakly connected to the steps a developer must take to fix the underlying problem.
+	
+This thesis addresses this limitation by treating the entire path from the initial cause of a vulnerability to its exploitable endpoint as the main object of analysis. The central goal is to reconstruct \emph{executable interprocedural root-to-sink vulnerability chains} that a developer can follow across functions and files. To achieve this, the work first builds a program representation that records how control and data move within and between functions in real software projects. On top of this representation, a learning-based model is trained not only to decide whether a piece of code is vulnerable, but also to identify and assemble the sequence of steps that carry the vulnerable state from its origin to a sensitive operation.
+	
+Beyond simply producing these chains, the thesis introduces criteria to check whether the explanations are truly aligned with the model’s behaviour. These criteria probe how predictions change when key parts of a chain are edited and measure how much of the model’s attention falls on the reconstructed path. An empirical study on real-world repositories shows that focusing on interprocedural chains leads to more stable predictions, clearer explanations, and guidance that is better suited to debugging and remediation than conventional “black-box” scores. In this way, the thesis moves vulnerability detection closer to tools that do not just say \emph{where} a problem is, but explain \emph{how} and \emph{why} it can be exploited.
+
+
+
+
 
 \prefacesection{Acknowledgments}
 
@@ -101,140 +107,105 @@ I would like to express my sincere gratitude to everyone who contributed to the 
 
 \afterpreface
 
-%========================================
-% Chapter 1 — Introduction
-%========================================
-
 \chapter{Introduction}
 \label{chap:intro}
 
-\section{Introduction}
-Software now underpins critical infrastructure, financial services, scientific workflows, and everyday communication. As projects grow in size and heterogeneity, contemporary codebases span millions of lines and evolve under distributed development, increasing architectural complexity and the likelihood that subtle defects persist into production. When such defects are exploitable, they become security vulnerabilities that threaten confidentiality, integrity, and availability, with failures that may propagate across dependent components.
+Software vulnerability detection remains a critical yet complex challenge in software engineering. Modern digital infrastructure, financial services, scientific workflows, and everyday communication all depend on large, evolving software systems. As these systems scale in size and heterogeneity, contemporary codebases span millions of lines of code and are developed by distributed teams over long periods of time. This growth in complexity increases architectural coupling and the likelihood that subtle defects persist into production. When such defects are exploitable, they become security vulnerabilities that threaten confidentiality, integrity, and availability, and their effects may propagate across dependent components and services~\cite{Li2022Empirical,yang2022natural,Le2024MBU}.
 
-Traditional software assurance relies on two complementary approaches: static and dynamic analysis. Static analysis examines code without execution, employing rule-based systems, type reasoning, and data-flow frameworks to infer program behavior at scale. Dynamic analysis, in contrast, executes programs using real inputs or instrumented environments to observe actual runtime behavior. Each method has distinct advantages and limitations: static analysis provides broad coverage but often overestimates feasible execution paths, while dynamic analysis delivers precise traces at the expense of limited input coverage and scalability. When applied in isolation, neither approach consistently captures the holistic behavior of large, modular systems, particularly when data and control flows cross function or module boundaries via argument parameter mappings, return–caller relationships, aliasing, and nested control structures.
+Traditional vulnerability detection techniques provide important, but incomplete, coverage of this problem space. \emph{Static analysis} examines code without executing it, relying on rule-based systems, type reasoning, data-flow frameworks, and abstract interpretation to infer program behaviour at scale~\cite{Allix2024,Ruiz2023,taviss2024asm2seq}. \emph{Dynamic analysis} executes programs with concrete or instrumented inputs to observe runtime behaviour directly, often using monitoring, tracing, or sandboxing to detect anomalous states~\cite{yagemann2021arcus,cheng2022path}. In practice, these approaches are complemented by \emph{fuzzing} and penetration testing, which attempt to exercise programs under diverse or adversarial inputs in order to trigger faults and expose exploitable conditions. Static analysis offers broad coverage but tends to over-approximate feasible execution paths, producing false positives and limited insight into concrete exploitability, while dynamic analysis, fuzzing, and penetration testing provide high-fidelity traces but often struggle with input coverage, scalability, and reproducibility on large, modular systems~\cite{Li2022Empirical,Le2024MBU}.
 
-Machine learning or deep learning based methods have greatly improved traditional program analysis by using different structural representations of code, like sequences, trees, and graphs.  Graph-based models fit well with the structure of programs:  Abstract Syntax  Trees represent syntactic relationships, Control-Flow Graphs illustrate execution paths, and Data-Flow Graphs signify value dependencies; these perspectives can be amalgamated into cohesive representations like the Code Property Graph to facilitate integrated reasoning across syntactic, control, and data dimensions~\cite{yamaguchi2014cpg}.  Building on this foundation, models such as \emph{Devign} and subsequent graph neural network variants have achieved strong benchmark performance by fusing information from these complementary views~\cite{Zhou2019}, while post-hoc explainers like \emph{LEMNA} and \emph{GNNExplainer} identify key features or subgraphs to clarify model decisions~\cite{guo2018lemna,ying2019gnnexplainer}; structure-aware pretraining approaches such as \emph{GraphCodeBERT} enrich token embeddings with data-flow semantics to improve downstream performance~\cite{guo2021graphcodebert}.  Even with these improvements, many ML-based vulnerability detectors are still statement- or subgraph-centric. They focus on \emph{where} a flaw is likely to happen instead of \emph{how} it happens through the interaction of control and data flows. They also often rely on localized statistical patterns instead of clear causal relationships~\cite{Li2022Empirical,yang2022natural}.  This dependence makes models susceptible to false correlations, dataset biases, and performance decline during benign code transformations, including refactoring, formatting alterations, or identifier renaming~\cite{Li2022Empirical,yang2022natural}.  Empirical studies further demonstrate inadequate generalization to novel projects or programming paradigms, exacerbated in cases of interprocedural vulnerabilities where propagation extends across multiple functions, files, and modules, influenced by non-local effects such as aliasing, indirect calls, and argument binding~\cite{Le2024MBU}. These limitations collectively highlight the necessity to transition from correlational pattern matching to frameworks that examine program behavior through structured, causally grounded reasoning. This shift is increasingly evident in recent research on explainability and causality in software engineering~\cite{Cao2024ASE,Kuang2024KSEM,Rahman2024ICSE,Chu2024ISSTA}.
+Recent years have seen a substantial shift toward \emph{data-driven approaches} for software vulnerability detection. These methods, which include machine learning and deep learning based models, aim to automate vulnerability discovery by learning patterns from code representations such as token sequences, abstract syntax trees, control-flow graphs, and data-flow graphs. Graph-based models align naturally with program structure: Abstract Syntax Trees (ASTs) capture syntactic hierarchies, Control-Flow Graphs (CFGs) encode possible execution paths, and Data-Flow Graphs (DFGs) represent value dependencies. These complementary views can be merged into unified program representations such as the Code Property Graph (CPG) to support integrated reasoning over syntax, control, and data~\cite{yamaguchi2014cpg}. Building on this foundation, models such as \emph{Devign} and later graph neural network variants have achieved strong benchmark performance by fusing information from these structural perspectives~\cite{Zhou2019}. Post hoc explainers such as \emph{LEMNA} and \emph{GNNExplainer} highlight influential features or subgraphs to clarify model decisions~\cite{guo2018lemna,ying2019gnnexplainer}. Structure-aware pretraining models such as \emph{GraphCodeBERT} further enrich token embeddings with data-flow semantics and have been shown to improve downstream vulnerability detection~\cite{guo2021graphcodebert}.
 
+Despite this progress, many existing data-driven detectors remain \emph{correlation-centric}. Traditional deep learning models tend to rely heavily on statistical associations in training data, often capturing superficial patterns rather than the underlying causes of vulnerabilities. They typically focus on isolated statements or small subgraphs that are predictive of the vulnerability label and emphasize \emph{where} a flaw is likely to occur, rather than \emph{how} it emerges and propagates through interacting control and data flows~\cite{Li2022Empirical,yang2022natural}. This correlation-centric bias produces several limitations. Models can become sensitive to dataset-specific artefacts, such as naming conventions or formatting, and may fail under benign transformations such as refactoring, formatting changes, or identifier renaming~\cite{Li2022Empirical,yang2022natural}. Their predictions also offer limited interpretability for developers, since they seldom reconstruct the broader execution context that links root causes, intermediate propagation, and exploitable sinks~\cite{Cao2024ASE,Kuang2024KSEM,Rahman2024ICSE,Chu2024ISSTA}.
 
-In response, researchers have advanced \emph{causal and explainable vulnerability detection} through frameworks such as \emph{COCA}, \emph{Snopy}, \emph{VulCausal}, \emph{CausalVul}, and counterfactual tools like \emph{CFExplainer}~\cite{Cao2024ASE,Kuang2024KSEM,Rahman2024ICSE,Chu2024ISSTA}. These efforts mitigate spurious dependencies and enhance local interpretability using causal inference or contrastive reasoning. Yet the focus remains on small, decisive statement sets and localized explanations rather than on reconstructing fully verified, \emph{executable}, interprocedural causal mechanisms. As a result, they offer only partial lifecycle insight and lack the structural fidelity required for developer-centered debugging or repair.
+These limitations are particularly severe for \emph{interprocedural} vulnerabilities. In real software systems, vulnerabilities often arise from complex interactions that span multiple functions, modules, or files. Tainted input may flow through several layers of wrapper functions before reaching a sensitive sink; resource management errors may involve initialization in one component and misuse in another; and access-control checks may be applied inconsistently across different call paths. Modeling such behaviours requires reasoning not only about local syntax and intra-procedural structure but also about interprocedural semantics, including call and return edges, argument to parameter bindings, return to caller relationships, and conservative aliasing across function and module boundaries~\cite{Le2024MBU}. Existing static, dynamic, fuzzing, and data-driven techniques typically approximate these patterns using limited context or heuristics and rarely construct explicit, executable chains that show how vulnerable state propagates through the system~\cite{Li2022Empirical,Le2024MBU}.
 
-In summary, modern vulnerability detectors still have a hard time going beyond statistical association to give clear, causally coherent explanations of how software works.  Only a limited number of methodologies endeavor to construct comprehensive \emph{root$\rightarrow$propagation$\rightarrow$sink} narratives, and even these efforts are frequently incomplete, dataset-dependent, or challenging to validate in practical applications.  Consequently, practitioners often receive pointwise predictions or localized highlights instead of a comprehensive explanation that can be followed through actual systems.  Consequently, the remainder of this research concentrates on explaining the characteristics of a reliable, execution-consistent representation of vulnerability behavior and establishing the necessary requirements and assessment protocols that align predictions with actionable, execution-aware insight, improving developer productivity and code security.
+To address these challenges, this thesis adopts a \emph{causal and context-aware} perspective on vulnerability detection. In this work, \emph{context awareness} refers to the capability of a model to understand how program elements relate not only syntactically, but also semantically, through control-flow, data dependencies, and functional interactions~\cite{yamaguchi2014cpg,guo2021graphcodebert}. Vulnerabilities often do not originate from a single isolated statement; instead, they emerge from the interplay of multiple operations over time and across function boundaries. Capturing this semantic context is essential for reconstructing meaningful explanations of vulnerability behaviour, especially in interprocedural scenarios~\cite{Le2024MBU}. At the same time, the thesis builds on principles from \emph{causal inference}, which seek to distinguish true cause–effect relationships from spurious correlations and have motivated recent causal and explainable approaches to vulnerability detection~\cite{Cao2024ASE,Kuang2024KSEM,Rahman2024ICSE,Chu2024ISSTA}. In the context of vulnerability detection, embedding causal reasoning into program analysis is not only attractive, but necessary, since remediation decisions depend on understanding which code elements and propagation paths are actually responsible for a vulnerability.
+
+These limitations motivate a shift from purely correlational pattern recognition to \emph{causal, context-aware, interprocedural reasoning} in vulnerability detection~\cite{Cao2024ASE,Kuang2024KSEM,Rahman2024ICSE,Chu2024ISSTA}. In this thesis, context awareness refers to the model’s ability to understand not only the syntactic structure of source code but also its semantic meaning, including how different code components interact through control flow, data dependencies, and functional relationships. Vulnerabilities often arise from complex interactions that span multiple functions, modules, or execution paths rather than from isolated statements~\cite{Le2024MBU}. Consequently, there is a need for an approaches that construct structured causal chains, tracing the origin and spread of vulnerabilities across interprocedural boundaries. By embedding semantic knowledge of program behaviour and focusing on causal relationships instead of surface-level correlations, such frameworks can provide deeper, more trustworthy, and more actionable explanations of how vulnerabilities emerge and propagate in real software systems~\cite{Li2022Empirical,yang2022natural,Le2024MBU,Cao2024ASE,Kuang2024KSEM,Rahman2024ICSE,Chu2024ISSTA}.
 
 
 \section{Problem Definition and Scope}
 \label{sec:intro-problem}
 
-Deep learning-based vulnerability detection has made significant progress; however, current systems still fail to produce clear, actionable, end-to-end causal pathways that connect vulnerabilities from initial conditions through intermediate propagation stages to exploitable endpoints~\cite{Li2022Empirical,yang2022natural,Le2024MBU}.  Most detectors depend on statistical patterns acquired during training and prioritize local saliency rather than coherent reasoning regarding the emergence and dissemination of vulnerabilities, thereby constraining explanatory efficacy and fidelity~\cite{Li2022Empirical,yang2022natural}.  As a result, predictions are frequently challenging to interpret, deteriorate with benign code modifications such as refactoring or renaming, and offer limited assistance for debugging or repair~\cite{Li2022Empirical,yang2022natural}.  Interprocedural vulnerabilities make these problems worse because they involve complex semantic relationships that cross functions, files, or modules, such as argument binding, returns to callers, and aliasing~\cite{Le2024MBU}.
+Software vulnerabilities rarely arise from a single, isolated statement; instead, they often emerge from interactions that span multiple functions, files, and modules in large, evolving codebases. Tainted inputs may flow through several layers of wrapper functions before reaching a sensitive sink, resource management errors may involve initialization in one component and misuse in another, and access-control checks may be applied inconsistently across different call paths. Capturing such behaviours requires reasoning about both intra-procedural structure and interprocedural semantics, including how data and control flow across function boundaries, files, and modules~\cite{Le2024MBU}.
 
-To mitigate these limitations, my research aims to reconstruct explicit, executable causal chains that delineate vulnerability propagation across procedural boundaries in code.  During inference, a constrained beam search guided by Adaptive Causal Contextualization (ACC) generates candidate chains while enforcing reachability, interprocedural legality, thereby avoiding infeasible jumps~\cite{Le2024MBU}. A compact \emph{Causal Knowledge Graph} (CKG), derived from training data, offers a lightweight structural prior that steers transitions towards historically plausible yet semantically valid steps, in accordance with contemporary trends in causality-aware software analytics~\cite{Cao2024ASE,Kuang2024KSEM,Rahman2024ICSE,Chu2024ISSTA}. This research combines intra-procedural representations like Abstract Syntax Trees, Control-Flow and Data-Flow Graphs with important interprocedural semantics like call/return links, argument→parameter and return→caller bindings, and approximated aliasing into a single graph structure that is ready for analysis and is based on the Code Property Graph~\cite{yamaguchi2014cpg}. The explanations that come out of this are logical, can be run, and are based on real control and data flows that show how vulnerabilities spread through the program.  This method builds on structure-aware pretraining methods like GraphCodeBERT~\cite{guo2021graphcodebert} and improves on earlier graph-based detectors like Devign and its GNN successors~\cite{Zhou2019}.
+Existing vulnerability detection techniques, including static and dynamic analysis, fuzzing and penetration testing, and modern data-driven detectors, provide important but incomplete coverage of this interprocedural behaviour. Classical static, dynamic, and fuzzing-based solutions are effective at finding local defects or triggering specific failure scenarios, but they rarely reconstruct \emph{explicit, executable root-to-sink vulnerability chains} that connect initial sources, intermediate propagation steps, and final sinks across procedural boundaries. Similarly, most data-driven detectors are trained to classify localized code regions or limited graph neighborhoods and tend to focus on pointwise predictions of \emph{where} a vulnerability may occur, rather than modelling \emph{how} vulnerable state propagates across functions and modules in a causally meaningful way~\cite{Li2022Empirical,yang2022natural,Le2024MBU}. As a result, their explanations are often fragmentary, correlation-driven, and difficult to validate against actual execution behaviour~\cite{Cao2024ASE,Kuang2024KSEM,Rahman2024ICSE,Chu2024ISSTA}.
 
-
-\subsection{Research Questions}
-
-This thesis investigates how to reconstruct \emph{executable}, interprocedural explanations for software vulnerabilities and how to \emph{assess their fidelity}. Robustness analyses are considered supportive rather than primary objectives. Accordingly, I investigate the following research questions:
-
-\begin{enumerate}
-	\item \textbf{Interprocedural Causal Chain Reconstructio:}  
-	How can context-aware graph reasoning systematically construct \emph{executable} causal chains that trace a vulnerability from its root cause through intermediate propagation steps to an exploitable sink \emph{across function and module boundaries}?
-		
-	\item \textbf{Evaluation of Chain-Centric Explanations:}  
-	How can the causal faithfulness and counterfactual robustness of chain-centric explanations be rigorously evaluated using formal, reproducible criteria that support fair and transparent cross study comparison?
-	
-\end{enumerate}
-
-To answer these questions, this thesis proposes a chain-centric, interprocedural representation aligned with reasoning mechanisms that emphasize causally significant signals, supported by an evaluation framework that rewards explanations demonstrating counterfactual stability and attribution faithfulness. Together, these components enable faithful, interpretable, and robust reconstruction of vulnerabilities, especially those spanning functional and modular boundaries and establish a foundation for trustworthy and actionable automated vulnerability analysis.
-
-\section{Limitations of Existing Approaches}
-
-Current vulnerability detectors remain largely \emph{statement} or \emph{subgraph-centric}, they indicate \emph{where} an issue may occur but rarely explain \emph{how} behaviour unfolds across function boundaries. As a result, they provide limited, Intuitive insight that developers cannot easily trace interprocedurally.
-
-A second problem that is well-known is correlation bias.  A lot of models learn superficial patterns instead of stable dependencies, which makes them fragile when simple changes are made (like renaming or refactoring) and makes them not work well with new projects or styles~\cite{Li2022Empirical,yang2022natural}. The lack of clear control, data, and alias-flow reasoning makes causal soundness even weaker in practice.
-
-Work on causal/explainable detection (e.g., \emph{COCA}, \emph{Snopy}, \emph{CausalVul}, counterfactual explainers) improves interpretability by reducing spurious associations and offering localized rationales~\cite{Cao2024ASE,Kuang2024KSEM,Rahman2024ICSE,Chu2024ISSTA}. However, these explanations are typically local and do not produce verified, executable interprocedural accounts (e.g., end-to-end root$\rightarrow$propagation$\rightarrow$sink narratives).
-
-Finally, evaluation remains uneven: beyond accuracy, principled criteria for causal faithfulness, counterfactual robustness, and attribution reliability are inconsistently applied, limiting fair and reproducible comparison across studies.
-
-Present approaches are constrained by local focus, correlation bias, and non-standardized causal evaluation. Few provide complete, executable interprocedural explanations of vulnerabilities—highlighting the need for methods and assessments that capture behaviour across control and data dependencies.
-
-\section{Objectives and Contributions}
-\label{sec:intro-aims}
-
-This section introduces the goals and the advances of the thesis. The objectives establish a causal, chain-oriented perspective on vulnerability analysis that simulates interprocedural root-to-sink spreading. The contributions turn these goals into real ways to do things: a unified program graph for executable reasoning across functions and files, a causal decoding pipeline that prefers valid paths over incidental patterns, and an evaluation protocol based on counterfactual tests and attribution alignment. These things together set the scope and impact of the work and get the detailed subsections that follow ready.
+This thesis addresses this gap by treating the full \emph{interprocedural root$\rightarrow$propagation \newline $\rightarrow$sink chain} as the primary object of explanation. The goal of this thesis is to develop a context aware data-driven causal framework that reconstructs \emph{interprocedural root-to-sink vulnerability propagation chains} in source code, aligning vulnerability predictions with executable, causally grounded explanations of how vulnerabilities arise and propagate across function and module boundaries.
 
 
-\subsection*{Objectives}
+\section{Research Objectives and Questions}
+\label{sec:intro-objectives}
 
-This thesis advances vulnerability analysis through below core contributions. 
+To achieve the goal of reconstructing executable interprocedural root-to-sink vulnerability propagation chains, this thesis pursues the following research objectives. 
+
+\subsection*{Research Objectives}
+
+Each objective is grounded in an interprocedural, chain-centric causal reasoning paradigm explicitly modeling how vulnerabilities emerge, propagate, and compound across procedure boundaries.
 \medskip
 
-\noindent\textbf{Chain Centric Reconstruction:}  
+\noindent\textbf{O1 - Interprocedural representation:}  
+Design a program representation that captures interprocedural control and data dependencies, combining structures such as Abstract Syntax Trees (ASTs), Control-Flow Graphs (CFGs), Data-Flow Graphs (DFGs), and Program/Code Property Graphs (PDG/CPG), in a form suitable for root-to-sink causal analysis across functions, files, and modules.
+
+\medskip
+\noindent\textbf{O2 - Causal chain modelling:}  
 Create a constraint-based approach to generate executable, interprocedural vulnerability chains, explicitly representing control flow, data dependencies, and aliasing to produce chains that are viable, minimal, and mechanically valid.
-	
-\noindent\textbf{Execution Consistency Validation:}  
-Define architecture agnostic verification conditions to ensure that reconstructed chains adhere to program semantics.
-	
-\noindent\textbf{Evaluation of Causal Explanations:}  
-Formulate a causality-based evaluation method or technique that examines fidelity and counterfactual robustness through code-specific interventions, ensuring alignment, thus facilitating reproducible cross-model comparisons.
-	
-\noindent\textbf{Robustness and Generalization Analysis:}  
-Examine the stability of explanations within semantics, maintaining edits and generalizations across projects as supporting evidence of causal coherence.
 
+\subsection*{Research Questions}
+Building on the above objectives, this thesis investigates the following research questions:
+\medskip
 
-\subsection*{Contributions}
-This thesis makes below contributions to vulnerability analysis that is based on cause and effect and can be explained.
+\noindent\textbf{RQ1 – Interprocedural representation:}  
+How can a program representation be designed that faithfully captures interprocedural control and data dependencies (including AST, CFG, DFG, and PDG/CPG views) in a form that supports executable, root-to-sink causal analysis across functions, files, and modules?
 
 \medskip
-\noindent\textbf{C1, a program representation that focuses on chains:}
-I broaden the Code Property Graph to include the interprocedural context. Call links, argument-to-parameter bindings, return-to-caller mappings, and conservative alias edges connect AST, CFG, and DFG together. The graph keeps control and data dependencies between files and functions. It allows for the reconstruction of executable source to propagation to sink chains.
-
-\noindent\textbf{C2, putting together a causal chain:}
-I create a pipeline that combines Adaptive Causal Contextualization, a heterogeneous GAT encoder, and structure-aware embeddings (GraphCodeBERT). Decoding employs constrained beam search directed by a minimal causal prior. Only steps that can be reached and are legal between procedures are allowed. The outcome is a short, verifiable chain of vulnerable code.
-
-\noindent\textbf{C3, Causal evaluation:}
-I present two metrics. The Counterfactual Consistency Score (CCS) tells you how much the prediction changes when you make targeted edits. The Causal Feature Attribution Measure (CFAM) tells you how much attribution mass is on the returned chain. They collectively evaluate causal faithfulness beyond mere accuracy.
-
-\noindent\textbf{C4, Empirical analysis:}
-I check the framework on \emph{ReposVul}. Results show that detection has gotten better and the chain quality has gotten stronger. Causal tests produce significant directional concordance and resilient on-chain attribution, at a feasible inference expense. The evidence supports chain-centric, mechanism-level reasoning for security analysis.
+\noindent\textbf{RQ2 – Interprocedural causal chain construction:}  
+How can a context-aware causal reasoning approach systematically construct executable interprocedural vulnerability chains that are viable, minimal, and consistent with the underlying control flow, data dependencies, and aliasing relationships?
 
 
-\setlength{\fboxsep}{0pt}     
-\setlength{\fboxrule}{0.4pt}  
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{svg-inkscape/e2e.pdf}
-	\caption{End-to-end pipeline for chain-centric vulnerability detection. Source repositories are parsed into a unified Code Property Graph (CPG), with GraphCodeBERT-initialized features providing input to a relation-aware encoder. At inference, ACC-constrained beam search guided by CKG motifs performs structured reasoning and outputs a single executable interprocedural chain, enabling interpretable vulnerability mechanisms.}
-	\label{fig:intro-e2e-pipeline}
-\end{figure}
-
-
-
-\section{Methodological Overview and Evaluation Setup} 
+\section{Methodology Overview}
 \label{sec:intro-method}
 
+This thesis constructs an interprocedural program graph from real-world vulnerable repositories and then applies chain-centric causal reasoning over this graph. The codebase is parsed into structured representations such as Abstract Syntax Trees, Control-Flow Graphs, and Data-Flow Graphs, which are integrated into a unified Program/Code Property Graph. This graph is augmented with interprocedural semantics, including call edges, argument$\rightarrow$parameter mappings, return$\rightarrow$caller links, and conservative aliasing, so that paths from candidate sources to security-sensitive sinks can be followed across functions, files, and modules. Nodes in this heterogeneous graph are embedded using a structure-aware pretrained encoder (for example, GraphCodeBERT) in combination with explicit structural features, yielding rich contextual representations that reflect both local syntax and non-local control and data dependencies.
 
-This research constructs a chain-centric representation on a heterogeneous Code Property Graph that integrates Abstract Syntax Trees, Control-Flow Graphs, and Data-Flow Graphs with interprocedural semantics. The graph has call links, argument→parameter and return→caller bindings, call-site context, and conservative alias approximations. This makes it possible to move data and control between functions and files in a realistic way \cite{yamaguchi2014cpg}. Nodes and edges have features that are aware of structure. GraphCodeBERT's pretrained embeddings give hints about context and data flow \cite{guo2021graphcodebert}. A graph attention encoder collects information from different types of edges. A flow-consistency regularizer encourages attention to follow CFG-reachable def–use chains and matched call or return links while down-weighting infeasible hops.
-
-Decoding puts together candidate chains using a limited beam search. Adaptive Causal Contextualization (ACC) makes sure that execution is possible by checking for CFG and DFG reachability, well-nested calls and returns, and alias consistency. A small Causal Knowledge Graph is only used as a score-level prior during inference and does not change the training. Supervised training improves vulnerability detection at the repository or function level and adds extra terms that encourage sparse, executable mechanisms. At inference, the system outputs a prediction along with an executable source→propagation→sink chain (\ref{sec:model-arch-gat}, \ref{sec:model-arch-ckg}, and \ref{sec:model-arch-acc} for more information).
-
-Evaluation merges traditional classification with causal standards. Accuracy, Precision, Recall, F1, AUROC, and AUPRC are all standard metrics. The Counterfactual Consistency Score assesses the alteration of predictions in response to specific modifications of chain elements. The Causal Feature Attribution Measure tells us how much attribution mass is on sources, propagators, sanitizers, and sinks instead of off-path context \cite{Cao2024ICSE,Chu2024ISSTA,Kuang2024KSEM,Rahman2024ICSE}. These tests check for faithfulness and stability in addition to accuracy.
-
-The experimental evaluation utilizes the ReposVul dataset~\cite{wang2024reposvul}, a repository-level benchmark meticulously crafted to reduce patch entanglement and highlight explicit interprocedural structure.  I use official project-disjoint splits without making any changes. Reproducibility is ensured by controlling preprocessing, sampling, and random seeds. I retrain baselines, such as strong graph neural detectors and a contrastive method that takes causality into account, on the same splits \cite{Zhou2019,Cao2024ICSE}. Results contain chain-centric diagnostics like length and interprocedural span, robustness checks for safe refactorings, and short case studies that show hop-level justification. This enables a direct comparison between chain-centric causal analysis and competitive learning-based baselines on both detection performance and explanation fidelity.
+On top of these embeddings, the thesis employs a graph-based model equipped with Attention and Adaptive Causal Contextualization (ACC) to identify and assemble executable interprocedural causal chains. Causal attention highlights code elements that exert causal influence on vulnerability outcomes, while ACC propagates and refines these signals along control-flow and data-flow edges, allowing the model to trace root-to-sink propagation across function boundaries and to construct concise, executable chains for each vulnerable slice. The resulting chains are then assessed using causal validation criteria, such as the Counterfactual Consistency Score (CCS) and the Causal Feature Attribution Measure (CFAM), which complement conventional classification metrics and are treated as part of the evaluation strategy rather than as standalone research objectives.
 
 
+\section{Contributions and Significance}
+\label{sec:intro-contrib}
 
-\section{Significance and Impact}
-This research alters the explanation of vulnerabilities from localized, retrospective feature highlights to a singular, executable interprocedural causal chain that traverses from the root cause to the exploitable sink. The research makes model predictions interpretable by reconstructing how untrusted input enters the system, travels through control and data dependencies across functions, avoids or skips sanitization, and reaches a vulnerable operation. These chains give developers clear, traceable proof of a vulnerability's existence, as well as clear instructions on where to find it and what to do to fix it. This turns black-box detections into information that can be used and checked. This makes learning-based vulnerability detection more reliable, open, and useful for making sure that software is safe in the real world.
+This thesis makes the following contributions to interprocedural, causality-aware software vulnerability analysis. Each contribution relates directly to the research objectives and collectively supports the goal of reconstructing executable interprocedural causal chains.
+
+
+\medskip
+\noindent\textbf{C1 – A chain-centric interprocedural program representation:}  
+This thesis extends the Code Property Graph with explicit interprocedural semantics by integrating call links, argument to parameter bindings, return to caller mappings, and conservative alias edges across functions and files. This unified, heterogeneous graph preserves control and data dependencies beyond intra-procedural boundaries and is explicitly designed to support reconstruction of executable root$\rightarrow$propagation$\rightarrow$sink chains.
+
+\medskip
+\noindent\textbf{C2 - Interprocedural causal vulnerability chain construction:}  
+A context-driven causal approach that reconstructs explicit \emph{interprocedural root-to-sink causal vulnerability chains} over a unified program graph, treating the full propagation path (source$\rightarrow$propagation$\rightarrow$sink) as the primary explanatory object instead of focusing on isolated statements or local subgraphs.
+
+\medskip
+\noindent\textbf{C3 – A causal chain assembly pipeline:}  
+The thesis proposes a pipeline that combines structure-aware embeddings (such as GraphCodeBERT), a heterogeneous graph encoder, Causal Attention Learning, and Adaptive Causal Contextualization. Decoding employs constrained beam search guided by a compact Causal Knowledge Graph prior. Only reachable, interprocedurally legal steps are permitted, producing short, verifiable, executable chains that align with actual execution behavior.
+
+\medskip
+\noindent\textbf{C4 – Causal evaluation criteria for vulnerability detection:}  
+This thesis evaluates the causal vulnerability chain with causal evaluation metrics, such as the Counterfactual Consistency Score (CCS) and the Causal Feature Attribution Measure (CFAM), that assess whether the model’s decisions are consistent and based on causal features to ensure the causal faithfulness and robustness.
+
+
+\medskip
+\noindent\textbf{Significance:}  
+This research transforms vulnerability explanation from localized, retrospective feature highlights into a unified, executable interprocedural causal chain that traces the propagation from root cause to exploitable sink. This approach helps bridge the gap between traditional static and dynamic analyses, fuzzing and penetration testing, and modern data-driven vulnerability detectors, aligning automated analysis more closely with the complexity of large, modular software systems. The research makes model predictions interpretable by reconstructing how untrusted input enters the system, travels through control and data dependencies across functions, avoids or skips sanitization, and reaches a vulnerable operation. These chains give developers clear, traceable proof of a vulnerability's existence, as well as clear instructions on where to find it and what to do to fix it. This turns black-box detections into information that can be used and checked. This makes learning-based vulnerability detection more reliable, open, and useful for making sure that software is safe in the real world.
+
 
 \section{Thesis Outline}
-Chapter~\ref{chap:method-architecture} (Method and Architecture) formalizes the unified CPG, feature initialization, relation-aware GAT, and the ACC decoding procedure with the CKG prior; Chapter~\ref{chap:evaluation} (Evaluation Protocol and Metrics) defines conventional, chain-centric, and causal metrics and describes calibration and intervention design; Chapter~\ref{chap:results} (Experimental Results and Analysis) reports quantitative and qualitative findings, ablations (ACC/CKG/beam), decoding profile, robustness, and comparisons to \emph{COCA}; Chapter~\ref{chap:conclusion} concludes with limitations and future directions. An artifact and dataset card appear in the appendix.
+\label{sec:intro-outline}
 
+Chapter~1 introduces the problem of interprocedural vulnerability detection, states the research gap and goals, and outlines the proposed approach and contributions. Chapter~2 presents the literature review, covering program analysis foundations, data-driven vulnerability detection, and recent work on explainability and causal reasoning. Chapter~3 describes the overall methodology, including dataset construction, graph building, and the learning pipeline. Chapter~4 details the evaluation protocol and metrics used to assess the proposed framework. Chapter~5 reports the experimental results and analysis, including robustness studies and qualitative case examples. Chapter~6 concludes the thesis, summarizes the main findings, and discusses future research directions.
 
-
-
-
-%========================================
-% Chapter 2 — Literature review
-%========================================
+Chapter~7 records the core algorithms and pseudocode referenced in the methodology. Chapter~8 provides the formal model architecture, equations, and training objective. Chapter~9 defines the evaluation metrics in detail and presents diagnostic analyses. Chapter~10 lists extended results, ablations, and hyperparameters. Chapter~11 presents the dataset card and licensing information. Chapter~12 documents the role lexicon and pattern rules used to identify sources, sinks, and related roles. Chapter~13 summarizes the reproducibility checklist and artifact details required to replicate the experiments.
 
 
 
@@ -400,36 +371,40 @@ Allix et al. \cite{Allix2024} investigated the use of deep learning and explaina
 
 
 \section{Research Gaps}
+\label{sec:lr-gaps}
 
-Deep learning has made it easier to find vulnerabilities, but it still isn't very reliable, generalizable, or actionable. These deficiencies drive this endeavour.
+Automatic vulnerability detection has advanced considerably, yet existing systems remain limited in reliability, generalization, and practical applicability. These limitations motivate the chain-centric, interprocedural perspective adopted in this thesis.
 
 \medskip
+\noindent\textbf{Gap 1: Causal deficiency and generalization:}  
+Many data-driven detectors learn superficial statistical correlations rather than the underlying flaw mechanisms. Empirical studies show that their predictions often degrade under harmless refactorings, renaming, formatting changes, or cross-project transfer, indicating a lack of causal grounding and poor out-of-distribution robustness~\cite{Li2022Empirical,yang2022natural}. 
 
-\noindent\textbf{Causal deficiency and generalization:}
-A lot of detectors learn correlations instead of causes. They frequently fail during harmless refactorings and between projects. Normalization and domain adaptation are only somewhat helpful. Predictions continue to be erratic and do not accurately represent the fundamental flaw mechanism.
+\medskip
+\noindent\textbf{Gap 2: Interprocedural reasoning and chain reconstruction:}  
+Most existing approaches operate at the level of individual functions or narrow intra-procedural slices, capturing only limited contextual information. They generally fail to establish explicit interprocedural links connecting root causes, propagation paths, and final sinks~\cite{Le2024MBU}. Consequently, these methods cannot reconstruct executable root→propagation→sink chains that accurately trace vulnerable states across large, modular software systems.
 
-\noindent\textbf{Interprocedural reasoning:}
-Most methods look at just one function or a small part of a function. They don't link root cause to propagation and sink.  Without clear cross-function control and data links, outputs stay local and don't have a clear story for how to fix them.
+\medskip
+\noindent\textbf{Gap 3: Chain-centric evaluation and causal faithfulness:}  
+Standard metrics such as Accuracy, Precision, Recall, and F1-score measure label agreement but say little about whether explanations are causally faithful or not. Existing causal and explainability frameworks offer localized insights but lack widely adopted chain-centric metrics for assessing alignment with executable interprocedural behavior and counterfactual responses~\cite{Cao2024ASE,Kuang2024KSEM,Rahman2024ICSE,Chu2024ISSTA}.
 
-\noindent\textbf{Evaluation:}
-Accuracy, Precision, Recall, and F1 are some of the most common metrics that only measure label agreement.  They don't check for causal faithfulness or stability when changes are made on purpose. A shared set of causal metrics is still missing.
+\medskip
+A more effective approach must explicitly model interprocedural control and data dependencies, reconstruct executable source-to-sink chains, and distinguish causal features from spurious correlations. This thesis addresses these gaps by designing an interprocedural program representation and a context-driven causal reasoning framework that together aim to reconstruct and evaluate executable interprocedural vulnerability propagation chains.
 
-A better method needs to learn and test how things cause each other. It ought to rebuild source-to-sink chains across functions, employ graph-based representations of program structure and evaluate behaviour through counterfactual tests and chain-aware attribution.
+
 
 
 \section{Research Challenges and Rationale}
 \label{sec:litreview-challenges}
 
-Automated vulnerability detection has progressed, but reliability and interpretability continue to be constrained. Public corpora have almost identical entries, weak labels, and a big difference in class sizes, which makes reported accuracy seem higher than it really is and makes it harder to replicate \cite{Li2022Empirical,Chakraborty2020}. A lot of datasets only show function snippets and don't show cross-function flows. ReposVul enhances curation by maintaining repository context and call relationships \cite{wang2024reposvul}.
+Automated vulnerability detection has advanced, but reliability, generalization, and interpretability remain limited. Public corpora often suffer from duplicated entries, weak or noisy labels, and severe class imbalance, which can inflate reported performance and hinder reproducibility~\cite{Li2022Empirical,Chakraborty2020}. Many datasets expose only function-level snippets and omit cross-function flows, making interprocedural reasoning difficult. \emph{ReposVul} improves curation by preserving repository context and call relationships, but it has not yet been fully exploited for chain-centric analysis~\cite{wang2024reposvul}.
 
-Representation is key. Sequence models do well on benchmarks, but they don't take into account control and data dependencies that make them easy to exploit \cite{Chakraborty2020,fu2022linevul}. Graph views (AST, CFG, DFG, PDG, CPG) represent structure \cite{Zhou2019}, but outcomes are contingent on interprocedural specifics: calls, argument-to-parameter associations, return bindings, and alias estimations. GraphCodeBERT is an example of structure-aware pretraining that adds data-flow signals to token embeddings \cite{guo2021graphcodebert}. However, the benefits depend on the level of detail and coverage.
+Representation is a central challenge. Sequence models perform well on benchmarks but largely ignore control and data dependencies, leaving them vulnerable to simple perturbations~\cite{Chakraborty2020,fu2022linevul}. Graph-based views (AST, CFG, DFG, PDG, CPG) better capture structure~\cite{Zhou2019}, yet practical performance depends on how precisely interprocedural details such as calls, argument$\rightarrow$parameter links, returns, and aliasing are modeled. Structure-aware pretraining, exemplified by GraphCodeBERT, injects data-flow signals into token embeddings~\cite{guo2021graphcodebert}, but its benefit ultimately depends on the quality and coverage of the underlying program graph.
 
+Constructing executable root-to-sink chains poses an additional difficulty. Unconstrained path search tends to drift, while global solvers are computationally expensive. This thesis instead uses constrained beam search coupled with Adaptive Causal Contextualization (ACC): the decoder admits only steps that satisfy reachability, call/return discipline, and alias checks, while a compact Causal Knowledge Graph (CKG) prior, mined from relation $n$-grams, guides transitions without sacrificing semantic validity.
 
-It's hard to make executable chains from root to sink.  Unconstrained search drifts, and global solvers cost a lot.  This project employs constrained beam search in conjunction with Adaptive Causal Contextualization (ACC). The decoder will only let steps that pass reachability, call/return discipline, and alias checks through. A small causal prior (CKG), derived from relation $n$-grams, influences choices without compromising validity.
+Model fragility across projects, time, and refactorings remains a persistent issue~\cite{Li2022Empirical}. Semantics-preserving edits can flip predictions, and post-hoc explanations often emphasize misleading cues~\cite{Allix2024,Moschitti2024}. Recent causal approaches based on counterfactual training and graph edits improve robustness but lack standardized metrics for causal fidelity~\cite{Cao2024ICSE,Chu2024ISSTA,Rahman2024ICSE,Kuang2024KSEM,Cao2024ASE}.
 
-Models are fragile across projects, time, and refactorings \cite{Li2022Empirical}. Small changes that don't change the meaning can change predictions. Post-hoc explanations frequently emphasize misleading cues \cite{Allix2024,Moschitti2024}. Recent causal directions, such as counterfactual training and graph edits, enhance robustness but lack agreed-upon metrics for causal fidelity \cite{Cao2024ICSE,Chu2024ISSTA,Rahman2024ICSE,Kuang2024KSEM,Cao2024ASE}.
-
-This thesis addresses these deficiencies. Programs are written as enhanced CPGs with clear semantics that cross boundaries. Decoding puts together a single, executable chain from the source to the sink. Evaluation uses standard detection metrics and causal tests, such as counterfactual consistency, directional agreement, on-chain attribution, and chain invalidation.
+This thesis responds to these challenges by (i) representing programs as enriched, interprocedural CPGs with explicit cross-boundary semantics, (ii) decoding a single executable chain from root to sink under structural and causal constraints, and (iii) evaluating explanations with both standard detection metrics and causal tests, including counterfactual consistency, directional agreement, on-chain attribution, and chain invalidation.
 
 
 
@@ -441,6 +416,15 @@ This chapter shows the learning pipeline that was used in this thesis. The objec
 I work with an enhanced program graph. I use a Code Property Graph to show programs. This is a joint, labelled graph that combines the Abstract Syntax Tree (AST), Control Flow Graph (CFG), and Data Flow Graph (DFG) into one searchable structure \cite{yamaguchi2014cpg}. I add interprocedural links to the base CPG, such as CALL, ARG→PARAM, and RET→CALLER/RET→LHS, as well as alias summaries. This addition keeps the execution semantics the same across function boundaries and makes it possible to slice precisely for chain reconstruction.
 
 There are three steps in the pipeline. To start, feature initialization uses GraphCodeBERT to encode tokens with context that knows about structure and data flow \cite{guo2021graphcodebert}. Pretraining on a large scale gives you useful information that you can use for later learning.  Secondly, a graph attention encoder collects signals from different parts of the graph that are close to each other. Executable relations like def–use and control dependencies guide attention. Regularization that focuses on causality lowers the need for false correlations and makes generalization better \cite{Cao2024ICSE,Rahman2024ICSE,Kuang2024KSEM}. Third, Adaptive Causal Contextualization (ACC) puts together an executable chain by choosing paths that are limited.  It makes sure that data and control are possible, follows the call-return structure, and prefers short explanations. The end result is a single chain that can be understood and matches real execution.
+
+\setlength{\fboxsep}{0pt}     
+\setlength{\fboxrule}{0.4pt}  
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{svg-inkscape/e2e.pdf}
+	\caption{End-to-end pipeline for chain-centric vulnerability detection. Source repositories are parsed into a unified Code Property Graph (CPG), with GraphCodeBERT-initialized features providing input to a relation-aware encoder. At inference, ACC-constrained beam search guided by CKG motifs performs structured reasoning and outputs a single executable interprocedural chain, enabling interpretable vulnerability mechanisms.}
+	\label{fig:intro-e2e-pipeline}
+\end{figure}
 
 Training includes a classification loss for detection and penalties that make it less likely that attention patterns will be non-executable or incoherent. The learned representations maintain stability during benign refactorings and facilitate transfer across projects and programming languages. The design is based on new developments in structure-aware vulnerability detection and learning to represent causes \cite{Zhou2019,Li2022Empirical,Cao2024ASE,Chu2024ISSTA,hin2022linevd}.
 
