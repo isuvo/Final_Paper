@@ -79,12 +79,11 @@
 
 \begin{document}
 
-\title{Context-Driven Root Cause Analysis for Software Security Vulnerabilities}
+\title{Detecting Interprocedural Software Vulnerabilities Using Causal Deep Learning}
 \author{Md Iqbal Hossain Shuvo}
 
 \beforepreface
 \prefacesection{Abstract}
-
 
 
 Software vulnerabilities in large systems rarely stem from a single line of code. Instead, they emerge from chains of decisions and data flows that cross multiple functions, files, and modules. Existing tools, including both traditional static and dynamic analysis and modern learning-based detectors, are good at flagging suspicious locations but rarely explain how a vulnerability actually arises and propagates through a program. As a result, their predictions are often brittle, difficult to trust, and only weakly connected to the steps a developer must take to fix the underlying problem.
@@ -397,37 +396,32 @@ This thesis responds to these challenges by (i) representing programs as enriche
 \chapter{Methodology}
 \label{chap:method-architecture}
 
-This chapter shows the learning pipeline that was used in this thesis. The objectives are twofold: precise identification of vulnerabilities and accurate reconstruction of executable interprocedural chains. The method connects a root cause to its spread and its end point through paths that don't interfere with the program's execution. This talks about the problems with models that draw lines in isolation and don't take into account how they work.
+This chapter presents the learning pipeline and approach used for vulnerability identification and chain reconstruction. The approach combines causal attention with context-aware graph reasoning over an enhanced code property graph that captures structural and interprocedural relations. It connects root causes to propagation and endpoints via paths that respect program semantics, using pretrained feature initialization, attention-based aggregation on the graph, and causal contextualization to reconstruct accurate, executable root-to-sink chains that are both robust and interpretable.
 
-I work with an enhanced program graph. I use a Code Property Graph to show programs. This is a joint, labelled graph that combines the Abstract Syntax Tree (AST), Control Flow Graph (CFG), and Data Flow Graph (DFG) into one searchable structure \cite{yamaguchi2014cpg}. I add interprocedural links to the base CPG, such as CALL, ARG→PARAM, and RET→CALLER/RET→LHS, as well as alias summaries. This addition keeps the execution semantics the same across function boundaries and makes it possible to slice precisely for chain reconstruction.
-
-There are three steps in the pipeline. To start, feature initialization uses GraphCodeBERT to encode tokens with context that knows about structure and data flow \cite{guo2021graphcodebert}. Pretraining on a large scale gives you useful information that you can use for later learning.  Secondly, a graph attention encoder collects signals from different parts of the graph that are close to each other. Executable relations like def–use and control dependencies guide attention. Regularization that focuses on causality lowers the need for false correlations and makes generalization better \cite{Cao2024ICSE,Rahman2024ICSE,Kuang2024KSEM}. Third, Adaptive Causal Contextualization (ACC) puts together an executable chain by choosing paths that are limited.  It makes sure that data and control are possible, follows the call-return structure, and prefers short explanations. The end result is a single chain that can be understood and matches real execution.
 
 \setlength{\fboxsep}{0pt}     
-\setlength{\fboxrule}{0.4pt}  
+\setlength{\fboxrule}{0.3pt}  
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{svg-inkscape/e2e.pdf}
-	\caption{End-to-end pipeline for chain-centric vulnerability detection. Source repositories are parsed into a unified Code Property Graph (CPG), with GraphCodeBERT-initialized features providing input to a relation-aware encoder. At inference, ACC-constrained beam search guided by CKG motifs performs structured reasoning and outputs a single executable interprocedural chain, enabling interpretable vulnerability mechanisms.}
+	\caption{Overview of the proposed chain-centric vulnerability analysis approach. Data sources are lifted into a unified Code Property Graph (CPG), node features are initialized with a pretrained encoder, and an ACC-constrained, CKG-guided beam decoder performs structured reasoning to produce a single executable root-to-sink chain.}
 	\label{fig:intro-e2e-pipeline}
 \end{figure}
 
-Training includes a classification loss for detection and penalties that make it less likely that attention patterns will be non-executable or incoherent. The learned representations maintain stability during benign refactorings and facilitate transfer across projects and programming languages. The design is based on new developments in structure-aware vulnerability detection and learning to represent causes \cite{Zhou2019,Li2022Empirical,Cao2024ASE,Chu2024ISSTA,hin2022linevd}.
 
-The rest of the chapter talks about the formal setting, the optimization, and the algorithms for each step.  
 
 \section{Chain-Centric Program Representation}
 \label{sec:chain-conts}
 \subsection{Dataset Description, Ground Truth Formation, and Preprocessing Pipeline}
 \label{subsec:data-gt}
 
-This section specifies the experimental corpus, the ground-truth labelling protocol, and the preprocessing that transforms repositories into chain-centric interprocedural graphs. I utilize \emph{ReposVul}, a repository-level dataset that separates patches, maintains multi-granularity dependencies, and eliminates outdated fixes \cite{wang2024reposvul}.
+This section describes the experimental dataset, labeling protocol, and preprocessing pipeline that transforms repositories into interprocedural chain-centric graphs. The dataset used is \emph{ReposVul}, a repository-level benchmark that refines patches, preserves multi-granularity dependencies, and excludes outdated fixes \cite{wang2024reposvul}.
 
 
 \subsection{ReposVul: scope and characteristics}
 \label{subsec:reposvul-scope}
 
-\emph{ReposVul} links CVE/CWE records to pre- and post-fix code snapshots, patch commits, and repository context \cite{wang2024reposvul}. Each entry pairs an identified weakness and severity with the exact commit, message, files, and diffs that implement the fix. Corpus construction crawls public sources, untangles mixed commits to keep only fix-relevant files, mines cross-file caller–callee relations, and filters superseded patches by commit history. The result is a repository-level view that preserves chronology, captures interprocedural links, and supports chain-centric evaluation.
+\emph{ReposVul} links CVE/CWE records to precise pre- and post-fix repository snapshots rather than isolated patches \cite{wang2024reposvul}. Each entry anchors a documented weakness and severity to the exact commit, preserving all related files and cross-file dependencies. The corpus is constructed by crawling public sources, disentangling mixed commits to isolate fix-relevant code, and extracting caller–callee relations across translation units. By maintaining chronology and repository-wide call structure, \emph{ReposVul} reveals long-range, interprocedural flows essential for chain-centric vulnerability analysis.
 
 \begin{table}[H]
 	\centering
@@ -462,79 +456,59 @@ The conversion from raw dataset entries to chain-centric program graphs occurs o
 	\label{fig:method-datapipeline}
 \end{figure}
 
-\paragraph{Stage A: Getting raw vulnerability and patch information:}
-I add CVE/CWE metadata to \emph{ReposVul} entries and get the repository at parent and child commits. This keeps all of the pre- and post-fix files. For traceability, commit IDs, messages, dates, project IDs, and file paths are all indexed.
+\paragraph{Stage A: Repository snapshots and vulnerability metadata:}
+I add CVE/CWE metadata to \emph{ReposVul} entries and retrieve both parent and child commits for each patch. For traceability, commit IDs, messages, dates, project IDs, and file paths are indexed so that later steps can reconstruct history-aware, cross-file context.
 
-\paragraph{Stage B: figuring out the vulnerabilities:}
-Patches often combine fixes with changes to the code. I use the corpus untangling rule, which combines model judgments with static cues, to keep only files that are relevant to fixing. 
+\paragraph{Stage B: Normalization and untangling:}
+Patches often mix vulnerability fixes with unrelated refactoring or vendor code. I apply a corpus untangling rule, which combines model judgments with static cues, to keep only files and hunks that are relevant to the fix. 
 
-\paragraph{Stage C: extraction of dependencies at multiple levels of granularity:}
-For retained patches, I get links between callers and callees from all over the repository. When necessary, the scope includes top-level functions so that interprocedural paths from candidate sources to sinks can be recorded.
+\paragraph{Stage C: Static graph construction:}
+For each retained snapshot, I build a heterogeneous program graph that overlays AST, CFG, and DFG with direct call edges. Pointer and container def–use are approximated by conservative alias relations, identifiers are anonymized, and literals are bucketed to reduce noise from harmless edits \cite{Chakraborty2020,Li2022Empirical}. The result is a chain-ready CPG representation for every project version.
 
-\paragraph{Stage D: making the code more consistent and building the static graph:}
-For each snapshot, I make a heterogeneous program graph that combines AST, CFG, DFG, call edges, ARG→PARAM, and RET→CALLER links. Pointer and container def-use are similar to conservative alias relations. Identifiers are made anonymous, and literals are put into buckets to cut down on the differences between harmless edits \cite{Chakraborty2020,Li2022Empirical}.
+\paragraph{Stage D: Interprocedural augmentation:}
+Next, I enrich the CPG with interprocedural edges such as CALL, ARG$\rightarrow$PARAM, and RET$\rightarrow$CALLER/RET$\rightarrow$LHS, together with alias summaries that connect summaries back to call sites. This step turns per-file graphs into repository-level structures that expose long-range, cross-file flows from candidate sources to potential sinks.
 
-\paragraph{Stage E: differencing that takes patches into account and slice materialization:}
-I calculate line diffs for each patch and then create four synchronized views: changed lines, enclosing functions, touched files, and a repository subgraph that can reach any sink through possible control and data flow. These views are what you use to put together a chain.
+\paragraph{Stage E: Patch-aware differencing and slice materialization:}
+I compute line-level diffs for each patch and synchronize four views: changed lines, enclosing functions, touched files, and a reachable repository subgraph that can flow to any sink via control or data edges. Rule-based labels (source/flow/stop/sink) are then applied within these regions to materialize slice manifests that serve as chain candidates.
 
-\paragraph{Stage F: filtering based on traces for old patches:}
-I keep track of file paths and commit times so I can get rid of files that don't work and patches that are no longer needed.
+\paragraph{Stage F: Leakage-safe filtering and splitting:}
+Finally, I track file paths, project IDs, and commit details to drop broken files, superseded patches, and obsolete snapshots. The remaining instances are grouped into train, validation, and test sets.
 
 \begin{table}[H]
-\centering
-\caption{Preparation pipeline summary.}
-\label{tab:pipeline}
-\begin{tabular}{p{0.20\linewidth} p{0.75\linewidth}}
-\toprule
-\textbf{Stage} & \textbf{Key operations and outputs} \\
-\midrule
-A & Ingest CVE, CWE, and patch metadata; fetch pre- and post-fix files; index commits and file paths. \\
-B & Apply joint untangling to retain vulnerability-fixing files. \\
-C & Extract repository-level caller–callee links; expand to top-level functions when needed. \\
-D & Build AST, CFG, and DFG with call and return links; attach argument$\rightarrow$parameter, return$\rightarrow$caller, and alias edges; type nodes and edges; normalize code. \\
-E & Compute line deltas; assemble synchronized line, function, file, and repository subgraphs that preserve feasible paths to sinks. \\
-F & Remove outdated patches using path and commit chronology; keep only current fixes. \\
-\bottomrule
-\end{tabular}
+	\centering
+	\caption{Preparation pipeline summary.}
+	\label{tab:pipeline}
+	\begin{tabular}{p{0.20\linewidth} p{0.75\linewidth}}
+		\toprule
+		\textbf{Stage} & \textbf{Key operations and outputs} \\
+		\midrule
+		A & Link CVE/CWE records to parent and child commits; index commits, projects, and file paths. \\
+		B & Normalize and untangle patches; keep only fix-relevant files and hunks; deduplicate. \\
+		C & Build a heterogeneous CPG per snapshot by overlaying AST, CFG, DFG, and intra-file call edges; anonymize identifiers and bucket literals. \\
+		D & Enrich the CPG with interprocedural links (CALL, ARG$\rightarrow$PARAM, RET$\rightarrow$CALLER/RET$\rightarrow$LHS) and alias summaries to expose repository-level flows. \\
+		E & Compute line-level diffs; function, file, and reachable-subgraph slices, with rule-based source/flow/stop/sink labels. \\
+		F & Drop broken or superseded patches; form leakage-safe train/validation/test splits at the project level. \\
+		\bottomrule
+	\end{tabular}
 \end{table}
+
 
 
 \subsection{Unified multigraph, typing, features, and storage}
 \label{subsec:unified-mg}
 
-I depict each repository snapshot as a heterogeneous multigraph constructed upon the Code Property Graph (CPG) abstraction \cite{yamaguchi2014cpg}. A single typed node store keeps program parts. Relation-specific edge sets encode \textsc{AST}, \textsc{CFG}, and \textsc{DFG}. Interprocedural links are CALL (caller to callee entry), ARG2PARAM (actual to formal), RET2CALL (callee return to call site), and RET2LHS (return value to assignment target). For all families, reverse edges are made real. This topology shows the control and data dependencies and cross-boundary flows that are needed to rebuild the chain.
+I represent each repository snapshot as a heterogeneous multigraph built on the Code Property Graph (CPG) abstraction \cite{yamaguchi2014cpg}. A single typed node store holds program elements (identifiers, literals, statements, basic blocks, functions), and relation-specific edge sets encode \textsc{AST}, \textsc{CFG}, and \textsc{DFG}. Interprocedural edges (\textsc{CALL}, \textsc{ARG2PARAM}, \textsc{RET2CALL}, \textsc{RET2LHS}) are materialized in both directions, and graphs are stored in sharded files with repository, commit, and file-path metadata for scalable provenance lookup.
 
-For example, an identifier, literal, operator, statement, basic block, or function can be used to type nodes. Each node has a small structural feature vector that includes flags for token categories, simplified SSA indices, type hints, and normalization markers. Edges are classified by family and orientation. Optional fields include guard predicates on CFG edges and alias provenance on links that come from points-to. Shard files hold graphs, and each graph has its own metadata, such as the repository, commit, file path, and function names. This makes it possible to store things in a way that can grow and look up their origins quickly.
-
-I keep two encodings going at the same time. The \emph{base} encoding has only small structural features for ablations and classical GNNs. The "pretrained" encoding adds a 768-dimensional embedding from GraphCodeBERT \cite{guo2021graphcodebert} to each node. The outcome is a dual-channel configuration: a low-dimensional structural vector combined with a high-dimensional contextual vector. The topology and interprocedural counts are the same for all encodings; only the feature space is different.
-
-The set of relation types is treated as a fixed alphabet $\mathcal{R}$ by decoding. This includes \textsc{AST}, \textsc{CFG}, \textsc{DFG}, \textsc{CALL}, \textsc{ARG2PARAM}, \textsc{RET2CALL}, \textsc{RET2LHS}, and \textsc{DFG\_THIN}. It changes the weights of acceptable expansions during decoding, but it never changes the graph.
-
+Two concurrent feature encodings are maintained: a base encoding with structural features for classical GNNs, and a \emph{pretrained} encoding augmenting nodes with 768-dimensional embeddings from GraphCodeBERT \cite{guo2021graphcodebert}, forming a dual-channel representation. The graph topology and interprocedural edges remain constant across encodings. The relation types form a fixed alphabet $\mathcal{R}$ used during decoding, encompassing 
+\textsc{ast}, \textsc{cfg}, \textsc{dfg}, \textsc{call}, \textsc{arg2param}, \textsc{ret2call}, \textsc{ret2lhs}, and \textsc{dfg\_thin}.
 
 
 \subsection{Ground-truth definition}
 \label{subsec:gt-definition}
 
-Ground truth is defined at two levels. At the label level, a repository revision is marked vulnerable if it appears in a vulnerability fix pair in ReposVul, and its corresponding fixed revision is labeled non-vulnerable~\cite{wang2024reposvul}. Using paired revisions with shared context minimizes the risk of unrelated edits affecting label validity
-
-Each positive example is annotated with one executable chain from a source to a sink, possibly crossing function boundaries. Sources mark points where untrusted data enters program state, sanitizers check or constrain that state (for example, bounds or format checks), propagators move taint through assignments, parameter passing, returns, pointer hops, container writes, or index arithmetic, and sinks are security-relevant operations such as memory writes, command execution, path traversal, database calls, or unsafe casts. The full role lexicon and patterns are given in Appendix~\ref{app:role-lexicon}.
+Ground truth is defined at two levels. A repository revision is labeled vulnerable if matched with a corresponding fixed revision in ReposVul, minimizing unrelated edit noise~\cite{wang2024reposvul}. Each positive example includes one executable chain from a source to a sink, potentially crossing functions. Sources introduce untrusted data, sanitizers restrict state, propagators transfer taint through various program constructs, and sinks represent security-sensitive operations. The full role lexicon and patterns are given in Appendix~\ref{app:role-lexicon}.
 
 Chains are constructed by seeding candidates from diffs, following def–use links to identify propagators and sinks, and wiring calls and returns along the repository call graph with \(\textsc{ARG}\!\to\!\textsc{PARAM}\), \(\textsc{RET}\!\to\!\textsc{CALLER}\), and \(\textsc{RET}\!\to\!\textsc{LHS}\) bindings. Retained examples satisfy basic consistency conditions (every source reaches a sink, every sanitizer blocks at least one tainted path, and every propagator lies on a \textsc{CFG}-consistent route). A feasibility pass then checks that removing the sink reduces exploitability, and a counterfactual pass strengthens guards or replaces dangerous sinks with safe ones to confirm that reachability changes as expected; failing cases are corrected or discarded.
-
-
-
-\subsection{Interprocedural Semantics and Cross-Boundary Validity}
-\label{subsec:interproc-semantics}
-
-Interprocedural structure is explicitly modeled through a repository-level call graph integrated into each program graph. It represents call contexts, parameter counts, and links between real arguments and formal parameters (\textsc{ARG}→\textsc{PARAM}), as well as return flows (\textsc{RET}→\textsc{CALLER}/\textsc{LHS}). Alias edges capture pointer, reference, and container flows, with each interprocedural edge annotated by its source file and enclosing function.
-
-Repository-level dependency extraction recovers cross-file root-to-sink chains beyond syntactic diffs. Table~\ref{tab:ipa-coverage} shows that many instances contain reachable caller–callee pairs, confirming cross-function traversability. Feasibility and counterfactual tests along these paths validate that the reconstructed chains are executable and causally coherent.
-
-
-\subsection{Data Splits, Controls, and Reproducibility}
-\label{subsec:splits-leakage}
-
-ReposVul provides official project-level train, validation, and test splits designed to measure cross-project generalization and avoid data contamination from code duplication or patch ancestry. This thesis adopts these splits without modification to preserve benchmark integrity~\cite{wang2024reposvul}. All files from a given project remain in a single partition, and when temporal robustness is evaluated, the splits respect commit chronology. Parent and child patch commits are never separated, identical file snapshots and CVE instances do not appear in multiple splits, and cross-repository artifacts are not merged across partitions. For reproducibility, preprocessing configurations, graph statistics, split checksums, and relevant metadata are recorded and made available.
 
 
 \subsection{Empirical Coverage and Dataset Statistics}
@@ -593,7 +567,7 @@ Test  & 12.97 & 29.17 & 9.03 & 0.47 & 2.90 & 0.09 \\
 \subsection{Splits, controls, and coverage}
 \label{subsec:splits-coverage}
 
-I use the official, project-disjoint \texttt{ReposVul} splits without modification \cite{wang2024reposvul}. Each project stays in a single partition. Parent–child patch pairs are not split. Identical file snapshots and duplicate CVEs do not cross partitions. Cross-repository call-graph artifacts are not merged. When temporal robustness is assessed, commit chronology is respected. Reproducibility controls are strict. Each example stores the ordered node IDs of the chain, node roles, edge types, and synchronized line, function, and file indices.
+I use the official, project-disjoint \texttt{ReposVul} train, validation, and test splits without modification, preserving their design for cross-project generalization and for avoiding contamination from code duplication or patch ancestry \cite{wang2024reposvul}. All files from a given project stay in a single partition, parent and child patch commits are never separated, identical file snapshots and duplicate CVEs do not cross splits, and cross-repository call-graph artifacts are not merged. When temporal robustness is assessed, commit chronology is respected. For reproducibility, the ordered node IDs of the chain, node roles, edge types, and synchronized line, function, and file indices are archived. 
 
 \begin{table}[H]
 	\centering
@@ -650,15 +624,13 @@ I use the official, project-disjoint \texttt{ReposVul} splits without modificati
 \subsection{Summary}
 \label{subsec:dataset-summary}
 
-This approach makes program graphs that are full of procedures and ready to be linked together. Each part has a clear job (source, sanitizer, propagator, sink). Instead of separate statements, these graphs encode executable paths. \emph{ReposVul} gives you reliable label provenance and a wide repository context \cite{wang2024reposvul}. Using its official project-disjoint splits, along with normalization and verification, lowers the risks to validity that are already known in learning-based vulnerability detection \cite{Chakraborty2020,Li2022Empirical}.
-
+This approach constructs program graphs rich in procedures, each labeled by role (source, sanitizer, propagator, sink), encoding executable paths rather than isolated statements. \emph{ReposVul} provides reliable label provenance and extensive repository context \cite{wang2024reposvul}. Using its official project-disjoint splits alongside normalization and verification reduces known validity risks in learning-based vulnerability detection \cite{Chakraborty2020,Li2022Empirical}.
 
 
 \section{Model Architecture and Decoding Pipeline}
 \label{sec:model-arch}
 
-This section explains how source code and program structure are fused, encoded, and decoded into a single executable chain. All equations and symbol glossaries are centralized in Appendix~\ref{app:math-model-arch}. See figure~\ref{fig:model-arch-pipeline} for a single-page overview that this section follows.
-
+This section explains how source code and program structure are fused, encoded, and decoded into a single executable chain. All equations and symbol glossaries are centralized in Appendix~\ref{app:math-model-arch}. See Figure~\ref{fig:model-arch-pipeline} for a single-page overview that this section follows.
 
 \setlength{\fboxsep}{0pt}      
 \setlength{\fboxrule}{0.3pt}   
@@ -666,20 +638,19 @@ This section explains how source code and program structure are fused, encoded, 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{svg-inkscape/model_arc.pdf}
-	   \caption{Chain-Centric Model Architecture and Inference Flow}
-	 \label{fig:model-arch-pipeline}
+	\caption{Chain-Centric Model Architecture and Inference Flow}
+	\label{fig:model-arch-pipeline}
 \end{figure}
 
-
-I set up node features using code spans and structural descriptors, encode them with a relation-aware GAT, and then decode a single executable chain while checking for ACC feasibility.  Inference starts beams from seeds chosen by the model and can also mix in a weak CKG prior for ranking only.  Training finds the best composite loss and gets the CKG only from the training split. Solid arrows show how data or scores move, dashed arrows show operations that are only for training, and dotted arrows show the weak decoding prior (CKG) or optimizer feedback to parts of the encoder that can be trained. With the overall attack flow and vulnerability propagation pathways in view, I now proceed to initialize the GraphCodeBERT feature extractor leveraging its pre-trained structural and semantic code understanding to encode interprocedural dependencies and vulnerability relevant patterns into a unified embedding space.
+\noindent Node features are initialized with code spans and structural descriptors, encoded via a relation-aware Graph Attention Network (GAT), and decoded into a single executable chain subject to ACC feasibility. Inference begins with seeds selected by the model and can incorporate a Causal Knowledge Graph (CKG) prior for ranking. Training optimizes a composite loss, using CKG derived only from the training split. Solid arrows indicate data or score flow, dashed arrows denote training-only operations, and dotted arrows represent weak decoding priors or optimizer feedback to trainable encoder components. The GraphCodeBERT extractor is initialized to encode interprocedural dependencies and vulnerability patterns using pretrained structural and semantic code understanding.
 
 
 \subsection{GraphCodeBERT Feature Initialization}
 \label{sec:model-arch-gcbert}
 
-Each node that corresponds to a concrete source span is tokenized with GraphCodeBERT’s BPE into sliding windows (length $L$, stride $S$); per-window contextual token embeddings are then aggregated back to the node. When a fragment contains identifiers, a light edge-aware attention emphasizes tokens that carry def–use signal (Appendix Eqs.~\ref{app:eq:gcbert-attn-weight}–\ref{app:eq:gcbert-attn-sum}); otherwise a simple average is used (Appendix Eq.~\ref{app:eq:gcbert-token-avg}). The resulting textual vector $\mathbf{x}^{\text{text}}_i$ is fused with a structural descriptor $\mathbf{x}^{\text{struct}}_i$ (node type, degrees, SSA hints, literal statistics, role flags) by projecting both branches to $d_0$ and combining them through a learned gate (Appendix Eqs.~\ref{app:eq:init-proj}–\ref{app:eq:init-fuse}), yielding the initialization $\mathbf{h}^{(0)}_i$. If a span appears in multiple windows, pooling is applied per window and then averaged; function-proxy nodes pool child statements to obtain a coarse function representation. When a node and its def–use neighbors fit in one window, GraphCodeBERT’s data-flow mask is enabled so these pairs can attend directly. To attribute gains primarily to the graph encoder, GraphCodeBERT remains frozen by default. Table~\ref{tab:feat-dims} summarizes feature dimensions.
+Each node aligned to a concrete source span is tokenized with GraphCodeBERT’s byte-pair encoding (BPE) and encoded in sliding windows (length $L$, stride $S$). Window-level contextual token embeddings are aggregated back to the node: if the span contains identifiers, a light edge-aware attention emphasizes tokens that carry def-use signal (Appendix Eqs.~\ref{app:eq:gcbert-attn-weight}--\ref{app:eq:gcbert-attn-sum}); otherwise a simple average is used (Appendix Eq.~\ref{app:eq:gcbert-token-avg}). When a span appears in multiple windows, pooling is performed per window and then averaged, and function-proxy nodes pool their child statements to obtain a coarse function representation.
 
-
+The resulting textual vector $\mathbf{x}^{\text{text}}_i$ is fused with a structural descriptor $\mathbf{x}^{\text{struct}}_i$ (node type, degrees, SSA hints, literal statistics, role flags) by projecting both branches to $d_0$ and combining them through a learned gate (Appendix Eqs.~\ref{app:eq:init-proj}--\ref{app:eq:init-fuse}), yielding the initialization $\mathbf{h}^{(0)}_i$. When a node and its def--use neighbors fit in one window, GraphCodeBERT’s data-flow mask is enabled so these pairs can attend directly. To attribute gains primarily to the graph encoder, GraphCodeBERT remains frozen by default. Table~\ref{tab:feat-dims} summarizes feature dimensions.
 
 \begin{table}[H]
 	\centering
@@ -704,7 +675,10 @@ A relation-aware Graph Attention Network consumes the fused initializations and 
 
 \subsection{Causal Knowledge Graph (CKG): Mining and Prior}
 \label{sec:model-arch-ckg}
-From training chains only, unigram and bigram statistics (plus a small set of named trigrams for interpretability) are mined over the relation alphabet. At decoding time, admissibility is unchanged, but the ranking of admissible expansions receives a small prior bonus $S_{\mathrm{CKG}}(\pi)$ mixed into the path score (Appendix Eq.~\ref{app:eq:path-score-ckg}) with weight $\lambda$. This preserves data-driven evidence while preferring historically plausible relation patterns.
+Node features are initialized from code spans and structural descriptors, encoded with a relation-aware Graph Attention Network (GAT), and decoded into a single executable chain while enforcing ACC feasibility. Inference starts from seed nodes selected by the model and can incorporate a weak Causal Knowledge Graph (CKG) prior for ranking, combining data-driven evidence with prior plausibility. During training, a composite loss is optimized, with the CKG derived exclusively from the training portion of the data.
+
+From training chains only, unigram and bigram statistics are mined over the relation alphabet. At decoding time, admissibility is unchanged, but the ranking of admissible expansions receives a small prior bonus $S_{\mathrm{CKG}}(\pi)$ mixed into the path score with weight $\lambda$ (Appendix Eq.~\ref{app:eq:path-score-ckg}). This preserves data-driven evidence while gently preferring historically plausible relation patterns. 
+
 
 \subsection{Adaptive Causal Contextualization (ACC)}
 \label{sec:model-arch-acc}
@@ -713,16 +687,16 @@ ACC converts encoder scores into a single executable interprocedural chain by en
 
 \subsection{Chain Extraction and Validation}
 \label{sec:model-arch-extract-validate}
-A candidate is valid if it starts near a source, contains at least one interior propagator or sanitizer, and ends at a sink (Appendix Eqs.~\ref{app:eq:chain-start}–\ref{app:eq:chain-end}); when interprocedural links exist in the slice, at least one must appear in the chain. Among admissible paths across beams from the top-$K$ seeds, selection maximizes $S_{\mathrm{ACC}}(\pi)$ (Appendix Eq.~\ref{app:eq:chain-select}). The final chain is then validated structurally (realizable interprocedural CFG path; justified non-CFG hops; well-nested call stack; alias-consistent pointer hops) and counterfactually (neutralizing the sink, strengthening a dominating sanitizer, or unlinking a taint-carrying call should remove or reroute the chain).
+A candidate is valid if it starts near a source, contains at least one interior propagator or sanitizer, and ends at a sink (Appendix Eqs.~\ref{app:eq:chain-start}–\ref{app:eq:chain-end}); when interprocedural links exist in the slice, at least one must appear in the chain. Among admissible paths across beams from the top-$K$ seeds, selection maximizes $S_{\mathrm{ACC}}(\pi)$ (Appendix Eq.~\ref{app:eq:chain-select}). The final chain is then validated structurally and counterfactually.
 
 \subsection{Training, Optimization, and Hyperparameters}
 \label{sec:method-train}
-The total loss combines graph-level binary cross-entropy with regularizers for flow and counterfactual consistency, attention entropy, spectral control, and sanitizer alignment. The CKG prior is used only during decoding, not training. Models train with AdamW, cosine learning-rate decay, two-epoch warmup, gradient clipping, and mixed precision. Class imbalance is handled by weighted sampling. Semantic-preserving augmentations like renaming and code reordering apply with 0.3 probability. Fixed seeds, logged checkpoints, and cached features support reproducibility, with training curves and outcomes archived.
+The total loss combines graph-level binary cross-entropy with regularizers for flow and counterfactual consistency, attention entropy, spectral control, and sanitizer alignment. The CKG prior is applied only at decoding time. Models are trained with AdamW, cosine learning-rate decay, gradient clipping, mixed precision, and weighted sampling for class imbalance. Semantics-preserving augmentations (renaming, benign reordering) are used, and fixed seeds, logged checkpoints, cached features, and archived training curves support reproducibility.
 
 
 \subsection*{Summary}
 \label{sec:model-arch-summary}
-This section summarizes the framework for reconstructing executable root-to-sink chains in five steps: node encoding with GraphCodeBERT embeddings (Appendix Eqs.~\ref{app:eq:gcbert-attn-weight}–\ref{app:eq:init-fuse}), graph reasoning via a relation-aware GAT (Appendix Eqs.~\ref{app:eq:gat-alpha}–\ref{app:eq:gat-update}), constrained decoding guided by a weak Causal Knowledge Graph prior (Appendix Eq.~\ref{app:eq:path-score-ckg}), chain selection through Adaptive Causal Contextualization (ACC) with validation (Appendix Eqs.~\ref{app:eq:acc-cfg-ok}–\ref{app:eq:chain-select}), and training using graph-level binary cross-entropy with light regularization (Appendix Eq.~\ref{app:eq:train-total}). ACC enforces control-flow, data-flow, and aliasing constraints, ensuring that only semantically valid chains are selected.
+This section summarizes the five-step approach for reconstructing executable root-to-sink chains: node encoding with GraphCodeBERT (Appendix Eqs.~\ref{app:eq:gcbert-attn-weight}–\ref{app:eq:init-fuse}), relation-aware GAT reasoning (Appendix Eqs.~\ref{app:eq:gat-alpha}–\ref{app:eq:gat-update}), constrained decoding with a weak CKG prior (Appendix Eq.~\ref{app:eq:path-score-ckg}), ACC-based chain selection (Appendix Eqs.~\ref{app:eq:acc-cfg-ok}–\ref{app:eq:chain-select}), and graph-level training with binary cross-entropy and light regularization (Appendix Eq.~\ref{app:eq:train-total}). ACC enforces control-flow, data-flow, and aliasing constraints so that only semantically valid chains are retained.
 
 
 
