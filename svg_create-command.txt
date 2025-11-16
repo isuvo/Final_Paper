@@ -1,0 +1,5 @@
+# Creates svg-inkscape\modelarc.pdf and svg-inkscape\chain.pdf_tex
+& "C:\Program Files\Inkscape\bin\inkscape.exe" "chain.svg" `
+  --export-type=pdf `
+  --export-latex `
+  --export-filename="svg-inkscape/chain.pdf"

@@ -1,9 +1,14 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces End-to-end pipeline for chain-centric vulnerability detection. Source repositories are parsed into a unified Code Property Graph (CPG), with GraphCodeBERT-initialized features providing input to a relation-aware encoder. At inference, ACC-constrained beam search guided by CKG motifs performs structured reasoning and outputs a single executable interprocedural chain, enabling interpretable vulnerability mechanisms.}}{26}{figure.3.1}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces ReposVul prepossessing to interprocedural CPGs and leakage-safe train/valid/test partitions.}}{27}{figure.3.2}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Chain-Centric Model Architecture and Inference Flow}}{34}{figure.3.3}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Executable chain reconstructed by ACC on a program slice. The path starts at a source-like definition, traverses wrapper calls (\texttt {DFG}/\texttt {CALL}/\texttt {ARG2PARAM}/\texttt {RET2*}), and terminates at a sink consistent with the interprocedural CPG.}}{80}{figure.5.1}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Multi file executable chain from root to sink.}}{48}{figure.5.1}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

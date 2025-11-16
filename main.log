@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.27)  28 OCT 2025 02:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.27)  15 NOV 2025 21:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -763,70 +763,133 @@ Package: listings 2024/09/23 1.10c (Carsten Heinz)
 (c:/texlive/2025/texmf-dist/tex/latex/listingsutf8/listingsutf8.sty
 Package: listingsutf8 2019-12-10 v1.5 Allow UTF-8 in listings input (HO)
 )
-LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 10.95pt on input line 78.
+(c:/texlive/2025/texmf-dist/tex/latex/import/import.sty
+Package: import 2020/04/01  v 6.2
+)
+(c:/texlive/2025/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
+Package: algorithm2e 2017/07/18 v5.2 algorithms environments
+\c@AlgoLine=\count347
+\algocf@hangindent=\skip74
 
-(./main.aux)
+(c:/texlive/2025/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
+\c@checkoddpage=\count348
+)
+(c:/texlive/2025/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+(c:/texlive/2025/texmf-dist/tex/latex/relsize/relsize.sty
+Package: relsize 2013/03/29 ver 4.1
+)
+\skiptotal=\skip75
+\skiplinenumber=\skip76
+\skiprule=\skip77
+\skiphlne=\skip78
+\skiptext=\skip79
+\skiplength=\skip80
+\algomargin=\skip81
+\skipalgocfslide=\skip82
+\algowidth=\dimen278
+\inoutsize=\dimen279
+\inoutindent=\dimen280
+\interspacetitleruled=\dimen281
+\interspacealgoruled=\dimen282
+\interspacetitleboxruled=\dimen283
+\algocf@ruledwidth=\skip83
+\algocf@inoutbox=\box63
+\algocf@inputbox=\box64
+\AlCapSkip=\skip84
+\AlCapHSkip=\skip85
+\algoskipindent=\skip86
+\algocf@nlbox=\box65
+\algocf@hangingbox=\box66
+\algocf@untilbox=\box67
+\algocf@skipuntil=\skip87
+\algocf@capbox=\box68
+\algocf@lcaptionbox=\skip88
+\algoheightruledefault=\skip89
+\algoheightrule=\skip90
+\algotitleheightruledefault=\skip91
+\algotitleheightrule=\skip92
+\c@algocfline=\count349
+\c@algocfproc=\count350
+\c@algocf=\count351
+\algocf@algoframe=\box69
+\algocf@algobox=\box70
+)
+LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
+(Font)              scaled to size 10.95pt on input line 80.
+ (./main.aux
+
+LaTeX Warning: Label `tab:split-labels' multiply defined.
+
+
+LaTeX Warning: Label `tab:graph-density' multiply defined.
+
+
+LaTeX Warning: Label `tab:ipa-coverage' multiply defined.
+
+)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/npxmi/m/it on input line 78.
+LaTeX Font Info:    Checking defaults for OML/npxmi/m/it on input line 80.
 LaTeX Font Info:    Trying to load font information for OML+npxmi on input line
- 78.
+ 80.
  (c:/texlive/2025/texmf-dist/tex/latex/newpx/omlnpxmi.fd
 File: omlnpxmi.fd 2013/03/21 Fontinst v1.933 font definitions for OML/npxmi.
 )
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for U/npxexa/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for U/npxexa/m/n on input line 80.
 LaTeX Font Info:    Trying to load font information for U+npxexa on input line 
-78.
+80.
 
 (c:/texlive/2025/texmf-dist/tex/latex/newpx/unpxexa.fd
 File: unpxexa.fd 2013/03/24 Fontinst v1.933 font definitions for U/npxexa.
 )
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for LMS/npxsy/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for LMS/npxsy/m/n on input line 80.
 LaTeX Font Info:    Trying to load font information for LMS+npxsy on input line
- 78.
+ 80.
 
 (c:/texlive/2025/texmf-dist/tex/latex/newpx/lmsnpxsy.fd
 File: lmsnpxsy.fd 2016/07/04 Fontinst v1.933 font definitions for LMS/npxsy.
 )
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for LMX/npxexx/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for LMX/npxexx/m/n on input line 80.
 LaTeX Font Info:    Trying to load font information for LMX+npxexx on input lin
-e 78.
+e 80.
 
 (c:/texlive/2025/texmf-dist/tex/latex/newpx/lmxnpxexx.fd
 File: lmxnpxexx.fd 2016/07/04 Fontinst v1.933 font definitions for LMX/npxexx.
 )
-LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    ... okay on input line 80.
 
 (c:/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count347
-\scratchdimen=\dimen278
-\scratchbox=\box63
-\nofMPsegments=\count348
-\nofMParguments=\count349
+\scratchcounter=\count352
+\scratchdimen=\dimen284
+\scratchbox=\box71
+\nofMPsegments=\count353
+\nofMParguments=\count354
 \everyMPshowfont=\toks49
-\MPscratchCnt=\count350
-\MPscratchDim=\dimen279
-\MPnumerator=\count351
-\makeMPintoPDFobject=\count352
+\MPscratchCnt=\count355
+\MPscratchDim=\dimen285
+\MPnumerator=\count356
+\makeMPintoPDFobject=\count357
 \everyMPtoPDFconversion=\toks50
 ) (c:/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -837,7 +900,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring ON on input line 78.
+Package hyperref Info: Link coloring ON on input line 80.
 
 (./main.out) (./main.out)
 \@outlinefile=\write4
@@ -878,26 +941,26 @@ Package hyperref Info: Link coloring ON on input line 78.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@mv@tabular=\count353
-\c@mv@boldtabular=\count354
-LaTeX Info: Command `\dddot' is already robust on input line 78.
-LaTeX Info: Command `\ddddot' is already robust on input line 78.
-\c@lstlisting=\count355
+\c@mv@tabular=\count358
+\c@mv@boldtabular=\count359
+LaTeX Info: Command `\dddot' is already robust on input line 80.
+LaTeX Info: Command `\ddddot' is already robust on input line 80.
+\c@lstlisting=\count360
 LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 14.4pt on input line 83.
+(Font)              scaled to size 14.4pt on input line 85.
 LaTeX Font Info:    Font shape `T1/zpltlf/m/sc' will be
-(Font)              scaled to size 14.4pt on input line 83.
+(Font)              scaled to size 14.4pt on input line 85.
 LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 12.0pt on input line 83.
+(Font)              scaled to size 12.0pt on input line 85.
 LaTeX Font Info:    Font shape `T1/zpltlf/m/sc' will be
-(Font)              scaled to size 12.0pt on input line 83.
+(Font)              scaled to size 12.0pt on input line 85.
 LaTeX Font Info:    Trying to load font information for TS1+zpltlf on input lin
-e 83.
+e 85.
 (c:/texlive/2025/texmf-dist/tex/latex/newpx/ts1zpltlf.fd
 File: ts1zpltlf.fd 2021/11/24 v1.0 fd file for TS1/zpltlf
 )
 LaTeX Font Info:    Font shape `TS1/zpltlf/m/n' will be
-(Font)              scaled to size 10.95pt on input line 83.
+(Font)              scaled to size 10.95pt on input line 85.
 
 
 [1
@@ -907,9 +970,11 @@ texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf-pc.enc}{c:/texlive/2025/texmf-dist/
 fonts/enc/dvips/newtx/ntx-ec-tlf.enc}{c:/texlive/2025/texmf-dist/fonts/enc/dvip
 s/newpx/zpl_TOsF.enc}]
 LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 24.88pt on input line 84.
+(Font)              scaled to size 24.88pt on input line 86.
 LaTeX Font Info:    Font shape `T1/zpltlf/b/n' will be
-(Font)              scaled to size 24.88pt on input line 84.
+(Font)              scaled to size 24.88pt on input line 86.
+LaTeX Font Info:    Font shape `T1/zpltlf/m/it' will be
+(Font)              scaled to size 10.95pt on input line 92.
 
 
 [1
@@ -958,12 +1023,6 @@ File: unpxsyc.fd 2013/03/24 Fontinst v1.933 font definitions for U/npxsyc.
 ]
 
 [4]
-Overfull \hbox (3.5028pt too wide) in paragraph at lines 108--108
- [][] [][][]\T1/zpltlf/m/n/10.95 Comparison with Causal Con-trastive Edit-ing (
-Cao et al., ICSE'24)[][] [][]  
- []
-
-
 
 [5])
 \tf@toc=\write5
@@ -972,29 +1031,33 @@ Cao et al., ICSE'24)[][] [][]
 
 
 [6] (./main.lot
+Overfull \hbox (1.08301pt too wide) in paragraph at lines 11--11
+ [][] [][][]\T1/zpltlf/m/n/10.95 Interprocedural con-nec-tiv-ity: pres-ence of 
+non-empty caller and callee 
+ []
+
 LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 21.
+(Font)              scaled to size 8.0pt on input line 19.
 LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 6.1pt on input line 21.
+(Font)              scaled to size 6.1pt on input line 19.
 LaTeX Font Info:    Font shape `T1/zpltlf/m/sc' will be
-(Font)              scaled to size 10.95pt on input line 23.
+(Font)              scaled to size 10.95pt on input line 21.
 
 
 [7
 
 
-{c:/texlive/2025/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}])
+{c:/texlive/2025/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{c:/texlive/2
+025/texmf-dist/fonts/enc/dvips/newpx/px-lms.enc}])
 \tf@lot=\write6
 \openout6 = `main.lot'.
 
 
 
-[8{c:/texlive/2025/texmf-dist/fonts/enc/dvips/newpx/px-lms.enc}] (./main.lof
-Overfull \hbox (83.13864pt too wide) in paragraph at lines 6--6
- \T1/zpltlf/m/n/10.95 starts at a source-like def-i-ni-tion, tra-verses wrap-pe
-r calls (\T1/cmtt/m/n/10.95 DFG\T1/zpltlf/m/n/10.95 /\T1/cmtt/m/n/10.95 CALL\T1
-/zpltlf/m/n/10.95 /\T1/cmtt/m/n/10.95 ARG2PARAM\T1/zpltlf/m/n/10.95 /\T1/cmtt/m
-/n/10.95 RET2*\T1/zpltlf/m/n/10.95 ), 
+[8] (./main.lof
+Overfull \hbox (10.10571pt too wide) in paragraph at lines 4--4
+ \T1/zpltlf/m/n/10.95 with GraphCodeBERT-initialized fea-tures pro-vid-ing in-p
+ut to a relation- 
  []
 
 )
@@ -1006,22 +1069,12 @@ r calls (\T1/cmtt/m/n/10.95 DFG\T1/zpltlf/m/n/10.95 /\T1/cmtt/m/n/10.95 CALL\T1
 [9
 
 
-{c:/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
+]
 Chapter 1.
 LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 20.74pt on input line 105.
+(Font)              scaled to size 20.74pt on input line 109.
 LaTeX Font Info:    Font shape `T1/zpltlf/b/n' will be
-(Font)              scaled to size 20.74pt on input line 105.
-LaTeX Font Info:    Font shape `T1/zpltlf/b/n' will be
-(Font)              scaled to size 14.4pt on input line 108.
-LaTeX Font Info:    Font shape `T1/zpltlf/m/it' will be
-(Font)              scaled to size 10.95pt on input line 114.
-
-Overfull \hbox (6.8043pt too wide) in paragraph at lines 124--131
-[]\T1/zpltlf/m/n/10.95 To com-ple-ment these clas-si-cal ap-proaches, learning-
-based meth-ods have emerged
- []
-
+(Font)              scaled to size 20.74pt on input line 109.
 
 
 
@@ -1029,87 +1082,87 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.131 
+l.117 
        [1
 
 
 ]
-Overfull \hbox (13.65884pt too wide) in paragraph at lines 132--138
-[]\T1/zpltlf/m/n/10.95 Despite these ad-vances, cur-rent de-tec-tors of-ten re-
-main \T1/zpltlf/m/it/10.95 statement-centric \T1/zpltlf/m/n/10.95 or \T1/zpltlf
-/m/it/10.95 subgraph-
- []
-
-LaTeX Info: Symbol \textrightarrow not provided by
-            font family zpltlf in TS1 encoding.
-            Default family used instead on input line 150.
-LaTeX Info: Symbol \textrightarrow not provided by
-            font family zpltlf in TS1 encoding.
-            Default family used instead on input line 150.
-
 
 LaTeX Font Info:    Font shape `T1/zpltlf/m/sl' will be
-(Font)              scaled to size 10.95pt on input line 151.
-[2{c:/texlive/2025/texmf-dist/fonts/enc/dvips/newtx/ntx-ecth-tlf.enc}{c:/texliv
-e/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+(Font)              scaled to size 10.95pt on input line 123.
+[2{c:/texlive/2025/texmf-dist/fonts/enc/dvips/newtx/ntx-ecth-tlf.enc}]
 LaTeX Font Info:    Font shape `T1/zpltlf/b/n' will be
-(Font)              scaled to size 12.0pt on input line 153.
+(Font)              scaled to size 14.4pt on input line 127.
 
 
 [3]
+LaTeX Font Info:    Font shape `T1/zpltlf/b/n' will be
+(Font)              scaled to size 12.0pt on input line 142.
+
 
 [4]
-LaTeX Info: Symbol \textrightarrow not provided by
-            font family zpltlf in TS1 encoding.
-            Default family used instead on input line 187.
-
 
 [5]
-
-[6]
-
-[7]
 LaTeX Info: Symbol \textrightarrow not provided by
             font family zpltlf in TS1 encoding.
-            Default family used instead on input line 222.
+            Default family used instead on input line 186.
 LaTeX Info: Symbol \textrightarrow not provided by
             font family zpltlf in TS1 encoding.
-            Default family used instead on input line 222.
+            Default family used instead on input line 186.
 
 
-[8]
-
-[9]
-Chapter 2.
-
-
-[10
-
-]
-
-[11]
-Overfull \hbox (2.85292pt too wide) in paragraph at lines 292--293
-\T1/zpltlf/m/n/10.95 GNNs in-cor-po-rate struc-tural de-pen-den-cies to im-prov
-e lo-cal-iza-tion [[], []]. Structure-
+[6{c:/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+Overfull \hbox (0.83635pt too wide) in paragraph at lines 203--204
+[]\T1/zpltlf/m/n/10.95 Chapter 7 records the core al-go-rithms and pseu-docode 
+ref-er-enced in the method-
  []
 
 
+
+[7]
+Chapter 2.
+
+
+[8
+
+]
+
+[9]
+Overfull \hbox (0.52608pt too wide) in paragraph at lines 254--255
+\T1/zpltlf/m/n/10.95 ex-pos-ing typed nodes/edges (e.g., \T1/cmtt/m/n/10.95 CFG
+\T1/zpltlf/m/n/10.95 , \T1/cmtt/m/n/10.95 DFG\T1/zpltlf/m/n/10.95 , \T1/cmtt/m/
+n/10.95 CALL\T1/zpltlf/m/n/10.95 , \T1/cmtt/m/n/10.95 ARG$\LMS/npxsy/m/n/10.95 
+!$\T1/cmtt/m/n/10.95 PARAM\T1/zpltlf/m/n/10.95 , \T1/cmtt/m/n/10.95 RET$\LMS/np
+xsy/m/n/10.95 !$\T1/cmtt/m/n/10.95 CALLER\T1/zpltlf/m/n/10.95 ). Graph
+ []
+
+
+
+[10{c:/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
+Overfull \hbox (6.57597pt too wide) in paragraph at lines 271--272
+\T1/zpltlf/m/n/10.95 causal path-ways un-der-ly-ing in-ter-pro-ce-du-ral vul-ne
+r-a-bil-ity prop-a-ga-tion [[], []]. Nodes
+ []
+
+
+
+[11]
 
 [12]
 
 [13]
 
 [14]
-
-[15]
-
-[16]
-Overfull \hbox (2.62666pt too wide) in paragraph at lines 347--348
+Overfull \hbox (2.62666pt too wide) in paragraph at lines 312--313
 \T1/zpltlf/m/n/10.95 fuzzing or dy-namic anal-y-sis work-flows, com-bin-ing sym
 -bolic con-straints and learned
  []
 
 
+
+[15]
+
+[16]
 
 [17]
 
@@ -1122,695 +1175,763 @@ Overfull \hbox (2.62666pt too wide) in paragraph at lines 347--348
 [21]
 
 [22]
+LaTeX Info: Symbol \textrightarrow not provided by
+            font family zpltlf in TS1 encoding.
+            Default family used instead on input line 370.
+LaTeX Info: Symbol \textrightarrow not provided by
+            font family zpltlf in TS1 encoding.
+            Default family used instead on input line 370.
+
 
 [23]
 
 [24]
+Chapter 3.
+LaTeX Info: Symbol \textrightarrow not provided by
+            font family zpltlf in TS1 encoding.
+            Default family used instead on input line 402.
+LaTeX Info: Symbol \textrightarrow not provided by
+            font family zpltlf in TS1 encoding.
+            Default family used instead on input line 402.
+LaTeX Info: Symbol \textrightarrow not provided by
+            font family zpltlf in TS1 encoding.
+            Default family used instead on input line 402.
+<svg-inkscape/e2e.pdf, id=1022, 824.84161pt x 363.5181pt>
+File: svg-inkscape/e2e.pdf Graphic file (type pdf)
+<use svg-inkscape/e2e.pdf>
+Package pdftex.def Info: svg-inkscape/e2e.pdf  used on input line 410.
+(pdftex.def)             Requested size: 397.485pt x 175.18005pt.
 
-[25]
+Underfull \hbox (badness 1303) in paragraph at lines 411--411
+\T1/zpltlf/m/n/10.95 repos-i-to-ries are parsed into a uni-fied Code Prop-erty 
+Graph (CPG), with
+ []
 
-[26]
 
-[27]
-Overfull \hbox (3.28392pt too wide) in paragraph at lines 423--424
-\T1/zpltlf/m/n/10.95 ing, en-com-pass-ing coun-ter-fac-tual train-ing for-mu-la
--tions, dual fac-tual^^Ucounterfactual
+
+[25
+
+]
+
+[26
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3.1}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.431 
+       <./svg-inkscape/e2e.pdf>]
+LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
+(Font)              scaled to size 10.0pt on input line 434.
+LaTeX Font Info:    Font shape `OT1/minzpl/m/n' will be
+(Font)              scaled to size 10.0pt on input line 437.
+LaTeX Font Info:    Font shape `OT1/minzpl/m/n' will be
+(Font)              scaled to size 7.3pt on input line 437.
+LaTeX Font Info:    Font shape `OT1/minzpl/m/n' will be
+(Font)              scaled to size 5.5pt on input line 437.
+LaTeX Font Info:    Font shape `T1/zpltlf/b/n' will be
+(Font)              scaled to size 10.0pt on input line 439.
+
+Overfull \hbox (4.12453pt too wide) in paragraph at lines 437--446
+ [][] 
+ []
+
+<svg-inkscape/datasetpipeline.pdf, id=1060, 824.96205pt x 283.0575pt>
+File: svg-inkscape/datasetpipeline.pdf Graphic file (type pdf)
+<use svg-inkscape/datasetpipeline.pdf>
+Package pdftex.def Info: svg-inkscape/datasetpipeline.pdf  used on input line 4
+60.
+(pdftex.def)             Requested size: 397.485pt x 136.38434pt.
+
+
+[27
+pdfTeX warning (ext4): destination with the same identifier (name{table.3.1}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.467 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3.2}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.467 
+       <./svg-inkscape/datasetpipeline.pdf>]
+Overfull \hbox (2.02435pt too wide) in paragraph at lines 469--470
+ []\T1/zpltlf/b/n/10.95 Stage B: fig-ur-ing out the vul-ner-a-bil-i-ties:[] \T1
+/zpltlf/m/n/10.95 Patches of-ten com-bine fixes with changes
+ []
+
+LaTeX Info: Symbol \textrightarrow not provided by
+            font family zpltlf in TS1 encoding.
+            Default family used instead on input line 475.
+LaTeX Info: Symbol \textrightarrow not provided by
+            font family zpltlf in TS1 encoding.
+            Default family used instead on input line 475.
+
+Overfull \hbox (4.12451pt too wide) in paragraph at lines 487--499
+ [][] 
  []
 
 
 
 [28]
-Chapter 3.
-
 
 [29
-
-]
-Overfull \hbox (0.17166pt too wide) in paragraph at lines 460--461
-\T1/zpltlf/m/n/10.95 ReposVul in-te-grates and links vul-ner-a-bil-ity meta-dat
-a from CVE and CWE databases
- []
-
+pdfTeX warning (ext4): destination with the same identifier (name{table.3.2}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.512 
+      ]
+LaTeX Info: Symbol \textrightarrow not provided by
+            font family zpltlf in TS1 encoding.
+            Default family used instead on input line 529.
+LaTeX Info: Symbol \textrightarrow not provided by
+            font family zpltlf in TS1 encoding.
+            Default family used instead on input line 529.
 
 
 [30]
-Overfull \hbox (4.12453pt too wide) in paragraph at lines 466--475
+Overfull \hbox (11.63115pt too wide) in paragraph at lines 579--588
  [][] 
  []
 
 
 
 [31
-pdfTeX warning (ext4): destination with the same identifier (name{table.3.1}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.485 
-      ]
-
-[32]
-Overfull \hbox (4.12451pt too wide) in paragraph at lines 508--520
- [][] 
- []
-
-
-
-[33
-pdfTeX warning (ext4): destination with the same identifier (name{table.3.2}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.529 
-      ]
-
-[34]
-
-[35]
-Overfull \hbox (11.63115pt too wide) in paragraph at lines 596--605
- [][] 
- []
-
-
-
-[36
 pdfTeX warning (ext4): destination with the same identifier (name{table.3.3}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.606 
+l.589 
       
 pdfTeX warning (ext4): destination with the same identifier (name{table.3.4}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.606 
+l.589 
       ]
 
-[37
+[32
 pdfTeX warning (ext4): destination with the same identifier (name{table.3.5}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.624 
+l.645 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{table.3.6}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.645 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{table.3.7}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.645 
+      ]
+<svg-inkscape/model_arc.pdf, id=1120, 1126.2075pt x 412.05943pt>
+File: svg-inkscape/model_arc.pdf Graphic file (type pdf)
+<use svg-inkscape/model_arc.pdf>
+Package pdftex.def Info: svg-inkscape/model_arc.pdf  used on input line 668.
+(pdftex.def)             Requested size: 397.485pt x 145.43016pt.
+
+
+[33
+pdfTeX warning (ext4): destination with the same identifier (name{table.3.8}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.672 
       ]
 LaTeX Font Info:    Font shape `OT1/minzpl/b/n' will be
-(Font)              scaled to size 10.95pt on input line 629.
+(Font)              scaled to size 10.95pt on input line 680.
 LaTeX Font Info:    Font shape `OT1/minzpl/b/n' will be
-(Font)              scaled to size 8.0pt on input line 629.
+(Font)              scaled to size 8.0pt on input line 680.
 LaTeX Font Info:    Font shape `OT1/minzpl/b/n' will be
-(Font)              scaled to size 6.1pt on input line 629.
+(Font)              scaled to size 6.1pt on input line 680.
+
+
+[34
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3.3}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.699 \end{table}
+                  <./svg-inkscape/model_arc.pdf>]
+
+[35
+pdfTeX warning (ext4): destination with the same identifier (name{table.3.9}) h
+as been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.712 
+      ]
+
+[36]
+Chapter 4.
+
+
+[37
+
+]
+Overfull \hbox (12.83676pt too wide) in paragraph at lines 785--786
+\T1/zpltlf/m/n/10.95 verse \T1/cmtt/m/n/10.95 CALL\T1/zpltlf/m/n/10.95 /\T1/cmt
+t/m/n/10.95 ARG$ \LMS/npxsy/m/n/10.95 !$\T1/cmtt/m/n/10.95 PARAM\T1/zpltlf/m/n/
+10.95 /\T1/cmtt/m/n/10.95 RET \T1/zpltlf/m/n/10.95 edges when such edges ex-ist
+ in the slice (Ap-pendix. [][]C.3.3[][]). 
+ []
+
 
 
 [38]
 
 [39]
-
-[40
-pdfTeX warning (ext4): destination with the same identifier (name{table.3.6}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.734 
-      ]
-
-[41]
-
-[42]
-
-[43
-pdfTeX warning (ext4): destination with the same identifier (name{table.3.7}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.851 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{table.3.8}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.851 
-      ]
-LaTeX Font Info:    Trying to load font information for T1+qhv on input line 90
-0.
- (c:/texlive/2025/texmf-dist/tex/latex/tex-gyre/t1qhv.fd
-File: t1qhv.fd 2009/09/25 v1.2 font definition file for T1/qhv
-)
-LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 10.29301pt on input line 900.
-LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 7.52002pt on input line 900.
-LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 5.73401pt on input line 900.
-
-Overfull \hbox (5.04816pt too wide) detected at line 900
-[]
- []
-
-
-
-[44
-pdfTeX warning (ext4): destination with the same identifier (name{table.3.9}) h
-as been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.900 \end{align}
-                 ]
-
-[45{c:/texlive/2025/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc}]
-
-[46]
-
-[47]
-Overfull \hbox (8.8078pt too wide) detected at line 1023
-[] \OML/npxmi/m/it/10.95 :
- []
-
-
-
-[48]
-
-[49]
-LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 10.0pt on input line 1078.
-
-
-[50]
-
-[51
-pdfTeX warning (ext4): destination with the same identifier (name{table.3.10}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.1119 
-       ]
-
-[52]
-Chapter 4.
-
-
-[53
-
-]
-Overfull \hbox (65.82944pt too wide) detected at line 1202
-[][][][] \U/npxmia/m/it/10.95 = []\OML/npxmi/m/it/10.95 ;  [] \U/npxmia/m/it/10
-.95 = [] [] \OML/npxmi/m/it/10.95 ;  [] \U/npxmia/m/it/10.95 = []\OML/npxmi/m/i
-t/10.95 :
- []
-
-
-
-[54]
-
-[55]
-
-[56]
-
-[57]
-
-[58]
-Overfull \hbox (11.58278pt too wide) in paragraph at lines 1329--1330
- []\T1/zpltlf/b/n/10.95 Causal Fea-ture At-tri-bu-tion Mea-sure (CFAM):[] \T1/z
-pltlf/m/n/10.95 CFAM eval-u-ates whether the model's
- []
-
-
-
-[59]
-
-[60]
 Chapter 5.
 
 
-[61
-
-]
-Overfull \hbox (30.53484pt too wide) in paragraph at lines 1444--1454
- [][] 
- []
+[40
 
 
-
-[62
 pdfTeX warning (ext4): destination with the same identifier (name{table.5.1}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1455 
-       
+l.870 
+      ]
+Underfull \hbox (badness 1917) in paragraph at lines 918--918
+[]|\T1/zpltlf/m/n/10 CFG reach-a-bil-ity, ARG$\LMS/npxsy/m/n/10 !$\T1/zpltlf/m/
+n/10 PARAM, RET$\LMS/npxsy/m/n/10 !$\T1/zpltlf/m/n/10 CALLER/LHS,
+ []
+
+
+
+[41
 pdfTeX warning (ext4): destination with the same identifier (name{table.5.2}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1455 
-       ]
-
-[63
+l.928 
+      
 pdfTeX warning (ext4): destination with the same identifier (name{table.5.3}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1508 
-       
+l.928 
+      
 pdfTeX warning (ext4): destination with the same identifier (name{table.5.4}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1508 
-       ]
+l.928 
+      ]
+LaTeX Font Info:    Font shape `T1/zpltlf/m/it' will be
+(Font)              scaled to size 10.0pt on input line 969.
 
-[64
+
+[42
 pdfTeX warning (ext4): destination with the same identifier (name{table.5.5}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1538 
-       ]
-LaTeX Font Info:    Font shape `T1/zpltlf/m/it' will be
-(Font)              scaled to size 10.0pt on input line 1577.
-
-
-[65
+l.993 
+      
 pdfTeX warning (ext4): destination with the same identifier (name{table.5.6}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1604 \end{table}
-                  
+l.993 
+      ]
+LaTeX Info: Symbol \textrightarrow not provided by
+            font family zpltlf in TS1 encoding.
+            Default family used instead on input line 1021.
+LaTeX Info: Symbol \textrightarrow not provided by
+            font family zpltlf in TS1 encoding.
+            Default family used instead on input line 1021.
+
+Overfull \hbox (5.15584pt too wide) in paragraph at lines 1021--1022
+\T1/zpltlf/m/n/10.95 ported for cross-boundary edges (CALL, ARG\TS1/cmr/m/n/10.
+95 ^^Y\T1/zpltlf/m/n/10.95 PARAM, and RET\TS1/cmr/m/n/10.95 ^^Y\T1/zpltlf/m/n/1
+0.95 CALLER/LHS). 
+ []
+
+
+
+[43
 pdfTeX warning (ext4): destination with the same identifier (name{table.5.7}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1604 \end{table}
-                  ]
-
-[66
+l.1044 
+       
 pdfTeX warning (ext4): destination with the same identifier (name{table.5.8}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1638 
+l.1044 
        
 pdfTeX warning (ext4): destination with the same identifier (name{table.5.9}) h
 as been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1638 
+l.1044 
        ]
 
-[67
+[44
 pdfTeX warning (ext4): destination with the same identifier (name{table.5.10}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1710 \end{table}
+l.1133 \end{table}
                   
 pdfTeX warning (ext4): destination with the same identifier (name{table.5.11}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1710 \end{table}
-                  ]
-Overfull \hbox (34.17497pt too wide) in paragraph at lines 1749--1759
- [][] 
- []
-
-
-
-[68
+l.1133 \end{table}
+                  
 pdfTeX warning (ext4): destination with the same identifier (name{table.5.12}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1763 
-       
+l.1133 \end{table}
+                  ]
+
+[45
 pdfTeX warning (ext4): destination with the same identifier (name{table.5.13}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1763 
+l.1197 
        
 pdfTeX warning (ext4): destination with the same identifier (name{table.5.14}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1763 
-       ]
-Overfull \hbox (25.80489pt too wide) in paragraph at lines 1788--1806
- [][] 
- []
-
-
-
-[69
+l.1197 
+       
 pdfTeX warning (ext4): destination with the same identifier (name{table.5.15}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1809 
+l.1197 
        ]
+Overfull \hbox (13.90482pt too wide) in paragraph at lines 1234--1244
+ [][] 
+ []
 
-[70
+
+
+[46
 pdfTeX warning (ext4): destination with the same identifier (name{table.5.16}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1848 
-       ]
-
-[71
+l.1247 
+       
 pdfTeX warning (ext4): destination with the same identifier (name{table.5.17}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1898 \end{table}
-                  ]
-
-[72
+l.1247 
+       
 pdfTeX warning (ext4): destination with the same identifier (name{table.5.18}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.1951 
-       
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.19}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.1951 
+l.1247 
        ]
 
-[73
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.20}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.1991 
-       
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.21}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.1991 
-       ]
-Overfull \hbox (2.72482pt too wide) in paragraph at lines 2004--2021
- [][] 
- []
+[47]
 
-LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 2022.
-LaTeX Font Info:    Font shape `OT1/minzpl/m/n' will be
-(Font)              scaled to size 9.0pt on input line 2022.
-LaTeX Font Info:    Font shape `OT1/minzpl/b/n' will be
-(Font)              scaled to size 9.0pt on input line 2022.
-LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 8.46002pt on input line 2022.
+Package svg Warning: You didn't enable `shell escape' (or `write18')
+(svg)                so it wasn't possible to launch the Inkscape export
+(svg)                for `chain.svg' on input line 1271.
 
-
-[74
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.22}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.2049 
-       ]
-
-[75
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.23}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.2103 
-       
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.24}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.2103 
-       ]
-Overfull \hbox (26.98933pt too wide) in paragraph at lines 2104--2105
-\T1/zpltlf/m/n/10.95 beam $\LMS/npxsy/m/n/10.95 น\OT1/minzpl/m/n/10.95 4\OML/np
-xmi/m/it/10.95 ; \OT1/minzpl/m/n/10.95 12\OML/npxmi/m/it/10.95 ; \OT1/minzpl/m/
-n/10.95 3\LMS/npxsy/m/n/10.95 บ$\T1/zpltlf/m/n/10.95 , Va-lid-ity $\LMS/npxsy/m
-/n/10.95 ฯ\OT1/minzpl/m/n/10.95 4\OML/npxmi/m/it/10.95 :\OT1/minzpl/m/n/10.95 2
-$\T1/zpltlf/m/n/10.95 pts, IPA $\LMS/npxsy/m/n/10.95 ฯ\OT1/minzpl/m/n/10.95 13\
-OML/npxmi/m/it/10.95 :\OT1/minzpl/m/n/10.95 1$\T1/zpltlf/m/n/10.95 pts, LCS $\L
-MS/npxsy/m/n/10.95 ฯ\OT1/minzpl/m/n/10.95 6\OML/npxmi/m/it/10.95 :\OT1/minzpl/m
-/n/10.95 3$\T1/zpltlf/m/n/10.95 pts at the cost of $\LMS/npxsy/m/n/10.95 ^^X$\T
-1/zpltlf/m/n/10.95 +$\OT1/minzpl/m/n/10.95 6\OML/npxmi/m/it/10.95 :\OT1/minzpl/
-m/n/10.95 9$\T1/zpltlf/m/n/10.95 ms/graph.
- []
-
-
-Underfull \hbox (badness 1019) in paragraph at lines 2130--2131
-[]|\T1/zpltlf/m/n/10 Succinct chain length; span
- []
-
-
-Underfull \hbox (badness 2302) in paragraph at lines 2131--2131
-[]|\T1/zpltlf/m/n/10 Stability un-der coun-ter-fac-tual
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2131--2132
-\T1/zpltlf/m/n/10 FG/alias/s-tack con-straints;
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2131--2132
-\T1/zpltlf/m/n/10 CC-S/DCR and on-chain
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2132--2133
-[]|\T1/zpltlf/m/n/10 Explicit: pres-ence of
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2132--2133
-\T1/cmtt/m/n/10 CALL\T1/zpltlf/m/n/10 , \T1/cmtt/m/n/10 ARG$\LMS/npxsy/m/n/10 !
-$\T1/cmtt/m/n/10 PARAM\T1/zpltlf/m/n/10 ,
- []
-
-
-Overfull \hbox (2.09717pt too wide) in paragraph at lines 2125--2135
- [][] 
- []
-
-
-
-[76
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.25}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.2136 
-       ]
-
-[77
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.26}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.2151 
-       ]
-
-[78]
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 2180.
-
-Overfull \hbox (7.83693pt too wide) in paragraph at lines 2182--2183
-\T1/cmtt/m/n/10.95 ARG2PARAM \T1/zpltlf/m/n/10.95 to cross call bound-aries, tr
-acks the re-turned value with \T1/cmtt/m/n/10.95 RET2CALL\T1/zpltlf/m/n/10.95 /
-\T1/cmtt/m/n/10.95 RET2LHS\T1/zpltlf/m/n/10.95 ,
- []
-
-Package svg Info: Last page of `./svg-inkscape/demo_chain_svg-tex.pdf' is 1 on 
-input line 2187.
-(./svg-inkscape/demo_chain_svg-tex.pdf_tex
-<./svg-inkscape/demo_chain_svg-tex.pdf, id=1484, page=1, 1402.03806pt x 317.987
-99pt>
-File: ./svg-inkscape/demo_chain_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/demo_chain_svg-tex.pdf, page 1>
-Package pdftex.def Info: ./svg-inkscape/demo_chain_svg-tex.pdf , page1 used on 
-input line 56.
-(pdftex.def)             Requested size: 397.485pt x 90.14716pt.
+Package svg Info: Last page of `./svg-inkscape/chain_svg-tex.pdf' is 1 on input
+ line 1271.
+(./svg-inkscape/chain_svg-tex.pdf_tex
+<./svg-inkscape/chain_svg-tex.pdf, id=1305, page=1, 1156.32pt x 397.485pt>
+File: ./svg-inkscape/chain_svg-tex.pdf Graphic file (type pdf)
+<use ./svg-inkscape/chain_svg-tex.pdf, page 1>
+Package pdftex.def Info: ./svg-inkscape/chain_svg-tex.pdf , page1 used on input
+ line 56.
+(pdftex.def)             Requested size: 397.485pt x 136.63513pt.
 )
-Underfull \hbox (badness 5578) in paragraph at lines 2188--2188
-[]\T1/zpltlf/m/n/10.95 Figure 5.1: []Executable chain re-con-structed by ACC on
- a pro-gram
+Overfull \hbox (0.6pt too wide) in paragraph at lines 1271--1272
+ [][] 
  []
 
 
 
-[79]
-
-[80
+[48
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5.1}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.2242 
-        <./svg-inkscape/demo_chain_svg-tex.pdf>]
-
-[81
-pdfTeX warning (ext4): destination with the same identifier (name{table.5.27}) 
-has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.2252 B
-        eam traces help to justify the choice. Expansions violating CFG or s...
-]
-
-[82]
-
-[83]
+l.1285 \chapter
+               {Conclusion and Future Work} <./svg-inkscape/chain_svg-tex.pdf>]
 Chapter 6.
 
 
-[84
+[49
+
+] (./main.bbl
+
+[50]
+
+[51
 
 ]
 
-[85] (./main.bbl
+[52]
 
-[86]
+[53]
 
-[87
+[54]
 
-]
+[55]
 
-[88]
+[56])
 
-[89]
-
-[90]
-
-[91]
-
-[92])
-
-[93]
+[57]
 Appendix A.
+LaTeX Font Info:    Font shape `T1/zpltlf/m/it' will be
+(Font)              scaled to size 8.0pt on input line 1428.
+LaTeX Font Info:    Font shape `T1/zpltlf/m/it' will be
+(Font)              scaled to size 6.1pt on input line 1428.
+LaTeX Font Info:    Font shape `T1/zpltlf/b/it' will be
+(Font)              scaled to size 10.95pt on input line 1428.
 
-
-[94
-
-
-]
-
-[95]
-
-[96]
-Appendix B.
-
-Overfull \hbox (2.26181pt too wide) in paragraph at lines 2411--2432
+Overfull \hbox (17.0pt too wide) detected at line 1435
 [][] 
  []
 
 
 
-[97
+[58
 
-]
-Overfull \hbox (12.78828pt too wide) in paragraph at lines 2443--2447
-\T1/zpltlf/m/n/10.95 For each run: train-ing and val-i-da-tion curves, seed-wis
-e met-rics (AU-ROC/AUPRC/F1),
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{algocf.1}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.1440 \begin{algorithm}[H]
+                           ]
+Overfull \vbox (31.31471pt too high) has occurred while \output is active []
+
+
+
+[59
+pdfTeX warning (ext4): destination with the same identifier (name{algocf.2}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.1440 \begin{algorithm}[H]
+                           ]
+LaTeX Font Info:    Font shape `T1/zpltlf/m/scit' will be
+(Font)              scaled to size 10.95pt on input line 1472.
+
+Overfull \hbox (17.0pt too wide) detected at line 1497
+[][] 
+ []
+
+
+Overfull \hbox (17.0pt too wide) detected at line 1535
+[][] 
  []
 
 
 
-[98]
-Appendix C.
+[60
+pdfTeX warning (ext4): destination with the same identifier (name{algocf.3}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.1541 T
+        he four procedures above correspond exactly to the equations and dec...
+]
+
+[61
+pdfTeX warning (ext4): destination with the same identifier (name{algocf.4}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.1545 \chapter
+               {Model Architecture: Formal Equations and Training Objective}]
+Appendix B.
 
 
-[99
+[62
 
 ]
 
-[100]
+
+Overfull \hbox (69.25209pt too wide) has occurred while \output is active
+\T1/zpltlf/m/sl/10.95 APPENDIX B.  MODEL ARCHITECTURE: FORMAL EQUATIONS AND TRA
+INING OBJECTIVE \T1/zpltlf/m/n/10.95 63
+ []
+
+[63]
+LaTeX Font Info:    Trying to load font information for T1+qhv on input line 17
+20.
+ (c:/texlive/2025/texmf-dist/tex/latex/tex-gyre/t1qhv.fd
+File: t1qhv.fd 2009/09/25 v1.2 font definition file for T1/qhv
+)
+LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
+(Font)              scaled to size 10.29301pt on input line 1720.
+LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
+(Font)              scaled to size 7.52002pt on input line 1720.
+LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
+(Font)              scaled to size 5.73401pt on input line 1720.
+
+Overfull \hbox (80.79015pt too wide) detected at line 1728
+[][][][]\LMS/npxsy/m/n/10.95 น\OML/npxmi/m/it/10.95 u [] v; \LMS/npxsy/m/n/10.9
+5 Tน\OML/npxmi/m/it/10.95 ^^Y\LMS/npxsy/m/n/10.95 บบ \OT1/minzpl/m/n/10.95 :\U/
+npxmia/m/it/10.95 = \OT1/minzpl/b/n/10.95 1 []\LMS/npxsy/m/n/10.95 น\OML/npxmi/
+m/it/10.95 r \U/npxmia/m/it/10.95 = []\LMS/npxsy/m/n/10.95 บ ^ []น\OML/npxmi/m/
+it/10.95 u; \LMS/npxsy/m/n/10.95 Tน\OML/npxmi/m/it/10.95 ^^Y\LMS/npxsy/m/n/10.9
+5 บบ[]   _   \OT1/minzpl/b/n/10.95 1 []\LMS/npxsy/m/n/10.95 9\OML/npxmi/m/it/10
+.95 g  \LMS/npxsy/m/n/10.95 2  Gน\OML/npxmi/m/it/10.95 ^^Y\LMS/npxsy/m/n/10.95 
+บ \OT1/minzpl/m/n/10.95 : \OML/npxmi/m/it/10.95 v[]g[];
+ []
+
+
+
+
+Overfull \hbox (69.25209pt too wide) has occurred while \output is active
+\T1/zpltlf/m/sl/10.95 APPENDIX B.  MODEL ARCHITECTURE: FORMAL EQUATIONS AND TRA
+INING OBJECTIVE \T1/zpltlf/m/n/10.95 64
+ []
+
+[64{c:/texlive/2025/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc}]
+
+
+Overfull \hbox (69.25209pt too wide) has occurred while \output is active
+\T1/zpltlf/m/sl/10.95 APPENDIX B.  MODEL ARCHITECTURE: FORMAL EQUATIONS AND TRA
+INING OBJECTIVE \T1/zpltlf/m/n/10.95 65
+ []
+
+[65]
+
+
+Overfull \hbox (69.25209pt too wide) has occurred while \output is active
+\T1/zpltlf/m/sl/10.95 APPENDIX B.  MODEL ARCHITECTURE: FORMAL EQUATIONS AND TRA
+INING OBJECTIVE \T1/zpltlf/m/n/10.95 66
+ []
+
+[66]
+
+
+Overfull \hbox (69.25209pt too wide) has occurred while \output is active
+\T1/zpltlf/m/sl/10.95 APPENDIX B.  MODEL ARCHITECTURE: FORMAL EQUATIONS AND TRA
+INING OBJECTIVE \T1/zpltlf/m/n/10.95 67
+ []
+
+[67]
+Appendix C.
+
+
+[68
+
+]
+
+
+Overfull \hbox (30.36978pt too wide) has occurred while \output is active
+\T1/zpltlf/m/sl/10.95 APPENDIX C.  EVALUATION METRICS: FORMAL DEFINITIONS AND D
+IAGNOSTICS \T1/zpltlf/m/n/10.95 69
+ []
+
+[69]
+
+
+Overfull \hbox (30.36978pt too wide) has occurred while \output is active
+\T1/zpltlf/m/sl/10.95 APPENDIX C.  EVALUATION METRICS: FORMAL DEFINITIONS AND D
+IAGNOSTICS \T1/zpltlf/m/n/10.95 70
+ []
+
+[70]
 Appendix D.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2513--2514
+Underfull \hbox (badness 1810) in paragraph at lines 2032--2033
+[]|$\OML/npxmi/m/it/10 ^^U[][]\OT1/minzpl/m/n/10 0\OML/npxmi/m/it/10 :\OT1/minz
+pl/m/n/10 5$\T1/zpltlf/m/n/10 , mar-gin $\OT1/minzpl/m/n/10 0\OML/npxmi/m/it/10
+ :\OT1/minzpl/m/n/10 5$\T1/zpltlf/m/n/10 ; $\OML/npxmi/m/it/10 ^^U[][]\OT1/minz
+pl/m/n/10 0\OML/npxmi/m/it/10 :\OT1/minzpl/m/n/10 5$\T1/zpltlf/m/n/10 , mar-gin
+ $\OT1/minzpl/m/n/10 0\OML/npxmi/m/it/10 :\OT1/minzpl/m/n/10 7$\T1/zpltlf/m/n/1
+0 ; $\OML/npxmi/m/it/10 ^^U[][]\OT1/minzpl/m/n/10 0\OML/npxmi/m/it/10 :\OT1/min
+zpl/m/n/10 05$\T1/zpltlf/m/n/10 ;
+ []
+
+
+Overfull \hbox (2.26181pt too wide) in paragraph at lines 2023--2040
+[][] 
+ []
+
+
+
+[71
+
+]
+Overfull \hbox (7.10489pt too wide) in paragraph at lines 2063--2081
+ [][] 
+ []
+
+
+
+[72]
+LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
+(Font)              scaled to size 9.0pt on input line 2118.
+
+
+[73
+pdfTeX warning (ext4): destination with the same identifier (name{table.1.D.1})
+ has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.2150 
+       
+pdfTeX warning (ext4): destination with the same identifier (name{table.1.D.2})
+ has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.2150 
+       ]
+
+[74
+pdfTeX warning (ext4): destination with the same identifier (name{table.1.D.3})
+ has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.2168 \chapter
+               {Dataset Card and Licensing}]
+Appendix E.
+
+
+[75
+
+]
+
+[76]
+Appendix F.
+
+Underfull \hbox (badness 10000) in paragraph at lines 2231--2232
 []|\T1/zpltlf/m/n/10.95 assignments, pointer deref-er-ence and address-of,
  []
 
 
-Overfull \hbox (4.12451pt too wide) in paragraph at lines 2507--2517
+Overfull \hbox (4.12451pt too wide) in paragraph at lines 2225--2235
 [] 
  []
 
 
-Overfull \hbox (35.12634pt too wide) in paragraph at lines 2522--2524
+Overfull \hbox (35.12634pt too wide) in paragraph at lines 2240--2242
 []\T1/zpltlf/m/n/10.95 Def^^Uuse chains that cross call bound-aries via ac-tual
 , for-mal bind-ings (ARG$\LMS/npxsy/m/n/10.95 !$\T1/zpltlf/m/n/10.95 PARAM;
  []
 
 
-Overfull \hbox (4.45554pt too wide) in paragraph at lines 2524--2526
+Overfull \hbox (4.45554pt too wide) in paragraph at lines 2242--2244
 []\T1/zpltlf/m/n/10.95 Alias-induced flows through point-ers, ref-er-ences, and
  con-tain-ers where points-
  []
 
 
 
-[101
+[77
 
 ]
 
-[102]
-Appendix E.
+[78]
+Appendix G.
 
-Overfull \hbox (20.5632pt too wide) in paragraph at lines 2542--2546
-\T1/zpltlf/m/n/10.95 re-la-tion fam-i-lies (AST/CFG/DFG, CAL-L/RET/ARG2PARAM/RE
-T2CALL/RET2LHS,
- []
-
-
-Overfull \hbox (2.44035pt too wide) in paragraph at lines 2548--2551
-\T1/zpltlf/m/n/10.95 length ($\OT1/minzpl/m/n/10.95 512$\T1/zpltlf/m/n/10.95 ),
- stride ($\OT1/minzpl/m/n/10.95 384$\T1/zpltlf/m/n/10.95 ), and nor-mal-iza-tio
-n flags are stored along-side FP16 memory-
+Overfull \hbox (2.44035pt too wide) in paragraph at lines 2267--2268
+\T1/zpltlf/m/n/10.95 length (512), stride (384), and nor-mal-iza-tion flags are
+ stored along-side FP16 memory-
  []
 
 
 
-[103
+[79
 
 ]
 
-[104] (./main.aux)
+[80]
+
+[81]
+
+[82]
+
+[83]
+
+[84]
+Underfull \hbox (badness 10000) in paragraph at lines 2501--2502
+
+ []
+
+
+
+[85]
+Underfull \hbox (badness 10000) in paragraph at lines 2532--2533
+
+ []
+
+(c:/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2024/09/23 1.10c listings language file
+)
+(c:/texlive/2025/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
+)
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 2540.
+
+
+[86]
+
+[87]
+
+[88] (./main.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2020/03/25>
  ***********
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: CFF0893117B78578EA16CFE172BD8C9E;27216.
+(rerunfilecheck)             Checksum: A11F9DF11B06D5B306FF861D06427D29;23467.
  ) 
 Here is how much of TeX's memory you used:
- 20082 strings out of 467747
- 314516 string characters out of 5431120
- 1070274 words of memory out of 5000000
- 47890 multiletter control sequences out of 15000+600000
- 764481 words of font info for 175 fonts, out of 8000000 for 9000
+ 21480 strings out of 467747
+ 337657 string characters out of 5431120
+ 1096777 words of memory out of 5000000
+ 49186 multiletter control sequences out of 15000+600000
+ 811329 words of font info for 221 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 94i,18n,93p,2614b,2134s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,24n,93p,2090b,2380s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/type1/public/newpx/NewPXMI.pfb><c:/texlive/
 2025/texmf-dist/fonts/type1/public/newpx/NewPXMI_gnu.pfb><c:/texlive/2025/texmf
 -dist/fonts/type1/public/newpx/pxmiaX.pfb><c:/texlive/2025/texmf-dist/fonts/typ
 e1/public/newpx/pxsys.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/tex-gy
-re/qhvr.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pf
-b><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb><c:/texl
-ive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb><c:/texlive/2025/t
-exmf-dist/fonts/type1/public/cm-super/sftt1095.pfb><c:/texlive/2025/texmf-dist/
-fonts/type1/public/newtx/txexas.pfb><c:/texlive/2025/texmf-dist/fonts/type1/pub
-lic/newtx/txexs.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsym.
-pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplb.pfb><c:/texlive/2
-025/texmf-dist/fonts/type1/public/newpx/zplr.pfb><c:/texlive/2025/texmf-dist/fo
-nts/type1/public/newpx/zplri.pfb>
-Output written on main.pdf (114 pages, 735934 bytes).
+re/qhvr.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfit1000.pf
+b><c:/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfit1095.pfb><c:/texl
+ive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/2025/t
+exmf-dist/fonts/type1/public/cm-super/sftt0800.pfb><c:/texlive/2025/texmf-dist/
+fonts/type1/public/cm-super/sftt0900.pfb><c:/texlive/2025/texmf-dist/fonts/type
+1/public/cm-super/sftt1000.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/c
+m-super/sftt1095.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexs
+.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsym.pfb><c:/texlive
+/2025/texmf-dist/fonts/type1/public/newpx/zplb.pfb><c:/texlive/2025/texmf-dist/
+fonts/type1/public/newpx/zplbi.pfb><c:/texlive/2025/texmf-dist/fonts/type1/publ
+ic/newpx/zplr.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/newpx/zplri.pf
+b>
+Output written on main.pdf (98 pages, 1022184 bytes).
 PDF statistics:
- 2119 PDF objects out of 2487 (max. 8388607)
- 1871 compressed objects within 19 object streams
- 476 named destinations out of 1000 (max. 500000)
- 943 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2171 PDF objects out of 2487 (max. 8388607)
+ 1887 compressed objects within 19 object streams
+ 546 named destinations out of 1000 (max. 500000)
+ 886 words of extra memory for PDF output out of 10000 (max. 10000000)
 

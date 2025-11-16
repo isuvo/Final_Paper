@@ -1,48 +1,43 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Key metadata fields per entry in ReposVul}}{31}{table.3.1}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces Preparation pipeline summary.}}{33}{table.3.2}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces Split-wise label counts at the file-level snapshot granularity.}}{36}{table.3.3}%
-\contentsline {table}{\numberline {3.4}{\ignorespaces Graph instances and node-level label density after chain centric conversion.}}{36}{table.3.4}%
-\contentsline {table}{\numberline {3.5}{\ignorespaces Interprocedural connectivity of prepared examples: presence of non-empty caller and callee sets.}}{37}{table.3.5}%
-\contentsline {table}{\numberline {3.6}{\ignorespaces Node feature dimensions at initialization.}}{40}{table.3.6}%
-\contentsline {table}{\numberline {3.7}{\ignorespaces CKG edge priors from training graphs (counts and probabilities).}}{43}{table.3.7}%
-\contentsline {table}{\numberline {3.8}{\ignorespaces Start/end relation frequencies observed in mined chains.}}{43}{table.3.8}%
-\contentsline {table}{\numberline {3.9}{\ignorespaces Top mined trigram motifs (counts).}}{44}{table.3.9}%
-\contentsline {table}{\numberline {3.10}{\ignorespaces Hyperparameters and runtime settings.}}{51}{table.3.10}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Core metadata recorded per ReposVul entry.}}{27}{table.3.1}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Preparation pipeline summary.}}{29}{table.3.2}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Split-wise label counts at the file-level snapshot granularity.}}{31}{table.3.3}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces Graph instances and node-level label density after chain centric conversion.}}{31}{table.3.4}%
+\contentsline {table}{\numberline {3.5}{\ignorespaces Interprocedural connectivity of prepared examples: presence of non-empty caller and callee sets.}}{32}{table.3.5}%
+\contentsline {table}{\numberline {3.6}{\ignorespaces Split-wise label counts (file-snapshot granularity).}}{32}{table.3.6}%
+\contentsline {table}{\numberline {3.7}{\ignorespaces Graph instances and node-label density after chain-centric conversion.}}{32}{table.3.7}%
+\contentsline {table}{\numberline {3.8}{\ignorespaces Interprocedural connectivity: presence of non-empty caller and callee sets.}}{33}{table.3.8}%
+\contentsline {table}{\numberline {3.9}{\ignorespaces Node feature dimensions at initialization.}}{35}{table.3.9}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Configuration snapshot extracted from the training report.}}{62}{table.5.1}%
-\contentsline {table}{\numberline {5.2}{\ignorespaces Dataset split summary (file-snapshot granularity; reproduced for completeness).}}{62}{table.5.2}%
-\contentsline {table}{\numberline {5.3}{\ignorespaces Base vs.\ GraphCodeBERT (GCBERT) encodings on the same shard.}}{63}{table.5.3}%
-\contentsline {table}{\numberline {5.4}{\ignorespaces ACC-constrained decoding and CKG prior configuration.}}{63}{table.5.4}%
-\contentsline {table}{\numberline {5.5}{\ignorespaces Training calibration and evaluation parameters.}}{64}{table.5.5}%
-\contentsline {table}{\numberline {5.6}{\ignorespaces Validation and Test metrics @ $\tau _{\text {F1}^\star }$ (mean over 5 seeds).}}{65}{table.5.6}%
-\contentsline {table}{\numberline {5.7}{\ignorespaces Operating points and calibration quality. ECE uses 15 bins.}}{65}{table.5.7}%
-\contentsline {table}{\numberline {5.8}{\ignorespaces Confusion matrix (\textsc {Test}) @ $\tau _{\text {F1}^\star }$, Struct-only.}}{66}{table.5.8}%
-\contentsline {table}{\numberline {5.9}{\ignorespaces Confusion matrix (\textsc {Test}) @ $\tau _{\text {F1}^\star }$, GCBERT+Struct.}}{66}{table.5.9}%
-\contentsline {table}{\numberline {5.10}{\ignorespaces Chain validity rate (pass rate of all feasibility checks).}}{67}{table.5.10}%
-\contentsline {table}{\numberline {5.11}{\ignorespaces Interprocedural structure in predicted chains. Conditioned on slices that expose interprocedural edges.}}{67}{table.5.11}%
-\contentsline {table}{\numberline {5.12}{\ignorespaces Role and order agreement with ground truth. Coverage computed on positive test items with reference chains.}}{68}{table.5.12}%
-\contentsline {table}{\numberline {5.13}{\ignorespaces Order agreement via LCS ratio between predicted and reference node sequences.}}{68}{table.5.13}%
-\contentsline {table}{\numberline {5.14}{\ignorespaces Succinctness and span of predicted chains.}}{68}{table.5.14}%
-\contentsline {table}{\numberline {5.15}{\ignorespaces Beam/ACC diagnostics under $K{=}8$, $B{=}24$, $H{=}5$ (per graph).}}{69}{table.5.15}%
-\contentsline {table}{\numberline {5.16}{\ignorespaces Inference latency and memory per graph (RTX~4070 Laptop GPU, mixed precision).}}{70}{table.5.16}%
-\contentsline {table}{\numberline {5.17}{\ignorespaces Causal metrics (prototype means; $N{=}256$ graphs per split).}}{71}{table.5.17}%
-\contentsline {table}{\numberline {5.18}{\ignorespaces CCS ($\downarrow $ better for minor edits; $\uparrow $ expected for major edits). Means over positive items with applicable interventions.}}{72}{table.5.18}%
-\contentsline {table}{\numberline {5.19}{\ignorespaces Directional Consistency Rate (DCR; higher is better).}}{72}{table.5.19}%
-\contentsline {table}{\numberline {5.20}{\ignorespaces CFAM and role-wise attribution shares on the ACC chain. Values in $[0,1]$.}}{73}{table.5.20}%
-\contentsline {table}{\numberline {5.21}{\ignorespaces Chain invalidation and score deltas under interventions.}}{73}{table.5.21}%
-\contentsline {table}{\numberline {5.22}{\ignorespaces Struct-only vs.\ GCBERT+Struct. Means over 5 seeds.}}{74}{table.5.22}%
-\contentsline {table}{\numberline {5.23}{\ignorespaces Effect of removing ACC components (Valid split, GCBERT{+}Struct).}}{75}{table.5.23}%
-\contentsline {table}{\numberline {5.24}{\ignorespaces CKG prior sensitivity (Valid, GCBERT{+}Struct).}}{75}{table.5.24}%
-\contentsline {table}{\numberline {5.25}{\ignorespaces Beam/ACC sensitivity (Valid, GCBERT{+}Struct; ms measured per graph).}}{76}{table.5.25}%
-\contentsline {table}{\numberline {5.26}{\ignorespaces Metric correspondence between COCA’s statement-level localization and this thesis’s chain-centric explanation.}}{77}{table.5.26}%
-\contentsline {table}{\numberline {5.27}{\ignorespaces Observed failure modes, diagnostics, and practical remedies.}}{81}{table.5.27}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Experimental setup summary.}}{40}{table.5.1}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Dataset split summary.}}{41}{table.5.2}%
+\contentsline {table}{\numberline {5.3}{\ignorespaces Struct-only vs.\ GCBERT on the same shard.}}{41}{table.5.3}%
+\contentsline {table}{\numberline {5.4}{\ignorespaces Decoding, training, and evaluation protocol.}}{41}{table.5.4}%
+\contentsline {table}{\numberline {5.5}{\ignorespaces Validation and test metrics at \(\tau _{\text {F1}^\star }\) (mean over five seeds).}}{42}{table.5.5}%
+\contentsline {table}{\numberline {5.6}{\ignorespaces Operating points and calibration. ECE uses 15 bins.}}{42}{table.5.6}%
+\contentsline {table}{\numberline {5.7}{\ignorespaces Confusion matrices on \textsc {Test} at \(\tau _{\text {F1}^\star }\).}}{43}{table.5.7}%
+\contentsline {table}{\numberline {5.8}{\ignorespaces Feasibility of reconstructed chains (pass of all checks).}}{43}{table.5.8}%
+\contentsline {table}{\numberline {5.9}{\ignorespaces Interprocedural structure in predicted chains.}}{43}{table.5.9}%
+\contentsline {table}{\numberline {5.10}{\ignorespaces Role and edge agreement with ground truth.}}{44}{table.5.10}%
+\contentsline {table}{\numberline {5.11}{\ignorespaces Order agreement via LCS ratio.}}{44}{table.5.11}%
+\contentsline {table}{\numberline {5.12}{\ignorespaces Chain length and span: mean/median hops, files crossed, and share of summary edges.}}{44}{table.5.12}%
+\contentsline {table}{\numberline {5.13}{\ignorespaces Prototype causal metrics (means over $N{=}256$ graphs per split).}}{45}{table.5.13}%
+\contentsline {table}{\numberline {5.14}{\ignorespaces CCS by edit type (Lower is better for minor edits; higher for sink edits.)}}{45}{table.5.14}%
+\contentsline {table}{\numberline {5.15}{\ignorespaces Directional consistency rate (DCR; higher is better).}}{45}{table.5.15}%
+\contentsline {table}{\numberline {5.16}{\ignorespaces CFAM (overall and by chain segment). Values in $[0,1]$.}}{46}{table.5.16}%
+\contentsline {table}{\numberline {5.17}{\ignorespaces Chain invalidation rates and score deltas under interventions.}}{46}{table.5.17}%
+\contentsline {table}{\numberline {5.18}{\ignorespaces Inference latency per graph.}}{46}{table.5.18}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {D.1}{\ignorespaces Beam and ACC diagnostics under \(K{=}8\), \(B{=}24\), \(H{=}5\) (per graph).}}{73}{table.1.D.1}%
+\contentsline {table}{\numberline {D.2}{\ignorespaces Beam sensitivity (Valid, GCBERT+Struct; latency in ms per graph).}}{73}{table.1.D.2}%
+\contentsline {table}{\numberline {D.3}{\ignorespaces Decoder diagnostics for rare cases and suggested remedies.}}{74}{table.1.D.3}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

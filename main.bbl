@@ -62,6 +62,10 @@
   tensorflow-based deep learning applications}, Computers and Security, 124
   (2023), p.~102948.
 
+\bibitem{Freitag2017Parsing}
+{\sc M.~Freitag and Y.~Al-Onaizan}, {\em Beam search strategies for neural
+  machine translation}, arXiv preprint arXiv:1702.01806,  (2017).
+
 \bibitem{fu2022linevul}
 {\sc M.~Fu and C.~Tantithamthavorn}, {\em Linevul: A transformer-based
   line-level vulnerability prediction}, in Proceedings of the 19th
@@ -184,6 +188,11 @@
   in International Conference on Artificial Intelligence and Statistics, PMLR,
   2022, pp.~4499--4511.
 
+\bibitem{mandal2020solving}
+{\sc S.~Mandal, A.~A. Sekh, and S.~K. Naskar}, {\em Solving arithmetic word
+  problems: A deep learning based approach}, Journal of Intelligent Fuzzy
+  Systems, 39 (2020), pp.~2521--2531.
+
 \bibitem{Allix2024}
 {\sc Marchetto and Alessandro}, {\em Can explainability and deep-learning be
   used for localizing vulnerabilities in source code?}, in Proceedings of the
@@ -196,6 +205,12 @@
   ACM/IEEE International Conference on Automation of Software Test (AST 2024),
   AST '24, New York, NY, USA, 2024, Association for Computing Machinery,
   p.~110–119.
+
+\bibitem{Martins2022StructuredDecoding}
+{\sc A.~F.~T. Martins, G.~Correia, V.~Niculae, G.~Poesia, O.~Polozov, V.~Le,
+  A.~Tiwari, G.~Soares, C.~Meek, and S.~Gulwani}, {\em {Structured Decoding for
+  Constrained Generation}}, in International Conference on Learning
+  Representations (ICLR) 2022, 2022.
 
 \bibitem{mosolygo2021towards}
 {\sc B.~Mosolyg{\'o}, N.~V{\'a}ndor, G.~Antal, P.~Heged{\H{u}}s, and
@@ -229,6 +244,10 @@
   Towards causal deep learning for vulnerability detection}, in Proceedings of
   the IEEE/ACM 46th international conference on software engineering, 2024,
   pp.~1--11.
+
+\bibitem{RussellNorvig2020AI}
+{\sc S.~Russell and P.~Norvig}, {\em Artificial Intelligence: A Modern
+  Approach}, Pearson, 4th~ed., 2020.
 
 \bibitem{schlichtkrull2018rgcn}
 {\sc M.~Schlichtkrull, T.~N. Kipf, P.~Bloem, R.~van~den Berg, I.~Titov, and
@@ -358,6 +377,11 @@
 {\sc P.~Zeng, G.~Lin, L.~Pan, Y.~Tai, and J.~Zhang}, {\em Software
   vulnerability analysis and discovery using deep learning techniques: A
   survey}, IEEE Access, 8 (2020), pp.~197158--197172.
+
+\bibitem{Zheng2023CausalKG}
+{\sc B.~Zhou, J.~Li, X.~Li, B.~Hua, and J.~Bao}, {\em Leveraging on causal
+  knowledge for enhancing the root cause analysis of equipment spot inspection
+  failures}, Advanced Engineering Informatics, 54 (2022), p.~101799.
 
 \bibitem{zhu2023adfl}
 {\sc C.~Zhu, J.~Zhang, X.~Sun, B.~Chen, and W.~Meng}, {\em Adfl: Defending
