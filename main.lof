@@ -1,12 +1,11 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces End-to-end pipeline for chain-centric vulnerability detection. Source repositories are parsed into a unified Code Property Graph (CPG), with GraphCodeBERT-initialized features providing input to a relation-aware encoder. At inference, ACC-constrained beam search guided by CKG motifs performs structured reasoning and outputs a single executable interprocedural chain, enabling interpretable vulnerability mechanisms.}}{26}{figure.3.1}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces ReposVul prepossessing to interprocedural CPGs and leakage-safe train/valid/test partitions.}}{27}{figure.3.2}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Chain-Centric Model Architecture and Inference Flow}}{34}{figure.3.3}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Overview of the proposed chain-centric vulnerability analysis approach. Data sources are lifted into a unified CPG) node features are initialized with a pretrained encoder, and an ACC-constrained, CKG-guided beam decoder performs structured reasoning to produce a single executable root-to-sink chain.}}{16}{figure.3.1}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces ReposVul pipeline: interprocedural CPG construction and leakage-safe data splits.}}{17}{figure.3.2}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Chain-Centric Model Architecture and Inference Flow}}{20}{figure.3.3}%
 \addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Multi file executable chain from root to sink.}}{48}{figure.5.1}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Executable interprocedural chain from root to sink across \texttt {main.c} and \texttt {lib/shell.c}}}{36}{figure.4.1}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
